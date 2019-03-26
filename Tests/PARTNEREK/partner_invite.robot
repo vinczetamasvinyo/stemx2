@@ -104,7 +104,7 @@ Test the veznev mezobe szamot is irunk
 Test veznevbe minimum karaktert irunk be
     [Documentation]  A teszt során azt nézzük meg, hogy a vezetéknévbe beírjuk
                 ...  a minimum karaktert és a hibaüzenet nem jelenik meg.
-    [Tags]  most
+    [Tags]  veznev
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s
@@ -132,6 +132,22 @@ Test the partner meghivasa cegnev 128 karakter
     Check the div object contains the error message  ${cegnev}
     Give the company name and other field data  ${PARTNER_INVITE_LONG_128_TEXT}  egyéb
     Check the error message appear and the error text value  ${cegnev}  ${PARTNER_INVITE_ERROR_MESSAGE_LONG_HUN}
+
+Test the cegnevbe minimum karaktert irunk
+    [Documentation]  A teszt során azt nézzük meg, hogy a partner meghívása oldalon
+                ...  a cégnév mezőbe minimum karaktert írunk és a hibaüzenet nem jelenik meg.
+    [Tags]  most
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    ${cegnev} =  Get the cegnev div object from the page
+    Check the div object contains the error message  ${cegnev}
+    Give the company name and other field data  ${PARTNER_INVITE_MINIMUM_CHARACTER}  egyéb
+    Check the div object contains the error message  ${cegnev}
 
 test3
     [Tags]  most3
