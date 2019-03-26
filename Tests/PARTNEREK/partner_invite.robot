@@ -12,8 +12,8 @@ Variables  ../../Resources/variable.py
 Library  SeleniumLibrary
 Library  Collections
 
-#Test Setup  login_resource.Open Vk login page  ${OLDAL_URL}  ${bogeszo}
-#Test Teardown  common.End web test
+Test Setup  login_resource.Open Vk login page  ${OLDAL_URL}  ${bogeszo}
+Test Teardown  common.End web test
 
 *** Variables ***
 ${PARTNER_INVITE_PARTNER_INVITE_GOMB_HUN_SZOVEG} =  Partner meghívása
@@ -117,6 +117,22 @@ Test veznevbe minimum karaktert irunk be
     Give the veznev and other field data  ${PARTNER_INVITE_MINIMUM_CHARACTER}  egyéb
     Check the div object contains the error message  ${veznev}
 
+Test the partner meghivasa cegnev 128 karakter
+    [Documentation]  A teszt során azt nézzük meg, hogy a cégnévbe 128 karakter
+                ...  hosszú szöveget írunk be, akkor megjelenik-e a megfelelő hibaüzenet.
+    [Tags]  error
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    ${cegnev} =  Get the cegnev div object from the page
+    Check the div object contains the error message  ${cegnev}
+    Give the company name and other field data  ${PARTNER_INVITE_LONG_128_TEXT}  egyéb
+    Check the error message appear and the error text value  ${cegnev}  ${PARTNER_INVITE_ERROR_MESSAGE_LONG_HUN}
+
 test3
     [Tags]  most3
     Begin web test  https://temp-mail.org/  chrome
@@ -154,16 +170,20 @@ Get the veznev div object from the page
     ${veznev} =  Get From List  ${elemek}  1
     [Return]  ${veznev}
 
-Check the div object contains the error message
-    [Documentation]  Megnézzük, hogy a vezetéknév object tartalmaz-e error hibaüzenetet
-    [Arguments]  ${veznev_object}
-    ${van1}  ${van2} =  check the elem contain in parent2  ${veznev_object}  .//app-show-errors/ul/li
-    should not be true  ${van1}
+
 
 Give the veznev and other field data
     [Documentation]  Megadjuk a vezetéknevet és egyéb adatot
     [Arguments]  ${veznev}  ${egyeb}
     give the lastname  ${veznev}
+    sleep  1s
+    give the firstname  ${egyeb}
+    sleep  1s
+
+Give the company name and other field data
+    [Documentation]  Megadjuk a cégnevet és egyéb adatot
+    [Arguments]  ${cnev}  ${egyeb}
+    give the name of company  ${cnev}
     sleep  1s
     give the firstname  ${egyeb}
     sleep  1s

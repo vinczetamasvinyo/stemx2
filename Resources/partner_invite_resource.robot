@@ -1,6 +1,8 @@
 *** Settings ***
 Library  SeleniumLibrary
 Resource  PO/po_partners.robot
+Library  ../ExternalResources/mylibrary.py
+Library  Collections
 
 *** Variables ***
 
@@ -42,3 +44,20 @@ Check the error message text and is visiable
 Waite the partner invite page loaded
     Check the first name field visiable on the page
     #wait until element is visible  xpath=//input[@formcontrolname="firstName"]
+
+Get the cegnev div object from the page
+    [Documentation]  A partners page-ből visszaadja azt a div részt ami a cégnevet tartalmazza.
+    @{elemek} =  Get the all div element of input from partner page
+    ${hossz} =  get length  ${elemek}
+    log  ${hossz}
+    ${cegn} =  Get the company div object  ${elemek}
+    [Return]  ${cegn}
+
+Check the div object contains the error message
+    [Documentation]  Megnézzük, hogy az adott object tartalmaz-e error hibaüzenetet.
+                ...  Nem szabad, hogy hibaüzenetet tartalmazzon.
+    [Arguments]  ${div_object}
+    ${van1}  ${van2} =  po_partners.Check the error message  ${div_object}
+    #${van1}  ${van2} =  check the elem contain in parent2  ${div_object}  .//app-show-errors/ul/li
+    should not be true  ${van1}
+
