@@ -8,6 +8,18 @@ Library  Collections
 
 
 *** Keywords ***
+Check text apper above the i icon
+    [Documentation]  Megnézi, hogy a partnerek oldalon a i con mögötti szöveg megfelelően jelenik-e meg.
+    [Arguments]  ${text}
+    ${szoveg0} =  po_partners.Get the first text of i icon
+    ${hossz_szoveg0} =  get length  ${szoveg0}
+    ${szoveg1} =  po_partners.Get the full text of i icon
+    ${hossz} =  get length  ${szoveg1}
+    ${fo_szoveg} =  string of other_string  ${szoveg1}   ${hossz_szoveg0}  ${hossz}
+    log  ${szoveg1}
+    should be true  "${fo_szoveg}" == "${text}"
+
+
 Check the partner meghivasa gomb text
     [Documentation]  Megnézi, hogy a paraméterben megadott szöveggel
                      ...  egyezik-e a partner meghívása gomb.

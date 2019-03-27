@@ -107,6 +107,12 @@ def elem_keresese(elemkeres):
     helyek = driver.find_element_by_css_selector(elemkeres)
     #return helyek
 
+def string_of_other_string(string, start, end):
+    start2 = int(start)
+    end2 = int(end)
+    szoveg = string[start2:end2]
+    return szoveg
+
 """
 driver = webdriver.Chrome('chromedriver.exe')
 driver.get('http://dev.varoskartya.com')

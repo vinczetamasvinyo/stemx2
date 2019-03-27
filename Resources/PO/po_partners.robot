@@ -84,3 +84,13 @@ Get the text of the cim
     [Documentation]  Visszaadja a cim-ben lévő szöveget
     ${cim} =  get text  ${PO_PARTNERS_CIM_ID}
     [Return]  ${cim}
+
+Get the first text of i icon
+    [Documentation]  A partner oldalon visszaadja az i icon mögötti első szöveget
+    ${szov} =  get text  xpath=//*[@class="box-title"]/*[@class="material-icons"]
+    [Return]  ${szov}
+
+Get the full text of i icon
+    [Documentation]  Visszaadja a partner oldalon található i icon mögötti teljes szöveget
+    ${szov} =  get text  xpath=//*[@class="box-title"]
+    [Return]  ${szov}
