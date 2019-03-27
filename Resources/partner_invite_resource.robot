@@ -92,9 +92,25 @@ Check the veznev text in the veznev div object
     log  ${label_szoveg}
     should be true  "${label_szoveg}" == "${veznev_text}"
 
+Check the keresztnev text in the keresztnev div object
+    [Documentation]  Megnézi, hogy a keresztnev labelje egyezik-e azzal amit itt paraméterben megadunk.
+    [Arguments]  ${keresztnev_text}
+    ${kereszt} =  Get the keresztnev div object from the page
+    ${van}  ${keresztnev_label} =  Get the label from div object in the partners page  ${kereszt}
+    log  ${van}
+    ${label_szoveg} =  get text  ${keresztnev_label}
+    log  ${label_szoveg}
+    should be true  "${label_szoveg}" == "${keresztnev_text}"
+
 Get the veznev div object from the page
     @{elemek} =  Get the all div element of input from partner page
     #@{elemek} =  SeleniumLibrary.Get WebElements  //div[@class="columns small-12 medium-6"]
     ${hossz} =  get length  ${elemek}
     ${veznev} =  Get From List  ${elemek}  1
     [Return]  ${veznev}
+
+Get the keresztnev div object from the page
+    @{elemek} =  Get the all div element of input from partner page
+    ${hossz} =  get length  ${elemek}
+    ${kereszt} =  Get From List  ${elemek}  0
+    [Return]  ${kereszt}
