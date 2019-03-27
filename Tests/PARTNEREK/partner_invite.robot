@@ -240,11 +240,33 @@ test3
     give the firstname  valami
     click element  //button[@class="button success"]
     sleep  5s
-    element should be visible  xpath=//div[@class="toast-error toast ng-trigger ng-trigger-flyInOut"]
-    #go to  https://temp-mail.org/
-    #wait until element is visible  Regisztráció  120
-    #click link  link=Regisztráció
-    #sleep  3s
+    #element should be visible  xpath=//div[@class="toast-error toast ng-trigger ng-trigger-flyInOut"]
+    wait until element is visible  //button[@class="button hollow"]  30
+    sleep  8s
+    click element  //*[@class="user-profile"]
+    sleep  2s
+    click element  //*[@id="menu_loguout"]
+    sleep  2s
+    go to  https://temp-mail.org/
+    sleep  5s
+    # wait until element is visible  Új bejelentés érkezett  120
+    wait until page contains  Meghívás elfogadása   120
+    click link  link=Meghívás elfogadása
+    sleep  3s
+    #TODO: megnézni, hogy a partial link miért nem működik.
+    scroll to element  link=Regisztáció befejezése  100
+    click link  link=Regisztáció befejezése
+    sleep  2s
+    close window
+    select window  MAIN
+    wait until page contains element  xpath=//input[@formcontrolname="token"]  60
+    sleep  2s
+    input text  xpath=//input[@formcontrolname="password"]  Vinyo123456
+    input text  xpath=//input[@formcontrolname="passwordConfirm"]  Vinyo123456
+    # Rákattintunk a REgisztráció megerősítése gombra
+    click element  xpath=//*[@type="submit"]
+    wait until page contains element  id=mat-checkbox-1  10
+    sleep  2s
     close browser
 
 *** Keywords ***
