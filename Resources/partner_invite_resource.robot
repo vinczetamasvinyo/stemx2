@@ -61,3 +61,11 @@ Check the div object contains the error message
     #${van1}  ${van2} =  check the elem contain in parent2  ${div_object}  .//app-show-errors/ul/li
     should not be true  ${van1}
 
+Check the partner meghivasa text is oke
+    [Documentation]  Megnézi, hogy a partner meghívása szöveg megjelenik-e az oldalon,
+                ...  és hogy a szövege megfelelő-e.
+    [Arguments]  ${text}
+    Check the cim appear on the page
+    ${szoveg} =  Get the text of the cim
+    log  ${szoveg}
+    should be true  "${szoveg}" == "${text}"

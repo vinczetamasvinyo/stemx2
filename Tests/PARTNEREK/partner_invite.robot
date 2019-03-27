@@ -62,7 +62,7 @@ Test the partner meghivasa gomb szovege hun
 Test the partner meghivasa cim szoveg megfelelo-e hun
     [Documentation]  A teszt során azt nézzük meg, hogy a partner oldalon
                 ...  a Partner meghívása cím szöveg megjelenik-e.
-    [Tags]  szoveg  most5
+    [Tags]  szoveg
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s
@@ -71,9 +71,6 @@ Test the partner meghivasa cim szoveg megfelelo-e hun
     Click the partner invite button
     Waite the partner invite page loaded
     check the partner meghivasa text is oke  ${PARTNER_INVITE_LABEL_CIM_HUN}
-    #element should be visible  xpath=//*[@class="row"]/div/h1
-    #${szoveg} =  get text  xpath=//*[@class="row"]/div/h1
-    #should be true  "${szoveg}" == "Partner meghívása"
 
 Test the partner meghivasa keresztnev hosszabb 128 karakter
     [Documentation]  Azt nézzük meg, hogy a teszt 128 karakternél hosszabb nevet adunk meg
@@ -286,14 +283,6 @@ test3
     close browser
 
 *** Keywords ***
-Check the partner meghivasa text is oke
-    [Documentation]  Megnézi, hogy a partner meghívása szöveg megjelenik-e az oldalon,
-                ...  és hogy a szövege megfelelő-e.
-    [Arguments]  ${text}
-    element should be visible  xpath=//*[@class="row"]/div/h1
-    ${szoveg} =  get text  xpath=//*[@class="row"]/div/h1
-    log  ${szoveg}
-    should be true  "${szoveg}" == "${text}"
 
 Get the veznev div object from the page
     @{elemek} =  SeleniumLibrary.Get WebElements  //div[@class="columns small-12 medium-6"]

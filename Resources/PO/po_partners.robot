@@ -13,7 +13,7 @@ ${PO_PARTNERS_LASTNAME_INPUT_ID} =  xpath=//input[@formcontrolname="lastName"]
 ${PO_PARTNERS_COMPANYNAME_INPUT_ID} =  xpath=//input[@formcontrolname="companyName"]
 ${PO_PARTNERS_DIV_ID_OF_INPUT} =  //div[@class="columns small-12 medium-6"]
 ${PO_PARTNERS_CEG_DIV_LIST_ID} =  2
-
+${PO_PARTNERS_CIM_ID} =  xpath=//*[@class="row"]/div/h1
 *** Keywords ***
 
 Get the text of invite partner button
@@ -75,3 +75,12 @@ Get the company div object
 Check the error message
     [Arguments]  ${d_object}
     ${v1}  ${v2} =  check the elem contain in parent2  ${d_object}  ${PO_PARTNERS_COMMON_ERROR_ID2}
+
+Check the cim appear on the page
+    [Documentation]  Megnézi, hogy a cím megjelenik-e az oldalon.
+    element should be visible  ${PO_PARTNERS_CIM_ID}
+
+Get the text of the cim
+    [Documentation]  Visszaadja a cim-ben lévő szöveget
+    ${cim} =  get text  xpath=//*[@class="row"]/div/h1
+    [Return]  ${cim}
