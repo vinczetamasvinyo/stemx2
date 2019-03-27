@@ -23,7 +23,8 @@ ${PARTNER_INVITE_ERROR_MESSAGE_WRONG_CARACTER} =  Ez a mező csak betűt, \'.\' 
 ${PARTNER_INVITE_MINIMUM_CHARACTER} =  K
 ${PARTNER_INVITE_BETU} =  eekeee
 ${PARTNER_INVITE_BETU_KOTEJEL} =  eekeee-
-${PARTNER_INVITE_BETU_KOTEJEL_PONT} =  eekeee.
+${PARTNER_INVITE_BETU_KOTEJEL_PONT}
+${PARTNER_INVITE_BETU_SPACE}=  eekeee DDD
 ${PARTNER_INVITE_WRONG_INPUT_NUMBER} =  Valami3
 
 
@@ -187,7 +188,7 @@ Test the cegnevbe betuket es kotojelet irunk
 Test the cegnevbe betuket es pontot irunk
     [Documentation]  A teszt során azt nézzük meg, hogy a partner meghívása során az oldalon
                 ...  a cégnévbe csak betűket és pontot írunk és nem jelenik meg hibaüzenet.
-    [Tags]  most4  cegnev
+    [Tags]  cegnev
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s
@@ -198,6 +199,22 @@ Test the cegnevbe betuket es pontot irunk
     ${cegnev} =  Get the cegnev div object from the page
     Check the div object contains the error message  ${cegnev}
     Give the company name and other field data  ${PARTNER_INVITE_BETU_KOTEJEL_PONT}  egyéb
+    Check the div object contains the error message  ${cegnev}
+
+Test the cegnevbe betuket es space-t irunk
+    [Documentation]  A teszt során azt nézzük meg, hogy a partner meghívása során az oldalon
+                ...  a cégnévbe csak betűket és spacet írunk és megjelenik-e a hibaüzenet.
+    [Tags]  cegnev
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    ${cegnev} =  Get the cegnev div object from the page
+    Check the div object contains the error message  ${cegnev}
+    Give the company name and other field data  ${PARTNER_INVITE_BETU_SPACE}  egyéb
     Check the div object contains the error message  ${cegnev}
 
 test3
