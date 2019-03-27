@@ -31,6 +31,7 @@ ${PARTNER_INVITE_LABEL_CIM_HUN} =  Partner meghívása
 ${PARTNER_INVITE_LABEL_PARTNER_ADATAI_HUN} =  PARTNER ADATAI
 ${PARTNER_INVITE_LABEL_VEZETEKNEV_HUN} =  Vezetéknév
 ${PARTNER_INVITE_LABEL_KERESZTNEV_HUN} =  Keresztnév
+${PARTNER_INVITE_LABEL_CEGNEV_HUN} =  Cégnév
 
 *** Test Cases ***
 Test 1
@@ -99,7 +100,7 @@ Test the vezetekev szoveg megjelenik-e a partner meghivasa oldalon hun
 
 Test the keresztnev szoveg megjelenik-e a partner meghivasa oldalon hun
     [Documentation]  Azt nézzük meg, hogy a keresztnév hun labelje megfelelően megjelenik-e a partnerek oldalon.
-    [Tags]  most1
+    [Tags]  szoveg
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s
@@ -108,6 +109,18 @@ Test the keresztnev szoveg megjelenik-e a partner meghivasa oldalon hun
     Click the partner invite button
     Waite the partner invite page loaded
     Check the keresztnev text in the keresztnev div object  ${PARTNER_INVITE_LABEL_KERESZTNEV_HUN}
+
+Test the cegnev szoveg megjelenik-e a partner meghivasa oldalon hun
+    [Documentation]  Azt nézzük meg, hogy a cégnév hun labelje megfelelően megjelenik-e a partnerek oldalon.
+    [Tags]  most1
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    Check the cegnev text in the cegnev div object  ${PARTNER_INVITE_LABEL_CEGNEV_HUN}
 
 Test the partner meghivasa keresztnev hosszabb 128 karakter
     [Documentation]  Azt nézzük meg, hogy a teszt 128 karakternél hosszabb nevet adunk meg
