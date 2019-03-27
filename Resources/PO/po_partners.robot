@@ -82,5 +82,5 @@ Check the cim appear on the page
 
 Get the text of the cim
     [Documentation]  Visszaadja a cim-ben lévő szöveget
-    ${cim} =  get text  xpath=//*[@class="row"]/div/h1
+    ${cim} =  get text  ${PO_PARTNERS_CIM_ID}
     [Return]  ${cim}
