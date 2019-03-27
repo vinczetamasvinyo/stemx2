@@ -14,6 +14,8 @@ ${PO_PARTNERS_COMPANYNAME_INPUT_ID} =  xpath=//input[@formcontrolname="companyNa
 ${PO_PARTNERS_DIV_ID_OF_INPUT} =  //div[@class="columns small-12 medium-6"]
 ${PO_PARTNERS_CEG_DIV_LIST_ID} =  2
 ${PO_PARTNERS_CIM_ID} =  xpath=//*[@class="row"]/div/h1
+${PO_PARTNERS_LABEL_ID_IN_DIV_OBJECT} =  .//label
+
 *** Keywords ***
 
 Get the text of invite partner button
@@ -94,3 +96,10 @@ Get the full text of i icon
     [Documentation]  Visszaadja a partner oldalon található i icon mögötti teljes szöveget
     ${szov} =  get text  xpath=//*[@class="box-title"]
     [Return]  ${szov}
+
+Get the label from div object in the partners page
+    [Documentation]  A partner oldalon a div object-ből visszaadja a benne lévő label-t.
+    ...  Az objectumot paraméterben kapja meg.
+    [Arguments]  ${object}
+    ${van}  ${veznev_label} =  check the elem contain in parent2  ${object}  ${PO_PARTNERS_LABEL_ID_IN_DIV_OBJECT}
+    [Return]  ${van}  ${veznev_label}

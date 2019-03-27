@@ -29,6 +29,7 @@ ${PARTNER_INVITE_BETU_SPACE}=  eekeee DDD
 ${PARTNER_INVITE_WRONG_INPUT_NUMBER} =  Valami3
 ${PARTNER_INVITE_LABEL_CIM_HUN} =  Partner meghívása
 ${PARTNER_INVITE_LABEL_PARTNER_ADATAI_HUN} =  PARTNER ADATAI
+${PARTNER_INVITE_LABEL_VEZETEKNEV_HUN} =  Vezetéknév
 
 *** Test Cases ***
 Test 1
@@ -83,6 +84,17 @@ Test the Partner Adatai text megfelelo-e hun
     Click the partner invite button
     Waite the partner invite page loaded
     Check text apper above the i icon  ${PARTNER_INVITE_LABEL_PARTNER_ADATAI_HUN}
+
+Test the vezetekev szoveg megjelenik-e a partner meghivasa oldalon hun
+    [Tags]  most1
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    Check the veznev text in the veznev div object  ${PARTNER_INVITE_LABEL_VEZETEKNEV_HUN}
 
 Test the partner meghivasa keresztnev hosszabb 128 karakter
     [Documentation]  Azt nézzük meg, hogy a teszt 128 karakternél hosszabb nevet adunk meg
@@ -295,14 +307,6 @@ test3
     close browser
 
 *** Keywords ***
-
-Get the veznev div object from the page
-    @{elemek} =  SeleniumLibrary.Get WebElements  //div[@class="columns small-12 medium-6"]
-    ${hossz} =  get length  ${elemek}
-    ${veznev} =  Get From List  ${elemek}  1
-    [Return]  ${veznev}
-
-
 
 Give the veznev and other field data
     [Documentation]  Megadjuk a vezetéknevet és egyéb adatot

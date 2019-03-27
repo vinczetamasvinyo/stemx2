@@ -81,3 +81,20 @@ Check the partner meghivasa text is oke
     ${szoveg} =  Get the text of the cim
     log  ${szoveg}
     should be true  "${szoveg}" == "${text}"
+
+Check the veznev text in the veznev div object
+    [Documentation]  Megnézi, hogy Veznev labelje egyezik-e azzal amit itt paraméterben megadunk.
+    [Arguments]  ${veznev_text}
+    ${veznev} =  Get the veznev div object from the page
+    ${van}  ${veznev_label} =  Get the label from div object in the partners page  ${veznev}
+    log  ${van}
+    ${label_szoveg} =  get text  ${veznev_label}
+    log  ${label_szoveg}
+    should be true  "${label_szoveg}" == "${veznev_text}"
+
+Get the veznev div object from the page
+    @{elemek} =  Get the all div element of input from partner page
+    #@{elemek} =  SeleniumLibrary.Get WebElements  //div[@class="columns small-12 medium-6"]
+    ${hossz} =  get length  ${elemek}
+    ${veznev} =  Get From List  ${elemek}  1
+    [Return]  ${veznev}
