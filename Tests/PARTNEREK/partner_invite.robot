@@ -98,6 +98,7 @@ Test the vezetekev szoveg megjelenik-e a partner meghivasa oldalon hun
     Check the veznev text in the veznev div object  ${PARTNER_INVITE_LABEL_VEZETEKNEV_HUN}
 
 Test the keresztnev szoveg megjelenik-e a partner meghivasa oldalon hun
+    [Documentation]  Azt nézzük meg, hogy a keresztnév hun labelje megfelelően megjelenik-e a partnerek oldalon.
     [Tags]  most1
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
