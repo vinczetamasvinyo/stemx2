@@ -35,7 +35,7 @@ test3
     give the lastname  last
     give the firstname  valami
     click element  //button[@class="button success"]
-    wait until element is visible  xpath=//*[contains(@class,'toast-success')]
+    wait until element is visible  xpath=//*[contains(@class,'toast-success')]  10
     wait until element is not visible  xpath=//*[contains(@class,'toast-success')]  10
     #wait until element is visible  //button[@class="button hollow"]  30
     # sleep  8s
