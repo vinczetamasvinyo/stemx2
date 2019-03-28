@@ -30,6 +30,7 @@ test3
     Click the partner invite button
     Waite the partner invite page loaded
     input text  //input[@formcontrolname="email"]  ${email}
+    #Give the name of company  cegnevvalami
     input text  //input[@formcontrolname="companyName"]  cegnevvalami
     give the lastname  last
     give the firstname  valami
