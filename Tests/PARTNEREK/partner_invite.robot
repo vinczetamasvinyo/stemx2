@@ -19,6 +19,7 @@ Test Teardown  common.End web test
 *** Variables ***
 ${PARTNER_INVITE_PARTNER_INVITE_GOMB_HUN_SZOVEG} =  Partner meghívása
 ${PARTNER_INVITE_LONG_128_TEXT} =  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak
+${PARTNER_INVITE_MAX_LONG_KARAKTER} =  asddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 ${PARTNER_INVITE_ERROR_MESSAGE_LONG_HUN} =  Kérem legfeljebb 127 karaktert adjon meg
 ${PARTNER_INVITE_ERROR_MESSAGE_WRONG_CARACTER} =  Ez a mező csak betűt, \'.\' és \'-\' karaktert tartalmazhat.
 ${PARTNER_INVITE_MINIMUM_CHARACTER} =  K
@@ -34,6 +35,7 @@ ${PARTNER_INVITE_LABEL_KERESZTNEV_HUN} =  Keresztnév
 ${PARTNER_INVITE_LABEL_CEGNEV_HUN} =  Cégnév
 ${PARTNER_INVITE_LABEL_EMAIL_HUN} =  E-mail cím
 ${PARTNER_INVITE_LABEL_MENTES_GOMB_HUN} =  Mentés
+
 *** Test Cases ***
 Test 1
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
@@ -178,6 +180,22 @@ Test the partner meghivasa vezeteknev hosszabb 128 karakter
     Give the veznev and other field data  ${PARTNER_INVITE_LONG_128_TEXT}  egyéb
     Check the error message appear and the error text value  ${veznev}  ${PARTNER_INVITE_ERROR_MESSAGE_LONG_HUN}
 
+Test the partner meghivasa vezeteknev max hossza
+    [Documentation]  A teszt során azt nézzük meg, hogy a vezetéknévbe max karaktert írunk,
+                ...  és a hibaüzenet nem jelenik meg.
+    [Tags]  most1
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    ${veznev} =  Get the veznev div object from the page
+    Check the div object contains the error message  ${veznev}
+    Give the veznev and other field data  ${PARTNER_INVITE_MAX_LONG_KARAKTER}  egyéb
+    Check the div object contains the error message  ${veznev}
+
 Test the veznev mezobe szamot is irunk
     [Documentation]  A teszt során a vezetéknévbe számot írunk és megnézzük,
                 ...  hogy a hibaüzenet megfelelő-e.
@@ -306,57 +324,6 @@ Test the cegnevbe betuket es space-t irunk
     Give the company name and other field data  ${PARTNER_INVITE_BETU_SPACE}  egyéb
     Check the div object contains the error message  ${cegnev}
 
-test3
-    [Tags]  most3
-    Begin web test  https://temp-mail.org/  chrome
-    wait until element is visible  id=mail  20
-    ${email} =  get value  id=mail
-    log  ${email}
-    go to  ${OLDAL_URL}
-    #sleep  3s
-    #go to  https://temp-mail.org/
-    #${email2} =  get value  id=mail
-    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
-    Check the login succes or not
-    sleep  1s
-    Go to the partners page via menu
-    sleep  1s
-    Click the partner invite button
-    Waite the partner invite page loaded
-    input text  //input[@formcontrolname="email"]  ${email}
-    input text  //input[@formcontrolname="companyName"]  cegnevvalami
-    give the lastname  last
-    give the firstname  valami
-    click element  //button[@class="button success"]
-    sleep  5s
-    #element should be visible  xpath=//div[@class="toast-error toast ng-trigger ng-trigger-flyInOut"]
-    wait until element is visible  //button[@class="button hollow"]  30
-    sleep  8s
-    click element  //*[@class="user-profile"]
-    sleep  2s
-    click element  //*[@id="menu_loguout"]
-    sleep  2s
-    go to  https://temp-mail.org/
-    sleep  5s
-    # wait until element is visible  Új bejelentés érkezett  120
-    wait until page contains  Meghívás elfogadása   120
-    click link  link=Meghívás elfogadása
-    sleep  3s
-    #TODO: megnézni, hogy a partial link miért nem működik.
-    scroll to element  link=Regisztáció befejezése  100
-    click link  link=Regisztáció befejezése
-    sleep  2s
-    close window
-    select window  MAIN
-    wait until page contains element  xpath=//input[@formcontrolname="token"]  60
-    sleep  2s
-    input text  xpath=//input[@formcontrolname="password"]  Vinyo123456
-    input text  xpath=//input[@formcontrolname="passwordConfirm"]  Vinyo123456
-    # Rákattintunk a REgisztráció megerősítése gombra
-    click element  xpath=//*[@type="submit"]
-    wait until page contains element  id=mat-checkbox-1  10
-    sleep  2s
-    close browser
 
 *** Keywords ***
 
