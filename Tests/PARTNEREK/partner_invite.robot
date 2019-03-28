@@ -155,7 +155,7 @@ Test the mentes gomb szovege a partner meghivasa oldalon hun
 Test the vissza a listahoz gomb szovege megfeleloe a partner meghivasa oldalon hun
     [Documentation]  A teszt során azt nézzük meg, hogy a partner meghivasa oldalon a vissza a listahoz gomb
                 ...  szövege megfelelő-e.
-    [Tags]  most1
+    [Tags]  szoveg
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s
