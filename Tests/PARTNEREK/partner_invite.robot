@@ -28,6 +28,7 @@ ${PARTNER_INVITE_BETU} =  eekeee
 ${PARTNER_INVITE_BETU_KOTEJEL} =  eekeee-
 ${PARTNER_INVITE_BETU_KOTEJEL_PONT} =  eekeee-.
 ${PARTNER_INVITE_BETU_SPACE}=  eekeee DDD
+${PARTNER_INVITE_BETU_TILTOTT_KARAKTER} =  lvalala$
 ${PARTNER_INVITE_WRONG_INPUT_NUMBER} =  Valami3
 ${PARTNER_INVITE_LABEL_CIM_HUN} =  Partner meghívása
 ${PARTNER_INVITE_LABEL_PARTNER_ADATAI_HUN} =  PARTNER ADATAI
@@ -213,6 +214,22 @@ Test the veznev mezobe szamot is irunk
     Give the veznev and other field data  ${PARTNER_INVITE_WRONG_INPUT_NUMBER}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the error message appear and the error text value  ${veznev}  ${PARTNER_INVITE_ERROR_MESSAGE_WRONG_CARACTER}
 
+Test the veznev mezobe betut es tiltott karaktert is irunk
+    [Documentation]  A teszt során a vezetéknévbe betűt és egyéb tíltott karaktert írunk és megnézzük,
+                ...  hogy a hibaüzenet megfelelő-e.
+    [Tags]  veznev  most1
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    ${veznev} =  Get the veznev div object from the page
+    Check the div object contains the error message  ${veznev}
+    Give the veznev and other field data  ${PARTNER_INVITE_BETU_TILTOTT_KARAKTER}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
+    Check the error message appear and the error text value  ${veznev}  ${PARTNER_INVITE_ERROR_MESSAGE_WRONG_CARACTER}
+
 Test the veznev mezobe betut es kotojelet irunk
     [Documentation]  A teszt során a vezetéknévbe betűt és kötőjelet is írunk, és megnézzük
                 ...  hogy a hibaüzenet nem jelenik meg.
@@ -265,7 +282,7 @@ Test the veznev mezobe csak betuket írunk
 Test the veznev mezobe betuket space-t írunk
     [Documentation]  A teszt során a vezetéknévbe betűket és space-t írunk és megnézzük,
                 ...  hogy hibaüzenet ilyenkor nem jelenik meg.
-    [Tags]  veznev  most1
+    [Tags]  veznev
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s
