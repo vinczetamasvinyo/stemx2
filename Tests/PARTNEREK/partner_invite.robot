@@ -23,6 +23,7 @@ ${PARTNER_INVITE_MAX_LONG_KARAKTER} =  asddddddddddddddddddddddddddddddddddddddd
 ${PARTNER_INVITE_ERROR_MESSAGE_LONG_HUN} =  Kérem legfeljebb 127 karaktert adjon meg
 ${PARTNER_INVITE_ERROR_MESSAGE_WRONG_CARACTER} =  Ez a mező csak betűt, \'.\' és \'-\' karaktert tartalmazhat.
 ${PARTNER_INVITE_MINIMUM_CHARACTER} =  K
+${PARTNER_INVITE_EGYEB_JO_ADAT} =  egyéb
 ${PARTNER_INVITE_BETU} =  eekeee
 ${PARTNER_INVITE_BETU_KOTEJEL} =  eekeee-
 ${PARTNER_INVITE_BETU_KOTEJEL_PONT} =  eekeee-.
@@ -161,7 +162,7 @@ Test the partner meghivasa keresztnev hosszabb 128 karakter
     Click the partner invite button
     Waite the partner invite page loaded
     Check the firstname error message is not visiable
-    Give the input date for the firstname azt other field  ${PARTNER_INVITE_LONG_128_TEXT}  vala
+    Give the input date for the firstname azt other field  ${PARTNER_INVITE_LONG_128_TEXT}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the error message text and is visiable  ${PARTNER_INVITE_ERROR_MESSAGE_LONG_HUN}
 
 Test the partner meghivasa vezeteknev hosszabb 128 karakter
@@ -177,7 +178,7 @@ Test the partner meghivasa vezeteknev hosszabb 128 karakter
     Waite the partner invite page loaded
     ${veznev} =  Get the veznev div object from the page
     Check the div object contains the error message  ${veznev}
-    Give the veznev and other field data  ${PARTNER_INVITE_LONG_128_TEXT}  egyéb
+    Give the veznev and other field data  ${PARTNER_INVITE_LONG_128_TEXT}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the error message appear and the error text value  ${veznev}  ${PARTNER_INVITE_ERROR_MESSAGE_LONG_HUN}
 
 Test the partner meghivasa vezeteknev max hossza
@@ -193,7 +194,7 @@ Test the partner meghivasa vezeteknev max hossza
     Waite the partner invite page loaded
     ${veznev} =  Get the veznev div object from the page
     Check the div object contains the error message  ${veznev}
-    Give the veznev and other field data  ${PARTNER_INVITE_MAX_LONG_KARAKTER}  egyéb
+    Give the veznev and other field data  ${PARTNER_INVITE_MAX_LONG_KARAKTER}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${veznev}
 
 Test the veznev mezobe szamot is irunk
@@ -209,7 +210,7 @@ Test the veznev mezobe szamot is irunk
     Waite the partner invite page loaded
     ${veznev} =  Get the veznev div object from the page
     Check the div object contains the error message  ${veznev}
-    Give the veznev and other field data  ${PARTNER_INVITE_WRONG_INPUT_NUMBER}  egyéb
+    Give the veznev and other field data  ${PARTNER_INVITE_WRONG_INPUT_NUMBER}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the error message appear and the error text value  ${veznev}  ${PARTNER_INVITE_ERROR_MESSAGE_WRONG_CARACTER}
 
 Test the veznev mezobe betut es kotojelet irunk
@@ -225,7 +226,7 @@ Test the veznev mezobe betut es kotojelet irunk
     Waite the partner invite page loaded
     ${veznev} =  Get the veznev div object from the page
     Check the div object contains the error message  ${veznev}
-    Give the veznev and other field data  ${PARTNER_INVITE_BETU_KOTEJEL}  egyéb
+    Give the veznev and other field data  ${PARTNER_INVITE_BETU_KOTEJEL}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${veznev}
 
 Test the veznev mezobe betut es kotojelet pontot irunk
@@ -241,7 +242,7 @@ Test the veznev mezobe betut es kotojelet pontot irunk
     Waite the partner invite page loaded
     ${veznev} =  Get the veznev div object from the page
     Check the div object contains the error message  ${veznev}
-    Give the veznev and other field data  ${PARTNER_INVITE_BETU_KOTEJEL_PONT}  egyéb
+    Give the veznev and other field data  ${PARTNER_INVITE_BETU_KOTEJEL_PONT}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${veznev}
 
 
@@ -258,10 +259,10 @@ Test the veznev mezobe csak betuket írunk
     Waite the partner invite page loaded
     ${veznev} =  Get the veznev div object from the page
     Check the div object contains the error message  ${veznev}
-    Give the veznev and other field data  ${PARTNER_INVITE_BETU}  egyéb
+    Give the veznev and other field data  ${PARTNER_INVITE_BETU}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${veznev}
 
-Test the veznev mezobe csak betuket írunk
+Test the veznev mezobe betuket space-t írunk
     [Documentation]  A teszt során a vezetéknévbe betűket és space-t írunk és megnézzük,
                 ...  hogy hibaüzenet ilyenkor nem jelenik meg.
     [Tags]  veznev  most1
@@ -274,7 +275,7 @@ Test the veznev mezobe csak betuket írunk
     Waite the partner invite page loaded
     ${veznev} =  Get the veznev div object from the page
     Check the div object contains the error message  ${veznev}
-    Give the veznev and other field data  ${PARTNER_INVITE_BETU_SPACE}  egyéb
+    Give the veznev and other field data  ${PARTNER_INVITE_BETU_SPACE}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${veznev}
 
 Test veznevbe minimum karaktert irunk be
@@ -290,7 +291,7 @@ Test veznevbe minimum karaktert irunk be
     Waite the partner invite page loaded
     ${veznev} =  Get the veznev div object from the page
     Check the div object contains the error message  ${veznev}
-    Give the veznev and other field data  ${PARTNER_INVITE_MINIMUM_CHARACTER}  egyéb
+    Give the veznev and other field data  ${PARTNER_INVITE_MINIMUM_CHARACTER}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${veznev}
 
 Test the partner meghivasa cegnev 128 karakter
@@ -306,7 +307,7 @@ Test the partner meghivasa cegnev 128 karakter
     Waite the partner invite page loaded
     ${cegnev} =  Get the cegnev div object from the page
     Check the div object contains the error message  ${cegnev}
-    Give the company name and other field data  ${PARTNER_INVITE_LONG_128_TEXT}  egyéb
+    Give the company name and other field data  ${PARTNER_INVITE_LONG_128_TEXT}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the error message appear and the error text value  ${cegnev}  ${PARTNER_INVITE_ERROR_MESSAGE_LONG_HUN}
 
 Test the cegnevbe minimum karaktert irunk
@@ -322,7 +323,7 @@ Test the cegnevbe minimum karaktert irunk
     Waite the partner invite page loaded
     ${cegnev} =  Get the cegnev div object from the page
     Check the div object contains the error message  ${cegnev}
-    Give the company name and other field data  ${PARTNER_INVITE_MINIMUM_CHARACTER}  egyéb
+    Give the company name and other field data  ${PARTNER_INVITE_MINIMUM_CHARACTER}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${cegnev}
 
 Test the cegnevbe betuket irunk
@@ -338,7 +339,7 @@ Test the cegnevbe betuket irunk
     Waite the partner invite page loaded
     ${cegnev} =  Get the cegnev div object from the page
     Check the div object contains the error message  ${cegnev}
-    Give the company name and other field data  ${PARTNER_INVITE_BETU}  egyéb
+    Give the company name and other field data  ${PARTNER_INVITE_BETU}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${cegnev}
 
 Test the cegnevbe betuket es kotojelet irunk
@@ -354,7 +355,7 @@ Test the cegnevbe betuket es kotojelet irunk
     Waite the partner invite page loaded
     ${cegnev} =  Get the cegnev div object from the page
     Check the div object contains the error message  ${cegnev}
-    Give the company name and other field data  ${PARTNER_INVITE_BETU_KOTEJEL}  egyéb
+    Give the company name and other field data  ${PARTNER_INVITE_BETU_KOTEJEL}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${cegnev}
 
 Test the cegnevbe betuket es pontot irunk
@@ -370,7 +371,7 @@ Test the cegnevbe betuket es pontot irunk
     Waite the partner invite page loaded
     ${cegnev} =  Get the cegnev div object from the page
     Check the div object contains the error message  ${cegnev}
-    Give the company name and other field data  ${PARTNER_INVITE_BETU_KOTEJEL_PONT}  egyéb
+    Give the company name and other field data  ${PARTNER_INVITE_BETU_KOTEJEL_PONT}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${cegnev}
 
 Test the cegnevbe betuket es space-t irunk
@@ -386,7 +387,7 @@ Test the cegnevbe betuket es space-t irunk
     Waite the partner invite page loaded
     ${cegnev} =  Get the cegnev div object from the page
     Check the div object contains the error message  ${cegnev}
-    Give the company name and other field data  ${PARTNER_INVITE_BETU_SPACE}  egyéb
+    Give the company name and other field data  ${PARTNER_INVITE_BETU_SPACE}  ${PARTNER_INVITE_EGYEB_JO_ADAT}
     Check the div object contains the error message  ${cegnev}
 
 
