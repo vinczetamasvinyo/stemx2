@@ -215,7 +215,7 @@ Test the veznev mezobe szamot is irunk
 Test the veznev mezobe betut es kotojelet irunk
     [Documentation]  A teszt során a vezetéknévbe betűt és kötőjelet is írunk, és megnézzük
                 ...  hogy a hibaüzenet nem jelenik meg.
-    [Tags]  most1
+    [Tags]  veznev
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s
@@ -227,6 +227,23 @@ Test the veznev mezobe betut es kotojelet irunk
     Check the div object contains the error message  ${veznev}
     Give the veznev and other field data  ${PARTNER_INVITE_BETU_KOTEJEL}  egyéb
     Check the div object contains the error message  ${veznev}
+
+Test the veznev mezobe betut es kotojelet pontot irunk
+    [Documentation]  A teszt során a vezetéknévbe betűt és kötőjelet, pontot is írunk, és megnézzük
+                ...  hogy a hibaüzenet nem jelenik meg.
+    [Tags]  most1
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    ${veznev} =  Get the veznev div object from the page
+    Check the div object contains the error message  ${veznev}
+    Give the veznev and other field data  ${PARTNER_INVITE_BETU_KOTEJEL_PONT}  egyéb
+    Check the div object contains the error message  ${veznev}
+
 
 Test the veznev mezobe csak betuket írunk
     [Documentation]  A teszt során a vezetéknévbe csak betűket írunk és megnézzük,
