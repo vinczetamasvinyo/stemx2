@@ -16,8 +16,13 @@ ${PO_PARTNERS_CEG_DIV_LIST_ID} =  2
 ${PO_PARTNERS_EMAIL_DIV_LIST_ID} =  3
 ${PO_PARTNERS_CIM_ID} =  xpath=//*[@class="row"]/div/h1
 ${PO_PARTNERS_LABEL_ID_IN_DIV_OBJECT} =  .//label
-
+${PO_PARTNERS_LABEL_ID_MENTES_GOMB} =  xpath=//app-button[@ng-reflect-type="submit"]/button/span
 *** Keywords ***
+
+Get the mentes button text
+    [Documentation]  Visszaadja a partners meghívása oldalon található mentés gomb szövegét.
+    ${szoveg} =  get text  ${PO_PARTNERS_LABEL_ID_MENTES_GOMB}
+    [Return]  ${szoveg}
 
 Get the text of invite partner button
     [Documentation]  Visszaadja a partner meghívása gomb szövegét.

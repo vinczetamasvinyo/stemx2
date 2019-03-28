@@ -143,3 +143,12 @@ Get the keresztnev div object from the page
     ${hossz} =  get length  ${elemek}
     ${kereszt} =  Get From List  ${elemek}  0
     [Return]  ${kereszt}
+
+Check the text of mentes button on the partners page
+    [Documentation]  Megnézi, hogy a partner oldalon található mentés gomb szovege megegyezik-e azzal
+                ...  amit paraméterben kap.
+    [Arguments]  ${szoveg}
+    ${mentes_szovege} =  Get the mentes button text
+    log  ${mentes_szovege}
+    log  ${szoveg}
+    should be true  "${mentes_szovege}" == "${szoveg}"
