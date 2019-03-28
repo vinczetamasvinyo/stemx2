@@ -37,6 +37,7 @@ ${PARTNER_INVITE_LABEL_KERESZTNEV_HUN} =  Keresztnév
 ${PARTNER_INVITE_LABEL_CEGNEV_HUN} =  Cégnév
 ${PARTNER_INVITE_LABEL_EMAIL_HUN} =  E-mail cím
 ${PARTNER_INVITE_LABEL_MENTES_GOMB_HUN} =  Mentés
+${PARTNER_INVITE_LABEL_VISSZA_LISTAHOZ_GOMB_HUN} =  Vissza a listához
 
 *** Test Cases ***
 Test 1
@@ -151,6 +152,18 @@ Test the mentes gomb szovege a partner meghivasa oldalon hun
     Waite the partner invite page loaded
     Check the text of mentes button on the partners page  ${PARTNER_INVITE_LABEL_MENTES_GOMB_HUN}
 
+Test the vissza a listahoz gomb szovege megfeleloe a partner meghivasa oldalon hun
+    [Documentation]  A teszt során azt nézzük meg, hogy a partner meghivasa oldalon a vissza a listahoz gomb
+                ...  szövege megfelelő-e.
+    [Tags]  most1
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    Check the text of the vissza a listahoz button on the partners page  	${PARTNER_INVITE_LABEL_VISSZA_LISTAHOZ_GOMB_HUN}
 
 Test the partner meghivasa keresztnev hosszabb 128 karakter
     [Documentation]  Azt nézzük meg, hogy a teszt 128 karakternél hosszabb nevet adunk meg
@@ -217,7 +230,7 @@ Test the veznev mezobe szamot is irunk
 Test the veznev mezobe betut es tiltott karaktert is irunk
     [Documentation]  A teszt során a vezetéknévbe betűt és egyéb tíltott karaktert írunk és megnézzük,
                 ...  hogy a hibaüzenet megfelelő-e.
-    [Tags]  veznev  most1
+    [Tags]  veznev
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s

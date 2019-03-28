@@ -152,3 +152,11 @@ Check the text of mentes button on the partners page
     log  ${mentes_szovege}
     log  ${szoveg}
     should be true  "${mentes_szovege}" == "${szoveg}"
+
+Check the text of the vissza a listahoz button on the partners page
+    [Documentation]  Megnézi, hogy a vissza a listahoz button szövege megegyezik-e azzal amit paraméterben kap.
+    [Arguments]  ${button_szoveg}
+    ${szoveg} =  get text  xpath=//*[@class="button hollow secondary"]/span
+    log  ${szoveg}
+    log  ${button_szoveg}
+    should be true  "${szoveg}" == "${button_szoveg}"
