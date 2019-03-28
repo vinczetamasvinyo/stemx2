@@ -25,7 +25,7 @@ ${PARTNER_INVITE_ERROR_MESSAGE_WRONG_CARACTER} =  Ez a mező csak betűt, \'.\' 
 ${PARTNER_INVITE_MINIMUM_CHARACTER} =  K
 ${PARTNER_INVITE_BETU} =  eekeee
 ${PARTNER_INVITE_BETU_KOTEJEL} =  eekeee-
-${PARTNER_INVITE_BETU_KOTEJEL_PONT} = eekeee-.
+${PARTNER_INVITE_BETU_KOTEJEL_PONT} =  eekeee-.
 ${PARTNER_INVITE_BETU_SPACE}=  eekeee DDD
 ${PARTNER_INVITE_WRONG_INPUT_NUMBER} =  Valami3
 ${PARTNER_INVITE_LABEL_CIM_HUN} =  Partner meghívása
@@ -212,10 +212,26 @@ Test the veznev mezobe szamot is irunk
     Give the veznev and other field data  ${PARTNER_INVITE_WRONG_INPUT_NUMBER}  egyéb
     Check the error message appear and the error text value  ${veznev}  ${PARTNER_INVITE_ERROR_MESSAGE_WRONG_CARACTER}
 
+Test the veznev mezobe betut es kotojelet irunk
+    [Documentation]  A teszt során a vezetéknévbe betűt és kötőjelet is írunk, és megnézzük
+                ...  hogy a hibaüzenet nem jelenik meg.
+    [Tags]  most1
+    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Check the login succes or not
+    sleep  1s
+    Go to the partners page via menu
+    sleep  1s
+    Click the partner invite button
+    Waite the partner invite page loaded
+    ${veznev} =  Get the veznev div object from the page
+    Check the div object contains the error message  ${veznev}
+    Give the veznev and other field data  ${PARTNER_INVITE_BETU_KOTEJEL}  egyéb
+    Check the div object contains the error message  ${veznev}
+
 Test the veznev mezobe csak betuket írunk
     [Documentation]  A teszt során a vezetéknévbe csak betűket írunk és megnézzük,
                 ...  hogy hibaüzenet ilyenkor nem jelenik meg.
-    [Tags]  most1
+    [Tags]  veznev
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     sleep  1s
