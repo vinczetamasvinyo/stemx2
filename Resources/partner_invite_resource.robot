@@ -65,6 +65,14 @@ Get the cegnev div object from the page
     ${cegn} =  Get the company div object  ${elemek}
     [Return]  ${cegn}
 
+Get the email div object from the page
+    [Documentation]  A partners page-ből visszaadja azt a div részt ami a email-t tartalmazza.
+    @{elemek} =  Get the all div element of input from partner page
+    ${hossz} =  get length  ${elemek}
+    log  ${hossz}
+    ${emailn} =  Get the email div object  ${elemek}
+    [Return]  ${emailn}
+
 Check the div object contains the error message
     [Documentation]  Megnézzük, hogy az adott object tartalmaz-e error hibaüzenetet.
                 ...  Nem szabad, hogy hibaüzenetet tartalmazzon.
@@ -111,6 +119,17 @@ Check the cegnev text in the cegnev div object
     ${label_szoveg} =  get text  ${cegnev_label}
     log  ${label_szoveg}
     should be true  "${label_szoveg}" == "${cegnev_text}"
+
+Check the email text in the cegnev div object
+    [Documentation]  Megnézi, hogy a email labelje egyezik-e azzal amit itt paraméterben megadunk.
+    [Arguments]  ${email_text}
+    ${email} =  Get the email div object from the page
+    ${van}  ${email_label} =  Get the label from div object in the partners page  ${email}
+    log  ${van}
+    ${label_szoveg} =  get text  ${email_label}
+    log  ${label_szoveg}
+    should be true  "${label_szoveg}" == "${email_text}"
+
 
 Get the veznev div object from the page
     @{elemek} =  Get the all div element of input from partner page

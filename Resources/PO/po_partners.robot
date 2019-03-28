@@ -13,6 +13,7 @@ ${PO_PARTNERS_LASTNAME_INPUT_ID} =  xpath=//input[@formcontrolname="lastName"]
 ${PO_PARTNERS_COMPANYNAME_INPUT_ID} =  xpath=//input[@formcontrolname="companyName"]
 ${PO_PARTNERS_DIV_ID_OF_INPUT} =  //div[@class="columns small-12 medium-6"]
 ${PO_PARTNERS_CEG_DIV_LIST_ID} =  2
+${PO_PARTNERS_EMAIL_DIV_LIST_ID} =  3
 ${PO_PARTNERS_CIM_ID} =  xpath=//*[@class="row"]/div/h1
 ${PO_PARTNERS_LABEL_ID_IN_DIV_OBJECT} =  .//label
 
@@ -73,6 +74,12 @@ Get the company div object
     [Arguments]  ${elemek}
     ${ceg} =  Get From List  ${elemek}  ${PO_PARTNERS_CEG_DIV_LIST_ID}
     [Return]  ${ceg}
+
+Get the email div object
+    [Documentation]  A megkapott elemek listából visszaadja a email div részét
+    [Arguments]  ${elemek}
+    ${email} =  Get From List  ${elemek}  ${PO_PARTNERS_EMAIL_DIV_LIST_ID}
+    [Return]  ${email}
 
 Check the error message
     [Arguments]  ${d_object}
