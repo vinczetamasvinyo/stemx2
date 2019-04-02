@@ -52,4 +52,5 @@ Go to the partners page via menu
     #wait until element is visible  id=cdk-accordion-child-0
     #wait until element is visible  id=partners_submenu
     Click the partner menu
+    sleep  2s
     #click element  id=partners_submenu

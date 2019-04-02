@@ -19,3 +19,7 @@ def windows_scroll(y,y2):
     else:
         y3 = y2
     return "window.scrollTo(0," + str(y-(y3))+")"
+
+def split_the_text(szoveg,karakter):
+    lista = szoveg.split(karakter)
+    return lista

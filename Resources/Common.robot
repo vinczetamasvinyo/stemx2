@@ -3,8 +3,10 @@ Library  SeleniumLibrary
 Library  ../ExternalResources/alap.py
 
 *** Variables ***
-${BROWSER}  chrome
-${OLDAL} =  https://www.jegy.hu/
+#${BROWSER}  chrome
+#${OLDAL} =  https://www.jegy.hu/
+${COMMON_SUCCES_MESSAGE_ID} =  xpath=//*[contains(@class,'toast-success')]
+${COMMON_WAITING_TIME_IN_SUCCES_MESSAGE} =  10
 
 *** Keywords ***
 Begin web test
@@ -17,6 +19,13 @@ Begin web test
 
 End web test
     close all browsers
+
+Wait the succes message and click
+    [Documentation]
+    wait until element is visible  ${COMMON_SUCCES_MESSAGE_ID}  ${COMMON_WAITING_TIME_IN_SUCCES_MESSAGE}
+    sleep  1s
+    click element  ${COMMON_SUCCES_MESSAGE_ID}
+    wait until element is not visible  ${COMMON_SUCCES_MESSAGE_ID}  ${COMMON_WAITING_TIME_IN_SUCCES_MESSAGE}
 
 add two string
     [Arguments]  ${string1}  ${string2}

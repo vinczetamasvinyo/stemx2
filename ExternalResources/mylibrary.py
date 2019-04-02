@@ -29,6 +29,11 @@ def jegy_kijeloles():
     helyek = driver.find_elements_by_xpath("//*[@status='0']")
     webdriver.ActionChains(driver).move_to_element(helyek[0]).click().perform()
 
+def menukattintas():
+    driver = get_current_browser()
+    helyek = driver.find_element_by_xpath("//mat-option[@id='mat-option-3']")
+    webdriver.ActionChains(driver).move_to_element(helyek).click().perform()
+
 def venu_nev():
     driver = get_current_browser()
     venue_lista = driver.find_elements_by_xpath("//boxoffice-sales-product-list-item")

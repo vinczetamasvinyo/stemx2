@@ -21,11 +21,19 @@ ${PO_LOGIN_EMAIL_TEXT_ID} =  xpath=/html/body/app-root/app-authentication/auth-l
 ${PO_LOGIN_JELSZO_TEXT_ID} =  css=form[class*='ng-pristine'] > label:nth-child(2)
 ${PO_LOGIN_JELSZO_MUTATASA_TEXT_ID} =  class=mat-checkbox-label
 ${PO_LOGIN_BEJELENTKEZES_TEXT_ID} =  class=button[class*='margin-top-1']
-
+${PO_LOGIN_GIVE_PASSWORD_PAGE} =  xpath=//input[@formcontrolname="token"]
+${PO_LOGIN_GIVE_PASSWORD_TIMEOUT} =  60
+${PO_LOGIN_GIVE_PASSWORD_ID} =  xpath=//input[@formcontrolname="password"]
+${PO_LOGIN_GIVE_SAME_PASSWORD_ID} =  xpath=//input[@formcontrolname="passwordConfirm"]
+${PO_LOGIN_REGISZTRACIO_MEGEROSITESE_BUTTON_ID} =  xpath=//*[@type="submit"]
 *** Keywords ***
 Waiting page load an apper the element
     # wait until page contains  ${PO_LOGIN_CHECK_TEXT_FOR_LOADED}
     wait until element is visible  css=div[class=profile]  10
+
+Waiting the login pager loaded
+    [Documentation]  Megnézi, hogy a login page betöltődik-e. Látszik-e az email cím megadására szolgáló mező.
+    wait until element is visible  ${PO_LOGIN_INPUT_EMAIL_ID}  20
 
 Give the email in the login page
     [Arguments]  ${email}
@@ -103,3 +111,24 @@ check "jelszo mutatasa"
 check "Bejelentkezes" text in the login page
     [Arguments]  ${szoveg}
     element text should be  ${PO_LOGIN_BEJELENTKEZES_TEXT_ID}  ${szoveg}
+
+Wait the token page is loaded
+    [Documentation]  Megnézi, hogy a partner meghívása során az új jelszó megadása oldal
+                ...  az betöltődött-e.
+    wait until page contains element  ${PO_LOGIN_GIVE_PASSWORD_PAGE}  ${PO_LOGIN_GIVE_PASSWORD_TIMEOUT}
+
+Give the password
+    [Documentation]  A partner meghívása során a passwordot megadja a partner,
+                ...  és ezzel véglegesíti a regisztrációt
+    [Arguments]  ${password}
+    input text  ${PO_LOGIN_GIVE_PASSWORD_ID}  ${password}
+
+Give the same password
+    [Documentation]  A partner meghívása során a passwordot újból megadja a partner.
+    [Arguments]  ${passwordconfirm}
+    input text  ${PO_LOGIN_GIVE_SAME_PASSWORD_ID}  ${passwordconfirm}
+
+Push the regisztracio megerositese button
+    [Documentation]  A partner meghívása során mikor a partner megadja a jelszavakat,
+                ...  akkor megnyomja a regisztráció megerősítése gombot.
+    click element  ${PO_LOGIN_REGISZTRACIO_MEGEROSITESE_BUTTON_ID}
