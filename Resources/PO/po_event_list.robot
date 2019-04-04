@@ -28,6 +28,7 @@ Esemenyek text appear above the table
     [Documentation]  Megnézzi, hogy a esemenyek táblázata felett megtalálható-e
                 ...  a megadott szöveg.
     [Arguments]  ${szoveg}
+    log  ${szoveg}
     element text should be  ${PO_EVENT_LIST_ESEMENY_TEXT_ID}  ${szoveg}
 
 Datum text appear above the table

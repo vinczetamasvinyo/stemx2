@@ -26,10 +26,40 @@ ${PO_LOGIN_GIVE_PASSWORD_TIMEOUT} =  60
 ${PO_LOGIN_GIVE_PASSWORD_ID} =  xpath=//input[@formcontrolname="password"]
 ${PO_LOGIN_GIVE_SAME_PASSWORD_ID} =  xpath=//input[@formcontrolname="passwordConfirm"]
 ${PO_LOGIN_REGISZTRACIO_MEGEROSITESE_BUTTON_ID} =  xpath=//*[@type="submit"]
+${PO_LOGIN_ELFELEJTETT_JELSZO_TEXT_ID} =  css=a[href*='forgotten-password']
+${PO_LOGIN_ELFELEJTETT_JELSZO_TEXT_ID} =   xpath=//*[@formcontrolname="token"]
+${PO_LOGIN_CHECK_LOAD_TEXT} =  E-mail
+${PO_LOGIN_TOKE_INPUT_FIELD_ID} =  xpath=//*[@formcontrolname="token"]
+${PO_LOGIN_DELETE_PRESSKEY} =  \\8
+${PO_LOGIN_TOKEN_ERROR_ID} =  xpath=//*[@class="toast-error toast ng-trigger ng-trigger-flyInOut"]
+${PO_LOGIN_TOKEN_ERROR_TEXT_ID} =  xpath=//*[@role="alertdialog"]
+
 *** Keywords ***
+
+Wait the error message on the token page
+    [Documentation]  Partner meghívása során azon az oldalon, ahol a partner
+                ...  megadja a jelszavát megvárja míg a token miatt
+                ...  a hibaüzenet megjelenjen.
+    wait until element is visible  ${PO_LOGIN_TOKEN_ERROR_ID}
+
+Get the error message text about the token
+    [Documentation]  Partner meghívása során azon az oldalon, ahol a partner
+                ...  megadja a jelszavát visszaadja a rossz token miatt szöveget.
+    ${szoveg} =  get text  ${PO_LOGIN_TOKEN_ERROR_TEXT_ID}
+    log  ${szoveg}
+    [Return]  ${szoveg}
+
+Delete one karakter in the token input field
+    [Documentation]  Partner meghívása során azon az oldalon, ahol a partner
+                ...  megadja a jelszavát töröl egy karaktert.
+    press key  ${PO_LOGIN_TOKE_INPUT_FIELD_ID}    ${PO_LOGIN_DELETE_PRESSKEY}
+
 Waiting page load an apper the element
+    [Documentation]  Megnézi, hogy a login page az betöltődött-e.
     # wait until page contains  ${PO_LOGIN_CHECK_TEXT_FOR_LOADED}
     wait until element is visible  css=div[class=profile]  10
+    wait until element is visible  ${PO_LOGIN_INPUT_EMAIL_ID}
+    wait until page contains  ${PO_LOGIN_CHECK_LOAD_TEXT}
 
 Waiting the login pager loaded
     [Documentation]  Megnézi, hogy a login page betöltődik-e. Látszik-e az email cím megadására szolgáló mező.
@@ -112,10 +142,17 @@ check "Bejelentkezes" text in the login page
     [Arguments]  ${szoveg}
     element text should be  ${PO_LOGIN_BEJELENTKEZES_TEXT_ID}  ${szoveg}
 
+check "elfelejtett jelszo" text in the login page
+    [Documentation]  Ellenőrzni a belépési oldalon az elfelejtett jelszó
+                ...  szövege egyezik-e azzal amit paraméterként megadnak.
+    [Arguments]  ${szoveg}
+    element text should be  ${PO_LOGIN_ELFELEJTETT_JELSZO_TEXT_ID}  ${szoveg}
+
 Wait the token page is loaded
     [Documentation]  Megnézi, hogy a partner meghívása során az új jelszó megadása oldal
                 ...  az betöltődött-e.
     wait until page contains element  ${PO_LOGIN_GIVE_PASSWORD_PAGE}  ${PO_LOGIN_GIVE_PASSWORD_TIMEOUT}
+    wait until page contains  Token
 
 Give the password
     [Documentation]  A partner meghívása során a passwordot megadja a partner,

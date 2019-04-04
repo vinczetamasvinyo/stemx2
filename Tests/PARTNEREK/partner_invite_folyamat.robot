@@ -1,4 +1,6 @@
 *** Settings ***
+# robot -d results -t test3 Tests/partnerek/partner_invite_folyamat.robot
+
 Resource  ../../Resources/partner_invite_resource.robot
 Resource  ../../Resources/login_resource.robot
 Resource  ../../Resources/Common.robot
@@ -26,9 +28,9 @@ test3
     go to  ${OLDAL_URL}
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
-    sleep  1s
+    #sleep  1s
     Go to the partners page via menu
-    sleep  1s
+    #sleep  1s
     Click the partner invite button
     Waite the partner invite page loaded
     po_partners.Give the email of partner  ${email}
@@ -95,7 +97,7 @@ test3
     Click the logout submenu
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
-    sleep  1s
+    #sleep  1s
     Go to the partners page via menu
     Give the email for the search input  ${email}
     po_partners.Click the search button
@@ -127,7 +129,7 @@ Test4
     sleep  4s
 
 test6
-    [Tags]  most3
+    [Tags]  valami
     ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}
     go to  ${OLDAL_URL}
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }

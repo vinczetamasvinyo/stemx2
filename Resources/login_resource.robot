@@ -2,6 +2,7 @@
 Library  SeleniumLibrary
 Resource  PO/po_login.robot
 Resource  Common.robot
+Library  ../ExternalResources/mylibrary.py
 
 *** Variables ***
 ${LANGUAGE_MAGYAR_TEXT} =  Hungarian
@@ -13,7 +14,8 @@ ${LOGIN_RESOURCE_JELENTKEZ_BE_TEXT_EN} =  Sign in with your registered account!
 Open Vk login page
     [Arguments]  ${oldal}   ${bongeszo}
     common.Begin web test  ${oldal}  ${bongeszo}
-    sleep  3s
+    #check the page finish loaded
+    #sleep  3s
     Waiting for login page will load
 
 Waiting for login page will load
@@ -29,10 +31,9 @@ Give regeistration data and click the login button
     #click button  Bejelentkezés
 
 Check the login succes or not
-    #sleep  3s
     Wait for the icon after the login
     Check the text visiable after the login
-    sleep  3s
+    sleep  1s
 
 Check the login status if gave a worng password
     [Documentation]  A keyword azt nézi meg, hogyha rossz jelszót adunk meg,

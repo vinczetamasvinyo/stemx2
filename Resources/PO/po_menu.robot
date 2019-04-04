@@ -5,10 +5,12 @@ Library  SeleniumLibrary
 *** Variables ***
 # ${PO_MENU_JEGYPENZTER_ID} =  mat-expansion-panel-header-3
 ${PO_MENU_JEGYPENZTER_ID} =  xpath=//a[contains(text(),'Jegypénztár')]
-${PO_MENU_JEGYPENZTER_SUBMENU_ID} =  cdk-accordion-child-3
+#${PO_MENU_JEGYPENZTER_SUBMENU_ID} =  cdk-accordion-child-3
+${PO_MENU_JEGYPENZTER_SUBMENU_ID} =  cdk-accordion-child-2
 ${PO_MENU_ELADAS_SUBMENU_ID} =  link=Eladás
 ${PO_MENU_FELHASZNALOK_KARB_ID} =  id=mat-expansion-panel-header-0
 ${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID} =  id=cdk-accordion-child-0
+#${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID} =  cdk-accordion-child-2
 ${PO_MENU_FELHASZNALOK_KARB_PARTNER_ID} =  id=partners_submenu
 
 *** Keywords ***
@@ -47,10 +49,6 @@ Click the partner menu
 
 Go to the partners page via menu
     Click the felhasznalok karbantartasa
-    #click element  id=mat-expansion-panel-header-0
     Wait the felhasznalaok karbantartasa submenu visiable
-    #wait until element is visible  id=cdk-accordion-child-0
-    #wait until element is visible  id=partners_submenu
     Click the partner menu
     sleep  2s
-    #click element  id=partners_submenu

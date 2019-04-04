@@ -46,3 +46,8 @@ Scroll to element
     ${x2} =  windows scroll  ${x}  ${y}
     log  ${x2}
     Execute JavaScript  ${x2}
+
+Check the two text is same
+    [Documentation]  Megnézi, hogy a két szöveg egyezik-e.
+    [Arguments]  ${szoveg1}  ${szoveg2}
+    should be true  "${szoveg1}" == "${szoveg2}"

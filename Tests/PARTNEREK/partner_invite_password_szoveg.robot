@@ -1,10 +1,10 @@
 *** Settings ***
-Documentation
 
 Resource  ../../Resources/partner_invite_password_szoveg_resource.robot
 
 Suite Setup  Start partner invite and go to the password page
 Suite Teardown  common.End web test
+
 
 *** Variables ***
 ${PARTNER_INVITE_FOLYAMAT_TEMP_URL} =  https://temp-mail.org/
@@ -31,7 +31,7 @@ Test the text of token in the page
     [Documentation]  A teszt során azt nézzük meg, hogy parnter meghívása folyamat során,
                 ...  mikor az ügyfél eljut a jelszó megadása oldalra,
                 ...  akkor ott a "Token"-nek megfelelő-e a szövege.
-    [Tags]  szöveg
+    [Tags]  szoveg
     ${label} =  Get the text of token
     Check the two text is same  ${label}  ${PARTNER_INVITE_PASSWORD_SZOVEG_TOKEN_TEXT}
 
@@ -39,7 +39,7 @@ Test the text of password input field in the page
     [Documentation]  A teszt során azt nézzük meg, hogy parnter meghívása folyamat során,
                 ...  mikor az ügyfél eljut a jelszó megadása oldalra,
                 ...  akkor ott a "jelszó"-nak megfelelő-e a szövege.
-    [Tags]  szöveg
+    [Tags]  szoveg
     ${jelszo} =  Get the only password text
     Check the two text is same  ${jelszo}  ${PARTNER_INVITE_PASSWORD_SZOVEG_PASSWORD_TEXT}
 
@@ -47,7 +47,7 @@ Test the text of password again input filed in the page
     [Documentation]  A teszt során azt nézzük meg, hogy parnter meghívása folyamat során,
                 ...  mikor az ügyfél eljut a jelszó megadása oldalra,
                 ...  akkor ott a "jelszó ismét" mezőnek megfelelő-e a szövege.
-    [Tags]  szöveg
+    [Tags]  szoveg
     ${label} =  Get the text of password again
     Check the two text is same  ${label}  ${PARTNER_INVITE_PASSWORD_SZOVEG_PASSWORD_AGAIN_TEXT}
 
@@ -55,7 +55,7 @@ Test the text of registration button
     [Documentation]  A teszt során azt nézzük meg, hogy parnter meghívása folyamat során,
                 ...  mikor az ügyfél eljut a jelszó megadása oldalra,
                 ...  akkor ott a "regisztráció megerősítése" gombnka megfelelő-e a szövege.
-    [Tags]  szöveg
+    [Tags]  szoveg
     ${label} =  Get the text of registration submit button
     Check the two text is same  ${label}  ${PARTNER_INVITE_PASSWORD_SZOVEG_REG_SUBMIT_BUTTON_TEXT}
 

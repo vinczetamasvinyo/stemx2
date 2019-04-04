@@ -12,7 +12,7 @@ Library  robot.libraries.DateTime
 Check the "Esemény" text in the esemenyek page
     [Documentation]  Az események oldalon megnézi, hogy az Esemény szöveg megtalálható-e
     [Arguments]  ${text}
-    Esemenyek text appear in the page  ${text}
+    #Esemenyek text appear in the page  ${text}
     Esemenyek text appear above the table  ${text}
 
 Check the "Dátum" text in the esemenyek page

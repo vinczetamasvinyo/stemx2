@@ -8,8 +8,29 @@ ${PO_GIVEPASSWORD_PASSWORD_TEXT_ID} =  xpath=//label[2]
 ${PO_GIVEPASSWORD_PASSWORDAGAIN_TEXT_ID} =  xpath=//label[3]
 ${PO_GIVEPASSWORD_REG_BUTTON_ID} =  xpath=//button
 ${PO_GIVEPASSWORD_VISSZA_ID} =  xpath=//a
+${PO_GIVEPASSWORD_ERROR_MESSAGE_NOT_SAME_PASSWORD_ID} =  xpath=//label[3]/app-show-errors/ul/li
+${PO_GIVEPASSWORD_ERROR_MESSAGE_PASSWORD_ID} =  xpath=//label[2]/app-show-errors/ul/li
+
 
 *** Keywords ***
+
+Check the error message not visiable above the password1
+    [Documentation]  Megnézi, hogy a password1 input alatt a hibaüzenet nem jelenik meg.
+    element should not be visible  ${PO_GIVEPASSWORD_ERROR_MESSAGE_PASSWORD_ID}
+
+Get the error message when give not same password
+    wait until element is visible  ${PO_GIVEPASSWORD_ERROR_MESSAGE_NOT_SAME_PASSWORD_ID}
+    ${szoveg} =  get text  ${PO_GIVEPASSWORD_ERROR_MESSAGE_NOT_SAME_PASSWORD_ID}
+    log  ${szoveg}
+    [Return]  ${szoveg}
+
+Get the error message from password input
+    [Documentation]  Visszaadja a jelszó field alatt megjelenő hibaüzenetet.
+    wait until element is visible  ${PO_GIVEPASSWORD_ERROR_MESSAGE_PASSWORD_ID}
+    element should be visible  ${PO_GIVEPASSWORD_ERROR_MESSAGE_PASSWORD_ID}
+    ${szoveg} =  get text  ${PO_GIVEPASSWORD_ERROR_MESSAGE_PASSWORD_ID}
+    log  ${szoveg}
+    [Return]  ${szoveg}
 
 Get the text of title
     [Documentation]  A password meghívása során a jelszó megadása oldalról visszaadja a title szövegét.

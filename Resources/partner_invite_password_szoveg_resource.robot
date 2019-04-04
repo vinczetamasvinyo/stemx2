@@ -9,16 +9,12 @@ Resource  PO/po_mymenu.robot
 Resource  PO/po_givepassword.robot
 Resource  partner_invite_resource.robot
 Resource  login_resource.robot
+Resource  Common.robot
 
 *** Variables ***
 
 
 *** Keywords ***
-
-Check the two text is same
-    [Documentation]  Megnézi, hogy a két szöveg egyezik-e.
-    [Arguments]  ${szoveg1}  ${szoveg2}
-    should be true  "${szoveg1}" == "${szoveg2}"
 
 Get the only password text
     [Documentation]  A visszakapott password label szövegből kiveszi csak azt a szöveget ami látszik,

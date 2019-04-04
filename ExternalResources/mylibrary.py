@@ -118,9 +118,36 @@ def string_of_other_string(string, start, end):
     szoveg = string[start2:end2]
     return szoveg
 
+def check_the_page_finish_loaded():
+    import datetime
+    import time
+    #driver = get_current_browser()
+    starttime = datetime.datetime.now()
+    timeout = False
+    if driver.execute_script('return document.readyState;') == 'complete':
+        betoltve = True
+        print("elso betöltes sikeres")
+    else:
+        betoltve = False
+    while (betoltve==False) and (timeout==False):
+        time.sleep(0.2)
+        if driver.execute_script('return document.readyState;') == 'complete':
+            betoltve = True
+            #print("betoltes vege")
+        else:
+            most = datetime.datetime.now()
+            ido = most - starttime
+            print(ido.total_seconds())
+            if ido.total_seconds() > 30:
+                timeout = True
+def split_the_text(szoveg,karakter):
+    lista = szoveg.split(karakter)
+    return lista
+
+#driver = webdriver.Chrome('chromedriver.exe')
+#driver.get('http://dev.varoskartya.com')
+#check_the_page_finish_loaded()
 """
-driver = webdriver.Chrome('chromedriver.exe')
-driver.get('http://dev.varoskartya.com')
 email = driver.find_element_by_xpath("//input[@formcontrolname='username']")
 jelszo = driver.find_element_by_xpath("//input[@formcontrolname='password']")
 email.send_keys("admin@interticket.hu")

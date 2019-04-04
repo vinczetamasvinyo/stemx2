@@ -14,7 +14,7 @@ Test Teardown  common.End web test
 
 *** Variables ***
 #${bogeszo} =  chrome
-${EVENT_LIST_ESEMENY_TEXT} =  Esemény
+${EVENT_LIST_ESEMENY_TEXT} =  ESEMÉNY
 ${EVENT_LIST_DATUM_TEXT_HU} =  DÁTUM
 ${EVENT_LIST_JEGYEK_TEXT_HU} =  JEGYEK
 # ${EVENT_LIST_ESEMENY_TEXT}
@@ -23,7 +23,7 @@ ${EVENT_LIST_JEGYEK_TEXT_HU} =  JEGYEK
 *** Test Cases ***
 Event lista oldalon az "Események" szoveg megnezese HU
     [Documentation]  A teszteset során azt nézzük meg a program neve  szöveg megjelenik-e.
-    [Tags]  smoke
+    [Tags]  smoke1
     # Login
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not

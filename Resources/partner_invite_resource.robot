@@ -26,7 +26,7 @@ Check the partner meghivasa gomb text
     [Arguments]  ${szoveg}
     ${button_szoveg} =  Get the text of invite partner button
     Log  ${button_szoveg}
-    should be true  '${button_szoveg}'=='${szoveg}'
+    should be true  "${button_szoveg}" == "${szoveg}"
 
 Click the partner invite button
     Click invite button
