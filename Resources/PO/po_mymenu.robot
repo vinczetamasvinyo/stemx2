@@ -25,3 +25,24 @@ Click the logout submenu
     [Documentation]  A mymenu menün belül a kijelentkezésre kattint.
     click element  ${PO_MYMENU_SUBMENU_LOGOUT_ID}
     po_login.Waiting the login pager loaded
+
+Click the language
+    click element  id=menu_language
+    #sleep  2s
+
+Wait the language submenu appear
+    wait until element is visible  id=cdk-overlay-1
+
+Click the english language
+    click element  id=menu_change_languageen
+
+Waiting the new language is loaded
+    sleep  3s
+
+Change the language to English via mymenu
+    [Documentation]  A nyelvet angolra állítja a mymenu-n keresztül.
+    po_mymenu.Click the Mymenu
+    po_mymenu.Click the language
+    po_mymenu.Wait the language submenu appear
+    po_mymenu.Click the english language
+    po_mymenu.Waiting the new language is loaded

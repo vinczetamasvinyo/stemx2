@@ -58,3 +58,16 @@ Test the edit icon appear in the page
 Test the delete icon appear in the page
     [Tags]  High
     Check the all delete icon appear in the page
+
+Test the all allapot icon appear in the page
+    [Documentation]  A teszt során azt nézzük meg, hogy az összes állapot icon
+               ...   megjelenik-e az oldalon.
+    [Tags]  valami
+    Chcek the all allapot icon appear in the page
+    #${sorok} =  Get the row count
+    #${db_new} =  get element count  xpath=//*[@class="material-icons status-icon draft"]
+    #${db_aktiv} =  get element count  xpath=//*[@class="material-icons status-icon public"]
+    #${db_waite} =  get element count  xpath=//*[@class="material-icons status-icon waiting-for-confirmation"]
+    #${osszes} =  Evaluate   ${db_new}+${db_aktiv}+${db_waite}
+    #should be equal  ${sorok}  ${osszes}
+

@@ -1,9 +1,15 @@
 *** Settings ***
-Resource  ../../Resources/partner_invite_common_resource.robot
+#Resource  ../../Resources/partner_invite_common_resource.robot
+#Resource  ../../Resources/PO/po_alt.robot
+Resource  ../../Resources/partner_page_keres_resource.robot
+
 Suite Setup  Login and go to partners page
 
-*** Keywords ***
-
+*** Variables ***
+${PPK_VALAMI_NEV} =  Valami
+${PPK_VALAMI_EMAIL} =  EMAILCIM
+${PPK_WATING_TIME1} =  3
+${PPK_WATING_TIME2} =  3
 *** Test Cases ***
 Test1
     log  van
@@ -35,3 +41,16 @@ Test1
     should be true  "${er}" == "1"
     should be true  "${eredmeny_email}" == "${kivlasztott_email}"
 
+Test the visszaallit gomb
+    [Documentation]  A teszt soránt azt nézzük meg, hogy a visszaállít gomb megfelelően működik-e.
+    [Tags]  High
+    @{lis} =  Get the all default value
+    log  ${lis}
+    Give the valeu of the partner name input field  ${PPK_VALAMI_NEV}
+    Give the value of the partner email input field  ${PPK_VALAMI_EMAIL}
+    Click the search button and waiting  ${PPK_WATING_TIME1}
+    Check the search is working  ${lis}[3]
+    Push the reset button and waiting  ${PPK_WATING_TIME2}
+    Check the result after push the reset button  ${lis}
+
+*** Keywords ***

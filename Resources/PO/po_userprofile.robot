@@ -154,18 +154,18 @@ Give the billing swift number
 Give the country
     Scroll to element  xpath=//mat-select[@formcontrolname="country"]  100
     click element  xpath=//mat-select[@formcontrolname="country"]
-    wait until element is visible  xpath=//*[@id="mat-option-9"]
+    wait until element is visible  xpath=//*[@id="mat-option-7"]
     sleep  1s
-    click element  xpath=//*[@id="mat-option-9"]
+    click element  xpath=//*[@id="mat-option-7"]
 
 Give the billing country
     @{elem} =  SeleniumLibrary.Get WebElements  xpath=//mat-select[@formcontrolname="country"]
     ${cegbillingcountry} =  Get From List  ${elem}  1
     Scroll to element  ${cegbillingcountry}  100
     click element  ${cegbillingcountry}
-    wait until element is visible  xpath=//*[@id="mat-option-15"]
+    wait until element is visible  xpath=//*[@id="mat-option-13"]
     sleep  1s
-    click element  xpath=//*[@id="mat-option-15"]
+    click element  xpath=//*[@id="mat-option-13"]
 
 
 

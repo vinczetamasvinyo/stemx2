@@ -52,3 +52,10 @@ Login and go to partners page
     Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
     Check the login succes or not
     Go to the partners page via menu
+
+Login and go to the partners page
+    [Arguments]  ${oldal}  ${bongeszo}  ${email}  ${jelszo}
+    login_resource.Open Vk login page  ${oldal}  ${bongeszo}
+    Give regeistration data and click the login button  ${email}  ${jelszo}
+    Check the login succes or not
+    Go to the partners page via menu

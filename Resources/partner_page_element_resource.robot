@@ -23,3 +23,10 @@ Check the all delete icon appear in the page
     ${sor} =  Get the row count
     should be true  "${elem}" == "${sor}"
 
+Chcek the all allapot icon appear in the page
+    ${sorok} =  Get the row count
+    ${db_new} =  Get the draft icon
+    ${db_aktiv} =  Get the active icon
+    ${db_waite} =  Get the waiting icon
+    ${osszes} =  Evaluate   ${db_new}+${db_aktiv}+${db_waite}
+    should be equal  ${sorok}  ${osszes}

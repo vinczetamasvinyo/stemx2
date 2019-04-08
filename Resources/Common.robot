@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  ../ExternalResources/alap.py
+Library  Collections
 
 *** Variables ***
 #${BROWSER}  chrome
@@ -51,3 +52,12 @@ Check the two text is same
     [Documentation]  Megnézi, hogy a két szöveg egyezik-e.
     [Arguments]  ${szoveg1}  ${szoveg2}
     should be true  "${szoveg1}" == "${szoveg2}"
+
+Elem from list
+    [Documentation]  Több elemből visszaadja a megadott x. sorszámú elemet.
+                ...  Két paramétert kap meg. Az egyik hogy milye elemeket keresen.
+                ...  A második, hogy hanyadik elemet adja vissza.
+    [Arguments]  ${keres_elem}  ${visszaad_elem}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${keres_elem}
+    ${elem} =  get from list  ${elem}  ${visszaad_elem}
+    [Return]  ${elem}
