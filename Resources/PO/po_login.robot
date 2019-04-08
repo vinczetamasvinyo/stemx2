@@ -77,7 +77,7 @@ Click the login button in the login page
     click button  ${PO_LOGIN_BUTTON_ID}
 
 Wait for the icon after the login
-    wait until element is visible  ${PO_LOGIN_ICON_ID}
+    wait until element is visible  ${PO_LOGIN_ICON_ID}  10
 
 Check the text visiable after the login
     wait until page contains  ${PO_LOGIN_AFTER_LOGIN_TEXT_ID}

@@ -20,7 +20,8 @@ ${PO_PARTNERS_CEG_DIV_LIST_ID} =  2
 ${PO_PARTNERS_EMAIL_DIV_LIST_ID} =  3
 ${PO_PARTNERS_CIM_ID} =  xpath=//*[@class="row"]/div/h1
 ${PO_PARTNERS_LABEL_ID_IN_DIV_OBJECT} =  .//label
-${PO_PARTNERS_LABEL_ID_MENTES_GOMB} =  xpath=//app-button[@ng-reflect-type="submit"]/button/span
+#${PO_PARTNERS_LABEL_ID_MENTES_GOMB} =  xpath=//app-button[@ng-reflect-type="submit"]/button/span
+${PO_PARTNERS_LABEL_ID_MENTES_GOMB} =  xpath=//*[@class="button success"]/span
 ${PO_PARTNERS_MENTES_BUTTON_ID} =  //button[@class="button success"]
 ${PO_PARTNERS_SEARCH_INPUT_ID} =  xpath=//input[@formcontrolname="invitedUserEmail"]
 ${PO_PARTNERS_SEARCH_BUTTON_ID} =  xpath=//search-button
@@ -63,8 +64,42 @@ ${PO_P_PAGE_CONTACT_BUTTON_TEXT_ID} =  xpath=//*[@class="button tiny no-margin"]
 ${PO_P_PAGE_CONTACT_TITlE_TEXT_ID} =  xpath=//*[@formarrayname="contacts"]//h3
 ${PO_P_PAGE_FIRST_CONTACT_TITLE_TEXT_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//h4
 ${PO_P_PAGE_CONTACT_TEXT_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//label
+${PO_P_PAGE_BUTTON_BACK_ID} =  xpath=//*[@class="button hollow secondary"]
 ${PO_P_PAGE_BUTTON_BACK_TEXT_ID} =  xpath=//*[@class="button hollow secondary"]/span
+${PO_P_PAGE_BUTTON_SAVE_ID} =  xpath=//*[@class="button success"]
 ${PO_P_PAGE_BUTTON_SAVE_TEXT_ID} =  xpath=//*[@class="button success"]/span
+${PO_P_PAGE_INPUT_PARTNER_FIRSTNAME_ID} =  xpath=//*[@formgroupname="partnerProfile"]//input[@formcontrolname="firstName"]
+${PO_P_PAGE_INPUT_PARTNER_LASTNAME_ID} =  xpath=//*[@formgroupname="partnerProfile"]//input[@formcontrolname="lastName"]
+${PO_P_PAGE_INPUT_PARTNER_EMAIL_ID} =  xpath=//*[@formgroupname="partnerProfile"]//input[@formcontrolname="email"]
+${PO_P_PAGE_INPUT_COMPANY_COMPANY_NAME_ID} =  xpath=//*[@formgroupname="company"]//input[@formcontrolname="name"]
+${PO_P_PAGE_INPUT_COMPANY_COMPANY_LONG_NAME_ID} =  xpath=//*[@formgroupname="company"]//input[@formcontrolname="longName"]
+${PO_P_PAGE_INPUT_COMPANY_COUNTRY_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="country"]
+${PO_P_PAGE_INPUT_COMPANY_ZIPCODE_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="zipCode"]
+${PO_P_PAGE_INPUT_COMPANY_CITY_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="city"]
+${PO_P_PAGE_INPUT_COMPANY_COUNTY_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="county"]
+${PO_P_PAGE_INPUT_COMPANY_STREET_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="street"]
+${PO_P_PAGE_INPUT_COMPANY_HOUSENUMBER_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="houseNumber"]
+${PO_P_PAGE_INPUT_COMPANY_DOOR_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="houseNumber"]
+${PO_P_PAGE_INPUT_COMPANY_FLOOR_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="floor"]
+${PO_P_PAGE_INPUT_BILLING_NAME_ID} =  xpath=//app-billing-information//*[@formcontrolname="name"]
+${PO_P_PAGE_INPUT_BILLING_TAXNUMBER_ID} =  xpath=//app-billing-information//*[@formcontrolname="vatNumber"]
+${PO_P_PAGE_INPUT_BILLING_BANKNAME_ID} =  xpath=//app-billing-information//*[@formcontrolname="bankName"]
+${PO_P_PAGE_INPUT_BILLING_BANKNUMBER_ID} =  xpath=//app-billing-information//*[@formcontrolname="bankAccountNumber"]
+${PO_P_PAGE_INPUT_BILLING_IBAN_ID} =  xpath=//app-billing-information//*[@formcontrolname="iban"]
+${PO_P_PAGE_INPUT_BILLING_SWIFT_ID} =  xpath=//app-billing-information//*[@formcontrolname="swift"]
+${PO_P_PAGE_INPUT_BILLING_ZIPCODE_ID} =  xpath=//app-billing-information//*[@formcontrolname="zipCode"]
+${PO_P_PAGE_INPUT_BILLING_CITY_ID} =  xpath=//app-billing-information//*[@formcontrolname="city"]
+${PO_P_PAGE_INPUT_BILLING_COUNTY_ID} =  xpath=//app-billing-information//*[@formcontrolname="county"]
+${PO_P_PAGE_INPUT_BILLING_HOUSENUMBER_ID} =  xpath=//app-billing-information//*[@formcontrolname="houseNumber"]
+${PO_P_PAGE_INPUT_BILLING_DOOR_ID} =  xpath=//app-billing-information//*[@formcontrolname="door"]
+${PO_P_PAGE_INPUT_FLOOR_ID} =  xpath=//app-billing-information//*[@formcontrolname="floor"]
+${PO_P_PAGE_BUTTON_NEW_CONTACT_ID} =  xpath=//*[@class="button tiny no-margin"]
+
+${PO_P_PAGE_CONTACT_FIRSTNAME_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="firstName"]
+${PO_P_PAGE_CONTACT_LASTNAME_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="lastName"]
+${PO_P_PAGE_CONTACT_PHONE_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="phone"]
+${PO_P_PAGE_CONTACT_EMAIL_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="email"]
+${PO_P_PAGE_CONTACT_JOB_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="jobDescription"]
 
 *** Keywords ***
 Get the mentes button text
@@ -712,3 +747,143 @@ Get he save button text
     ${szoveg} =  get text  ${PO_P_PAGE_BUTTON_SAVE_TEXT_ID}
     log  ${szoveg}
     [Return]  ${szoveg}
+
+Get partner firstname input is visiable
+    [Documentation]  Megnézi, hogy a partner adatain belül a keresztnév mező megjelenik-e.
+    Element should be visible  ${PO_P_PAGE_INPUT_PARTNER_FIRSTNAME_ID}
+
+Get partner lastname input is visiable
+    [Documentation]  Megnézi, hogy a partner adatain belül a vezeténév mező megjelenik-e.
+    Element should be visible  ${PO_P_PAGE_INPUT_PARTNER_LASTNAME_ID}
+
+Get partner email input is visiable
+    [Documentation]  Megnézi, hogy a partner adatain belül az email mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_PARTNER_EMAIL_ID}
+
+Get company company name input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül a cég neve mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_COMPANY_NAME_ID}
+
+Get company company long name input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül a cég hosszú neve az megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_COMPANY_LONG_NAME_ID}
+
+Get company country input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül az országválasztó megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_COUNTRY_ID}
+
+Get company zipcode input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül az irányítószám input mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_ZIPCODE_ID}
+
+Get company city input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül a város irányítószám az megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_CITY_ID}
+
+Get company county input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül a Megye megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_COUNTY_ID}
+
+Get company street input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül a street megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_STREET_ID}
+
+Get company housenumber input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül a házszám megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_HOUSENUMBER_ID}
+
+Get company door input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül az ajtó input mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_DOOR_ID}
+
+Get company floor input is visiable
+    [Documentation]  Megnézi, hogy a céginformáción belül az emelet input megző megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_COMPANY_FLOOR_ID}
+
+Get billing name input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül a név az megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_NAME_ID}
+
+Get billing taxnumber input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül az adószám megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_TAXNUMBER_ID}
+
+Get billing bank name input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül a bank input mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_BANKNAME_ID}
+
+Get billing bankaccountnumber input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül a bankszámlaszám mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_BANKNUMBER_ID}
+
+Get billing iban input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül a iban mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_IBAN_ID}
+
+Get billing swift input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül a swift mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_SWIFT_ID}
+
+Get billing country input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül az ország választó megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_SWIFT_ID}
+
+Get billing zipcode input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül a város mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_ZIPCODE_ID}
+
+Get billing city input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül a város mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_CITY_ID}
+
+Get billing county input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül a város mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_COUNTY_ID}
+
+Get billing street input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül az utca mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_COUNTY_ID}
+
+Get billing housenumber input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül az utca mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_HOUSENUMBER_ID}
+
+Get billing door input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül az ajtó mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_BILLING_DOOR_ID}
+
+Get billing floor input is visiable
+    [Documentation]  Megnézi, hogy a számlázáson belül az emelet mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_INPUT_FLOOR_ID}
+
+Get new contact button is visiable
+    [Documentation]  Megnézi, hogy az új elérhetőség hozzáadása a gomb az megjelenik-e.
+    element should be visible  ${PO_P_PAGE_BUTTON_NEW_CONTACT_ID}
+
+Get contact firstname input is visiable
+    [Documentation]  Megnézi, hogy az keresztnév input mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_CONTACT_FIRSTNAME_ID}
+
+Get contact lastname input is visiable
+    [Documentation]  Megnézi, hogy a vezetéknév input mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_CONTACT_LASTNAME_ID}
+
+Get contact phone input is visiable
+    [Documentation]  Megnézi, hogy a telefonszám input mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_CONTACT_PHONE_ID}
+
+Get contact email input is visiable
+    [Documentation]  Megnézi, hogy a email input mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_CONTACT_EMAIL_ID}
+
+Get contact jobdescription input is visible
+    [Documentation]  Megnézi, hogy a munkakör input mező megjelenik-e.
+    element should be visible  ${PO_P_PAGE_CONTACT_JOB_ID}
+
+Get back button is visible
+    [Documentation]  Megnézi, hogy a vissza gomb megjelenik-e.
+    element should be visible  ${PO_P_PAGE_BUTTON_BACK_ID}
+
+Get save button is visible
+    [Documentation]  Megnézi, hogy a mentés gomb megjelenik-e.
+    element should be visible  ${PO_P_PAGE_BUTTON_SAVE_ID}

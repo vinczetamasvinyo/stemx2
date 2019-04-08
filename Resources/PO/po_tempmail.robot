@@ -28,6 +28,8 @@ Waiting and click the mail in themp page
 Scroll and click the link in the email
     [Documentation]  A megnyitott email-ben legörget a linkig, majd rákattint a megadott linkre.
     [Arguments]  ${link_id}  ${scroll_space}
+    sleep  1s
+    wait until element is visible  ${link_id}
     scroll to element  ${link_id}  ${scroll_space}
     click link  ${link_id}
     sleep  1s

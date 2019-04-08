@@ -8,9 +8,6 @@ Suite Teardown  Common.End web test
 *** Variables ***
 
 ${Nyelv} =  Hun
-
-
-
 *** Test Cases ***
 Test the new partner page title
     [Documentation]  A teszt során azt nézzük meg, hogy az új partner létrehozása

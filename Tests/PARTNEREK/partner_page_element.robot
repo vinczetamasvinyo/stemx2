@@ -36,7 +36,7 @@ Test the "allapotvalaszto" field
 Test the "Visszaallitas" gomb
     [Documentation]  A teszt soránt azt nézzük, hogy a visszaallitas
                 ...  gomb megjelenik-e az oldalon.
-    Check the "visszaállítás" button appear in the page
+    Check the "visszaallitas" button appear in the page
 
 Test the "kereses" button apper in the page
     [Documentation]  A teszt során azt nézzük, hogy a Keresés gomb

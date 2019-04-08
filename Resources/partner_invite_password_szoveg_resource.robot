@@ -21,7 +21,7 @@ Get the only password text
                 ...  és ezt visszaadja.
     ${label} =  Get the text of password
     log  ${label}
-    @{szovegek} =  split the text  ${label}  \n
+    @{szovegek} =  mylibrary.split the text  ${label}  \n
     log  ${szovegek}
     ${jelszo} =  Get From List  ${szovegek}  0
     [Return]  ${jelszo}

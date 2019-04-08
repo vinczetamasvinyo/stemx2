@@ -4,12 +4,14 @@
 Resource  ../../Resources/partner_page_keres_resource.robot
 
 Suite Setup  Login and go to partners page
+Suite Teardown  Common.End web test
 
 *** Variables ***
 ${PPK_VALAMI_NEV} =  Valami
 ${PPK_VALAMI_EMAIL} =  EMAILCIM
 ${PPK_WATING_TIME1} =  3
-${PPK_WATING_TIME2} =  3
+${PPK_WATING_TIME2} =  6
+
 *** Test Cases ***
 Test1
     log  van
@@ -43,7 +45,9 @@ Test1
 
 Test the visszaallit gomb
     [Documentation]  A teszt soránt azt nézzük meg, hogy a visszaállít gomb megfelelően működik-e.
-    [Tags]  High
+    [Tags]  High  most
+    reload page
+    sleep  3s
     @{lis} =  Get the all default value
     log  ${lis}
     Give the valeu of the partner name input field  ${PPK_VALAMI_NEV}
