@@ -156,7 +156,7 @@ Test the contact firstname visible
                 ...  a keresztnév megjelenik-e.
     Check the contact firstname
 
-Test the contact firstname visible
+Test the contact lastname visible
     [Documentation]  A teszt során azt nézzük meg, hogy a kapcsolatnál
                 ...  a vezetéknév megjelenik-e.
     Check the contact lastname
@@ -166,7 +166,7 @@ Test the contact phone visible
                 ...  a telefonszám megjelenik-e.
     Check the contact phone
 
-Test the contact phone visible
+Test the contact email visible
     [Documentation]  A teszt során azt nézzük meg, hogy a kapcsolatnál
                 ...  az email megjelenik-e.
     Check the contact email

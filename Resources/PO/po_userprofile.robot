@@ -13,7 +13,8 @@ ${PO_USERPROFILE_BIRTNAME_ID} =  xpath=//input[@formcontrolname="birthName"]
 ${PO_USERPROFILE_RADIO_MAN_ID} =  id=mat-radio-3
 ${PO_USERPROFILE_RADIO_WOMAN_ID} =  mat-radio-2
 ${PO_USERPROFILE_SAVE_BUTTON_ID} =  xpath=//button[@class="button success"]
-
+${ID} =  xpath=//mat-select[@formcontrolname="country"]
+${ID2} =  //app-billing-information//mat-select[@formcontrolname="country"]
 *** Keywords ***
 Waiting the myprofil page loaded
     [Documentation]  Megvárja még a fiókom oldal betöltődik.
@@ -158,6 +159,50 @@ Give the country
     sleep  1s
     click element  xpath=//*[@id="mat-option-7"]
 
+Get listbox item xpath
+    [Arguments]  ${kivlasztott}  ${xpath}  ${class}
+    ${valami} =  get element attribute  ${xpath}  ${class}
+    log  ${valami}
+    @{elemek} =  mylibrary.split the text  ${valami}  ${SPACE}
+    log  ${elemek}[0]
+    log  ${elemek}
+    ${szotar} =  create dictionary
+    :FOR  ${valt}  IN  @{elemek}
+    \  ${resz} =  set variable  //*[@id="${valt}"]/span
+    \  ${text} =  get text  ${resz}
+    \  set to dictionary  ${szotar}  ${text}  ${resz}
+    log  ${szotar}
+    ${el} =  get from dictionary  ${szotar}  ${kivlasztott}
+    [Return]  ${el}
+
+Give the country2
+    [Arguments]  ${kivlasztott}
+    Scroll to element  xpath=//mat-select[@formcontrolname="country"]  100
+    click element  xpath=//mat-select[@formcontrolname="country"]
+    wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
+    ${el} =  Get listbox item xpath  ${kivlasztott}  ${ID}  aria-owns
+    #${valami} =  get element attribute  xpath=//mat-select[@formcontrolname="country"]  aria-owns
+    #log  ${valami}
+    #@{elemek} =  mylibrary.split the text  ${valami}  ${SPACE}
+    #log  ${elemek}[0]
+    #log  ${elemek}
+    #${szotar} =  create dictionary
+    #:FOR  ${valt}  IN  @{elemek}
+     #\  ${resz} =  set variable  //*[@id="${valt}"]/span
+     #\  ${text} =  get text  ${resz}
+     #\  set to dictionary  ${szotar}  ${text}  ${resz}
+     #log  ${szotar}
+     #${el} =  get from dictionary  ${szotar}  ${kivlasztott}
+    click element   ${el}
+
+Give the billing country2
+    [Arguments]  ${kivlasztott}
+    Scroll to element  xpath=//app-billing-information//mat-select[@formcontrolname="country"]  100
+    click element  xpath=//app-billing-information//mat-select[@formcontrolname="country"]
+    wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
+    ${el} =  Get listbox item xpath  ${kivlasztott}  ${ID2}  aria-owns
+    click element   ${el}
+
 Give the billing country
     @{elem} =  SeleniumLibrary.Get WebElements  xpath=//mat-select[@formcontrolname="country"]
     ${cegbillingcountry} =  Get From List  ${elem}  1
@@ -238,6 +283,12 @@ Give the availability phone
     @{elem} =  SeleniumLibrary.Get WebElements  xpath=//input[@formcontrolname="phone"]
     ${chose} =  Get From List  ${elem}  1
     input text  ${chose}  ${szoveg}
+
+Give the contact phone
+    [Documentation]  A profil oldalon megadja a céghez tartoz elérhetőségi telefonszámot
+    [Arguments]  ${szoveg}
+    input text  xpath=//input[@formcontrolname="phone"]  ${szoveg}
+
 
 Give the availability email
     [Documentation]  A profil oldalon megadja a céghez tartoz elérhetőségi adat email címét

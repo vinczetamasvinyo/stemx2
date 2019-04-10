@@ -71,7 +71,8 @@ Test the email szoveg megjelenik-e a parnter meghivasa oldalon hun
     Check the email text in the cegnev div object  ${PARTNER_INVITE_LABEL_EMAIL_HUN}
 
 Test the mentes gomb szovege a partner meghivasa oldalon hun
-    [Documentation]  Azt nézzük meg, hogy az a partner meghivasa oldalon a Mentés gomb szövege megfelelő-e
+    [Documentation]  Azt nézzük meg, hogy az a partner meghivasa oldalon a
+                ...  Mentés gomb szövege megfelelő-e
     [Tags]  szoveg
     Check the text of mentes button on the partners page  ${PARTNER_INVITE_LABEL_MENTES_GOMB_HUN}
 

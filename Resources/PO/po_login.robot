@@ -1,4 +1,8 @@
 *** Settings ***
+Documentation  A suite azokat a teszteket tartalmazza amely során megnézzük,
+          ...  a partner létrehozása oldalon melyik mezők kötelezőek, illetve
+          ...  nem kötelezők.
+
 Library  SeleniumLibrary
 
 *** Variables ***
@@ -56,7 +60,8 @@ Delete one karakter in the token input field
 
 Waiting page load an apper the element
     [Documentation]  Megnézi, hogy a login page az betöltődött-e.
-    # wait until page contains  ${PO_LOGIN_CHECK_TEXT_FOR_LOADED}
+    #TODo: kivezetni ezeket a változóban
+    #wait until element is visible  xpaht=//*[@class="app-loading"]
     wait until element is visible  css=div[class=profile]  10
     wait until element is visible  ${PO_LOGIN_INPUT_EMAIL_ID}
     wait until page contains  ${PO_LOGIN_CHECK_LOAD_TEXT}

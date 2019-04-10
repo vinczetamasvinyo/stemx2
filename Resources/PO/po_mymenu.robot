@@ -37,7 +37,9 @@ Click the english language
     click element  id=menu_change_languageen
 
 Waiting the new language is loaded
-    sleep  3s
+    #TOdo: ezt még meg kell csinálni
+    wait until element is visible  id=menu  10
+    sleep  1s
 
 Change the language to English via mymenu
     [Documentation]  A nyelvet angolra állítja a mymenu-n keresztül.

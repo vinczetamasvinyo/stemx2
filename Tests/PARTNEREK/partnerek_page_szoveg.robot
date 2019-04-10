@@ -14,7 +14,7 @@ Resource  ../../Resources/partnerek_page_szoveg_resource.robot
 
 Suite Setup  Login and go to partners page
 #Test Setup  login_resource.Open Vk login page  ${OLDAL_URL}  ${bogeszo}
-Test Teardown  common.End web test
+Suite Teardown  common.End web test
 
 *** Variables ***
 ${P_P_SZ_PARTNER_MEGHIVASA_BUTTON_TEXT} =  Partner meghívása

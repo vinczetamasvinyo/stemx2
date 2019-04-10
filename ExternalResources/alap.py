@@ -23,3 +23,19 @@ def windows_scroll(y,y2):
 def split_the_text(szoveg,karakter):
     lista = szoveg.split(karakter)
     return lista
+
+def lista(szotar, elem):
+    elemek = list(szotar.keys())
+    i =-1
+    l = False
+    while i<len(elemek)-1 and not l:
+        i=i+1
+        if szotar[elemek[i]] == elem:
+            l=True
+            print(szotar[elemek[i]])
+    if l==False:
+        return 1
+    else:
+        return 0, elemek[i]
+tel = {'János': 4098, 'Simon': 4139, 'Tamás': 'valami'}
+print(lista(tel,'valami2'))

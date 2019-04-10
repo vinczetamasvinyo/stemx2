@@ -115,18 +115,18 @@ test3
     Check the active icon is appear
     close browser
 
-Test4
-    login_resource.Open Vk login page  ${OLDAL_URL}  ${bogeszo}
-    Give regeistration data and click the login button  numal@red-mail.info  Vinyo123456
-    Check the login succes or not
-    click element  //*[@class="user-profile"]
-    wait until element is visible  id=menu-account
-    click element  id=menu-account
-    sleep  3s
-    Give the billing country
+#Test4
+    #login_resource.Open Vk login page  ${OLDAL_URL}  ${bogeszo}
+    #Give regeistration data and click the login button  numal@red-mail.info  Vinyo123456
+    #Check the login succes or not
+    #click element  //*[@class="user-profile"]
+    #wait until element is visible  id=menu-account
+    #click element  id=menu-account
+    #sleep  3s
+    #Give the billing country
     # give the floor  9.
     #Give the country
-    sleep  4s
+    #sleep  4s
 
 test6
     [Tags]  valami

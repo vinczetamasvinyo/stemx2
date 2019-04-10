@@ -100,6 +100,7 @@ ${PO_P_PAGE_CONTACT_LASTNAME_ID} =  xpath=//*[@class="columns small-12 medium-6 
 ${PO_P_PAGE_CONTACT_PHONE_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="phone"]
 ${PO_P_PAGE_CONTACT_EMAIL_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="email"]
 ${PO_P_PAGE_CONTACT_JOB_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="jobDescription"]
+${PO_P_PAGE_LABEL_ID} =  xpath=//label
 
 *** Keywords ***
 Get the mentes button text
@@ -177,6 +178,7 @@ Get the email div object
 Check the error message
     [Arguments]  ${d_object}
     ${v1}  ${v2} =  check the elem contain in parent2  ${d_object}  ${PO_PARTNERS_COMMON_ERROR_ID2}
+    [Return]  ${v1}  ${v2}
 
 Check the cim appear on the page
     [Documentation]  Megnézi, hogy a cím megjelenik-e az oldalon.
@@ -887,3 +889,233 @@ Get back button is visible
 Get save button is visible
     [Documentation]  Megnézi, hogy a mentés gomb megjelenik-e.
     element should be visible  ${PO_P_PAGE_BUTTON_SAVE_ID}
+
+Get firstname div object of partnerinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja keresztnév label objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  xpath=//label
+    log  ${elem}
+    ${egye_elem} =  get from list  ${elem}  0
+    log  ${egye_elem}
+    [Return]  ${egye_elem}
+
+Get lastname div object of partnerinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja vezetéknév label objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  1
+    [Return]  ${egye_elem}
+
+Get email div object of partnerinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja email label objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  2
+    [Return]  ${egye_elem}
+
+Get companynev div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja email
+                ...  label objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  3
+    [Return]  ${egye_elem}
+
+Get company lognev div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja
+                ...  cég hosszabb megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  4
+    [Return]  ${egye_elem}
+
+Get company regnumber div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja
+                ...  cégjegyzékszám megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  5
+    [Return]  ${egye_elem}
+
+Get company country div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a partnerinfon
+                ...  belüli ország megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  6
+    [Return]  ${egye_elem}
+
+Get company zipcode div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a partnerinfon
+                ...  belüli zipcode megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  7
+    [Return]  ${egye_elem}
+
+Get company city div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a partnerinfon
+                ...  belüli város/település megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  8
+    [Return]  ${egye_elem}
+
+Get company county div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a partnerinfon
+                ...  belüli a megye megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  9
+    [Return]  ${egye_elem}
+
+Get company street div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a partnerinfon
+                ...  belüli a street megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  10
+    [Return]  ${egye_elem}
+
+Get company housenumber div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a partnerinfon
+                ...  belüli a housenumber megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  11
+    [Return]  ${egye_elem}
+
+Get company door div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a partnerinfon
+                ...  belüli az ajtó megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  12
+    [Return]  ${egye_elem}
+
+Get company floor div object of companyinfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a partnerinfon
+                ...  belüli az emelet megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  13
+    [Return]  ${egye_elem}
+
+Get name div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli a név megnevezése objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  14
+    [Return]  ${egye_elem}
+
+Get taxnumber div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli a adószám objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  15
+    [Return]  ${egye_elem}
+
+Get bankname div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli a banknév objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  16
+    [Return]  ${egye_elem}
+
+Get banknumber div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli a banknumber objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  17
+    [Return]  ${egye_elem}
+
+Get iban div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli iban objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  18
+    [Return]  ${egye_elem}
+
+Get swift div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli swfit objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  19
+    [Return]  ${egye_elem}
+
+Get country div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli ország objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  20
+    [Return]  ${egye_elem}
+
+Get zipcode div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli zipcode objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  21
+    [Return]  ${egye_elem}
+
+Get city div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli a város objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  22
+    [Return]  ${egye_elem}
+
+Get county div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli megye objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  23
+    [Return]  ${egye_elem}
+
+Get street div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli utca objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  24
+    [Return]  ${egye_elem}
+
+Get housenumber div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli házszám objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  25
+    [Return]  ${egye_elem}
+
+Get door div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli ajtó objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  26
+    [Return]  ${egye_elem}
+
+Get floor div object of billinginfo
+    [Documentation]  A partner létrehozása oldalon visszaadja a számlázási részen
+                ...  belüli floor objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  27
+    [Return]  ${egye_elem}
+
+Get firstname div object of contact
+    [Documentation]  A partner létrehozása oldalon visszaadja az elérhetőségi részen
+                ...  belüli keresztnév objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  28
+    [Return]  ${egye_elem}
+
+Get lastname div object of contact
+    [Documentation]  A partner létrehozása oldalon visszaadja az elérhetőségi részen
+                ...  belüli vezetéknév objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  29
+    [Return]  ${egye_elem}
+
+Get phone div object of contact
+    [Documentation]  A partner létrehozása oldalon visszaadja az elérhetőségi részen
+                ...  belüli telefonszám objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  30
+    [Return]  ${egye_elem}
+
+Get email div object of contact
+    [Documentation]  A partner létrehozása oldalon visszaadja az elérhetőségi részen
+                ...  belüli email objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  31
+    [Return]  ${egye_elem}
+
+Get jobdescription div object of contact
+    [Documentation]  A partner létrehozása oldalon visszaadja az elérhetőségi részen
+                ...  belüli munkakör objectumot
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
+    ${egye_elem} =  get from list  ${elem}  32
+    [Return]  ${egye_elem}

@@ -18,8 +18,9 @@ Test1
     Go to the partners page via menu
     sleep  1s
     ${ikon} =  get element count  css=a.link-action-icon.link-icon
+    log  ${ikon}
     ${ikon2} =  SeleniumLibrary.Get WebElementS  css=a.link-action-icon.link-icon
-    ${random} =  Evaluate  random.randint(0, ${ikon})  modules=random
+    ${random} =  Evaluate  random.randint(0, ${ikon}-1)  modules=random
     log  ${random}
     #click element  ${ikon2}[0]
     #click element  ${ikon2}[${random}]
