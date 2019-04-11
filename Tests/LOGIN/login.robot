@@ -8,7 +8,7 @@ Library  ../../ExternalResources/mylibrary.py
 Resource  ../../Resources/variables.robot
 Variables  ../../Resources/variable.py
 
-Test Setup  Open Vk login page  ${OLDAL_URL}  chrome
+Test Setup  Open Vk login page  ${OLDAL_URL}  ${bogeszo}
 Test Teardown  common.End web test
 
 *** Variables ***

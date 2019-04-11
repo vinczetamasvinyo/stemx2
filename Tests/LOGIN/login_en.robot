@@ -4,13 +4,11 @@ Resource  ../../Resources/variables.robot
 Resource  ../../Resources/login_resource.robot
 Resource  ../../Resources/login_language_resource.robot
 
-Suite Setup  Open Vk login page  ${OLDAL_URL}  chrome
+Suite Setup  Open Vk login page and changed english  ${OLDAL_URL}  ${bogeszo}
 Suite Teardown  common.End web test
-#Test Setup  Open Vk login page  ${OLDAL_URL}  chrome
-#Test Teardown  common.End web test
 
 *** Variables ***
-${Nyelv} =  Hun
+${Nyelv} =  En
 
 
 *** Test Cases ***

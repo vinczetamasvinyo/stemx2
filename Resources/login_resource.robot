@@ -3,6 +3,7 @@ Library  SeleniumLibrary
 Resource  PO/po_login.robot
 Resource  Common.robot
 Library  ../ExternalResources/mylibrary.py
+Resource  variables/login_nyelv.robot
 
 *** Variables ***
 ${LANGUAGE_MAGYAR_TEXT} =  Hungarian
@@ -12,11 +13,16 @@ ${LOGIN_RESOURCE_JELENTKEZ_BE_TEXT_EN} =  Sign in with your registered account!
 
 *** Keywords ***
 Open Vk login page
-    [Arguments]  ${oldal}   ${bongeszo}
-    common.Begin web test  ${oldal}  ${bongeszo}
+    [Arguments]  ${old}   ${bong}
+    common.Begin web test  ${old}  ${bong}
     #check the page finish loaded
     #sleep  3s
     Waiting for login page will load
+
+Open Vk login page and changed english
+    [Arguments]  ${old}   ${bong}
+    Open Vk login page  ${old}  ${bong}
+    Changed the language in the login page
 
 Waiting for login page will load
     po_login.Waiting page load an apper the element

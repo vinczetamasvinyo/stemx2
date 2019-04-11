@@ -298,12 +298,13 @@ Give the company name and other field data
     give the firstname  ${egyeb}
     sleep  1s
 
+#Todo: Ez ki kellene majd innen tenni
 Check the error message appear and the error text value
     [Documentation]  Megnézzük, hogy megjelenik-e a hibaüzenet,
                 ...  illetve az error hibaüzenet megfelelőe.
     [Arguments]  ${veznev}  ${hibaszoveg}
     ${van3}  ${van4} =  check the elem contain in parent2  ${veznev}  .//app-show-errors/ul/li
     should be true  ${van3}
-    ${hibaszoveg} =  get text  ${van4}
-    log  ${hibaszoveg}
-    should be true  "${hibaszoveg}" == "${hibaszoveg}"
+    ${hibaszoveg2} =  get text  ${van4}
+    log  ${hibaszoveg2}
+    should be true  "${hibaszoveg}" == "${hibaszoveg2}"
