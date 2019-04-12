@@ -21,5 +21,6 @@ Login go new partner page and change englis and push the mentes
     Change the language to English via mymenu
     click element  xpath=//button[@class="button success"]
     wait until element is visible  xpath=//app-show-errors/ul/li
+    sleep  3s
 
 

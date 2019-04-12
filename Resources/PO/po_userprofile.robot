@@ -108,7 +108,7 @@ Give the housenumber
 Give the door
     [Documentation]  A profil oldalon megadja a cég-hez tartozó ajtót
     [Arguments]  ${szoveg}
-    @{elem} =  SeleniumLibrary.Get WebElements  xpath=//input[@formcontrolname="houseNumber"]
+    @{elem} =  SeleniumLibrary.Get WebElements  xpath=//input[@formcontrolname="door"]
     ${companydoor} =  Get From List  ${elem}  0
     input text  ${companydoor}  ${szoveg}
 

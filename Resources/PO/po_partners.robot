@@ -101,6 +101,7 @@ ${PO_P_PAGE_CONTACT_PHONE_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-
 ${PO_P_PAGE_CONTACT_EMAIL_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="email"]
 ${PO_P_PAGE_CONTACT_JOB_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="jobDescription"]
 ${PO_P_PAGE_LABEL_ID} =  xpath=//label
+${PO_P_PAGE_COM_NAME_NEW_PARTNER_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="name"]
 
 *** Keywords ***
 Get the mentes button text
@@ -1119,3 +1120,8 @@ Get jobdescription div object of contact
     @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_LABEL_ID}
     ${egye_elem} =  get from list  ${elem}  32
     [Return]  ${egye_elem}
+
+Give the company name in new partner page
+    [Documentation]  Az új partner létrehozása oldalon megadja a cégnevet.
+    [Arguments]  ${szoveg}
+    input text  ${PO_P_PAGE_COM_NAME_NEW_PARTNER_ID}  ${szoveg}

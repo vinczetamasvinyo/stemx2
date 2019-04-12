@@ -226,7 +226,7 @@ Test the house of billing info is mandantory
     ${housenumber} =  Get housenumber div object of billinginfo
     Check the error message appear and the error text value  ${housenumber}  ${Kotelezo.${Nyelv}}
 
-Test the house of billing info is mandantory
+Test the door of billing info is mandantory
     [Documentation]  A teszt során azt nézzü meg, hogy a céginformáció/számlázási résznél
                 ...  az ajtónál megjelenik-e a kötelező hibaüzenet.
                 ...  Nem kell megjelennie a hibaüzentnek.

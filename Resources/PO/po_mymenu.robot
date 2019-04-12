@@ -8,7 +8,8 @@ ${PO_MYMENU_MENU_ID} =  xpath=//*[@class="user-profile"]
 ${PO_MYMENU_SUBMENU_ID} =  xpath=//*[@class="mat-menu-content"]
 ${PO_MYMENU_SUBMENU_LOGOUT_ID} =  xpath=//*[@id="menu_loguout"]
 ${PO_MYMENU_SUBMENU_MYPROFIL} =  id=menu-account
-
+${PO_MYMENU_} =    id=menu
+${PO_WAITING1} =  10
 *** Keywords ***
 Click the Mymenu
     [Documentation]  A Mymenu ikonkra kattint
@@ -41,10 +42,15 @@ Waiting the new language is loaded
     wait until element is visible  id=menu  10
     sleep  1s
 
+Waiting the page loaded
+    wait until element is visible  ${PO_MYMENU_MENU_ID}  ${PO_WAITING1}
+    sleep  2s
+
 Change the language to English via mymenu
     [Documentation]  A nyelvet angolra állítja a mymenu-n keresztül.
     po_mymenu.Click the Mymenu
     po_mymenu.Click the language
     po_mymenu.Wait the language submenu appear
     po_mymenu.Click the english language
-    po_mymenu.Waiting the new language is loaded
+    #po_mymenu.Waiting the new language is loaded
+    po_mymenu.Waiting the page loaded

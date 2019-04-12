@@ -22,6 +22,7 @@ Test1
     give the lastname  Vincze
     give the email of partner  ${email}
     #po_partners.Give the name of company  cegnevvalami
+    #TOdo: ide a központit kell írni
     input text  //*[@formgroupname="company"]//*[@formcontrolname="name"]  Valami cégnév
     Give the copany long name  Vinyó cégéne hosszú név
     Give the registration number  12121212121212

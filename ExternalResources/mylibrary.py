@@ -144,6 +144,14 @@ def split_the_text(szoveg,karakter):
     lista = szoveg.split(karakter)
     return lista
 
+def  szotarban_van_e(szotar, elem):
+    benne_van = False
+    if elem in szotar:
+        benne_van = True
+    else:
+        print("nincs benne")
+    return benne_van
+
 #driver = webdriver.Chrome('chromedriver.exe')
 #driver.get('http://dev.varoskartya.com')
 #check_the_page_finish_loaded()

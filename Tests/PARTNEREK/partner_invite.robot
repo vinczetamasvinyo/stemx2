@@ -85,6 +85,7 @@ Test the vissza a listahoz gomb szovege megfeleloe a partner meghivasa oldalon h
 Test the partner meghivasa keresztnev hosszabb 128 karakter
     [Documentation]  Azt nézzük meg, hogy a teszt 128 karakternél hosszabb nevet adunk meg
     [Tags]  smoke
+    #TODO: A reloadot ki kell szerverzni majd mar készül erre egy külön keyword.
     reload page
     sleep  1s
     Check the firstname error message is not visiable
