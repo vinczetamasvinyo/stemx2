@@ -43,14 +43,17 @@ ${PO_PO_PARTNERS_CIM_IN_TABLE_TEXT_ID} =  //mat-header-row/mat-header-cell[3]
 ${PO_PO_PARTNERS_ALLAPOT_IN_TABLE_TEXT_ID} =  //mat-header-row/mat-header-cell[4]
 ${PO_PO_PARTNERS_LEHETOSEGEK_IN_TABLE_TEXT_ID} =  //mat-header-row/mat-header-cell[5]
 ${PO_PO_PARTNERS_NEW_PARTNER_TEXT_ID} =  //new-button//span
-${PO_PO_PARTNERS_ALLAPOT_VALASZTO_ID} =  id=mat-select-1
+#${PO_PO_PARTNERS_ALLAPOT_VALASZTO_ID} =  id=mat-select-1
+${PO_PO_PARTNERS_ALLAPOT_VALASZTO_ID} =  xpath=//*[@formcontrolname="partnerStatus"]
 ${PO_PO_PARTNERS_ALLAPOT_OSSZES_ID} =  id=mat-option-2
+
 ${PO_PARTNERS_ALLAPOT_OSSZES_TEXT_ID} =  xpath=//mat-option[1]/span
 ${PO_PARTNERS_ALLAPOT_UJ_TEXT_ID} =  xpath=//mat-option[2]/span
 ${PO_PARTNERS_ALLAPOT_JOVAHAGYAS_TEXT_ID} =  xpath=//mat-option[3]/span
 ${PO_PARTNERS_ALLAPOT_AKTIV_TEXT_ID} =   xpath=//mat-option[4]/span
 ${PO_PARTNERS_ALLAPOT_SUSPEND_TEXT_ID} =  xpath=//mat-option[5]/span
 ${PO_PARTNERS_ALLAPOT_DELETE_TEXT_ID} =  xpath=//mat-option[6]/span
+
 ${PO_PARTNERS_ALLAPOT_ITEMS_ID} =  xpath=//mat-option
 ${PO_PARTNERS_ALLAPOT_ID} =  xpath=//mat-select[@formcontrolname="partnerStatus"]
 ${PO_P_FIRSTNAME_TEXT_ID} =  xpath=//*[@formgroupname="partnerProfile"]//label
@@ -102,8 +105,34 @@ ${PO_P_PAGE_CONTACT_EMAIL_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-
 ${PO_P_PAGE_CONTACT_JOB_ID} =  xpath=//*[@class="columns small-12 medium-6 ng-untouched ng-pristine ng-invalid ng-star-inserted"]//*[@formcontrolname="jobDescription"]
 ${PO_P_PAGE_LABEL_ID} =  xpath=//label
 ${PO_P_PAGE_COM_NAME_NEW_PARTNER_ID} =  xpath=//*[@formgroupname="company"]//*[@formcontrolname="name"]
+${PO_P__CONTACT_FIRSTNAME_ID} =  xpath=//*[@formarrayname="contacts"]//input[@formcontrolname="firstName"]
+${PO_P__CONTACT_LASTNAME_ID} =  xpath=//*[@formarrayname="contacts"]//input[@formcontrolname="lastName"]
+${PO_P_CONTACT_EMAIL_ID} =  xpath=//*[@formarrayname="contacts" ]//input[@formcontrolname="email"]
+${PO_P_JOBDESCRIPTION_ID} =  xpath=//*[@formcontrolname="jobDescription"]
+${hely} =  xpath=//*[@formcontrolname="partnerStatus"]
 
 *** Keywords ***
+
+
+Get status listbox item
+    [Arguments]  ${xpath}  ${class}
+    ${valami} =  get element attribute  ${xpath}  ${class}
+    log  ${valami}
+    @{elemek} =  mylibrary.split the text  ${valami}  ${SPACE}
+    log  ${elemek}[0]
+    log  ${elemek}
+    ${szotar} =  create dictionary
+    ${i} =  set variable  0
+    :FOR  ${valt}  IN  @{elemek}
+    \  ${i} =  Evaluate  ${i} + 1
+    \  ${resz} =  set variable  //*[@id="${valt}"]/span
+    \  log  ${resz}
+    \  ${a} =  convert to string  ${i}
+    \  set to dictionary  ${szotar}  ${a}  ${resz}
+    log  ${szotar}
+    [Return]  ${szotar}
+
+
 Get the mentes button text
     [Documentation]  Visszaadja a partners meghívása oldalon található mentés gomb szövegét.
     ${szoveg} =  get text  ${PO_PARTNERS_LABEL_ID_MENTES_GOMB}
@@ -124,6 +153,10 @@ Give the firstname
     [Documentation]  Megadjuk a first nevet a partner meghívása oldalon.
     [Arguments]  ${firstname}
     input text  ${PO_PARTNERS_FIRSTNAME_INPUT_ID}  ${firstname}
+
+Click the firstanme input
+    [Documentation]  Belekattint a Keresztnév mezőbe.
+    click element  ${PO_PARTNERS_FIRSTNAME_INPUT_ID}
 
 Give the lastname
     [Documentation]  Megadjuk a lastname-t a partner meghívása oldalon.
@@ -322,7 +355,8 @@ Click the allapotvlaszto
 
 Choose the osszes elem from the allapotvalaszto
     [Documentation]  Az állapotválasztó listából kiválasztja az összes elemet.
-    click element  ${PO_PO_PARTNERS_ALLAPOT_OSSZES_ID}
+    [Arguments]  ${elem}
+    click element  ${elem}
 
 Click the allapotvlaszto and chose the osszes item
     [Documentation]  Az állapotválasztóba belekattint majd kiválasztja az összes elemet.
@@ -334,8 +368,9 @@ Get the allapotvalaszto elso eleme text
     [Documentation]  Visszaadja az állapotválasztóban lévő elem szövegeét.
     Click the allapotvlaszto
     sleep  1s
-    ${szoveg} =  get text  ${PO_PARTNERS_ALLAPOT_OSSZES_TEXT_ID}
-    Choose the osszes elem from the allapotvalaszto
+    ${kesz_szotar} =  Get status listbox item  ${hely}  aria-owns
+    ${szoveg} =  get text  ${kesz_szotar}[1]
+    Choose the osszes elem from the allapotvalaszto  ${kesz_szotar}[1]
     log  ${szoveg}
     [Return]  ${szoveg}
 
@@ -343,9 +378,9 @@ Get the allapotvalaszto masodik eleme text
     [Documentation]  Visszaadja az állapotválasztóban lévő második elem szövegeét.
     Click the allapotvlaszto
     sleep  1s
-    ${szoveg} =  get text  ${PO_PARTNERS_ALLAPOT_UJ_TEXT_ID}
-    Choose the osszes elem from the allapotvalaszto
-    #${szoveg} =  get text  ${PO_PARTNERS_ALLAPOT_UJ_TEXT_ID}
+    ${kesz_szotar} =  Get status listbox item  ${hely}  aria-owns
+    ${szoveg} =  get text  ${kesz_szotar}[2]
+    Choose the osszes elem from the allapotvalaszto  ${kesz_szotar}[1]
     log  ${szoveg}
     [Return]  ${szoveg}
 
@@ -353,8 +388,9 @@ Get the allapotvalaszto harmadik eleme text
     [Documentation]  Visszaadja az állapotválasztóban lévő harmadik elem szövegeét.
     Click the allapotvlaszto
     sleep  1s
-    ${szoveg} =  get text  ${PO_PARTNERS_ALLAPOT_JOVAHAGYAS_TEXT_ID}
-    Choose the osszes elem from the allapotvalaszto
+    ${kesz_szotar} =  Get status listbox item  ${hely}  aria-owns
+    ${szoveg} =  get text  ${kesz_szotar}[3]
+    Choose the osszes elem from the allapotvalaszto  ${kesz_szotar}[1]
     log  ${szoveg}
     [Return]  ${szoveg}
 
@@ -362,8 +398,9 @@ Get the allapotvalaszto negyedik eleme text
     [Documentation]  Visszaadja az állapotválasztóban lévő negyedik elem szövegeét.
     Click the allapotvlaszto
     sleep  1s
-    ${szoveg} =  get text  ${PO_PARTNERS_ALLAPOT_AKTIV_TEXT_ID}
-    Choose the osszes elem from the allapotvalaszto
+    ${kesz_szotar} =  Get status listbox item  ${hely}  aria-owns
+    ${szoveg} =  get text  ${kesz_szotar}[4]
+    Choose the osszes elem from the allapotvalaszto  ${kesz_szotar}[1]
     log  ${szoveg}
     [Return]  ${szoveg}
 
@@ -371,8 +408,9 @@ Get the allapotvalaszto otodik eleme text
     [Documentation]  Visszaadja az állapotválasztóban lévő otodik elem szövegeét.
     Click the allapotvlaszto
     sleep  1s
-    ${szoveg} =  get text  ${PO_PARTNERS_ALLAPOT_SUSPEND_TEXT_ID}
-    Choose the osszes elem from the allapotvalaszto
+    ${kesz_szotar} =  Get status listbox item  ${hely}  aria-owns
+    ${szoveg} =  get text  ${kesz_szotar}[5]
+    Choose the osszes elem from the allapotvalaszto  ${kesz_szotar}[1]
     log  ${szoveg}
     [Return]  ${szoveg}
 
@@ -380,8 +418,9 @@ Get the allapotvalaszto hatodik eleme text
     [Documentation]  Visszaadja az állapotválasztóban lévő hatodik elem szövegeét.
     Click the allapotvlaszto
     sleep  1s
-    ${szoveg} =  get text  ${PO_PARTNERS_ALLAPOT_DELETE_TEXT_ID}
-    Choose the osszes elem from the allapotvalaszto
+    ${kesz_szotar} =  Get status listbox item  ${hely}  aria-owns
+    ${szoveg} =  get text  ${kesz_szotar}[6]
+    Choose the osszes elem from the allapotvalaszto  ${kesz_szotar}[1]
     log  ${szoveg}
     [Return]  ${szoveg}
 
@@ -390,7 +429,8 @@ Get the count item of allapotvalaszto
     Click the allapotvlaszto
     sleep  1s
     @{elemek} =  SeleniumLibrary.Get WebElements  ${PO_PARTNERS_ALLAPOT_ITEMS_ID}
-    Choose the osszes elem from the allapotvalaszto
+    ${kesz_szotar} =  Get status listbox item  ${hely}  aria-owns
+    Choose the osszes elem from the allapotvalaszto  ${kesz_szotar}[1]
     ${darabszam} =  get length  ${elemek}
     [Return]  ${darabszam}
 
@@ -1125,3 +1165,31 @@ Give the company name in new partner page
     [Documentation]  Az új partner létrehozása oldalon megadja a cégnevet.
     [Arguments]  ${szoveg}
     input text  ${PO_P_PAGE_COM_NAME_NEW_PARTNER_ID}  ${szoveg}
+
+Give the contact firstname
+    [Documentation]  Megadja a contact-hoz tartozó keresztnevet
+    [Arguments]  ${szoveg}
+    input text  ${PO_P__CONTACT_FIRSTNAME_ID}  ${szoveg}
+
+Give the contact lastname
+    [Documentation]  Megadja a contact-hoz tartozó vezetéknevet
+    [Arguments]  ${szoveg}
+    input text  ${PO_P__CONTACT_LASTNAME_ID}  ${szoveg}
+
+Give the contact email
+    [Documentation]  Megadja a contact-hoz tartozó email címet
+    [Arguments]  ${szoveg}
+    input text  ${PO_P_CONTACT_EMAIL_ID}  ${szoveg}
+
+Give the jobdescription
+    [Documentation]  Megadja a foglalkozást
+    [Arguments]  ${szoveg}
+    input text  ${PO_P_JOBDESCRIPTION_ID}   ${szoveg}
+
+Waiting the partner page loaded
+    Wait the search input apper
+    sleep  1s
+
+Wait the search input apper
+    [Documentation]
+    wait until element is visible  ${PO_PARTNERS_SEARCH_INPUT_ID}

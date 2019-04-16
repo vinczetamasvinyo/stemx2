@@ -1,12 +1,74 @@
 *** Settings ***
 Resource  partner_invite_common_resource.robot
 Library  ../ExternalResources/mylibrary.py
+Resource  partner_adat_szerk_resource.robot
 
 *** Keywords ***
+Finish the registration in the token page
+    [Documentation]  A token oldalon befejezi a regisztrációt.
+                ...  A folyamatban megadja a két megfelelő jelszót,
+                ...  majd megvárja amíg a belépési oldal betöltődik.
+                ...  A jelszót paraméterben kapja meg.
+    [Arguments]  ${jelszo}
+    Wait the token page is loaded
+    PO_login.Give the password  ${jelszo}
+    PO_login.Give the same password  ${jelszo}
+    po_login.Push the regisztracio megerositese button
+    Wait the succes message and click
+    po_login.Waiting the login pager loaded
+
+Login and go to partner details page
+    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
+    login_resource.Open Vk login page  ${old}  ${bong}
+    Give login date and login  ${em}  ${pas}
+    Go to the partners page via menu
+
+Login and go to the partners page
+    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
+    login_resource.Open Vk login page  ${old}  ${bong}
+    Give login date and login  ${em}  ${pas}
+    Go to the partners page via menu
+
+Login and go the new partner page
+    [Arguments]  ${em}  ${pas}
+    Give login date and login  ${em}  ${pas}
+    Go to the partners page via menu
+
+Open browser and Login and after go to the partners page
+    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
+    login_resource.Open Vk login page  ${old}  ${bong}
+    Give login date and login  ${em}  ${pas}
+    Go to the partners page via menu
+
+
+Login and go to the partners page and change lan
+    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
+    login_resource.Open Vk login page  ${old}  ${bong}
+    Give login date and login  ${em}  ${pas}
+    Go to the partners page via menu
+    Change the language to English via mymenu
+
+Login and go to partner edit page
+    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
+    login_resource.Open Vk login page  ${old}  ${bong}
+    Give regeistration data and click the login button  ${em}  ${pas}
+    Check the login succes or not
+    Go to the partners page via menu
+    Chose elem and go the the edit page
+
 Login and go to the new partner page and give all data
     [Arguments]  ${oldal}  ${bong}  ${email}  ${jelszo}  ${adat}
     Login and go to the new partner page  ${oldal}  ${bong}  ${email}  ${jelszo}
     Give the all partner data  ${adat}
+
+Login and go new partner page and give data and change language
+    [Arguments]  ${oldal}  ${bong}  ${email}  ${jelszo}  ${adat}
+    Login and go to the new partner page  ${oldal}  ${bong}  ${email}  ${jelszo}
+    Change the language to English via mymenu
+    Give the all partner data  ${adat}
+    Click the firstanme input
+    sleep  2s
+
 
 Login and go to the new partner page
     [Arguments]  ${oldal}  ${bong}  ${email}  ${jelszo}
@@ -107,38 +169,27 @@ Give the all partner data
     ${billingcounty} =  szotarban van e  ${ADATOK}  Billingcounty
     run keyword if  ${billingcounty}==${TRUE}  Give the billing county  ${ADATOK}[Billingcounty]
     # Give the billing county  ${ADATOK}[Billingcounty]
-    click element  xpath=//*[@formcontrolname="firstName"]
-    #Give the billing bankname  ${ADATOK}[Bankname]
-    #input text  //*[@formgroupname="company"]//*[@formcontrolname="name"]  ${max128}
+    ${billingstreet} =  szotarban van e  ${ADATOK}  Billingstreet
+    run keyword if  ${billingstreet}==${TRUE}  Give the billing street  ${ADATOK}[Billingstreet]
+    ${billinghousenumber} =  szotarban van e  ${ADATOK}  Billinghousenumber
+    run keyword if  ${billinghousenumber}==${TRUE}  Give the billing housenumber  ${ADATOK}[Billinghousenumber]
+    ${billingdoor} =  szotarban van e  ${ADATOK}  Billingdoor
+    run keyword if  ${billingdoor}==${TRUE}  Give the billing door  ${ADATOK}[Billingdoor]
+    ${billingfloor} =  szotarban van e  ${ADATOK}  Billingfloor
+    run keyword if  ${billingfloor}==${TRUE}  Give the billing floor   ${ADATOK}[Billingfloor]
+    ${contactfirstname} =  szotarban van e  ${ADATOK}  Contactfirstname
+    run keyword if  ${contactfirstname}==${TRUE}  Give the contact firstname  ${ADATOK}[Contactfirstname]
+    ${contactlastname} =  szotarban van e  ${ADATOK}  Contactlastname
+    run keyword if  ${contactlastname}==${TRUE}  Give the contact lastname  ${ADATOK}[Contactlastname]
+    ${contactphonenumber} =  szotarban van e  ${ADATOK}  Contactphonenumber
+    run keyword if  ${contactphonenumber}==${TRUE}  Give the contact phone  ${ADATOK}[Contactphonenumber]
+    ${contactemail} =  szotarban van e  ${ADATOK}  Contactemail
+    run keyword if  ${contactemail}==${TRUE}  Give the contact email  ${ADATOK}[Contactemail]
+    ${jobdescription} =  szotarban van e  ${ADATOK}  Jobdesctiption
+    run keyword if  ${jobdescription}==${TRUE}  Give the jobdescription  ${ADATOK}[Jobdesctiption]
+    #TODO: Ez még ki kell innen tenni.
+    #click element  xpath=//*[@formcontrolname="firstName"]
+    #sleep  2s
 
-    #Give the country2  Németország
-
-
-    #
-    #
-    #  ${max128}
-    #
-    # ${max128}
-
-    #  ${max128}
-    # ${max128}
-    #  ${max128}
-    #  ${max128}
-    #  ${max128}
-    #  Magyarország
-    #  ${max128}
-    # ${max128}
-    #  ${max128}
-    #Give the billing street  ${max128}
-    #Give the billing housenumber  ${max128}
-    #Give the billing door  ${max128}
-    #Give the billing floor  ${max128}
-    #Give the contact phone  +36209602628
-    #input text  xpath=//*[@formcontrolname="jobDescription"]  ${max128}
-    #input text  //*[@formarrayname="contacts"]//input[@formcontrolname="firstName"]  ${max128}
-    #input text  //*[@formarrayname="contacts"]//input[@formcontrolname="lastName"]  ${max128}
-    #input text  xpath=//*[@formarrayname="contacts" ]//input[@formcontrolname="email"]   valami@valami.hu
-    #click element  //*[@formgroupname="company"]//*[@formcontrolname="name"]
-    sleep  10s
 
 

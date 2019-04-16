@@ -41,3 +41,17 @@
 &{JOBCONTACT_TEXT}  Hun=Munkakör  En=Jobtitle
 &{BACKBUTTON_TEXT}  Hun=Vissza a listához  En=Back to list
 &{SAVEBUTTON_TEXT}  Hun=Mentés  En=Save
+&{MAX_KARAKTER_127}  Hun=Kérem legfeljebb 127 karaktert adjon meg
+                ...  En=Please enter no more than 127 characters
+&{ERROR_MAX_ZIPCODE_KARAKTER}  Hun=Kérem legfeljebb 31 karaktert adjon meg
+                          ...  En=Please enter no more than 31 characters
+&{ERROR_MAX_63_KARAKTER}  Hun=Kérem legfeljebb 63 karaktert adjon meg
+                     ...  En=Please enter no more than 63 characters
+&{ERROR_MAX_10_KARAKTER}  Hun=Kérem legfeljebb 10 karaktert adjon meg
+                     ...  En=Please enter no more than 10 characters
+&{ERROR_MAX_30_KARAKTER}  Hun=Kérem legfeljebb 30 karaktert adjon meg
+                     ...  En=Please enter no more than 30 characters
+&{ERRORS_LETTER_VALIDATOR}  Hun=Ez a mező csak betűt, \'.\' és \'-\' karaktert tartalmazhat.
+                       ...  En=Only letters, '.' and '-' can be used in this field.
+&{ERRORS_PHONE_VALIDATOR}  Hun=Érvénytelen telefonszám!
+                      ...  En=Invalid phone number!

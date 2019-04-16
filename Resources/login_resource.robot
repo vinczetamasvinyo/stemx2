@@ -27,18 +27,22 @@ Open Vk login page and changed english
 Waiting for login page will load
     po_login.Waiting page load an apper the element
 
+Give login date and login
+    [Documentation]  A login oldalon megadja a belépéshez szükséges adatokat
+                ...  és belép. Megnézi, hogy a belépés rendben sikerült-e.
+    [Arguments]  ${em}  ${pas}
+    Give regeistration data and click the login button  ${em}  ${pas}
+    Check the login succes or not
+
 Give regeistration data and click the login button
     [Arguments]  ${e_mail}  ${password}
     Give the email in the login page  ${e_mail}
-    #input text  xpath=//*[@formcontrolname="username"]  tamas.vincze@interticket.hu
     Give the password in the login page  ${password}
-    #input text  xpath=//*[@formcontrolname="password"]  Vinyo123456
     Click the login button in the login page
-    #click button  Bejelentkezés
 
 Check the login succes or not
     Wait for the icon after the login
-    Check the text visiable after the login
+    #Check the text visiable after the login
     sleep  1s
 
 Check the login status if gave a worng password

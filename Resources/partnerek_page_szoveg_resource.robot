@@ -1,6 +1,22 @@
 *** Settings ***
 Library  SeleniumLibrary
 Resource  PO/po_partners.robot
+Resource  partner_invite_resource.robot
+Resource  login_resource.robot
+Resource  Common.robot
+Resource  PO/po_menu.robot
+Library   ../ExternalResources/mylibrary.py
+Resource  variables.robot
+Variables  variable.py
+Library  SeleniumLibrary
+Library  Collections
+Library  robot.libraries.String  WITH NAME  SR
+Resource  partner_invite_common_resource.robot
+Resource  variables/partner_page_variable.robot
+Resource  Common_resource.robot
+
+*** Variables ***
+${hely} =  xpath=//*[@formcontrolname="partnerStatus"]
 
 *** Keywords ***
 Check the title of partner page
@@ -96,7 +112,6 @@ Checkt the allapot valaszto elso elem szovege
     [Documentation]  Ellenőrzni, hogy az állapot választóban lévő első elem szövegét
     [Arguments]  ${szoveg2}
     ${szoveg} =  Get the allapotvalaszto elso eleme text
-    log  ${szoveg}
     should be true  "${szoveg}" == "${szoveg2}"
 
 Checkt the allapot valaszto masodik elem szovege

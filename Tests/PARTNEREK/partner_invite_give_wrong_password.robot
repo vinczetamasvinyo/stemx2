@@ -3,13 +3,11 @@ Documentation  A partner meghívása folyamat során a jelszó megadásának fol
 
 #Todo: írd le, hogy mik bannak benne.
 Library  SeleniumLibrary
-#Resource  ../../Resources/partner_invite_common_resource.robot
-#Resource  ../../Resources/PO/po_login.robot
-#Resource  ../../Resources/Common.robot
 Resource  ../../Resources/partner_invite_give_wrong_resource.robot
 
 Suite Setup  Egyeb url
 Suite Teardown  common.End web test
+
 *** Variables ***
 ${PARTNER_INVITE_GIVE_GOOD_PASSWORD} =  Vinyo123456
 ${PARTNER_INVITE_WRONG_TOKEN_ERROR_TEXT} =  Érvénytelen token
@@ -138,7 +136,6 @@ Test the give the good password specialis karakter
     give the password  ${PARTNER_INVITE_WRONG_GOOD_PASSWORD_SPECIAL}
     Give the same password  ${PARTNER_INVITE_WRONG_GOOD_PASSWORD_SPECIAL}
     po_givepassword.Check the error message not visiable above the password1
-
 
 *** Keywords ***
 Egyeb url

@@ -2,6 +2,7 @@
 Library  SeleniumLibrary
 Resource  partner_invite_resource.robot
 Resource  Common_resource.robot
+Resource  variables/new_partner_variables.robot
 
 
 *** Keywords ***

@@ -1,12 +1,12 @@
 *** Settings ***
 Resource  ../../../Resources/partner_letre_mezo_valid_resource.robot
 
-#Suite Setup  Login and go to the new partner page  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}
-Suite Setup  Login and go to the new partner page and give all data  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}  ${ADAT_TOOlONG}
+
+Suite Setup  Login and go new partner page and give data and change language  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}  ${ADAT_TOOlONG}
 Suite Teardown  Common.End web test
 
 *** Variables ***
-${NYELV} =  Hun
+${NYELV} =  En
 ${LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdwwwwwwwwwwwwwwwwwwwwwwqqqqqqqqqqqqqqqqqqqqqqqqqqqqdddddd
 ${Max_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwqqqqqqqqqqqqqqqqqqqqqqqqqqqqdddddddd
 ${Max_ZIPCODE_TOO_LONG} =  ddddddddddddddddddddwwwDDDDDDDDD
@@ -36,7 +36,7 @@ ${EMAIL_TOO_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwww@wwwwwwwwwwwwwwwwww
             ...  Companyname=${Max_LONG}
             ...  Companylongname=${Max_LONG}
             ...  Companyregnumber=${Max_LONG}
-            ...  Companycountry=Magyarország
+            ...  Companycountry=Hungary
             ...  Companyzipcode=${Max_ZIPCODE_TOO_LONG}
             ...  Companycity=${Max_LONG}
             ...  Companycounty=${Max_COUNTY_TOO_LONG}
@@ -50,7 +50,7 @@ ${EMAIL_TOO_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwww@wwwwwwwwwwwwwwwwww
             ...  Banknumber=${Max_LONG}
             ...  Iban=${Max_LONG}
             ...  Swift=${Max_LONG}
-            ...  Billingcountry=Magyarország
+            ...  Billingcountry=Hungary
             ...  Billingzipcode=${Max_ZIPCODE_TOO_LONG}
             ...  Billingcity=${Max_LONG}
             ...  Billingcounty=${Max_COUNTY_TOO_LONG}
@@ -331,131 +331,6 @@ Test the jobdescription max+x karakter
     [Tags]  Medium  maxx
     ${jobdescription} =  get jobdescription div object of contact
     Check the error message appear and the error text value  ${jobdescription}  ${MAX_KARAKTER_127.${NYELV}}
-    #Check the div object contains the error message  ${jobdescription}
 
-
-#ITT KELL FOLYTATNI
-
-
-Test the firstname give minimum karakter
-    [Documentation]  A teszt soránt azt nézzük meg, hogy a keresztnévbe beírunk minimum karaktert, akkor
-                ...  nem jelenik meg hibaüzenet.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get firstname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the firstname and lastname  ${SHORT_NORMAL}  ${NORMAL}
-    Check the div object contains the error message  ${firstname}
-
-Test the firstname give max karakter
-    [Documentation]  A teszt soránt azt nézzük meg, hogy a keresztnévbe beírunk maximum elfogadott karaktert,
-                ...  akkor nem jelenik meg hibaüzenet.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get firstname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the firstname and lastname  ${LONG}  ${NORMAL}
-    Check the div object contains the error message  ${firstname}
-
-Test firstname max+x karakter
-    [Documentation]  A teszt soránt azt nézzük meg, hogy a keresztnévbe beírunk a maxnál 1-el nagyobb
-                ...  karaktert és az erre vonatkozó hibaüzenet megjelenik.
-    [Tags]  Medium  most
-    #Common_resource.Reload the page
-    ${firstname} =  Get firstname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the max128 data   ${ADAT_TOOlONG}  valami  valami2
-    #Give the firstname and lastname  ${ADAT}[Firstname]  ${NORMAL}
-    Check the error message appear and the error text value  ${firstname}  ${MAX_KARAKTER_127.${NYELV}}
-
-Test firstname give good karakter
-    [Documentation]  A teszt során azt nézzük meg, hogy a keresztnévbe beírjuk a megengedett karaktereket
-                ...  én nem jelenik meg hibaüzenet.
-    Common_resource.Reload the page
-    ${firstname} =  Get firstname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the firstname and lastname  ${LETTER_VALIDATOR_GOOD}  ${NORMAL}
-    Check the div object contains the error message  ${firstname}
-
-Test firstname wrong karakter
-    [Documentation]  A teszt során azt nézzük meg, hogy a keresztnévbe nem megengedett karaktert
-                ...  írunk és, hogy a megfelelő hibaüzenet megjelenik-e.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get firstname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the firstname and lastname  ${LETTER_VALIDATOR_NUMBER_WRONG}  ${NORMAL}
-    Check the error message appear and the error text value  ${firstname}  ${ERRORS_LETTER_VALIDATOR.${NYELV}}
-
-Test firstname other karakter
-    [Documentation]  A teszt során azt nézzük meg, hogy a keresztnévbe nem megengedett karaktert
-                ...  írunk speciális karaktert és, hogy a megfelelő hibaüzenet megjelenik-e.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get firstname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the firstname and lastname  ${LETTER_VALIDATOR_OTHER_WRONG}  ${NORMAL}
-    Check the error message appear and the error text value  ${firstname}  ${ERRORS_LETTER_VALIDATOR.${NYELV}}
-
-# Vezetéknév-hez kapcsolódó esetek
-
-Test the lastname give minimum karakter
-    [Documentation]  A teszt soránt azt nézzük meg, hogy a vezetéknévbe beírunk minimum karaktert, akkor
-                ...  nem jelenik meg hibaüzenet.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get lastname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the lastname and firstname  ${SHORT_NORMAL}  ${NORMAL}
-    Check the div object contains the error message  ${firstname}
-
-Test the lastname give max karakter
-    [Documentation]  A teszt soránt azt nézzük meg, hogy a vezetéknévbe beírunk maximum elfogadott karaktert,
-                ...  akkor nem jelenik meg hibaüzenet.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get lastname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the lastname and firstname  ${LONG}  ${NORMAL}
-    Check the div object contains the error message  ${firstname}
-
-Test the lastname max+x karakter
-    [Documentation]  A teszt soránt azt nézzük meg, hogy a vezetéknévbe beírunk a maxnál 1-el nagyobb
-                ...  karaktert és az erre vonatkozó hibaüzenet megjelenik.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get lastname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the lastname and firstname  ${Max_LONG}  ${NORMAL}
-    Check the error message appear and the error text value  ${firstname}  ${MAX_KARAKTER_127.${NYELV}}
-
-Test the lastname give good karakter
-    [Documentation]  A teszt során azt nézzük meg, hogy a vezetéknévbe beírjuk a megengedett karaktereket
-                ...  én nem jelenik meg hibaüzenet.
-    Common_resource.Reload the page
-    ${firstname} =  Get lastname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the lastname and firstname  ${LETTER_VALIDATOR_GOOD}  ${NORMAL}
-    Check the div object contains the error message  ${firstname}
-
-Test the lastname wrong karakter
-    [Documentation]  A teszt során azt nézzük meg, hogy a vezetéknévbe nem megengedett karaktert
-                ...  írunk és, hogy a megfelelő hibaüzenet megjelenik-e.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get lastname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the lastname and firstname  ${LETTER_VALIDATOR_NUMBER_WRONG}  ${NORMAL}
-    Check the error message appear and the error text value  ${firstname}  ${ERRORS_LETTER_VALIDATOR.${NYELV}}
-
-Test lastname other karakter
-    [Documentation]  A teszt során azt nézzük meg, hogy a vezetéknévbe nem megengedett karaktert
-                ...  írunk speciális karaktert és, hogy a megfelelő hibaüzenet megjelenik-e.
-    [Tags]  Medium
-    Common_resource.Reload the page
-    ${firstname} =  Get lastname div object of partnerinfo
-    Check the div object contains the error message  ${firstname}
-    Give the lastname and firstname  ${LETTER_VALIDATOR_OTHER_WRONG}  ${NORMAL}
-    Check the error message appear and the error text value  ${firstname}  ${ERRORS_LETTER_VALIDATOR.${NYELV}}
 
 *** Keywords ***

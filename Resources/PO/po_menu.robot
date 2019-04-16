@@ -1,5 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
+Resource  po_partners.robot
 
 
 *** Variables ***
@@ -46,9 +47,9 @@ Click the partner menu
     sleep  1s
     click element  ${PO_MENU_FELHASZNALOK_KARB_PARTNER_ID}
 
-
 Go to the partners page via menu
     Click the felhasznalok karbantartasa
     Wait the felhasznalaok karbantartasa submenu visiable
     Click the partner menu
-    sleep  2s
+    Waiting the partner page loaded
+    #sleep  2s

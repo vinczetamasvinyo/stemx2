@@ -8,6 +8,20 @@ ${PO_TEMPMAIL_EMAIL_ID} =  id=mail
 ${PO_TEMPMAIL_WAITING} =  20
 
 *** Keywords ***
+Go tempmail and wait the reg email az open
+    [Documentation]  Elnavigál az ideiglenes megvárja amíg az email megérkezik az email
+                ...  majd azt megnyitja.
+                ...  Paraméterek amiket megkap:
+                ...  url: ez az oldal címe ahova az email érkezik.
+                ...  timeout: meddig várakozik az email-re a program.
+                ...  subjectlink: id-ja ami alapján meg tudja nyitni a meail
+                ...  bodylink: body-ban lévő link amit meg kell nyitni.
+    [Arguments]  ${adat}
+    go to  ${adat.url}
+    po_tempmail.Waiting and click the mail in themp page  ${adat.subject}  ${adat.timeout}  ${adat.subjectlink}
+    #TODO: megnézni, hogy a partial link miért nem működik.
+    Scroll and click the link in the email  ${adat.bodylink}  100
+
 Get the email address from the tempmail
     [Documentation]  Megnyitja a böngészőt és temp-emil helyről visszaadja a megjelenő email címet.
     [Arguments]  ${bongeszo}
@@ -21,7 +35,10 @@ Waiting and click the mail in themp page
     [Documentation]  A temp mail oldalon megvárja amíg az email megérkezik,
                 ...  majd rákattint a linkre, hogy megnyissa az emailt
     [Arguments]  ${subject}  ${timeout}  ${email_id}
+    scroll to element  //*[@class="inbox-area"]  10
     wait until page contains  ${subject}  ${timeout}
+    scroll to element  ${email_id}  100
+    sleep  1s
     click link  ${email_id}
     sleep  1s
 

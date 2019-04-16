@@ -175,6 +175,7 @@ Get listbox item xpath
     ${el} =  get from dictionary  ${szotar}  ${kivlasztott}
     [Return]  ${el}
 
+
 Give the country2
     [Arguments]  ${kivlasztott}
     Scroll to element  xpath=//mat-select[@formcontrolname="country"]  100

@@ -11,6 +11,12 @@ ${PO_MYMENU_SUBMENU_MYPROFIL} =  id=menu-account
 ${PO_MYMENU_} =    id=menu
 ${PO_WAITING1} =  10
 *** Keywords ***
+Logout
+    [Documentation]  Elvégzi a logout-t.
+    Click the Mymenu
+    Click the logout submenu
+    Waiting page load an apper the element
+
 Click the Mymenu
     [Documentation]  A Mymenu ikonkra kattint
     click element  ${PO_MYMENU_MENU_ID}
