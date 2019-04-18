@@ -49,7 +49,8 @@ Test the partner meghivasa cim szoveg megfelelo-e hun
 
 Test the Partner Adatai text megfelelo-e hun
     [Tags]  szoveg
-    Check text apper above the i icon  ${PARTNER_INVITE_LABEL_PARTNER_ADATAI_HUN}
+    Check the partner adati text  ${PARTNER_INVITE_LABEL_PARTNER_ADATAI_HUN}
+    #Check text apper above the i icon  ${PARTNER_INVITE_LABEL_PARTNER_ADATAI_HUN}
 
 Test the vezetekev szoveg megjelenik-e a partner meghivasa oldalon hun
     [Tags]  szoveg

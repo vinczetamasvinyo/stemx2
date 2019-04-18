@@ -1,13 +1,16 @@
 *** Settings ***
+Documentation  A suite a partner létrehozása folyamathoz kapcsolódó
+          ...  teszteseteket tartalmazza.
+          ...  Például partner létrehozása teljes partneradattal,
+          ...  és minimum adatokkal.
+
 Resource  ../../../Resources/partner_letre_folyamat_resource.robot
 
-
 *** Variables ***
-
 &{valami}  a=valami1  b=valami2
 
 *** Test Cases ***
-Test1
+Test create new partner with full data
     ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}
     ${Partner_data.Email} =  set variable  ${email}
     go to  ${OLDAL_URL}

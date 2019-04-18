@@ -71,6 +71,7 @@ ${PO_P_PAGE_BUTTON_BACK_ID} =  xpath=//*[@class="button hollow secondary"]
 ${PO_P_PAGE_BUTTON_BACK_TEXT_ID} =  xpath=//*[@class="button hollow secondary"]/span
 ${PO_P_PAGE_BUTTON_SAVE_ID} =  xpath=//*[@class="button success"]
 ${PO_P_PAGE_BUTTON_SAVE_TEXT_ID} =  xpath=//*[@class="button success"]/span
+${PO_P_PAGE_BUTTON_DELETE_TEXT_ID} =  xpath=//delete-button//button/span
 ${PO_P_PAGE_INPUT_PARTNER_FIRSTNAME_ID} =  xpath=//*[@formgroupname="partnerProfile"]//input[@formcontrolname="firstName"]
 ${PO_P_PAGE_INPUT_PARTNER_LASTNAME_ID} =  xpath=//*[@formgroupname="partnerProfile"]//input[@formcontrolname="lastName"]
 ${PO_P_PAGE_INPUT_PARTNER_EMAIL_ID} =  xpath=//*[@formgroupname="partnerProfile"]//input[@formcontrolname="email"]
@@ -110,6 +111,8 @@ ${PO_P__CONTACT_LASTNAME_ID} =  xpath=//*[@formarrayname="contacts"]//input[@for
 ${PO_P_CONTACT_EMAIL_ID} =  xpath=//*[@formarrayname="contacts" ]//input[@formcontrolname="email"]
 ${PO_P_JOBDESCRIPTION_ID} =  xpath=//*[@formcontrolname="jobDescription"]
 ${hely} =  xpath=//*[@formcontrolname="partnerStatus"]
+${PARTNER_DETAILS_TITTLE_ID} =  xpath=//*[@class="columns small-12"]/h1
+${PARTNER_DETAILS_TEXT_ID} =  xpath=//h6
 
 *** Keywords ***
 
@@ -197,6 +200,7 @@ Get the all div element of input from partner page
     @{elem} =  SeleniumLibrary.Get WebElements  ${PO_PARTNERS_DIV_ID_OF_INPUT}
     [Return]  @{elem}
 
+
 Get the company div object
     [Documentation]  A megkapott elemek listából visszaadja a cég div részét
     [Arguments]  ${elemek}
@@ -225,12 +229,16 @@ Get the text of the cim
 
 Get the first text of i icon
     [Documentation]  A partner oldalon visszaadja az i icon mögötti első szöveget
-    ${szov} =  get text  xpath=//*[@class="box-title"]/*[@class="material-icons"]
+    [Arguments]  ${elem}
+    #${szov} =  get text  xpath=//*[@class="box-title"]/*[@class="material-icons"]
+    ${szov} =  get text  ${elem}
     [Return]  ${szov}
 
 Get the full text of i icon
     [Documentation]  Visszaadja a partner oldalon található i icon mögötti teljes szöveget
-    ${szov} =  get text  xpath=//*[@class="box-title"]
+    [Arguments]  ${elem}
+    #${szov} =  get text  xpath=//*[@class="box-title"]
+    ${szov} =  get text  ${elem}
     [Return]  ${szov}
 
 Get the label from div object in the partners page
@@ -791,6 +799,13 @@ Get he save button text
     log  ${szoveg}
     [Return]  ${szoveg}
 
+Get the delete button text
+    [Documentation]  Visszaadja a mentés gomb szövegét
+    ${szoveg} =  get text  ${PO_P_PAGE_BUTTON_DELETE_TEXT_ID}
+    log  ${szoveg}
+    [Return]  ${szoveg}
+
+
 Get partner firstname input is visiable
     [Documentation]  Megnézi, hogy a partner adatain belül a keresztnév mező megjelenik-e.
     Element should be visible  ${PO_P_PAGE_INPUT_PARTNER_FIRSTNAME_ID}
@@ -1193,3 +1208,80 @@ Waiting the partner page loaded
 Wait the search input apper
     [Documentation]
     wait until element is visible  ${PO_PARTNERS_SEARCH_INPUT_ID}
+
+Get title of partner details
+    [Documentation]  Visszaadja a partner oldal megtekintésének a címét.
+    ${szoveg} =  get text  ${PARTNER_DETAILS_TITTLE_ID}
+    [Return]  ${szoveg}
+
+Get common text of partner details page
+    [Documentation]   A partnszer részletei oldalról visszaadja a cégnév szöveget
+    [Arguments]  ${index}
+    Log  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PARTNER_DETAILS_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    ${szoveg} =  get text  ${egye_elem}
+    [Return]  ${szoveg}
+
+
+Get company name text of partner details page
+    [Documentation]   A partnszer részletei oldalról visszaadja a cégnév szöveget
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PARTNER_DETAILS_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  0
+    ${szoveg} =  get text  ${egye_elem}
+    [Return]  ${szoveg}
+
+Get company longname text of partner details page
+    [Documentation]   A partnszer részletei oldalról visszaadja
+                 ...  a cég hosszabb szöveget
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PARTNER_DETAILS_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  1
+    ${szoveg} =  get text  ${egye_elem}
+    [Return]  ${szoveg}
+
+Get company regnumber text of partner details page
+    [Documentation]   A partnszer részletei oldalról visszaadja
+                 ...  a cég hosszabb szöveget
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PARTNER_DETAILS_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  2
+    ${szoveg} =  get text  ${egye_elem}
+    [Return]  ${szoveg}
+
+Get company address text of partner details page
+    [Documentation]   A partnszer részletei oldalról visszaadja
+                 ...  a cég címének szöveget
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PARTNER_DETAILS_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  3
+    ${szoveg} =  get text  ${egye_elem}
+    [Return]  ${szoveg}
+
+Get company status text of partner details page
+    [Documentation]   A partnszer részletei oldalról visszaadja
+                 ...  a cég státusz szöveget
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PARTNER_DETAILS_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  4
+    ${szoveg} =  get text  ${egye_elem}
+    [Return]  ${szoveg}
+
+Get billing name text of partner details page
+    [Documentation]   A partnszer részletei oldalról visszaadja
+                 ...  a cég státusz szöveget
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PARTNER_DETAILS_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  5
+    ${szoveg} =  get text  ${egye_elem}
+    [Return]  ${szoveg}
+
+Wait the partner details page loaded
+    [Documentation]  Megvárja amíg a partner részleteinek az oldala
+                ...  betöltődik.
+    wait until element is visible  ${PARTNER_DETAILS_TITTLE_ID}
+    sleep  1s
+
+Get the company information title
+    @{elem} =  SeleniumLibrary.Get WebElements  xpath=//*[@class="box-title"]
+    ${egye_elem} =  get from list  ${elem}  0
+    ${szoveg} =  get text  ${egye_elem}
+    Log  ${szoveg}
+    #@{szovegek} =  mylibrary.split the text  ${szoveg}  ${SPACE}
+    #mylibrary.split the text  ${valami}  ${SPACE}
+    #[Return]  ${egye_elem}

@@ -315,3 +315,7 @@
 [0416/193044.289:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
 [0416/193044.289:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
 [0416/193044.289:ERROR:exception_snapshot_win.cc(98)] thread ID 128872 not found in process
+[0418/104709.832:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0418/104709.834:ERROR:exception_snapshot_win.cc(98)] thread ID 349128 not found in process
+[0418/132157.476:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0418/132157.486:ERROR:exception_snapshot_win.cc(98)] thread ID 369164 not found in process

@@ -4,6 +4,17 @@ Library  ../ExternalResources/mylibrary.py
 Resource  partner_adat_szerk_resource.robot
 
 *** Keywords ***
+Check text apper above the i icon
+    [Documentation]  Megnézi, hogy a partnerek oldalon a i con mögötti szöveg megfelelően jelenik-e meg.
+    [Arguments]  ${text}  ${elem1}  ${elem2}
+    ${szoveg0} =  po_partners.Get the first text of i icon  ${elem1}
+    ${hossz_szoveg0} =  get length  ${szoveg0}
+    ${szoveg1} =  po_partners.Get the full text of i icon  ${elem2}
+    ${hossz} =  get length  ${szoveg1}
+    ${fo_szoveg} =  string of other_string  ${szoveg1}   ${hossz_szoveg0}  ${hossz}
+    log  ${szoveg1}
+    should be true  "${fo_szoveg}" == "${text}"
+
 Finish the registration in the token page
     [Documentation]  A token oldalon befejezi a regisztrációt.
                 ...  A folyamatban megadja a két megfelelő jelszót,
