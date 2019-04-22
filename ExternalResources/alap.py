@@ -37,5 +37,3 @@ def lista(szotar, elem):
         return 1
     else:
         return 0, elemek[i]
-tel = {'János': 4098, 'Simon': 4139, 'Tamás': 'valami'}
-print(lista(tel,'valami2'))

@@ -1,5 +1,6 @@
 *** Variables ***
 &{TITLE_TEXT}  Hun=Partner létrehozása  En=Create partner
+&{EDIT_TITLE_TEXT}  Hun=Partner szerkesztése  En=Edit partner
 &{PARTNER_PROFILE_TITLE_TEXT}  Hun=Partner adatai  En=Partner info
 &{KERESZTNEV_TEXT}  Hun=Keresztnév  En=First Name
 &{VEZNEV_TEXT}  Hun=Vezetéknév  En=Last Name
@@ -41,6 +42,7 @@
 &{JOBCONTACT_TEXT}  Hun=Munkakör  En=Jobtitle
 &{BACKBUTTON_TEXT}  Hun=Vissza a listához  En=Back to list
 &{SAVEBUTTON_TEXT}  Hun=Mentés  En=Save
+&{DELETBUTTON_TEXT}  Hun=Törlés  En=Delete
 &{MAX_KARAKTER_127}  Hun=Kérem legfeljebb 127 karaktert adjon meg
                 ...  En=Please enter no more than 127 characters
 &{ERROR_MAX_ZIPCODE_KARAKTER}  Hun=Kérem legfeljebb 31 karaktert adjon meg

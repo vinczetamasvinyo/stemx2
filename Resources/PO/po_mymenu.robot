@@ -38,7 +38,19 @@ Click the language
     #sleep  2s
 
 Wait the language submenu appear
-    wait until element is visible  id=cdk-overlay-1
+    #wait until element is visible  id=cdk-overlay-1
+    #wait until element is visible  xpath=//*[@class="mat-menu-panel ng-trigger ng-trigger-transformMenu ng-tns-c15-5 mat-menu-before mat-menu-below mat-elevation-z5 ng-star-inserted"]
+    #sleep  2s
+    ${idfomenu} =  get element attribute  //*[@class="cdk-overlay-pane"]  id
+    log  ${idfomenu}
+    ${almenu} =  almenu id szoveg  ${idfomenu}
+    log  ${almenu}
+    wait until element is visible  id=${almenu}
+    #sleep  1s
+    #get element attribute
+    #@{elem} =  SeleniumLibrary.Get WebElements  xpath=//*[@class="mat-menu-content"]
+    #${egye_elem} =  get from list  ${elem}  1
+    #wait until element is visible  ${egye_elem}
 
 Click the english language
     click element  id=menu_change_languageen

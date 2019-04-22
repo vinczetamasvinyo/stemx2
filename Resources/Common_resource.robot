@@ -67,6 +67,16 @@ Login and go to partner edit page
     Go to the partners page via menu
     Chose elem and go the the edit page
 
+Login and go to partner edit page and change language
+    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
+    login_resource.Open Vk login page  ${old}  ${bong}
+    Give regeistration data and click the login button  ${em}  ${pas}
+    Check the login succes or not
+    Go to the partners page via menu
+    Chose elem and go the the edit page
+    Change the language to English via mymenu
+
+
 Login and go to the new partner page and give all data
     [Arguments]  ${oldal}  ${bong}  ${email}  ${jelszo}  ${adat}
     Login and go to the new partner page  ${oldal}  ${bong}  ${email}  ${jelszo}

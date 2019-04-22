@@ -152,6 +152,52 @@ def  szotarban_van_e(szotar, elem):
         print("nincs benne")
     return benne_van
 
+def create_address_string(lan,data):
+    floor = ""
+    door = ""
+    szoveg = ""
+    if lan == "Hun":
+        szoveg = data["zipcode"] + ' ' + data["city"] + ", " + data["street"] \
+                 + " " + data["housenumber"]
+        if "floor" in data:
+            floor = " "+data["floor"]+". Emelet"
+        if "door"  in data:
+            door = " "+data["door"]
+        szoveg = szoveg + floor + door
+    elif lan == "En":
+        szoveg = data["door"]+" "+data["floor"]+". Floor "+data["housenumber"]+" "\
+                 +data["street"]+", "+data["city"]+" "+data["zipcode"]
+    return szoveg
+
+def almenu_id_szoveg(szoveg):
+    szoveg2=szoveg[12:len(szoveg)]
+    szam = int(szoveg2)+1
+    ujszoveg = "cdk-overlay-"+str(szam)
+    return ujszoveg
+
+""""
+def create_address_string(lan,data):
+    if lan == "Hun":
+        floor = ""
+        door  = ""        
+        szoveg = data["Companyzipcode"] + ' ' + data["Companycity"] + ", " + data["Companystreet"] \
+                 + " " + data["Companyhousenumber"]
+        if "Companyfloor" in data:
+            floor = " "+data["Companyfloor"]+". Emelet"
+        if "Companydoor"  in data:
+            door = " "+data["Companydoor"]
+        szoveg = szoveg + floor + door
+    elif lan == "En":
+        szoveg = data["Companydoor"]+" "+data["Companyfloor"]+". Floor "+data["Companyhousenumber"]+" "\
+                 +data["Companystreet"]+", "+data["Companycity"]+" "+data["Companyzipcode"]
+    return szoveg
+"""
+"""    
+cim = {"Zipcode": "1144", "Companycity": "Budapest","Companystreet":"Füredi utca",
+       "Companyhousenumber":"11/D","Companyfloor": "10","Companydoor":"41"
+       }
+print(create_address_string("En",cim))
+"""
 #driver = webdriver.Chrome('chromedriver.exe')
 #driver.get('http://dev.varoskartya.com')
 #check_the_page_finish_loaded()

@@ -33,6 +33,8 @@ ${PO_PARTNERS_TITLE_ID} =  xpath=//div[@class='columns small-12']/h1[1]
 ${PO_PARTNERS_PARTNER_NEVE_TEXT_ID} =  //label[1]
 ${PO_PARTNERS_EMAILCIM_TEXT_ID} =  //label[2]
 ${PO_PARTNERS_ALLAPOT_TEXT_ID} =  //label[3]
+${PO_PARTNERS_TITTLE_H3} =  xpath=//h3
+${PO_PARTNERS_TITTLE_H4} =  xpath=//h4
 ${PO_PARTNERS_BUTTON_ID} =  xpath=//*[@class="button secondary hollow"]
 ${PO_PARTNERS_BUTTON_TEXT_ID} =  ${PO_PARTNERS_BUTTON_ID}/span
 #${PO_PARTNERS_BUTTON_TEXT_ID} =  xpath=//*[@class="button secondary hollow"]/span
@@ -507,6 +509,10 @@ Waiting the new partner page loaded
     [Documentation]  Megvárjva amíg a partner létrehozása oldal betöltődik.
     wait until element is visible  ${PO_PARTNERS_FIRSTNAME_INPUT_ID}
 
+waiting the edit partner page loaded
+    [Documentation]  Megvárjva amíg a partner szerkesztése oldal betöltődik.
+    wait until element is visible  ${PO_P_PAGE_INPUT_COMPANY_COMPANY_NAME_ID}
+
 Get the firtname text
     [Documentation]  Visszaadja a keresztnév szöveg értékét
                 ...  a partner létrehozása oldalról.
@@ -567,6 +573,16 @@ Get the company country text
     [Documentation]  Visszaadja a cégher tartozó oszág text-jét.
     @{elem} =  SeleniumLibrary.Get WebElements  ${PO_P_PAGE_COMPANY_TEXT_ID}
     ${company_country} =  get from list  ${elem}  3
+    ${szoveg1} =  get text  ${company_country}
+    @{szoveg_lista} =  mylibrary.split the text  ${szoveg1}  ${SPACE}
+    ${szoveg} =  set variable  ${szoveg_lista}[0]
+    [Return]  ${szoveg}
+
+Get listbox label text
+    [Documentation]  Visszaadja a listboxhoz tartozó text-jét.
+    [Arguments]  ${hely}  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${hely}
+    ${company_country} =  get from list  ${elem}  ${index}
     ${szoveg1} =  get text  ${company_country}
     @{szoveg_lista} =  mylibrary.split the text  ${szoveg1}  ${SPACE}
     ${szoveg} =  set variable  ${szoveg_lista}[0]
@@ -1285,3 +1301,19 @@ Get the company information title
     #@{szovegek} =  mylibrary.split the text  ${szoveg}  ${SPACE}
     #mylibrary.split the text  ${valami}  ${SPACE}
     #[Return]  ${egye_elem}
+
+Get company name value from partner details page
+    [Documentation]  A partner részleteinek az olaláról visszaadja a cég nevét.
+    @{elem} =  SeleniumLibrary.Get WebElements  xpath=//*[@class="box-title"]
+    ${egye_elem} =  get from list  ${elem}  0
+    ${szoveg} =  get text  ${egye_elem}
+    Log  ${szoveg}
+
+Get common value from partner details page
+    [Documentation]  A partner részleteinek az olaláról visszaadja a megadott elemet.
+    [Arguments]  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  xpath=//*[@class="lead"]
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    ${szoveg} =  get text  ${egye_elem}
+    Log  ${szoveg}
+    [Return]  ${szoveg}

@@ -4,9 +4,15 @@ Resource   login_resource.robot
 Resource  variables.robot
 Variables  variable.py
 Resource  PO/po_menu.robot
+Resource  PO/po_partners.robot
 #Library  Collections
 Resource  Common_resource.robot
+Resource  variables/partner_megtekintese_variable.robot
+Resource  partner_letre_folyamat_resource.robot
+Resource  variables/partner_page_variable.robot
 Resource  variables/partner_adat_megtekintese_variable.robot
+
+
 
 *** Keywords ***
 Check the title of partner details
@@ -128,3 +134,104 @@ Choose and open one partners details
     scroll to element  ${elem}  100
     click element  ${elem}
     Wait the partner details page loaded
+
+Create cim
+    [Arguments]  ${da}
+    ${address} =  create dictionary
+    ${country} =  szotarban van e  ${da}  Companycountry
+    run keyword if  ${country}==${TRUE}  set to dictionary  ${address}  country  ${da.Companycountry}
+    ${zip} =  szotarban van e  ${da}  Companyzipcode
+    run keyword if  ${zip}==${TRUE}  set to dictionary  ${address}  zipcode  ${da.Companyzipcode}
+    ${county} =  szotarban van e  ${da}  Companycounty
+    run keyword if  ${county}==${TRUE}  set to dictionary  ${address}  county  ${da.Companycounty}
+    ${city} =  szotarban van e  ${da}  Companycity
+    run keyword if  ${city}==${TRUE}  set to dictionary  ${address}  city  ${da.Companycity}
+    ${street} =  szotarban van e  ${da}  Companystreet
+    run keyword if  ${street}==${TRUE}  set to dictionary  ${address}  street  ${da.Companystreet}
+    ${housenumber} =  szotarban van e  ${da}  Companyhousenumber
+    run keyword if  ${housenumber}==${TRUE}  set to dictionary  ${address}  housenumber  ${da.Companyhousenumber}
+    ${door} =  szotarban van e  ${da}  Companydoor
+    run keyword if  ${door}==${TRUE}  set to dictionary  ${address}  door  ${da.Companydoor}
+    ${floor} =  szotarban van e  ${da}  Companyfloor
+    run keyword if  ${floor}==${TRUE}  set to dictionary  ${address}  floor  ${da.Companyfloor}
+    set suite variable  ${address}
+    log  ${address}
+    #log to console  ${address}
+
+Create billingaddress
+    [Arguments]  ${da}
+    ${baddress} =  create dictionary
+    ${country} =  szotarban van e  ${da}  Billingcountry
+    run keyword if  ${country}==${TRUE}  set to dictionary  ${baddress}  country  ${da.Billingcountry}
+    ${zip} =  szotarban van e  ${da}  Billingzipcode
+    run keyword if  ${zip}==${TRUE}  set to dictionary  ${baddress}  zipcode  ${da.Billingzipcode}
+    ${county} =  szotarban van e  ${da}  Billingcounty
+    run keyword if  ${county}==${TRUE}  set to dictionary  ${baddress}  county  ${da.Billingcounty}
+    ${city} =  szotarban van e  ${da}  Billingcity
+    run keyword if  ${city}==${TRUE}  set to dictionary  ${baddress}  city  ${da.Billingcity}
+    ${street} =  szotarban van e  ${da}  Billingstreet
+    run keyword if  ${street}==${TRUE}  set to dictionary  ${baddress}  street  ${da.Billingstreet}
+    ${housenumber} =  szotarban van e  ${da}  Billinghousenumber
+    run keyword if  ${housenumber}==${TRUE}  set to dictionary  ${baddress}  housenumber  ${da.Billinghousenumber}
+    ${door} =  szotarban van e  ${da}  Companydoor
+    run keyword if  ${door}==${TRUE}  set to dictionary  ${baddress}  door  ${da.Billingdoor}
+    ${floor} =  szotarban van e  ${da}  Companyfloor
+    run keyword if  ${floor}==${TRUE}  set to dictionary  ${baddress}  floor  ${da.Billingfloor}
+    set suite variable  ${baddress}
+    log  ${baddress}
+    #log to console  ${baddress}
+
+
+
+Login and create partners data
+    [Arguments]  ${em}  ${password}
+    Create cim  ${Partner_data2}
+    create billingaddress  ${Partner_data2}
+    ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}
+    ${Partner_data2.Email} =  set variable  ${email}
+    go to  ${OLDAL_URL}
+	Login and go the new partner page  ${em}  ${password}
+	Create new partner  ${Partner_data2}
+	give the email for the search input  ${email}
+    po_partners.Click the search button
+    sleep  4s
+    Choose and open one partners details
+    Wait the partner details page loaded
+
+Login and create partners data and change english
+    [Arguments]  ${em}  ${password}
+    Login and create partners data  ${em}  ${password}
+    change the language to english via mymenu
+
+Ellenorzes
+    [Arguments]  ${lan}  ${type}  ${adat}  ${index}
+    log  ${adat}
+    Run keyword if  "${type}" == "szoveg"  Check value of partner details common  ${adat}  ${index}
+    ...  ELSE IF  "${type}" == "cim"  Check address value of partner details  ${lan}  ${adat}  ${index}
+    #${szoveg} =  run keyword if  "${type}" == "szoveg"  Run Keywords
+    #...  Check value of partner details common  ${adat}  ${index}
+    #${szoveg} =  Check value of partner details common  ${adat}  ${index}
+
+Ellenorzes2
+    [Arguments]  ${lan}  ${type}  ${adat}  ${index}
+    Run keyword if  "${type}" == "szoveg"  run keywords
+    ...   ${szoveg2} =  set variable  valami
+
+Check value of partner details common2
+    [Arguments]  ${szoveg}  ${index}
+    ${ertek} =  Get common value from partner details page  ${index}
+    [Return]  ${ertek}
+
+
+Check value of partner details common
+    [Arguments]  ${szoveg}  ${index}
+    ${ertek} =  Get common value from partner details page  ${index}
+    should be equal  ${szoveg}  ${ertek}
+    #[Return]  ${ertek}
+    #should be equal  ${szoveg}  ${ertek}
+
+Check address value of partner details
+    [Arguments]  ${lan}  ${data}  ${index}
+     ${cim} =  create address string  ${lan}  ${data}
+     ${ertek} =  Get common value from partner details page  ${index}
+     should be equal  ${ertek}  ${cim}

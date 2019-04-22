@@ -7,6 +7,8 @@ Resource  PO/po_menu.robot
 Library  Collections
 Resource  Common_resource.robot
 Resource  partner_letrehozasa_szoveg_resource.robot
+Resource  variables/new_partner_variables.robot
+Resource  PO/po_partners.robot
 
 *** Keywords ***
 Chose elem and go the the edit page
@@ -18,4 +20,21 @@ Chose elem and go the the edit page
     ${elem} =  get from list  ${ikon2}  ${random}
     scroll to element  ${elem}  100
     click element  ${elem}
-    sleep  3s
+    waiting the edit partner page loaded
+    #sleep  3s
+
+Get text from edit of partner page
+    [Documentation]  Visszaadja az egyszerű label-nek a szövegét.
+    [Arguments]  ${path}  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${path}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    ${szoveg} =  get text  ${egye_elem}
+    Log  ${szoveg}
+    [Return]  ${szoveg}
+
+Check the text on the edit partner page
+    [Documentation]  megnézi, hogy az adott szöveg megfelelő-e.
+    [Arguments]  ${type}  ${szoveg}  ${path}  ${index}
+    ${szoveg_on_the_page} =  run keyword if  "${type}" == "szoveg"  Get text from edit of partner page  ${path}  ${index}
+    ...  ELSE IF  "${type}" == "list"  Get listbox label text  ${path}  ${index}
+    should be equal  ${szoveg}  ${szoveg_on_the_page}
