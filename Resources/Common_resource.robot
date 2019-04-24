@@ -212,5 +212,31 @@ Give the all partner data
     #click element  xpath=//*[@formcontrolname="firstName"]
     #sleep  2s
 
+Go to listbox and get all items path
+    [Arguments]  ${xpath}  ${class}
+    scroll to element  ${xpath}  100
+    click element  ${xpath}
+    ${szotar} =  Get listbox item names  ${xpath}  ${class}
+    [Return]  ${szotar}
 
+Get listbox item names
+    [Documentation]  Visszaadja a listbox-ban lévő elemek index-ét,
+                ...  illetve nevét egy szótárban.
+                ...  A szótár kulcsa a sorszám a möggött lévő elem pedig az érték.
+    [Arguments]  ${xpath}  ${class}
+    ${valami} =  get element attribute  ${xpath}  ${class}
+    log  ${valami}
+    @{elemek} =  mylibrary.split the text  ${valami}  ${SPACE}
+    log  ${elemek}[0]
+    log  ${elemek}
+    ${szotar} =  create dictionary
+    ${i} =  set variable  0
+    :FOR  ${valt}  IN  @{elemek}
+    \  ${i} =  Evaluate  ${i} + 1
+    \  ${resz} =  set variable  //*[@id="${valt}"]/span
+    \  log  ${resz}
+    \  ${a} =  convert to string  ${i}
+    \  set to dictionary  ${szotar}  ${a}  ${resz}
+    log  ${szotar}
+    [Return]  ${szotar}
 

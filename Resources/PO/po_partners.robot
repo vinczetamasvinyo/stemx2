@@ -138,6 +138,8 @@ Get status listbox item
     [Return]  ${szotar}
 
 
+
+
 Get the mentes button text
     [Documentation]  Visszaadja a partners meghívása oldalon található mentés gomb szövegét.
     ${szoveg} =  get text  ${PO_PARTNERS_LABEL_ID_MENTES_GOMB}

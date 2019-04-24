@@ -15,6 +15,8 @@ ${PO_USERPROFILE_RADIO_WOMAN_ID} =  mat-radio-2
 ${PO_USERPROFILE_SAVE_BUTTON_ID} =  xpath=//button[@class="button success"]
 ${ID} =  xpath=//mat-select[@formcontrolname="country"]
 ${ID2} =  //app-billing-information//mat-select[@formcontrolname="country"]
+
+
 *** Keywords ***
 Waiting the myprofil page loaded
     [Documentation]  Megvárja még a fiókom oldal betöltődik.
@@ -160,6 +162,10 @@ Give the country
     click element  xpath=//*[@id="mat-option-7"]
 
 Get listbox item xpath
+    [Documentation]  A kiválaszott paraméterben megadott elem xpath értéket visszaadja.
+                ...  1. xpath paraméterben annak az elemnek az elérését kell megadni ami
+                ...  a lista id-kat tartalmazza.
+                ...  2. a class-ban pedig az elemet ami az id-kat tartalmazza.
     [Arguments]  ${kivlasztott}  ${xpath}  ${class}
     ${valami} =  get element attribute  ${xpath}  ${class}
     log  ${valami}

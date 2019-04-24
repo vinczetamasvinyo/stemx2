@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Resource  po_partners.robot
+Resource  po_partner_roles.robot
 
 
 *** Variables ***
@@ -46,6 +47,20 @@ Wait the partner menu is visiable
 Click the partner menu
     sleep  1s
     click element  ${PO_MENU_FELHASZNALOK_KARB_PARTNER_ID}
+
+Click the partner role menu
+    click element  id=partner_roles_submenu
+
+Wait until partner role submenu visible
+    wait until element is visible  id=partner_roles_submenu
+
+Go to the partner role via menu
+    Click the felhasznalok karbantartasa
+    Wait the felhasznalaok karbantartasa submenu visiable
+    Wait until partner role submenu visible
+    Click the partner role menu
+    po_partner_roles.Wait the partner role page loaded
+
 
 Go to the partners page via menu
     Click the felhasznalok karbantartasa
