@@ -13,7 +13,11 @@ test1
     login_resource.Open Vk login page  ${OLDAL_URL}  ${bogeszo}
     Give login date and login  ${login.email}  ${login.password}
     Go to the partner role via menu
-    click element  xpath=//new-button
+    sleep  4s
+    ${edit} =  SeleniumLibrary.Get WebElementS  xpath=//*[@class="material-icons edit-primary"]
+    ${edit1} =  get from list  ${edit}  5
+    click element  ${edit1}
+    #click element  xpath=//new-button
     sleep  3s
     # jogok amik nincsenek hozzáadva még.
     ${jogok} =  SeleniumLibrary.Get WebElementS  xpath=//*[@class="mat-card ng-star-inserted"]
@@ -33,12 +37,12 @@ test1
     \  set to dictionary  ${al}  jogok  ${EMPTY}
     \  set to dictionary  ${szotar}  ${szoveg_lista}[0]  ${al}
     log  ${szotar}
-    ${index} =  set variable  ${szotar}[Média kezelése][Index]
-    log  ${index}
-    log  ${jogok}[${index}]
-    click element  ${jogok}[${index}]
-    ${v1}  ${v2} =  check the elem contain in parent2  ${jogok}[${index}]  .//button
-    click element  ${v2}
+    #${index} =  set variable  ${szotar}[Média kezelése][Index]
+    #log  ${index}
+    #log  ${jogok}[${index}]
+    #click element  ${jogok}[${index}]
+    #${v1}  ${v2} =  check the elem contain in parent2  ${jogok}[${index}]  .//button
+    #click element  ${v2}
     sleep  5s
     #click element  xpath=//*[@class="mat-expansion-panel ng-tns-c5-41 mat-expanded mat-expansion-panel-spacing"]//mat-checkbox
     #click element  xpath=//*[@class="mat-expansion-panel ng-tns-c5-41 mat-expanded mat-expansion-panel-spacing"]//mat-checkbox
@@ -51,6 +55,8 @@ test1
     # Hozzáadott jogosultságok lekérdezése
     ${szotar1} =  create dictionary
     ${roles} =  SeleniumLibrary.Get WebElementS  xpath=//*[@class="accordion-container"]//mat-expansion-panel-header
+    Open roles  ${roles}
+    sleep  5s
     :FOR  ${role}  IN  @{roles}
     \  ${szoveg} =  get text  ${role}
     \  ${szoveg_lista} =  mylibrary.split the text  ${szoveg}  \n
@@ -71,6 +77,15 @@ test1
 
 
 *** Keywords ***
+Open roles
+    [Arguments]  ${roles}
+    :FOR  ${role}  IN  @{roles}
+    \  ${class} =  get element attribute   ${role}  class
+    \  ${nyitvan} =  Evaluate  "mat-expanded" in "${class}"
+    \  log  ${nyitvan}
+    \  run keyword if  ${nyitvan} == False  click element  ${role}
+    \  sleep  3s
+
 Create jog list
     [Arguments]  ${id}
     ${checkboxs_c} =  get element count  xpath=//*[@aria-labelledby="${id}"]//mat-checkbox

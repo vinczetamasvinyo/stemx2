@@ -3,6 +3,15 @@ Library  SeleniumLibrary
 Resource  ../Resources/Common_resource.robot
 
 *** Test Cases ***
+Test0
+    [Tags]  most
+    log  valami
+    ${split_text} =  set variable  \n
+    #${valami} =  set variable  \n
+    run keyword if  '${split_text}'!='üres'
+    ...  Run Keywords
+    ...  log  ${split_text}
+
 test1
     ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}
     go to  ${OLDAL_URL}

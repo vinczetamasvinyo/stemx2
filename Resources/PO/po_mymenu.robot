@@ -15,7 +15,7 @@ Logout
     [Documentation]  Elvégzi a logout-t.
     Click the Mymenu
     Click the logout submenu
-    Waiting page load an apper the element
+
 
 Click the Mymenu
     [Documentation]  A Mymenu ikonkra kattint
@@ -31,7 +31,9 @@ Click the myprofil
 Click the logout submenu
     [Documentation]  A mymenu menün belül a kijelentkezésre kattint.
     click element  ${PO_MYMENU_SUBMENU_LOGOUT_ID}
-    po_login.Waiting the login pager loaded
+    #po_login.Waiting the login pager loaded
+    run keyword if  "${DE}" == "stemc"  Waiting page load an apper the element
+    ...  ELSE IF  "${DE}" == "stemx"  Wait the stemx login page loaded
 
 Click the language
     click element  id=menu_language

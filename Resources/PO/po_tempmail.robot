@@ -6,6 +6,15 @@ Resource  ../../Resources/Common.robot
 ${PO_TEMPMAIL_URL} =  https://temp-mail.org/
 ${PO_TEMPMAIL_EMAIL_ID} =  id=mail
 ${PO_TEMPMAIL_WAITING} =  20
+&{PO_TEMPMAIL_SUBJECT}  stemx=Regisztráció  stemc=Meghívás elfogadása
+${PO_TEMPMAIL_SUBJECT_LINK} =  link=${PO_TEMPMAIL_SUBJECT.${DE}}
+${PO_TEMPMAIL_BODY_LINK} =  link=Regisztáció befejezése
+
+&{Tempmail}  url=${PO_TEMPMAIL_URL}
+        ...  subject=${PO_TEMPMAIL_SUBJECT.${DE}}
+        ...  timeout=${PO_TEMPMAIL_WAITING}
+        ...  subjectlink=${PO_TEMPMAIL_SUBJECT_LINK}
+        ...  bodylink=${PO_TEMPMAIL_BODY_LINK}
 
 *** Keywords ***
 Go tempmail and wait the reg email az open
@@ -20,7 +29,7 @@ Go tempmail and wait the reg email az open
     go to  ${adat.url}
     po_tempmail.Waiting and click the mail in themp page  ${adat.subject}  ${adat.timeout}  ${adat.subjectlink}
     #TODO: megnézni, hogy a partial link miért nem működik.
-    Scroll and click the link in the email  ${adat.bodylink}  100
+    Scroll and click the link in the email  ${adat.bodylink}  20
 
 Get the email address from the tempmail
     [Documentation]  Megnyitja a böngészőt és temp-emil helyről visszaadja a megjelenő email címet.
@@ -43,7 +52,8 @@ Waiting and click the mail in themp page
     sleep  1s
 
 Scroll and click the link in the email
-    [Documentation]  A megnyitott email-ben legörget a linkig, majd rákattint a megadott linkre.
+    [Documentation]  A megnyitott email-ben legörget a linkig, majd
+                ...  rákattint a megadott linkre.
     [Arguments]  ${link_id}  ${scroll_space}
     sleep  1s
     wait until element is visible  ${link_id}

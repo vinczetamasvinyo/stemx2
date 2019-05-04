@@ -1,15 +1,16 @@
 *** Variables ***
 ${PARTNER_INVITE_FOLYAMAT_TEMP_URL} =  https://temp-mail.org/
-${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Meghívás elfogadása
+#${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Meghívás elfogadása
+${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Regisztráció
 ${PARTNER_INVITE_FOLYAMATA_MAIL_TIMEOUT} =  120
-${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Meghívás elfogadása
+#${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Meghívás elfogadása
+${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Regisztráció
 ${PARTNER_INVITE_FOLYAMATA_JO_PASSWORD} =  Vinyo123456
-${P_I_F_BODY_LINK} =  link=Regisztáció befejezése
 
 &{Partner_data}  Firstname=Vincze
             ...  Lastname=Tamás
             ...  Email=${EMPTY}
-            ...  Companyname=Valami cég
+            ...  Companyname=Vinyó partner
             ...  Companylongname=Valami cégnév hosszú név
             ...  Companyregnumber=12123121212
             ...  Companycountry=Magyarország
@@ -64,10 +65,3 @@ ${P_I_F_BODY_LINK} =  link=Regisztáció befejezése
             ...  Contactlastname=Tomi
             ...  Contactphonenumber=+36209602628
             ...  Contactemail=tamas.vincze@interticket.hu
-
-
-&{Tempmail}  url=${PARTNER_INVITE_FOLYAMAT_TEMP_URL}
-        ...  subject=Meghívás elfogadása
-        ...  timeout=120
-        ...  subjectlink=${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID}
-        ...  bodylink=${P_I_F_BODY_LINK}

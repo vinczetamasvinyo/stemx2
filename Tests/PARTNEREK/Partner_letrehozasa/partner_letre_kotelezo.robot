@@ -3,10 +3,11 @@ Documentation  A suite azokat a teszteseteket tartalmazza amelyek megnézik, hog
           ...  a partner felvitele során melyik mező kötelező, vagy nem kötelező.
 
 Resource  ../../../Resources/partner_letre_kotelezo_resource.robot
-Suite Setup  Login and go the new partner page and push the mentes  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}
+Suite Setup  Login and go the new partner page and push the mentes  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  Common.End web test
 
 *** Variables ***
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
 ${Nyelv} =  Hun
 &{Kotelezo}  Hun=A mező kitöltése kötelező.  En=This field is required.
 
@@ -225,7 +226,7 @@ Test the house of billing info is mandantory
     ${housenumber} =  Get housenumber div object of billinginfo
     Check the error message appear and the error text value  ${housenumber}  ${Kotelezo.${Nyelv}}
 
-Test the house of billing info is mandantory
+Test the door of billing info is mandantory
     [Documentation]  A teszt során azt nézzü meg, hogy a céginformáció/számlázási résznél
                 ...  az ajtónál megjelenik-e a kötelező hibaüzenet.
                 ...  Nem kell megjelennie a hibaüzentnek.

@@ -3,10 +3,11 @@ Documentation  A suite azokat a teszteseteket tartalmazza amelyek megnézik, hog
           ...  a partner felvitele során melyik mező kötelező, vagy nem kötelező.
 
 Resource  ../../../Resources/partner_letre_kotelezo_resource.robot
-Suite Setup  Login go new partner page and change englis and push the mentes  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}
+Suite Setup  Login go new partner page and change englis and push the mentes  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  Common.End web test
 
 *** Variables ***
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
 ${Nyelv} =  En
 &{Kotelezo}  Hun=A mező kitöltése kötelező.  En=This field is required.
 

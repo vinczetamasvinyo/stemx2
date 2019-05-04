@@ -14,6 +14,7 @@ Resource  PO/po_mymenu.robot
 Resource  PO/po_partners.robot
 Resource  Common_resource.robot
 Resource  variables/partner_letre_variable.robot
+Library  ../ExternalResources/mylibrary.py
 
 *** Keywords ***
 Create new partner

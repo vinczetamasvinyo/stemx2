@@ -111,26 +111,32 @@ Check common icon text
 
 Login go partners page and choose one partner details
     [Arguments]  ${old}  ${bong}  ${login}
-    Login and go to partner details page  ${old}  ${bong}  ${login.email}  ${login.password}
+    #Login and go to partner details page  ${old}  ${bong}  ${login.email}  ${login.password}
+    Open browser and login to stemx or stemxcity  ${old}  ${bong}  ${login}
+    Go to the partners page via menu
     Choose and open one partners details
     Wait the partner details page loaded
 
 Login go partners page choose one partner change english
     [Arguments]  ${old}  ${bong}  ${login}
-    Login and go to partner details page  ${old}  ${bong}  ${login.email}  ${login.password}
-    Choose and open one partners details
-    Wait the partner details page loaded
+    Login go partners page and choose one partner details  ${old}  ${bong}  ${login}
+    #Login and go to partner details page  ${old}  ${bong}  ${login.email}  ${login.password}
+    #Choose and open one partners details
+    #Wait the partner details page loaded
     change the language to english via mymenu
 
 Choose and open one partners details
-    ${ikon} =  get element count  css=a.link-action-icon.link-icon
+    ${ikon} =  get element count  xpath=//*[@class="material-icons action-primary"]
+    #${ikon} =  get element count  css=a.link-action-icon.link-icon
     log  ${ikon}
-    ${ikon2} =  SeleniumLibrary.Get WebElementS  css=a.link-action-icon.link-icon
-    ${random} =  Evaluate  random.randint(0, ${ikon}-1)  modules=random
+    @{ikon2} =  SeleniumLibrary.Get WebElementS  xpath=//*[@class="material-icons action-primary"]
+    #${ikon2} =  SeleniumLibrary.Get WebElementS  css=a.link-action-icon.link-icon
+    ${random} =  Evaluate  random.randint(1, ${ikon})  modules=random
     log  ${random}
     #click element  ${ikon2}[0]
     #click element  ${ikon2}[${random}]
-    ${elem} =  get from list  ${ikon2}  ${random}
+    ${h} =  Evaluate  ${random}-1
+    ${elem} =  get from list  ${ikon2}  ${h}
     scroll to element  ${elem}  100
     click element  ${elem}
     Wait the partner details page loaded
@@ -184,13 +190,13 @@ Create billingaddress
 
 
 Login and create partners data
-    [Arguments]  ${em}  ${password}
+    [Arguments]  ${login_data}
     Create cim  ${Partner_data2}
     create billingaddress  ${Partner_data2}
     ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}
     ${Partner_data2.Email} =  set variable  ${email}
     go to  ${OLDAL_URL}
-	Login and go the new partner page  ${em}  ${password}
+	Login and go the new partner page  ${login_data}
 	Create new partner  ${Partner_data2}
 	give the email for the search input  ${email}
     po_partners.Click the search button

@@ -2,6 +2,7 @@
 Library  SeleniumLibrary
 Resource  po_partners.robot
 Resource  po_partner_roles.robot
+Resource  po_users.robot
 
 
 *** Variables ***
@@ -10,11 +11,17 @@ ${PO_MENU_JEGYPENZTER_ID} =  xpath=//a[contains(text(),'Jegypénztár')]
 #${PO_MENU_JEGYPENZTER_SUBMENU_ID} =  cdk-accordion-child-3
 ${PO_MENU_JEGYPENZTER_SUBMENU_ID} =  cdk-accordion-child-2
 ${PO_MENU_ELADAS_SUBMENU_ID} =  link=Eladás
-${PO_MENU_FELHASZNALOK_KARB_ID} =  id=mat-expansion-panel-header-0
+#${PO_MENU_FELHASZNALOK_KARB_ID} =  id=mat-expansion-panel-header-0
+${PO_MENU_FELHASZNALOK_KARB_ID} =  id=user_management_menu
 ${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID} =  id=cdk-accordion-child-0
 #${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID} =  cdk-accordion-child-2
 ${PO_MENU_FELHASZNALOK_KARB_PARTNER_ID} =  id=partners_submenu
-
+${PO_MENU_FELHASZNALOK_KARB_USER_MENU_ID} =  id=users_submenu
+${PO_MENU_VENUES_ID} =  id=mat-expansion-panel-header-4
+${PO_MENU_VENUES_SUMENU_ID} =  id=cdk-accordion-child-4
+${PO_MENU_AUDITORIUMS_SUMENU_ID} =  xpath=//a[contains(text(),'Nézőterek')]
+#${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//a[contains(text(),'Előadóhelyek') or contains(text(),'Venues')]
+${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//*[@ng-reflect-router-link="/admin/event/venues"]
 *** Keywords ***
 Click the jegypenzter menu and wait for the submenu
     click element  ${PO_MENU_JEGYPENZTER_ID}
@@ -38,11 +45,17 @@ Click the felhasznalok karbantartasa
 
 Wait the felhasznalaok karbantartasa submenu visiable
     [Documentation]  Megvárjuk míg a submenu megjelenik.
-    wait until element is visible  ${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID}
+    ${sumenu} =  get element attribute  xpath=//*[@id="user_management_menu"]//mat-expansion-panel-header  aria-controls
+    wait until element is visible  xpath=//*[@id="${sumenu}"]
+    #wait until element is visible  ${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID}
 
 Wait the partner menu is visiable
     [Documentation]  Megvárjuk míg a partnerek menüpont megjelenik
     wait until element is visible  ${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID}
+
+Click the users menu
+    [Documentation]  Rákattintunk a Felhasználók almenüre.
+    click element  ${PO_MENU_FELHASZNALOK_KARB_USER_MENU_ID}
 
 Click the partner menu
     sleep  1s
@@ -67,4 +80,27 @@ Go to the partners page via menu
     Wait the felhasznalaok karbantartasa submenu visiable
     Click the partner menu
     Waiting the partner page loaded
-    #sleep  2s
+
+Go to the users page via menu
+    Click the felhasznalok karbantartasa
+    Wait the felhasznalaok karbantartasa submenu visiable
+    Click the users menu
+    Wait the users page loaded
+
+Click the Venues menu
+    [Documentation]  A jobb oldalon a Venues menüre kattint.
+    click element  ${PO_MENU_VENUES_ID}
+
+Wait until the venues submenu visible
+    [Documentation]  Megvárja amíg a venues submenu megjelenik.
+    wait until element is visible  ${PO_MENU_VENUES_SUMENU_ID}
+
+Click the auditoriums submenu
+    [Documentation]  A nézőterek almenüre kattint.
+    wait until element is visible  ${PO_MENU_AUDITORIUMS_SUMENU_ID}
+    click element  ${PO_MENU_AUDITORIUMS_SUMENU_ID}
+
+Click the venues submenu
+    [Documentation]  Az előadóhelyek almenüre kattint
+    wait until element is visible  ${PO_MENU_VENUESS_SUMENU_ID}
+    click element  ${PO_MENU_VENUESS_SUMENU_ID}

@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Resource  PO/po_login.robot
+Resource  PO/po_clogin_page.robot
 Resource  Common.robot
 Library  ../ExternalResources/mylibrary.py
 Resource  variables/login_nyelv.robot
@@ -26,6 +27,54 @@ Open Vk login page and changed english
 
 Waiting for login page will load
     po_login.Waiting page load an apper the element
+
+Open browser and login to stemx or stemxcity
+    [Arguments]  ${old}  ${bong}  ${logindata}
+    [Documentation]  Ez a következőket csinálja:
+    ...  1. Megnyitja a böngészőt és elnavigál a megadott oldalra.
+    ...     old, és bong paraméterben kapja meg ezeket az adatokat.
+    ...  2. Elindítja a login folyamatot amiben eldől, hogy melyik
+    ...     bejelentkezési folyamat fusson le.
+    common.Begin web test  ${old}  ${bong}
+    Login to stemx or stemxcity  ${logindata}
+
+Login to stemx or stemxcity
+    [Arguments]   ${logindata}
+    run keyword if  "${DE}" == "stemc"  Login to stemxcity  ${logindata}
+    ...  ELSE IF  "${DE}" == "stemx"  Login to stemx  ${logindata}
+
+Login to stemxcity
+    [Arguments]  ${logindata}
+    Waiting for login page will load
+    Give login date and login  ${logindata.email}  ${logindata.password}
+
+Login to stemx
+    [Arguments]  ${logindata}
+    Wait the stemx login page loaded
+    login_resource.Choose partner on the login page  ${logindata.partner}
+    Push the login button on the stemx login page
+    Waiting clogin page loaded
+    Give the login data on the clogin page  ${logindata.email}  ${logindata.password}
+    Push the login button on the clogin page
+    Check the login succes or not
+
+Login to stemx after user give the password in the invite process
+    [Arguments]  ${logindata}
+    Wait the stemx login page loaded
+    login_resource.Choose partner on the login page  ${logindata.partner}
+    Push the login button on the stemx login page
+    Check the login succes or not
+
+Choose partner on the login page
+    [Arguments]  ${item}
+    scrool to partner listbox
+    #scroll to element  ${PO_LOGIN_LISTBOX}  100
+    Click the partner listbox
+    #click element  ${PO_LOGIN_LISTBOX}
+    Wait the partner listbox visiable
+    #wait until element is visible  ${PO_LOGIN_PANEL}
+    ${el} =  po_login.Get partner listbox item on the login page  ${item}
+    click element  ${el}
 
 Give login date and login
     [Documentation]  A login oldalon megadja a belépéshez szükséges adatokat

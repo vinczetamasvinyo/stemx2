@@ -4,6 +4,8 @@ Documentation  A suite azokat a teszteket tartalmazza amely során megnézzük,
           ...  nem kötelezők.
 
 Library  SeleniumLibrary
+Resource  ../Common.robot
+Resource  ../Common_resource.robot
 
 *** Variables ***
 ${PO_LOGIN_CHECK_TEXT_FOR_LOADED} =  Jelentkezzen be a regisztrált fiókjával!
@@ -37,8 +39,35 @@ ${PO_LOGIN_TOKE_INPUT_FIELD_ID} =  xpath=//*[@formcontrolname="token"]
 ${PO_LOGIN_DELETE_PRESSKEY} =  \\8
 ${PO_LOGIN_TOKEN_ERROR_ID} =  xpath=//*[@class="toast-error toast ng-trigger ng-trigger-flyInOut"]
 ${PO_LOGIN_TOKEN_ERROR_TEXT_ID} =  xpath=//*[@role="alertdialog"]
+${PO_LOGIN_LISTBOX} =  xpath=//*[@formcontrolname="partnerId"]
+${PO_LOGIN_PANEL} =  xpath=//*[@class="cdk-overlay-pane"]
+${PO_LOGIN_LISTBOX_Class_ID} =  aria-owns
+${PO_LOGIN_BUTTON_STEMX_ID} =  xpath=//*[@class="button expanded"]
 
 *** Keywords ***
+scrool to partner listbox
+    scroll to element  ${PO_LOGIN_LISTBOX}  100
+
+Click the partner listbox
+     click element  ${PO_LOGIN_LISTBOX}
+
+Wait the partner listbox visiable
+    wait until element is visible  ${PO_LOGIN_PANEL}
+
+Get partner listbox item on the login page
+    [Arguments]  ${item}
+    ${elem} =  Common_resource.Get listbox item xpath  ${item}  ${PO_LOGIN_LISTBOX}  ${PO_LOGIN_LISTBOX_Class_ID}
+    [Return]  ${elem}
+
+Wait the stemx login page loaded
+    [Documentation]  Megvárja amíg a stemx login page betöltődik.
+    wait until element is visible  ${PO_LOGIN_BUTTON_STEMX_ID}  10  error="A stemx login page nem töltődött be"
+
+Push the login button on the stemx login page
+    [Documentation]  A stemx login page-n megnyomja a login gombot.
+                ...  Innen irányítódik tovább az ügyfél.
+    click element  ${PO_LOGIN_BUTTON_STEMX_ID}
+
 
 Wait the error message on the token page
     [Documentation]  Partner meghívása során azon az oldalon, ahol a partner
@@ -59,9 +88,8 @@ Delete one karakter in the token input field
     press key  ${PO_LOGIN_TOKE_INPUT_FIELD_ID}    ${PO_LOGIN_DELETE_PRESSKEY}
 
 Waiting page load an apper the element
-    [Documentation]  Megnézi, hogy a login page az betöltődött-e.
+    [Documentation]  Megnézi, hogy a login stemxc page az betöltődött-e.
     #TODo: kivezetni ezeket a változóban
-    #wait until element is visible  xpaht=//*[@class="app-loading"]
     wait until element is visible  css=div[class=profile]  10
     wait until element is visible  ${PO_LOGIN_INPUT_EMAIL_ID}
     wait until page contains  ${PO_LOGIN_CHECK_LOAD_TEXT}

@@ -3,6 +3,7 @@ Library  SeleniumLibrary
 Library  Collections
 Library  ../../ExternalResources/mylibrary.py
 Resource  ../Common.robot
+Resource  ../Common_resource.robot
 
 *** Variables ***
 ${PO_USERPROFILE_PHONE_ID} =  xpath=//input[@formcontrolname="phone"]
@@ -187,7 +188,7 @@ Give the country2
     Scroll to element  xpath=//mat-select[@formcontrolname="country"]  100
     click element  xpath=//mat-select[@formcontrolname="country"]
     wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
-    ${el} =  Get listbox item xpath  ${kivlasztott}  ${ID}  aria-owns
+    ${el} =  Common_resource.Get listbox item xpath  ${kivlasztott}  ${ID}  aria-owns
     #${valami} =  get element attribute  xpath=//mat-select[@formcontrolname="country"]  aria-owns
     #log  ${valami}
     #@{elemek} =  mylibrary.split the text  ${valami}  ${SPACE}
@@ -204,11 +205,12 @@ Give the country2
 
 Give the billing country2
     [Arguments]  ${kivlasztott}
-    Scroll to element  xpath=//app-billing-information//mat-select[@formcontrolname="country"]  100
-    click element  xpath=//app-billing-information//mat-select[@formcontrolname="country"]
-    wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
-    ${el} =  Get listbox item xpath  ${kivlasztott}  ${ID2}  aria-owns
-    click element   ${el}
+    Choose item from listbox  ${kivlasztott}  xpath=//app-billing-information//mat-select[@formcontrolname="country"]
+    #Scroll to element  xpath=//app-billing-information//mat-select[@formcontrolname="country"]  100
+    #click element  xpath=//app-billing-information//mat-select[@formcontrolname="country"]
+    #wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
+    #${el} =  Common_resource.Get listbox item xpath  ${kivlasztott}  ${ID2}  aria-owns
+    #click element   ${el}
 
 Give the billing country
     @{elem} =  SeleniumLibrary.Get WebElements  xpath=//mat-select[@formcontrolname="country"]

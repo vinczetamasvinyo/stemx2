@@ -2,8 +2,35 @@
 Resource  partner_invite_common_resource.robot
 Library  ../ExternalResources/mylibrary.py
 Resource  partner_adat_szerk_resource.robot
+Resource  PO/po_users.robot
+Resource  menu_resource.robot
 
 *** Keywords ***
+Full logout
+    [Documentation]  Elvégzi a logout-t az alkalmazásban, illetve csharp részen is.
+    Logout
+    run keyword if  "${DE}" == "stemx"  Logout on the csharp page
+
+Get listbox item xpath
+    [Documentation]  A kiválaszott paraméterben megadott elem xpath értéket visszaadja.
+                ...  1. xpath paraméterben annak az elemnek az elérését kell megadni ami
+                ...  a lista id-kat tartalmazza.
+                ...  2. a class-ban pedig az elemet ami az id-kat tartalmazza.
+    [Arguments]  ${kivlasztott}  ${xpath}  ${class}
+    ${valami} =  get element attribute  ${xpath}  ${class}
+    log  ${valami}
+    @{elemek} =  mylibrary.split the text  ${valami}  ${SPACE}
+    log  ${elemek}[0]
+    log  ${elemek}
+    ${szotar} =  create dictionary
+    :FOR  ${valt}  IN  @{elemek}
+    \  ${resz} =  set variable  //*[@id="${valt}"]/span
+    \  ${text} =  get text  ${resz}
+    \  set to dictionary  ${szotar}  ${text}  ${resz}
+    log  ${szotar}
+    ${el} =  get from dictionary  ${szotar}  ${kivlasztott}
+    [Return]  ${el}
+
 Check text apper above the i icon
     [Documentation]  Megnézi, hogy a partnerek oldalon a i con mögötti szöveg megfelelően jelenik-e meg.
     [Arguments]  ${text}  ${elem1}  ${elem2}
@@ -14,6 +41,13 @@ Check text apper above the i icon
     ${fo_szoveg} =  string of other_string  ${szoveg1}   ${hossz_szoveg0}  ${hossz}
     log  ${szoveg1}
     should be true  "${fo_szoveg}" == "${text}"
+
+Finish the registration the stemx or stemc page
+    [Documentation]  Elvégzi a regisztráció véglegesítését a stemx vagy stemc felületeken.
+    [Arguments]  ${password1}
+    run keyword if  "${DE}" == "stemc"  Finish the registration in the token page  ${password1}
+      ...  ELSE IF  "${DE}" == "stemx"  Give tha password and push the reset button on the csharp login page  ${password1}
+
 
 Finish the registration in the token page
     [Documentation]  A token oldalon befejezi a regisztrációt.
@@ -35,15 +69,27 @@ Login and go to partner details page
     Go to the partners page via menu
 
 Login and go to the partners page
-    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
-    login_resource.Open Vk login page  ${old}  ${bong}
-    Give login date and login  ${em}  ${pas}
+    [Arguments]  ${old}  ${bong}  ${login_data}
+    Open browser and login to stemx or stemxcity  ${oldal_url}  ${bogeszo}  ${login_data}
+    #login_resource.Open Vk login page  ${old}  ${bong}
+    #Give login date and login  ${em}  ${pas}
     Go to the partners page via menu
 
 Login and go the new partner page
-    [Arguments]  ${em}  ${pas}
-    Give login date and login  ${em}  ${pas}
+    [Arguments]  ${login_data}
+    Login to stemx or stemxcity  ${login_data}
+    #Give login date and login  ${em}  ${pas}
     Go to the partners page via menu
+
+Open browser and login to stemx or stemxcity and go to invite partner page
+    [Arguments]  ${old}  ${bong}  ${logindata}
+    Open browser and login to stemx or stemxcity  ${old}  ${bong}  ${logindata}
+    Go to the users invite page
+
+Open browser and login to stemx or stemxcity and go to invite partner page and change language
+    [Arguments]  ${old}  ${bong}  ${logindata}
+    Open browser and login to stemx or stemxcity and go to invite partner page  ${old}  ${bong}  ${logindata}
+    change the language to english via mymenu
 
 Open browser and Login and after go to the partners page
     [Arguments]  ${old}  ${bong}  ${em}  ${pas}
@@ -51,6 +97,25 @@ Open browser and Login and after go to the partners page
     Give login date and login  ${em}  ${pas}
     Go to the partners page via menu
 
+Open browser and login and after go to the venues page
+    [Documentation]  Nyit egy új böngészőt. Belép, majd elmegy a Venus oldalra.
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
+    Go to the venues page
+
+
+Open browser and login and after go to the auditoriums page
+    [Documentation]  Nyit egy új böngészőt. Belép, majd elmegy az auditoriums oldalra.
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
+    Go to the auditoriums page
+
+Open browser and login and after go to the auditoriums page and change language
+    [Documentation]  Nyit egy új böngészőt. Belép, majd elmegy az auditoriums oldalra.
+                ...  Majd átváltja a nyelvet.
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login and after go to the auditoriums page  ${old}  ${bon}  ${login}
+    Change the language to English via mymenu
 
 Login and go to the partners page and change lan
     [Arguments]  ${old}  ${bong}  ${em}  ${pas}
@@ -60,20 +125,19 @@ Login and go to the partners page and change lan
     Change the language to English via mymenu
 
 Login and go to partner edit page
-    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
-    login_resource.Open Vk login page  ${old}  ${bong}
-    Give regeistration data and click the login button  ${em}  ${pas}
-    Check the login succes or not
+    [Arguments]  ${old}  ${bong}  ${login_data}
+    Open browser and login to stemx or stemxcity  ${oldal_url}  ${bogeszo}  ${login_data}
     Go to the partners page via menu
     Chose elem and go the the edit page
 
 Login and go to partner edit page and change language
-    [Arguments]  ${old}  ${bong}  ${em}  ${pas}
-    login_resource.Open Vk login page  ${old}  ${bong}
-    Give regeistration data and click the login button  ${em}  ${pas}
-    Check the login succes or not
-    Go to the partners page via menu
-    Chose elem and go the the edit page
+    [Arguments]  ${old}  ${bong}  ${login_data}
+    Login and go to partner edit page  ${old}  ${bong}  ${login_data}
+    #login_resource.Open Vk login page  ${old}  ${bong}
+    #Give regeistration data and click the login button  ${em}  ${pas}
+    #Check the login succes or not
+    #Go to the partners page via menu
+    #Chose elem and go the the edit page
     Change the language to English via mymenu
 
 
@@ -92,8 +156,8 @@ Login and go new partner page and give data and change language
 
 
 Login and go to the new partner page
-    [Arguments]  ${oldal}  ${bong}  ${email}  ${jelszo}
-    Login and go to the partners page  ${oldal}  ${bong}  ${email}  ${jelszo}
+    [Arguments]  ${oldal}  ${bong}  ${login_data}
+    Login and go to the partners page  ${oldal}  ${bong}  ${login_data}
     Click the new partner
     Waiting the new partner page loaded
 
@@ -212,6 +276,15 @@ Give the all partner data
     #click element  xpath=//*[@formcontrolname="firstName"]
     #sleep  2s
 
+Choose item from listbox
+    [Documentation]  Egy listboxból kiválaszt egy adott elemet.
+    [Arguments]  ${kivlasztott}  ${xpath}
+    scroll to element  ${xpath}  100
+    click element  ${xpath}
+    wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
+    ${el} =  Common_resource.Get listbox item xpath  ${kivlasztott}  ${xpath}  aria-owns
+    click element   ${el}
+
 Go to listbox and get all items path
     [Arguments]  ${xpath}  ${class}
     scroll to element  ${xpath}  100
@@ -240,3 +313,102 @@ Get listbox item names
     log  ${szotar}
     [Return]  ${szotar}
 
+Get text from page common
+    [Documentation]  Az adott oldalról visszaadja megadott index elem szövegét.
+    [Arguments]  ${index}  ${path}
+    Log  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${path}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    ${szoveg} =  get text  ${egye_elem}
+    [Return]  ${szoveg}
+
+Check text on the page
+    [Documentation]  Az oldalon megnézi, hogy a szöveg az megfelelően jelenik-e meg.
+    [Arguments]  ${type}  ${text}  ${index}  ${path}
+    ${text_on_the_page} =  Run keyword if  "${type}" == "text"  Get text from page common  ${index}  ${path}
+    ...  ELSE IF  "${type}" == "icon"  Get text from icon item common  ${index}
+    ...  ELSE IF  "${type}" == "listbox"  Get text of listbox  ${index}  ${path}
+    ...  ELSE IF  "${type}" == "pholder"  Get placeholder text of inputbox  ${index}  ${path}
+    should be equal  ${text}  ${text_on_the_page}
+
+Get placeholder text of inputbox
+    [Documentation]  Egy inputbox esetében visszaadja a megjelenő placeholder text-et.
+    [Arguments]  ${index}  ${path}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${path}
+    ${kivalasztott} =  get from list  ${elem}  ${index}
+    ${szoveg} =  get element attribute  ${kivalasztott}   placeholder
+    log  ${szoveg}
+    [Return]  ${szoveg}
+
+Get text from icon item common
+    [Arguments]  ${index}
+    ${elem1} =  Get icon item common  ${index}
+    ${elem2} =  Get full icon item common  ${index}
+    ${text_on_the_page} =  Get text of icon item  ${elem1}  ${elem2}
+    [Return]  ${text_on_the_page}
+
+Get icon item common
+    [Documentation]  Vissza a icon nál lévő elemet.
+    [Arguments]  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${BEFORE_ICON_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    [Return]  ${egye_elem}
+
+Get full icon item common
+    [Arguments]  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${FULL_ICON_TEXT_ID}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    [Return]  ${egye_elem}
+
+Get text of icon item
+    [Documentation]  Megnézi, hogy a partnerek oldalon a i con mögötti szöveg megfelelően jelenik-e meg.
+    [Arguments]  ${elem1}  ${elem2}
+    ${szoveg0} =  get text  ${elem1}
+    ${hossz_szoveg0} =  get length  ${szoveg0}
+    ${szoveg1} =  get text  ${elem2}
+    ${hossz} =  get length  ${szoveg1}
+    ${fo_szoveg} =  string of other_string  ${szoveg1}   ${hossz_szoveg0}  ${hossz}
+    log  ${szoveg1}
+    [Return]  ${fo_szoveg}
+
+Get text of listbox
+    [Arguments]  ${index}  ${path}
+    [Documentation]  Visszadja a listbox címét
+    @{elem} =  SeleniumLibrary.Get WebElements  ${path}
+    ${company_country} =  get from list  ${elem}  ${index}
+    ${szoveg1} =  get text  ${company_country}
+    @{szoveg_lista} =  mylibrary.split the text  ${szoveg1}  ${SPACE}
+    ${szoveg} =  set variable  ${szoveg_lista}[0]
+    [Return]  ${szoveg}
+
+Get list from items2
+    [Documentation]  A megadott xpath elemekből összegyűjti a szöveget.
+                ...  Ha szükséges, akkor a megadott karakternél szétvája
+                ...  és a megadott indexűt adja vissza.
+    [Arguments]  ${vagas}  ${xpath}   ${split_text}  ${index}
+    @{elemek} =  SeleniumLibrary.Get WebElements  ${xpath}
+    @{lista} =  create list
+    :FOR  ${elem}  IN   @{elemek}
+    \  ${szoveg} =  get text  ${elem}
+    \  ${vagott_szoveg} =  run keyword if  ${vagas}==${True}  cut string  ${szoveg}  ${split_text}  ${index}
+    \  ...  ELSE  set variable  ${szoveg}
+    \  append to list  ${lista}  ${vagott_szoveg}
+    log  ${lista}
+    [Return]  ${lista}
+
+cut string
+    [Documentation]  A megkapottt szöveget a split_text-nél kettévágja,
+                ...  majd az index szerinti elemet visszaadja
+    [Arguments]  ${text}  ${split_text}  ${index}
+    ${szoveg} =  mylibrary.Split The Text  ${text}  ${split_text}
+    ${vissza_szoveg} =  set variable  ${szoveg}[${index}]
+    [Return]  ${vissza_szoveg}
+
+Check the length is bigger in the list
+    [Documentation]  Megnézi, hogy a listában az összes elem hossza nagyobb-e
+                ...  mint a megadott érték.
+    [Arguments]  ${lista}  ${value}
+    :FOR  ${elem}  IN  @{lista}
+    \  log  ${elem}
+    \  ${hossz} =  get length  ${elem}
+    \  should be true  ${hossz} > ${value}

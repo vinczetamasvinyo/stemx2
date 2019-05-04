@@ -19,7 +19,7 @@
             ...  Banknumber=11773111-11222222
             ...  Iban=Iban szám
             ...  Swift=Swift szám
-            ...  Billingcountry=Magyarország
+            ...  Billingcountry=Németország
             ...  Billingzipcode=1139
             ...  Billingcity=Budapest
             ...  Billingcounty=Pest

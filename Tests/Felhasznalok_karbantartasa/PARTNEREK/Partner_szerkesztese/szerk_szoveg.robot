@@ -1,11 +1,12 @@
 *** Settings ***
 Resource  ../../../../Resources/partner_adat_szerk_resource.robot
-Suite Setup  Login and go to partner edit page  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok }
+Suite Setup  Login and go to partner edit page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  common.End web test
 Test Template  Check the text on the edit partner page
 
 
 *** Variables ***
+&{LOGIN_DATA}  email=${box_office1_email_ok1}  password=${box_office1_password_ok1}  partner=${VARIABLES_PARTNER}
 ${LAN} =  Hun
 ${TYPE1} =  szoveg
 ${TYPE2} =  list

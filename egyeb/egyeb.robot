@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Resource  ../../Resources/Common.robot
+Library  ../ExternalResources/mylibrary.py
 
 *** Test Cases ***
 
@@ -22,3 +23,19 @@ Test oldal megnyit
     \  ${osszeurl} =  set variable  ${url}${url3}${url4}
     \  log  ${osszeurl}
     \  go to  ${osszeurl}
+
+MUPA
+    open browser  about:blank  chrome
+    maximize browser window
+    go to  https://mupa:mupa@staging.mupa.hu/program/csaladi-es-ifjusagi-programok/szenvedelyem-a-regizene-vashegyi-gyorgy-2019-04-28_11-00-bbnh
+    sleep  3s
+    click element  xpath=//*[@class="cookie-alert__container"]/a
+    sleep  2s
+    click element  xpath=//*[@class="btn primary buy-ticket js-ticket-booking loading-btn expand-right"]
+    sleep  10s
+    actionchangesajat  //*[@id="map"]/svg/g/path[1]
+    #click element  xpath=//*[@id="map"]/svg/g/path[1]
+    sleep  3s
+    click element  xpath=//*[@id="map"]/svg/g[2]/rect[762]
+    sleep  6s
+
