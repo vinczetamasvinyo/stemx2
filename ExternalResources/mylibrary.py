@@ -1,10 +1,25 @@
 from robot.libraries.BuiltIn import BuiltIn
 from selenium import webdriver
+import csv
 import locale
 from datetime import date, datetime, time
 import time
 
 import random
+
+def read_from_file(path):
+    file = open(path, encoding='utf-8')
+    text = file.read()
+    return text
+
+def read_csv_file(filename):
+    data = []
+    with open(filename,'r') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            data.append(row)
+    csvfile.close()
+    return data
 
 def get_current_browser():
     browser = BuiltIn().get_library_instance('SeleniumLibrary')._current_browser()
@@ -37,7 +52,7 @@ def menukattintas():
 def get_time_in_string():
     import datetime
     now = datetime.datetime.now()
-    szoveg = now.strftime("%H%M%S")
+    szoveg = now.strftime("%m%d%H%M%S")
     return szoveg
 
 

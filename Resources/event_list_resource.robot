@@ -69,10 +69,12 @@ Check the hun date format is correct
     Check the original and new text date is equal  ${text}  ${date_string}
 
 Get CSS Attribute Value
+    [Documentation]  CSS elem lekérdezése
     [Arguments]    ${locator}    ${attribute}
     # Get element using Xpath in JavaScript.
     # Note there are other options like getElementById/Class/Tag
     ${element}=    Set Variable    document.evaluate("${locator}", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    log  ${element}
     # Get css attribute value using getComputedStyle()
     ${attribute_value}=    Execute Javascript    return window.getComputedStyle(${element},null).getPropertyValue('${attribute}');
     Log   ${attribute_value}

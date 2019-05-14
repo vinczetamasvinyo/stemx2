@@ -57,6 +57,9 @@ Wait the language submenu appear
 Click the english language
     click element  id=menu_change_languageen
 
+click the hungarian language
+    click element  id=menu_change_languagehu
+
 Waiting the new language is loaded
     #TOdo: ezt még meg kell csinálni
     wait until element is visible  id=menu  10
@@ -73,4 +76,12 @@ Change the language to English via mymenu
     po_mymenu.Wait the language submenu appear
     po_mymenu.Click the english language
     #po_mymenu.Waiting the new language is loaded
+    po_mymenu.Waiting the page loaded
+
+Change the language to hungarian via mymenu
+    [Documentation]  A nyelvet magyarra beállítja a mymenu-n keresztül.
+    po_mymenu.Click the Mymenu
+    po_mymenu.Click the language
+    po_mymenu.Wait the language submenu appear
+    po_mymenu.click the hungarian language
     po_mymenu.Waiting the page loaded

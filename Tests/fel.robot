@@ -1,56 +1,45 @@
 *** Settings ***
 Library  SeleniumLibrary
+Suite Teardown  Common.End web test
 Resource  ../Resources/Common_resource.robot
+#robot -d results -i most Tests/fel.robot
+
+*** Variables ***
+&{USER}  Firstname=Vincze
+    ...  Lastname=Tamás
+    ...  Email=${EMPTY}
+    ...  Phone=+36209602628
+    ...  Birthday=1984.02.24
+    ...  Birthplace=Ózd
+    ...  Mothername=Anyja neve
+    ...  Birthname=Szuletési név
+    ...  Gender=0
+    ...  Role=system admin
+    #...  Picture=C:/Vinyo/hibakepek/2019.02.27/teszt_kep.jpg
+
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
 
 *** Test Cases ***
-Test0
-    [Tags]  most
-    log  valami
-    ${split_text} =  set variable  \n
-    #${valami} =  set variable  \n
-    run keyword if  '${split_text}'!='üres'
-    ...  Run Keywords
-    ...  log  ${split_text}
-
 test1
+    [Tags]  most
     ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}
+    ${USER.Email} =  set variable  ${email}
     go to  ${OLDAL_URL}
-    #login_resource.Open Vk login page  ${OLDAL_URL}  ${bogeszo}
-    Give login date and login  ${box_office1_email_ok}  ${box_office1_password_ok }
-    Click the felhasznalok karbantartasa
-    Wait the felhasznalaok karbantartasa submenu visiable
-    click element  id=users_submenu
-    sleep  2s
-    click element  id=new_button
-    sleep  2s
-    ${elem} =  get text  xpath=//*[@class="mat-checkbox-label"]
-    log  ${elem}
-    #click element  xpath=//*[@for="profile-picture-upload"]
-    #sleep  3s
-    choose file  id=profile-picture-upload   C:/Vinyo/hibakepek/2019.02.27/teszt_kep.jpg
+    Login to stemx or stemxcity  ${LOGIN_DATA}
+    #Give login date and login  ${box_office1_email_ok}  ${box_office1_password_ok }
+    Go to the new user page
+    Give the user data  ${USER}
+    #choose file  id=profile-picture-upload   C:/Vinyo/hibakepek/2019.02.27/teszt_kep.jpg
+    #Ezt kell kivenni
     #input text  id=profile-picture-upload  C:/Vinyo/hibakepek/2019.02.27/teszt_kep.jpg
-    sleep  3s
-    click element  xpath=//*[@class="mat-checkbox-label"]
-    input text  xpath=//*[@formcontrolname="firstName"]  Valami
-    input text  xpath=//*[@formcontrolname="lastName"]  Vincze
-    input text  xpath=//*[@formcontrolname="email"]  ${email}
-    input text  id=phone  +36209602628
-    input text  id=birthday  1984.02.24
-    input text  id=birth_place  Ózd
-    input text  id=birth_name  Vincze Tamás
-    input text  id=motherName  Anyja neve
-    click element  id=gender_male
-    scroll to element  xpath=//*[@class="mat-accordion"]  100
-    #click element  id=mat-checkbox-2
-    #click element  xpath=//*[@class="mat-checkbox-label"]
-    sleep  3s
-    click element  id=save_button
+    po_alt.Click the save button
     Wait the succes message and click
     Click the Mymenu
     Click the logout submenu
     go to  ${PARTNER_INVITE_FOLYAMAT_TEMP_URL}
     po_tempmail.Waiting and click the mail in themp page  ${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID}  ${PARTNER_INVITE_FOLYAMATA_MAIL_TIMEOUT}  ${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID}
-    Scroll and click the link in the email  link=Regisztáció befejezése  100
+    #Scroll and click the link in the email  link=Regisztáció befejezése  100
+    Scroll and click the link in the email  xpath=//a[@rel="external"]  100
     close window
     select window  MAIN
     Wait the token page is loaded
@@ -62,4 +51,6 @@ test1
     Give regeistration data and click the login button  ${email}  Vinyo123456
     Check the login succes or not
     Sleep  3s
+
+*** Keywords ***
 

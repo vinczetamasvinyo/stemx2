@@ -3,6 +3,8 @@
 Library  SeleniumLibrary
 Library  ../ExternalResources/mylibrary.py
 Library  Collections
+Library  robot.libraries.String
+Resource  ../Resources/Common_resource.robot
 
 *** Variables ***
 &{Partner_data2}  Firstname=Vincze
@@ -41,6 +43,11 @@ Library  Collections
 
 
 *** Test Cases ***
+Test 0
+    [Tags]  most
+    Begin web test  https://www.jegy.hu  chrome
+    ${valami} =  get css attribute value2  //*[@id='newsletterLink']  color
+
 Test1
     Create cim  ${Partner_data2}
     Create billingaddress  ${Partner_data2}
@@ -50,6 +57,16 @@ Test1
     log to console  ${cim}
 
 *** Keywords ***
+Get CSS Attribute Value2
+    [Arguments]    ${locator}    ${attribute}
+    # Get element using Xpath in JavaScript.
+    # Note there are other options like getElementById/Class/Tag
+    ${element}=    Set Variable    document.evaluate("${locator}", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    # Get css attribute value using getComputedStyle()
+    ${attribute_value}=    Execute Javascript    return window.getComputedStyle(${element},null).getPropertyValue('${attribute}');
+    Log   ${attribute_value}
+    [Return]    ${attribute_value}
+
 Create cim
     [Arguments]  ${da}
     ${address} =  create dictionary
@@ -95,3 +112,4 @@ Create billingaddress
     set suite variable  ${baddress}
     log  ${baddress}
     log to console  ${baddress}
+

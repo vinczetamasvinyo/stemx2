@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  ../ExternalResources/alap.py
+Library  ../ExternalResources/mylibrary.py
 Library  Collections
 
 *** Variables ***
@@ -61,3 +62,28 @@ Elem from list
     @{elem} =  SeleniumLibrary.Get WebElements  ${keres_elem}
     ${elem} =  get from list  ${elem}  ${visszaad_elem}
     [Return]  ${elem}
+
+Check the item appear in the row
+    [Documentation]  Megnézi, hogy a paraméterként megadott elem megjelenik-e
+                ...  az adott listában.
+    [Arguments]  ${lista}  ${path}
+    :FOR  ${elem}  IN  @{lista}
+    \  ${vane}  ${elemertek} =  check_the_elem_contain_in_parent2  ${elem}  ${path}
+    \  should be true  ${vane}==${True}
+
+Check the item not apper in the row
+    [Documentation]  Megnézi, hogy a paraméterként megadott elem nem
+                ...  megjelenik-e az adott listában.
+    [Arguments]  ${lista}  ${path}
+    :FOR  ${elem}  IN  @{lista}
+    \  ${vane}  ${elemertek} =  check_the_elem_contain_in_parent2  ${elem}  ${path}
+    \  should be true  ${vane}==${False}
+
+Get CSS Attribute Value
+    [Arguments]    ${locator}    ${attribute}
+    # Get element using Xpath in JavaScript.
+    # Note there are other options like getElementById/Class/Tag
+    ${element}=    Set Variable    document.evaluate("${locator}", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    # Get css attribute value using getComputedStyle()
+    ${attribute_value}=    Execute Javascript    return window.getComputedStyle(${element},null).getPropertyValue('${attribute}');
+    Log   ${attribute_value}

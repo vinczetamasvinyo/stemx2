@@ -19,9 +19,10 @@ ${PO_MENU_FELHASZNALOK_KARB_PARTNER_ID} =  id=partners_submenu
 ${PO_MENU_FELHASZNALOK_KARB_USER_MENU_ID} =  id=users_submenu
 ${PO_MENU_VENUES_ID} =  id=mat-expansion-panel-header-4
 ${PO_MENU_VENUES_SUMENU_ID} =  id=cdk-accordion-child-4
-${PO_MENU_AUDITORIUMS_SUMENU_ID} =  xpath=//a[contains(text(),'Nézőterek')]
+${PO_MENU_AUDITORIUMS_SUMENU_ID} =  xpath=//a[contains(text(),'Nézőterek')or contains(text(),'Auditoriums')]
 #${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//a[contains(text(),'Előadóhelyek') or contains(text(),'Venues')]
 ${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//*[@ng-reflect-router-link="/admin/event/venues"]
+
 *** Keywords ***
 Click the jegypenzter menu and wait for the submenu
     click element  ${PO_MENU_JEGYPENZTER_ID}

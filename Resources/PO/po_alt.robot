@@ -14,8 +14,15 @@ ${PO_DELETED_ROW_ID} =  xpath=//mat-row[contains(@class,'row-deleted')]
 ${PO_ACTIVE_ROW_ID} =  xpath=//mat-row[@class="mat-row ng-tns-c10-15 ng-star-inserted"]
 ${PO_NEW_BUTTON_ID} =  xpath=//new-button
 ${PO_SAVE_BUTTON_ID} =  xpath=//save-button
+${PO_ALT_SEARCH_BUTTON_ID} =  xpath=//search-button
+${PO_ALT_RESET_BUTTON_ID} =  xpath=//reset-button
 
 *** Keywords ***
+Get the all eyes from the page
+    [Documentation]  Visszaadja egy listában a szemek objektumot
+    @{lista} =  SeleniumLibrary.Get WebElements  ${PO_ALT_EYE_ICON}
+    [Return]  ${lista}
+
 Get the eyes count
     [Documentation]  Visszaadja a szemek darabszámát.
     ${db} =  get element count  ${PO_ALT_EYE_ICON}
@@ -44,6 +51,11 @@ Get the deleted row count
 Get all deleted row
     [Documentation]  Visszaadja a törölt sorokat egy listában
     @{elemek} =  SeleniumLibrary.Get WebElements  ${PO_DELETED_ROW_ID}
+    [Return]  ${elemek}
+
+Get all active row
+    [Documentation]  Visszaadja a törölt sorokat egy listában
+    @{elemek} =  SeleniumLibrary.Get WebElements  ${PO_ACTIVE_ROW_ID}
     [Return]  ${elemek}
 
 Get the active row count
@@ -100,3 +112,11 @@ Click the new button
 Click the save button
     [Documentation]  Megnyomja a mentés gombot.
     click element  ${PO_SAVE_BUTTON_ID}
+
+Click the search button
+    [Documentation]  Megnyomja a keresés gombot.
+    click element  ${PO_ALT_SEARCH_BUTTON_ID}
+
+Click the reset button
+    [Documentation]
+    click element  ${PO_ALT_RESET_BUTTON_ID}

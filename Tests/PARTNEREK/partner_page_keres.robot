@@ -71,9 +71,3 @@ Test the visszaallit gomb
     Check the result after push the reset button  ${lis}
 
 *** Keywords ***
-#Elem kivalasztasa
- #   scroll to element  ${PO_PAGE_NAVIGATE_LISTBOX}  100
- #   click element  xpath=//*[@class="mat-form-field-infix"]/mat-select
- #   wait until element is visible  xpath=//*[contains(@class,'mat-select-panel')]
- #   ${el} =  Get listbox item xpath  25  //*[@class="mat-form-field-infix"]/mat-select  aria-owns
-  #  click element  ${el}

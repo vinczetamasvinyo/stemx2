@@ -32,7 +32,7 @@ Test the reset button visiabale on the auditorium page
     Check the reset button is visiable
 
 Test the search button visiable on the auditorium page
-    [Documentation]  Megnézi, hogy a visszaállít gomb megjelenik-e az oldalon.
+    [Documentation]  Megnézi, hogy a keresés gomb megjelenik-e az oldalon.
     Check the search button is visiable
 
 Test the view icon appear on the auditorium page
@@ -42,7 +42,7 @@ Test the view icon appear on the auditorium page
 
 Test the edit button appear on the auditorium page
     [Documentation]  Megnézi, hogy a szerkesztés gomb megjelenik-e
-                ...  a nézőtér oldalon. A sámát is ellenőrzi.
+                ...  a nézőtér oldalon. A számát is ellenőrzi.
     Check the all edit icon appear in the page
 
 Test the all delete button appear on the page
@@ -78,6 +78,7 @@ Test the default order is correct on the audits page
     Check the default odder on the audits page
 
 Test the deleted auditoriums
+    [Documentation]  Megnézi, hogy a törölt
     ${ck} =  Get checkbox value  xpath=//input[@class="mat-checkbox-input cdk-visually-hidden"]
     run keyword if  "${ck}" == "true"  reload the auditorium
     Click the show deleted checkbox
@@ -88,12 +89,19 @@ Test the deleted auditoriums
     should be true  ${deleted} > 0
     # Check
     @{lista} =  Get all deleted row
-    :FOR  ${elem}  IN  @{lista}
-    \  ${vane}  ${elemertek} =  check_the_elem_contain_in_parent2  ${elem}  .//*[@class="material-icons face-primary"]
-    \  should be true  ${vane}==${True}
+    #:FOR  ${elem}  IN  @{lista}
+    #\  ${vane}  ${elemertek} =  check_the_elem_contain_in_parent2  ${elem}  .//*[@class="material-icons face-primary"]
+    #\  should be true  ${vane}==${True}
 
 
 *** Keywords ***
 reload the auditorium
     reload page
     Wait the auditoriums page loaded
+
+Check the elem appear in the row
+    [Documentation]  Megnézi, hogy a paraméterként megadott elem megjelenik-e az adott listában.
+    [Arguments]  ${lista}  ${path}
+    :FOR  ${elem}  IN  @{lista}
+    \  ${vane}  ${elemertek} =  check_the_elem_contain_in_parent2  ${elem}  ${path}
+    \  should be true  ${vane}==${True}

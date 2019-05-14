@@ -110,12 +110,44 @@ Open browser and login and after go to the auditoriums page
     Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
     Go to the auditoriums page
 
+Open browser and login and after go to the auditoriums page and change hu language
+    [Documentation]  Nyit egy új böngészőt. Belép, majd elmegy az auditoriums oldalra.
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
+    Go to the auditoriums page
+    Change the language to hungarian via mymenu
+
+
+
+Open browser and login go auditoriums page and click the delete
+    [Documentation]  Nyit egy új böngészőt. Belép, majd elmegy az auditoriums oldalra.
+                ...  Bekapcsolva a törölt nézőterek megjelenítését.
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login and after go to the auditoriums page  ${old}  ${bon}  ${login}
+    Click the show deleted checkbox
+    po_auditoriums.Click the search button
+    run keyword and ignore error  Wait until the deleted row visible
+
 Open browser and login and after go to the auditoriums page and change language
     [Documentation]  Nyit egy új böngészőt. Belép, majd elmegy az auditoriums oldalra.
                 ...  Majd átváltja a nyelvet.
     [Arguments]  ${old}  ${bon}  ${login}
     Open browser and login and after go to the auditoriums page  ${old}  ${bon}  ${login}
     Change the language to English via mymenu
+
+Open browser and login and go to auditoriums and choose one
+    [Arguments]  ${old}  ${bong}  ${login}
+    Open browser and login and after go to the auditoriums page  ${old}  ${bong}  ${login}
+    ${lista} =  Get the all eyes from the page
+    ${elem} =  Get random item from the list  ${lista}
+    click element  ${elem}
+    Waiting the details of auditorium loaded
+
+Open browser and login and go to auditoriums and choose one and change hungarian language
+    [Arguments]  ${old}  ${bong}  ${login}
+    Open browser and login and go to auditoriums and choose one  ${old}  ${bong}  ${login}
+    Change the language to hungarian via mymenu
+    Waiting the details of auditorium loaded
 
 Login and go to the partners page and change lan
     [Arguments]  ${old}  ${bong}  ${em}  ${pas}
@@ -178,6 +210,14 @@ Check the error message appear and the error text value
     #element should be visible  ${van4}
     log  ${hibaszoveg2}
     should be true  "${hibaszoveg}" == "${hibaszoveg2}"
+
+Check error message appear on the page
+    [Documentation]  Megnézi, hogy az path által azonosított elemen belül
+                ...  megjeleneik-e az error hibaüzenet.
+    [Arguments]  ${path}  ${index}  ${text}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${path}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    Check the error message appear and the error text value  ${egye_elem}  ${text}
 
 Reload the page
     [Documentation]  Újratölti az aktuális oldalt és megvárja amig az betöltődik.
@@ -385,6 +425,10 @@ Get list from items2
     [Documentation]  A megadott xpath elemekből összegyűjti a szöveget.
                 ...  Ha szükséges, akkor a megadott karakternél szétvája
                 ...  és a megadott indexűt adja vissza.
+                ...  {vagas} változóban True, vagy false kell-e
+                ...  {xpath}  az adott elemeknek az elérhetőségi listája
+                ...  {split_text}  milyen karakternél történjen a vágás
+                ...  {index}  hanyadik karaktert adja vissza.
     [Arguments]  ${vagas}  ${xpath}   ${split_text}  ${index}
     @{elemek} =  SeleniumLibrary.Get WebElements  ${xpath}
     @{lista} =  create list
@@ -412,3 +456,58 @@ Check the length is bigger in the list
     \  log  ${elem}
     \  ${hossz} =  get length  ${elem}
     \  should be true  ${hossz} > ${value}
+
+Get random item from the list
+    [Documentation]  random elemet visszaad a listából
+    [Arguments]  ${lista}
+    ${elemszam} =  get length  ${lista}
+    ${random} =  Evaluate  random.randint(0, ${elemszam}-1)  modules=random
+    log  ${random}
+    ${kivlasztott} =  get from list  ${lista}  ${random}
+    log  ${kivlasztott}
+    [Return]  ${kivlasztott}
+
+Check the result value
+    [Documentation]  A kapott listában nézi meg, hogy az ertek paramter megtalalhato-e benne
+                ...  ha ah equels==True, akkor teljesen meg kell egyeznie. Ha False, akkor
+                ...  azt nézi, hogy az érték benne van-e.
+    [Arguments]  ${lista}  ${ertek}  ${equels}
+    :FOR  ${elem}  IN  @{lista}
+    \  run keyword if  ${equels}==${True}  should be equal as strings  ${elem}  ${ertek}
+    \  ...  ELSE  should be true  "${ertek}" in "${elem}"
+
+
+Check the div object not contains the error message2
+    [Documentation]  Megnézzük, hogy az adott object tartalmaz-e error hibaüzenetet.
+                ...  Nem szabad, hogy hibaüzenetet tartalmazzon.
+    [Arguments]  ${div_object}
+    ${van1}  ${van2} =  check the elem contain in parent2  ${div_object}  .//app-show-errors/ul/li
+    should not be true  ${van1}
+
+Check the div object contains the error message2
+    [Documentation]  Megnézzük, hogy az adott object tartalmaz-e error hibaüzenetet.
+                ...   Kell, hogy hibaüzenetet tartalmazzon.
+    [Arguments]  ${div_object}  ${text}
+    ${van1}  ${van2} =  check the elem contain in parent2  ${div_object}  .//app-show-errors/ul/li
+    should be true  ${van1}
+    ${szoveg} =  get text  ${van2}
+    log  ${szoveg}
+    should be equal  ${szoveg}   ${text}
+
+
+Check error message not apper on the object
+    [Documentation]  val
+    [Arguments]  ${path}  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${path}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    Check the div object not contains the error message2  ${egye_elem}
+
+Check error message on the object
+    [Documentation]  Megnézi, hogy az azonosított objectumon belül a hibaüzenet megjelenik-e.
+                ...  path változóban adjuk meg az azonosított objectumot.
+                ...  index-ben, hogy hanyadik objectumot szeretnék majd megnézni.
+                ...  text pedig a szöveg, hogy minek az egyezését kell megnézni.
+    [Arguments]  ${path}  ${index}  ${text}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${path}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    Check the div object contains the error message2  ${egye_elem}  ${text}

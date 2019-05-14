@@ -21,6 +21,17 @@ ${PO_AUDITORIUMS_TABLE_HEADER3_TEXT_ID} =  xpath=//mat-header-cell[3]
 ${PO_AUDITORIUMS_TABLE_HEADER4_TEXT_ID} =  xpath=//mat-header-cell[4]
 ${PO_AUDITORIUMS_AUDITS_NAME_ADDRESS_ID} =  xpath=//mat-cell[1]
 ${PO_AUDITORIUMS_AUDITS_PLACE_NAME_ADDRESS_ID} =  xpath=//mat-cell[2]
+${PO_AUDITORIUMS_RESET_ICON_ID} =  .//*[@class="material-icons face-primary"]
+${PO_AUDITORIUMS_DELETE_ICON_ID} =  .//*[@class="material-icons edit-primary"]
+${PO_AUDITORIUMS_TABLE_HEADER3} =  xpath=//mat-header-cell[3]
+${PO_AUDITORIUMS_SEARCH_INPUT_INDEX} =  0
+${PO_AUDITORIUMS_INPUT_ID} =  //label
+${PO_AUDITORIUMS_AUDIT_DETAILS_TITTLE} =  //*[@class="page-content"]//h1
+${PO_AUDITORIUMS_AUDIT_DETAILS_SUB_TITTLE} =  //*[@class="page-content"]//h2
+${PO_AUDITORIUMS_AUDIT_DETAILS_CANCEL_BUTTON_TEXT_ID} =  //cancel-button//span
+${PO_AUDITORIUMS_AUDIT_DETAILS_DELETE_BUTTON_TEXT_ID} =  //delete-button//span
+${PO_AUDITORIUMS_AUDIT_DETAILS_EDIT_BUTTON_TEXT_ID} =  //app-button//span
+
 
 *** Keywords ***
 Wait the auditoriums page loaded
@@ -39,6 +50,11 @@ Check the show deleted checkbox visible on the auditorium page
 Check the checkbox is not select on th auditorium page
     [Documentation]  Megnézi, hogy alaphelyzetben a checkbox nincs bepipálva.
     Check checkbox value  ${PO_AUDITORIUMS_SHOW_DELETED_CHECKBOX}  false
+
+Check the checkbox is select on th auditorium page
+    [Documentation]  Megnézi, hogy alaphelyzetben a checkbox nincs bepipálva.
+    Check checkbox value  ${PO_AUDITORIUMS_SHOW_DELETED_CHECKBOX}  true
+
 
 Check the new auditorium button is visiable
     [Documentation]  Megnézi, hogy az új gomb megjelenik-e.
@@ -73,7 +89,52 @@ Get all audits place address from the audits page
     [Return]  ${lista}
 
 Click the show deleted checkbox
+    [Documentation]  Belekattint a törölt nézőterek mutatása checkbox-ba.
     click element  ${PO_AUDITORIUMS_SHOW_DELETED_CHECKBOX2}
+
+Give the search value
+    [Documentation]  Megadja a keresési mezőbe az értéket.
+    [Arguments]  ${text}
+    input text  ${PO_AUDITORIUMS_SEARCH_INPUT_ID}  ${text}
+
+Get value of the search input
+    [Documentation]  Visszaadja a serach mezőben lévő értéket
+    ${szoveg} =  get value  ${PO_AUDITORIUMS_SEARCH_INPUT_ID}
+    [Return]  ${szoveg}
 
 Click the search button
     click element  ${PO_AUDITORIUMS_SEARCH_BUTTON_ID}
+
+Check the reset icon appear in the deleted auditoriums row
+    [Documentation]  Megnézi, hogy a kapott listában törölt nézőterek
+                ...  megjelenik a visszaállít ikon.
+    [Arguments]  ${lista}
+    Check the item appear in the row  ${lista}  ${PO_AUDITORIUMS_RESET_ICON_ID}
+
+Check the edit icon not appear in deleted auditoriums row
+    [Documentation]  Megnézi, hogy a kapott listában a törölt nézőtereknél
+    ...  nem jelenik meg a szerkesztés gomb.
+    [Arguments]  ${lista}
+    Check the item not apper in the row  ${lista}  ${PO_AUDITORIUMS_DELETE_ICON_ID}
+
+Check the delete icon not appear in deleted auditoriums row
+    [Documentation]  Megnézi, hogy a kapott listában a törölt nézőtereknél
+    ...  nem jelenik meg a szerkesztés gomb.
+    [Arguments]  ${lista}
+    Check the item not apper in the row  ${lista}  ${PO_AUDITORIUMS_DELETE_ICON_ID}
+
+Click the header row3 on the auditorium page
+    click element  ${PO_AUDITORIUMS_TABLE_HEADER3}
+
+Check error not apper the search fields on the auditorium page
+    [Documentation]  Megnézi, hogy a beazonosított elemben nem jelenik meg hibaüzenet.
+    Check error message not apper on the object  ${PO_AUDITORIUMS_INPUT_ID}  ${PO_AUDITORIUMS_SEARCH_INPUT_INDEX}
+
+Check the error message appear on the search fields ont the auditorium page
+    [Documentation]  Megnézi, hogy a beazonosított elemnél a megfelelő hibaüzenet megjelenik-e.
+    [Arguments]  ${error_text}
+    Check error message on the object  ${PO_AUDITORIUMS_INPUT_ID}  ${PO_AUDITORIUMS_SEARCH_INPUT_INDEX}  ${error_text}
+
+Waiting the details of auditorium loaded
+    [Documentation]  Megvárja amíg a nézőtér adatai oldal betöltődik
+    wait until element is visible  //cancel-button
