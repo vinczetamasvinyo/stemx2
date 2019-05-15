@@ -40,6 +40,7 @@ Open browser and login to stemx or stemxcity
 
 Login to stemx or stemxcity
     [Arguments]   ${logindata}
+    log  ${logindata}
     run keyword if  "${DE}" == "stemc"  Login to stemxcity  ${logindata}
     ...  ELSE IF  "${DE}" == "stemx"  Login to stemx  ${logindata}
 
@@ -50,6 +51,7 @@ Login to stemxcity
 
 Login to stemx
     [Arguments]  ${logindata}
+    log  ${logindata}
     Wait the stemx login page loaded
     login_resource.Choose partner on the login page  ${logindata.partner}
     Push the login button on the stemx login page
@@ -57,6 +59,8 @@ Login to stemx
     Give the login data on the clogin page  ${logindata.email}  ${logindata.password}
     Push the login button on the clogin page
     Check the login succes or not
+    log  ${logindata.language}
+    Check and set language2  ${DEFAULT_LANGUAGE}  ${logindata.language}
 
 Login to stemx after user give the password in the invite process
     [Arguments]  ${logindata}

@@ -1,10 +1,12 @@
 *** Settings ***
-#Resource  ../../Resources/partner_invite_common_resource.robot
-Resource  ../../Resources/partner_page_element_resource.robot
-Suite Setup  Login and go to partners page
+
+Resource  ../../../../Resources/partner_page_element_resource.robot
+Suite Setup  Login and go to the partners page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  Common.End web test
 
 *** Variables ***
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN} =  ${EMPTY}
 
 #Todo: az állapotjelző ikonok darabszám ellenőrzését meg kell csinálni.
 *** Test Cases ***

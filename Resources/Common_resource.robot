@@ -4,6 +4,8 @@ Library  ../ExternalResources/mylibrary.py
 Resource  partner_adat_szerk_resource.robot
 Resource  PO/po_users.robot
 Resource  menu_resource.robot
+Library    robot.libraries.String
+
 
 *** Keywords ***
 Full logout
@@ -70,7 +72,7 @@ Login and go to partner details page
 
 Login and go to the partners page
     [Arguments]  ${old}  ${bong}  ${login_data}
-    Open browser and login to stemx or stemxcity  ${oldal_url}  ${bogeszo}  ${login_data}
+    Open browser and login to stemx or stemxcity  ${old}  ${bong}  ${login_data}
     #login_resource.Open Vk login page  ${old}  ${bong}
     #Give login date and login  ${em}  ${pas}
     Go to the partners page via menu
@@ -102,6 +104,28 @@ Open browser and login and after go to the venues page
     [Arguments]  ${old}  ${bon}  ${login}
     Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
     Go to the venues page
+
+
+Open browser and login and after go to the venues page and get listbox
+    [Documentation]  Megnyitja a böngészőt elmegy a venu oldalra és lekéri a lapozó fájlban
+                ...  lévő elemek szövegét, majd visszaadja egy szótárban. A szótár első eleme az index, utána jön a szöveg
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login and after go to the venues page  ${old}  ${bon}  ${login}
+    sleep  3s
+    ${lista_elemek_alja} =  Get the page listbox item from the venue page
+    log  ${lista_elemek_alja}
+    set suite variable  ${lista_elemek_alja}
+
+Open browser and login and after go to the venues page change hungarian language and get listbox
+    [Documentation]  Megnyitja a böngészőt elmegy a venu oldalra és lekéri a lapozó fájlban
+                ...  lévő elemek szövegét, majd visszaadja egy szótárban. A szótár első eleme az index, utána jön a szöveg
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login and after go to the venues page  ${old}  ${bon}  ${login}
+    Change the language to hungarian via mymenu
+    sleep  3s
+    ${lista_elemek_alja} =  Get the page listbox item from the venue page
+    log  ${lista_elemek_alja}
+    set suite variable  ${lista_elemek_alja}
 
 
 Open browser and login and after go to the auditoriums page
@@ -174,8 +198,9 @@ Login and go to partner edit page and change language
 
 
 Login and go to the new partner page and give all data
-    [Arguments]  ${oldal}  ${bong}  ${email}  ${jelszo}  ${adat}
-    Login and go to the new partner page  ${oldal}  ${bong}  ${email}  ${jelszo}
+    [Arguments]  ${oldal}  ${bong}   ${login_data}  ${adat}
+    log  ${login_data}
+    Login and go to the new partner page  ${oldal}  ${bong}  ${login_data}
     Give the all partner data  ${adat}
 
 Login and go new partner page and give data and change language
@@ -325,11 +350,13 @@ Choose item from listbox
     ${el} =  Common_resource.Get listbox item xpath  ${kivlasztott}  ${xpath}  aria-owns
     click element   ${el}
 
-Go to listbox and get all items path
+Go to listbox and get all items xpath
+    [Documentation]  Visszaadja a listbox elemek nevét
+    ...  például: {nevek} =  Go to listbox and get all items name  {elem_helye}  aria-owns
     [Arguments]  ${xpath}  ${class}
     scroll to element  ${xpath}  100
     click element  ${xpath}
-    ${szotar} =  Get listbox item names  ${xpath}  ${class}
+    ${szotar} =  Get listbox item names2  ${xpath}  ${class}
     [Return]  ${szotar}
 
 Get listbox item names
@@ -353,6 +380,29 @@ Get listbox item names
     log  ${szotar}
     [Return]  ${szotar}
 
+Get listbox item names2
+    [Documentation]  Visszaadja a listbox-ban lévő elemek index-ét,
+                ...  illetve nevét egy szótárban.
+                ...  A szótár kulcsa a sorszám a möggött lévő elem pedig az érték.
+    [Arguments]  ${xpath}  ${class}
+    ${valami} =  get element attribute  ${xpath}  ${class}
+    log  ${valami}
+    @{elemek} =  mylibrary.split the text  ${valami}  ${SPACE}
+    log  ${elemek}[0]
+    log  ${elemek}
+    ${szotar} =  create dictionary
+    ${i} =  set variable  0
+    :FOR  ${valt}  IN  @{elemek}
+    \  ${i} =  Evaluate  ${i} + 1
+    \  ${resz} =  set variable  //*[@id="${valt}"]/span
+    \  ${szoveg} =  get text  ${resz}
+    \  log  ${resz}
+    \  ${a} =  convert to string  ${i}
+    \  set to dictionary  ${szotar}  ${a}  ${szoveg}
+    log  ${szotar}
+    [Return]  ${szotar}
+
+
 Get text from page common
     [Documentation]  Az adott oldalról visszaadja megadott index elem szövegét.
     [Arguments]  ${index}  ${path}
@@ -364,11 +414,12 @@ Get text from page common
 
 Check text on the page
     [Documentation]  Az oldalon megnézi, hogy a szöveg az megfelelően jelenik-e meg.
-    [Arguments]  ${type}  ${text}  ${index}  ${path}
+    [Arguments]  ${type}  ${text}  ${index}  ${path}  ${normaltext}=${EMPTY}
     ${text_on_the_page} =  Run keyword if  "${type}" == "text"  Get text from page common  ${index}  ${path}
     ...  ELSE IF  "${type}" == "icon"  Get text from icon item common  ${index}
     ...  ELSE IF  "${type}" == "listbox"  Get text of listbox  ${index}  ${path}
     ...  ELSE IF  "${type}" == "pholder"  Get placeholder text of inputbox  ${index}  ${path}
+    ...  ELSE IF  "${type}" == "listboxtext"  set variable  ${normaltext}
     should be equal  ${text}  ${text_on_the_page}
 
 Get placeholder text of inputbox
@@ -473,9 +524,18 @@ Check the result value
                 ...  azt nézi, hogy az érték benne van-e.
     [Arguments]  ${lista}  ${ertek}  ${equels}
     :FOR  ${elem}  IN  @{lista}
-    \  run keyword if  ${equels}==${True}  should be equal as strings  ${elem}  ${ertek}
-    \  ...  ELSE  should be true  "${ertek}" in "${elem}"
+    \  Run Keyword If  ${equels}==${True}  should be equal as strings  ${elem}  ${ertek}
+    ...  ELSE  text in2  ${elem}  ${ertek}
+    #\  ...  ELSE  should be true  "${ertek}" in "${elem}"
+    #\  ...  ELSE  text in2  ${elem}  ${ertek}
 
+text in2
+    [Documentation]  Megnézi, hogy az egyik szöveg a másikban benne van-e.
+                ...  A szöveget nagybetűsíti és így nézi meg az egyezést.
+    [Arguments]  ${value1}  ${miben_keres1}
+    ${value} =  robot.libraries.String.convert to uppercase  ${value1}
+    ${miben_keres} =  robot.libraries.String.convert to uppercase  ${miben_keres1}
+    #should be true  "${value}" in "${miben_keres}"
 
 Check the div object not contains the error message2
     [Documentation]  Megnézzük, hogy az adott object tartalmaz-e error hibaüzenetet.
@@ -511,3 +571,17 @@ Check error message on the object
     @{elem} =  SeleniumLibrary.Get WebElements  ${path}
     ${egye_elem} =  get from list  ${elem}  ${index}
     Check the div object contains the error message2  ${egye_elem}  ${text}
+
+Get random string of other string
+    [Arguments]  ${kstring}
+    ${hossz} =  get length  ${kstring}
+    log  ${hossz}
+    ${start} =  Evaluate  random.randint(0, ${hossz}-2)  modules=random
+    log  ${start}
+    ${marad} =  Evaluate  ${hossz}-${start}
+    log  ${marad}
+    ${mennyit} =  Evaluate  random.randint(1, ${marad})  modules=random
+    ${max} =  Evaluate  ${start}+${mennyit}
+    ${szoveg} =  String.Get Substring  ${kstring}  ${start}  ${max}
+    log  ${szoveg}
+    [Return]  ${szoveg}

@@ -98,7 +98,7 @@ Test the search of full venue name
     po_alt.Click the search button
     sleep  3s
     ${eredmeny} =  Get the venue name on the auditoriums page
-    Check result of full venue name search results  ${eredmeny}  ${kivalasztott}
+    auditoriums_resource.Check result of full venue name search results  ${eredmeny}  ${kivalasztott}
 
 Test the search of CAPITAL full venue name
     [Documentation]  A teszt során egy full venue nevére keresünk.
@@ -112,7 +112,7 @@ Test the search of CAPITAL full venue name
     po_alt.Click the search button
     sleep  3s
     ${eredmeny} =  Get the venue name on the auditoriums page
-    Check result of full venue name search results  ${eredmeny}  ${kivalasztott}
+    auditoriums_resource.Check result of full venue name search results  ${eredmeny}  ${kivalasztott}
 
 Test the search of subtring of venue name
     [Documentation]  A teszt során egy venue nérészletére keresünk.
@@ -190,18 +190,6 @@ test2
     Check error message appear on the page  xpath=//label  0  Please enter no more than 127 characters
 
 *** Keywords ***
-Get random string of other string
-    [Arguments]  ${kstring}
-    ${hossz} =  get length  ${kstring}
-    log  ${hossz}
-    ${start} =  Evaluate  random.randint(0, ${hossz}-2)  modules=random
-    log  ${start}
-    ${marad} =  Evaluate  ${hossz}-${start}
-    log  ${marad}
-    ${mennyit} =  Evaluate  random.randint(1, ${marad})  modules=random
-    ${max} =  Evaluate  ${start}+${mennyit}
-    ${szoveg} =  String.Get Substring  ${kstring}  ${start}  ${max}
-    log  ${szoveg}
-    [Return]  ${szoveg}
+
 
 

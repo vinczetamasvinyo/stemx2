@@ -21,9 +21,12 @@ Login and go the new partner page and push the mentes
     [Arguments]  ${oldal}  ${bong}  ${login_data}
     Login and go to the new partner page  ${oldal}  ${bong}  ${login_data}
     Check input error message and click save and wait the errors
-    #element should not be visible  xpath=//app-show-errors/ul/li
-    #click element  xpath=//button[@class="button success"]
-    #wait until element is visible  xpath=//app-show-errors/ul/li
+
+Login and go the new partner page and push the mentes change hun
+    [Arguments]  ${oldal}  ${bong}  ${login_data}
+    Login and go to the new partner page  ${oldal}  ${bong}  ${login_data}
+    Change the language to hungarian via mymenu
+    Check input error message and click save and wait the errors
 
 Login go new partner page and change englis and push the mentes
     [Arguments]  ${oldal}  ${bong}  ${login_data}

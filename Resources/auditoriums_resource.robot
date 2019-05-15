@@ -135,3 +135,51 @@ Get the venue name on the auditoriums page
 Check the text on the auditorium details page
     [Arguments]  ${type}  ${text}  ${index}  ${path}
     Check text on the page  ${type}  ${text}  ${index}  ${path}
+
+Create dicaddres
+    [Arguments]  ${data}
+    ${cim} =  create dictionary  zipcode=${data.Auditoriumzipcode}  city=${data.Auditoriumcity}  street=${data.Auditoriumstreet}
+    ...  housenumber=${data.Auditoriumhousenumber}  floor=${data.Auditoriumfloor}  door=${data.Auditoriumdoor}
+    [Return]  ${cim}
+
+Create dicauditiumaddress
+    [Arguments]  ${data}
+    ${cim} =  create dictionary
+    ${vzipcode} =  szotarban van e  ${data}  Auditoriumzipcode
+    run keyword if  ${vzipcode}==${TRUE}  Set To Dictionary  ${cim}  zipcode=${data.Auditoriumzipcode}
+    ${vcity} =  szotarban van e  ${data}  Auditoriumcity
+    run keyword if  ${vcity}==${TRUE}  Set To Dictionary  ${cim}  city=${data.Auditoriumcity}
+    ${vstreet} =  szotarban van e  ${data}  Auditoriumstreet
+    run keyword if  ${vstreet}==${TRUE}  Set To Dictionary  ${cim}  street=${data.Auditoriumstreet}
+    ${vhousenumber} =  szotarban van e  ${data}  Auditoriumhousenumber
+    run keyword if  ${vhousenumber}==${TRUE}  Set To Dictionary  ${cim}  housenumber=${data.Auditoriumhousenumber}
+    ${vfloor} =  szotarban van e  ${data}  Auditoriumfloor
+    run keyword if  ${vfloor}==${TRUE}  Set To Dictionary  ${cim}  floor=${data.Auditoriumfloor}
+    ${vdoor} =  szotarban van e  ${data}  Auditoriumdoor
+    run keyword if  ${vfloor}==${TRUE}  Set To Dictionary  ${cim}  door=${data.Auditoriumdoor}
+    [Return]  ${cim}
+
+Create dicvenueaddress
+    [Arguments]  ${data}
+    ${cim} =  create dictionary
+    ${vzipcode} =  szotarban van e  ${data}  Venuezipcode
+    run keyword if  ${vzipcode}==${TRUE}  Set To Dictionary  ${cim}  zipcode=${data.Venuezipcode}
+    ${vcity} =  szotarban van e  ${data}  Venuecity
+    run keyword if  ${vcity}==${TRUE}  Set To Dictionary  ${cim}  city=${data.Venuecity}
+    ${vstreet} =  szotarban van e  ${data}  Venuestreet
+    run keyword if  ${vstreet}==${TRUE}  Set To Dictionary  ${cim}  street=${data.Venuestreet}
+    ${vhousenumber} =  szotarban van e  ${data}  Venuehousenumber
+    run keyword if  ${vhousenumber}==${TRUE}  Set To Dictionary  ${cim}  housenumber=${data.Venuehousenumber}
+    ${vfloor} =  szotarban van e  ${data}  Venuedoor
+    run keyword if  ${vfloor}==${TRUE}  Set To Dictionary  ${cim}  floor=${data.Venuefloor}
+    ${vdoor} =  szotarban van e  ${data}  Venuefloor
+    run keyword if  ${vdoor}==${TRUE}  Set To Dictionary  ${cim}  door=${data.Venuedoor}
+    [Return]  ${cim}
+
+Create capacity venue
+    [Documentation]  Előállítja, hogy a capacitás-nak hogyan kell megjelennie
+                ...  az egyes nyelvek esetében.
+    [Arguments]  ${lan}  ${elem}
+    ${ertek} =  run keyword if  "${lan}"=="Hun"  set variable  ${elem}${SPACE}fő
+    ...  ELSE IF  "${lan}"=="En"  set variable  ${elem}${SPACE}person(s)
+    [Return]  ${ertek}

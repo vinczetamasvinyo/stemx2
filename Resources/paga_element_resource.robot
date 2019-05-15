@@ -20,6 +20,12 @@ Check the all delete icon appear in the page
     ${sor} =  Get the active row count
     should be true  "${elem}" == "${sor}"
 
+Check the delete icon not appear in tha page
+    [Documentation]  Megnézi, hogy az összes törlés ikon megjelenik-e az oldalon.
+    ${elem} =  Get the Delete count
+    ${db} =  convert to integer  0
+    should be equal  ${elem}  ${db}
+
 Chcek the all allapot icon appear in the page
     ${sorok} =  Get the row count
     ${db_new} =  Get the draft icon

@@ -1,13 +1,14 @@
 *** Settings ***
-#Resource  ../../../Resources/partner_letre_folyamat_resource.robot
-Resource  ../../../Resources/partner_adat_megtekintese_resource.robot
+Resource  ../../../../Resources/partner_adat_megtekintese_resource.robot
 
-Suite Setup  Login and create partners data and change english  ${box_office1_email_ok}  ${box_office1_password_ok}
+#Suite Setup  Login and create partners data and change english  ${box_office1_email_ok}  ${box_office1_password_ok}
+Suite Setup   Login and create partners data  ${LOGIN_DATA}
 #Suite Setup  Login and create partners data  ${box_office1_email_ok}  ${box_office1_password_ok}
 Test Template  Ellenorzes
 
 *** Variables ***
 ${LAN} =  En
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 
 
 *** Test Cases ***

@@ -28,7 +28,8 @@ ${PO_VENUES_AUDITORIUM_DOOR_ID} =  xpath=//*[@class="row new-auditorium-containe
 ${PO_VENUES_AUDITORIUM_FLOOR_ID} =  xpath=//*[@class="row new-auditorium-container"]//*[@formcontrolname="floor"]
 ${PO_VENUES_ADD_AUDITORIUM_BUTTON_ID} =  xpath=//*[@class="row new-auditorium-container"]//*[@class="button success"]
 ${PO_VENUES_AUDITORIUM_COUNTRY_ID} =  //*[@class="row new-auditorium-container"]//*[@formcontrolname="country"]
-
+${PO_VENUES_NAME_IN_TABLE_ID} =  xpath=//mat-cell[1]
+${PO_VENUES_ADDRESS_IN_TABLE_ID} =  xpath=//mat-cell[2]
 
 *** Keywords ***
 Wait until the venues page loaded
@@ -168,7 +169,30 @@ Check result of full venue name search results
     [Arguments]  ${eredmeny}  ${kivalasztott}
     Check the result value  ${eredmeny}  ${kivalasztott}  ${True}
 
+check result when search of substring of venue name
+    [Documentation]
+    [Arguments]  ${eredmeny}  ${kivalasztott}
+    Check the result value  ${eredmeny}  ${kivalasztott}  ${False}
+
 Give the search value on the venues page
     [Documentation]  Megadja a venue lista oldalon a keresőbe az értéket.
     [Arguments]  ${text}
     input text  ${PO_VENUES_SEARCH_INPUT_ID}  ${text}
+
+Get the page listbox item from the venue page
+    [Documentation]  Az előadóhelyek oldalán visszaadja a lapozóban lévő elemeket
+               ...  egy szótárban. A szótár első eleme az index utána pedig a szöveg.
+    ${lista} =  Go to listbox and get all items xpath  ${PO_ALT_PAGE_SCHROOL_LISTBOX_ID}  ${PO_ALT_PAGE_SCHROOL_CLASS_ID}
+    [Return]  ${lista}
+
+Get all venues name from the venues page
+    [Documentation]  Visszaadja venues oldalről a megjelene venue neveket.
+    @{lista} =  Get list from items2  ${False}  ${PO_VENUES_NAME_IN_TABLE_ID}  ${EMPTY}  ${EMPTY}
+    log  ${lista}
+    [Return]  ${lista}
+
+Get all venues address from the venues page
+    [Documentation]  Visszaadja venues oldalről a megjelene venue neveket.
+    @{lista} =  Get list from items2  ${False}  ${PO_VENUES_ADDRESS_IN_TABLE_ID}  ${EMPTY}  ${EMPTY}
+    log  ${lista}
+    [Return]  ${lista}

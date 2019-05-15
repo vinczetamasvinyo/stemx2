@@ -1,9 +1,12 @@
 *** Settings ***
-Resource  ../../../Resources/partner_letrehozasa_elem_resource.robot
+Resource  ../../../../Resources/partner_letrehozasa_elem_resource.robot
 
-Suite Setup  Login and go to the new partner page  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}
+Suite Setup  Login and go to the new partner page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  Common.End web test
 
+*** Variables ***
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${NYELV}
+${NYELV} =  ${EMPTY}
 #robot -d results Tests/partnerek/partner_letrehozasa/partner_letrehozasa_elem.robot
 
 *** Test Cases ***

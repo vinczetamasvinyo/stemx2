@@ -1,25 +1,16 @@
 *** Settings ***
-Resource  ../../../Resources/partner_letrehozasa_szoveg_resource.robot
-Resource  ../../../Resources/Common_resource.robot
-Resource  ../../../Resources/PO/po_mymenu.robot
+Resource  ../../../../Resources/partner_letrehozasa_szoveg_resource.robot
 
-Suite Setup  Login and go to the new paratner page and change language to english  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}
-#Suite Setup  Login and go to the new partner page  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}
+Suite Setup  Login and go to the new partner page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  Common.End web test
 
 *** Variables ***
-${Nyelv} =  En
-
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${NYELV}
+${Nyelv} =  Hun
 *** Test Cases ***
 Test the new partner page title
     [Documentation]  A teszt során azt nézzük meg, hogy az új partner létrehozása
                 ...  oldal címének a szövege az megfelelő.
-    [Tags]  most
-    #po_mymenu.Click the Mymenu
-    #po_mymenu.Click the language
-    #po_mymenu.Wait the language submenu appear
-    #po_mymenu.Click the english language
-    #po_mymenu.Waiting the new language is loaded
     Check the page title text on the new partner page  ${TITLE_TEXT.${Nyelv}}
 
 Test the partner profile block tilte
@@ -265,3 +256,11 @@ Test the save button text on the new partner page
                 ...  blokk-on belül a munkakör szövege megfelelő-e.
     [Tags]  Low
     Check the save button text   ${SAVEBUTTON_TEXT.${Nyelv}}
+
+
+*** Keywords ***
+#Login and go to the new partner page
+#    [Arguments]  ${oldal}  ${bong}  ${email}  ${jelszo}
+#    Login and go to the partners page  ${oldal}  ${bong}  ${email}  ${jelszo}
+#    Click the new partner
+#    Waiting the new partner page loaded

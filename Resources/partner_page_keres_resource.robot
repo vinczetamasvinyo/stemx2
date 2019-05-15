@@ -2,6 +2,8 @@
 Library  SeleniumLibrary
 Resource  partner_invite_common_resource.robot
 Resource  PO/po_alt.robot
+Resource  PO/po_userprofile.robot
+Resource  PO/po_page_navigator.robot
 
 *** Keywords ***
 Get the all default value

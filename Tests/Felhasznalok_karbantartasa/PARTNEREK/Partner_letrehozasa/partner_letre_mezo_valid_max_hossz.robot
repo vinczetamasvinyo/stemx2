@@ -3,12 +3,13 @@ Documentation  A suite azokat az teszteseteket tartalmazza amely során
           ...  a max értékeket írjuk be a mezőkbe és megnézzük, hogyy a max
           ...  hosszra vonatkozó hibaüzenet nem jelenik meg.
 
-Resource  ../../../Resources/partner_letre_mezo_valid_resource.robot
-Suite Setup  Login and go to the new partner page and give all data  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}  ${ADAT_TOOlONG}
+Resource  ../../../../Resources/partner_letre_mezo_valid_resource.robot
+Suite Setup  Login and go to the new partner page and give all data  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}  ${ADAT_TOOlONG}
 #Suite Setup  Login and go new partner page and give data and change language  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}  ${ADAT_TOOlONG}
 Suite Teardown  Common.End web test
 
 *** Variables ***
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${NYELV}
 ${NYELV} =  Hun
 ${LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdwwwwwwwwwwwwwwwwwwwwwwqqqqqqqqqqqqqqqqqqqqqqqqqqqqdddddd
 ${Max_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwqqqqqqqqqqqqqqqqqqqqqqqqqqqqdddddddd

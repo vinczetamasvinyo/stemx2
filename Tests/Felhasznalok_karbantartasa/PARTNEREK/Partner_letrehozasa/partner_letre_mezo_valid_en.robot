@@ -1,11 +1,13 @@
 *** Settings ***
-Resource  ../../../Resources/partner_letre_mezo_valid_resource.robot
+Resource  ../../../../Resources/partner_letre_mezo_valid_resource.robot
 
 
-Suite Setup  Login and go new partner page and give data and change language  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}  ${ADAT_TOOlONG}
+Suite Setup  Login and go to the new partner page and give all data  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA2}  ${ADAT_TOOlONG}
+#Suite Setup  Login and go new partner page and give data and change language  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}  ${ADAT_TOOlONG}
 Suite Teardown  Common.End web test
 
 *** Variables ***
+&{LOGIN_DATA2}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${NYELV}
 ${NYELV} =  En
 ${LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwdwwwwwwwwwwwwwwwwwwwwwwqqqqqqqqqqqqqqqqqqqqqqqqqqqqdddddd
 ${Max_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwqqqqqqqqqqqqqqqqqqqqqqqqqqqqdddddddd

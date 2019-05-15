@@ -1,5 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
+Library  Collections
 
 *** Variables ***
 ${PO_ALT_EYE_ICON} =  xpath=//*[@class="material-icons action-primary"]
@@ -13,9 +14,20 @@ ${PO_RESTOR_ICON_ID} =  xpath=//*[@class="material-icons face-primary"]
 ${PO_DELETED_ROW_ID} =  xpath=//mat-row[contains(@class,'row-deleted')]
 ${PO_ACTIVE_ROW_ID} =  xpath=//mat-row[@class="mat-row ng-tns-c10-15 ng-star-inserted"]
 ${PO_NEW_BUTTON_ID} =  xpath=//new-button
+${PO_NEW_BUTTON_TEXT_ID} =  xpath=//new-button//span
 ${PO_SAVE_BUTTON_ID} =  xpath=//save-button
 ${PO_ALT_SEARCH_BUTTON_ID} =  xpath=//search-button
+${PO_ALT_SEARCH_BUTTON_TEXT_ID} =  xpath=//search-button//span
 ${PO_ALT_RESET_BUTTON_ID} =  xpath=//reset-button
+${PO_ALT_RESET_BUTTON_TEXT_ID} =  xpath=//reset-button//span
+${PO_ALT_INPUT_VALUE_ID} =  xpath=//*[@class="lead"]
+${PO_ALT_PAGE_HEADER_TITTLE_ID} =  xpath=//*[@class="page-content"]//h1
+${PO_ALT_LABEL_ID} =  xpath=//label
+${PO_ALT_TABLE_HEADER_BUTTON_TEXT_ID} =  xpath=//*[@class="mat-sort-header-button"]
+${PO_ALT_TABLE_HEADER_TEXT_ID} =  xpath=//mat-header-cell
+${PO_ALT_PAGE_SCHROOL_LISTBOX_ID} =  //*[@class="mat-form-field-infix"]/mat-select
+${PO_ALT_PAGE_SCHROOL_CLASS_ID} =  aria-owns
+${PO_ALT_PAGE_SEARCH_INPUT_ID} =  xpath=//input[@formcontrolname="searchText"]
 
 *** Keywords ***
 Get the all eyes from the page
@@ -120,3 +132,38 @@ Click the search button
 Click the reset button
     [Documentation]
     click element  ${PO_ALT_RESET_BUTTON_ID}
+
+Get common value from the page
+    [Documentation]  Az olaláról visszaadja a megadott elem(input mező) értékét.
+    [Arguments]  ${index}
+    @{elem} =  SeleniumLibrary.Get WebElements  ${PO_ALT_INPUT_VALUE_ID}
+    ${egye_elem} =  get from list  ${elem}  ${index}
+    ${szoveg} =  get text  ${egye_elem}
+    Log  ${szoveg}
+    [Return]  ${szoveg}
+
+Check the search input field visiable on the page
+    [Documentation]  Megnézi, hogy a keresési mező megjelenik-e.
+    element should be visible  ${PO_ALT_PAGE_SEARCH_INPUT_ID}
+
+Check the reset button visiable on the page
+    [Documentation]  Megnézi, hogy a visszaállít gomb megjelenik-e.
+    element should be visible  ${PO_ALT_RESET_BUTTON_ID}
+
+Check the search button visiable on the page
+     [Documentation]  Megnézi, hogy a kereső gomb megjelenik-e az oldalon
+     element should be visible  ${PO_ALT_SEARCH_BUTTON_ID}
+
+Check the new button visiable on the page
+    [Documentation]  Megnézi, hogy az új gomb megjelenik-e az oldalon.
+    element should be visible  ${PO_NEW_BUTTON_ID}
+
+Give the search value
+    [Documentation]  Megadja a keresési mezőbe az értéket.
+    [Arguments]  ${text}
+    input text  ${PO_ALT_PAGE_SEARCH_INPUT_ID}  ${text}
+
+Get value of the search input
+    [Documentation]  Visszaadja a serach mezőben lévő értéket
+    ${szoveg} =  get value  ${PO_ALT_PAGE_SEARCH_INPUT_ID}
+    [Return]  ${szoveg}

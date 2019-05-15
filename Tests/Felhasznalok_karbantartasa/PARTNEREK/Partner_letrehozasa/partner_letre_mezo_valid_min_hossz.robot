@@ -3,11 +3,12 @@ Documentation  A suite azokat az teszteseteket tartalmazza amely során
           ...  a minimum értékeket írunk be a mezőkbe és megnézzük, hogy ilyenkor
           ...  a hosszra vonatkozó hibaüzenet nem jelenik meg.
 
-Resource  ../../../Resources/partner_letre_mezo_valid_resource.robot
-Suite Setup  Login and go to the new partner page and give all data  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}  ${ADAT_TOOlONG}
+Resource  ../../../../Resources/partner_letre_mezo_valid_resource.robot
+Suite Setup  Login and go to the new partner page and give all data  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}  ${ADAT_TOOlONG}
 Suite Teardown  Common.End web test
 
 *** Variables ***
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${NYELV}
 ${NYELV} =  Hun
 ${MIN_LONG} =  d
 ${MIN_PHONE_LONG} =   +3630960362

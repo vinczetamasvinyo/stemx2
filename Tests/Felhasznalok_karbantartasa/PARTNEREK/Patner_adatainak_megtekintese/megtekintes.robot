@@ -2,14 +2,13 @@
 Resource  ../../../Resources/partner_letre_folyamat_resource.robot
 Resource  ../../../Resources/partner_adat_megtekintese_resource.robot
 
-
-#Suite Setup  Login and create partners data  ${box_office1_email_ok}  ${box_office1_password_ok}
 Suite Setup  Login and create partners data  ${LOGIN_DATA}
 Test Template  Ellenorzes
 
 *** Variables ***
 ${LAN} =  Hun
-&{LOGIN_DATA}  email=${box_office1_email_ok1}  password=${box_office1_password_ok1}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+
 
 
 *** Test Cases ***

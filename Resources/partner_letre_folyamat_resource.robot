@@ -47,7 +47,7 @@ Start partner creation and go to the token page
     ${email} =  po_tempmail.Get the email address from the tempmail  ${bong}
     ${data.Email} =  set variable  ${email}
     go to  ${OLDAL_URL}
-	Login and go the new partner page  ${login.email}  ${login.password}
+	Login and go the new partner page  ${login}
 	Create new partner  ${data}
     Check the partner status  ${email}  Active
     Logout

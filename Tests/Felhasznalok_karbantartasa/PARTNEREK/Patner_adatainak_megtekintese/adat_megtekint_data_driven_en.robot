@@ -1,14 +1,13 @@
 *** Settings ***
-Resource  ../../../Resources/partner_adat_megtekintese_resource.robot
+Resource  ../../../../Resources/partner_adat_megtekintese_resource.robot
 
-Suite Setup   Login go partners page and choose one partner details  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
+Suite Setup   Login go partners page and choose one partner details   ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  common.End web test
 Test Template  Check the text on the partner details
 
 *** Variables ***
-${LAN}=  Hun
-&{LOGIN}  email=${box_office1_email_ok}  password=${box_office1_password_ok }
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+${LAN}=  En
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 ${index} =  0
 
 *** Test Cases ***

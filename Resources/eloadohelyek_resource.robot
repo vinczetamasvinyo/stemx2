@@ -1,8 +1,31 @@
 *** Settings ***
 Resource  Common_resource.robot
 Resource  PO/po_venues.robot
+Resource  paga_element_resource.robot
+Library    robot.libraries.String
+
+*** Variables ***
+&{VENUES_TITTLE}  Hun=Előadóhelyek  En=Venues
+&{VENUES_SEARCH_TEXT}  Hun=Keresés  En=Search
+&{VENUES_NEW_BUTTON_TEXT}  Hun=Új létrehozása  En=Create new
+&{VENUES_RESET_BUTTON_TEXT}  Hun=Visszaállítás  En=Reset
+&{VENUES_SEARCH_BUTTON_TEXT}  Hun=Keresés  En=Search
+&{VENUES_TABLE_HEADER_VENUE_NAME_TEXT}  Hun=Előadóhely neve  En=Venue name
+&{VENUES_TABLE_HEADER_VENUE_ADDRESS_TEXT}  Hun=Előadóhely címe  En=Venue address
+&{VENUES_TABLE_HEADER_FEATURES_TEXT}  Hun=Lehetőségek  En=Features
+&{VENUES_LISTBOX_ITEM1}  Hun=10  En=10
+&{VENUES_LISTBOX_ITEM2}  Hun=25  En=25
+&{VENUES_LISTBOX_ITEM3}  Hun=50  En=50
+&{VENUES_LISTBOX_ITEM4}  Hun=100  En=100
+
 
 *** Keywords ***
+Get random venues name of the list
+    [Documentation]  Visszad
+    [Arguments]  ${lista}
+    ${kivalasztott} =  Get random item from the list  ${lista}
+    [Return]  ${kivalasztott}
+
 Check the new venue was created
     [Arguments]  ${text}
     Give the search value on the venues page  ${text}
@@ -52,13 +75,13 @@ Give the new venue datas
     ${vvenuedecountry} =  szotarban van e  ${adatok}  Venuecountry
     run keyword if  ${vvenuedecountry}==${TRUE}  give the country of venue  ${adatok}[Venuecountry]
     ${vvenuezipcode} =  szotarban van e  ${adatok}  Venuezipcode
-    run keyword if  ${vvenuezipcode}==${TRUE}  give the zipcode of venue  ${adatok}[Venuecountry]
+    run keyword if  ${vvenuezipcode}==${TRUE}  give the zipcode of venue  ${adatok}[Venuezipcode]
     ${vvenuecity} =  szotarban van e  ${adatok}  Venuecity
     run keyword if  ${vvenuecity}==${TRUE}   give the city of venue  ${adatok}[Venuecity]
     ${vvenuecounty} =  szotarban van e  ${adatok}  Venuecounty
     run keyword if  ${vvenuecounty}==${TRUE}   give the county of venue  ${adatok}[Venuecounty]
     ${vvenuestreet} =  szotarban van e  ${adatok}  Venuestreet
-    run keyword if  ${vvenuecounty}==${TRUE}   give the street of venue  ${adatok}[Venuecounty]
+    run keyword if  ${vvenuecounty}==${TRUE}   give the street of venue  ${adatok}[Venuestreet]
     ${vvenuehousenumber} =  szotarban van e  ${adatok}  Venuehousenumber
     run keyword if  ${vvenuehousenumber}==${TRUE}   give the housenumber of venue  ${adatok}[Venuehousenumber]
     ${vvenuedoor} =  szotarban van e  ${adatok}  Venuedoor
@@ -102,3 +125,28 @@ Give the auditorium datas
 create venue or aurditoriums
     [Arguments]  ${data}
     run keyword if  ${data}[Existing]==0  po_alt.Click the new button
+
+Check the all venues name appear and length is correct
+    [Documentation]  Megnézi, hogy a venue oldalon megjelel venua nevek rendben vannak-e.
+    @{lista} =  Get all venues name from the venues page
+    log  ${lista}
+    Check the length is bigger in the list  ${lista}  0
+
+Check the all venues address appear and length is correct
+    [Documentation]  Megnézi, hogy a venue oldalon megjelel venua nevek rendben vannak-e.
+    @{lista} =  Get all venues address from the venues page
+    log  ${lista}
+    Check the length is bigger in the list  ${lista}  0
+
+Check the default order on the venues page
+    [Documentation]  Megnézi, hogy az oldalon alapból név szerint van-e rendezve a lista
+    @{lista} =  Get all venues name from the venues page
+    log  ${lista}
+    @{rendezett} =  copy list  ${lista}
+    log   ${rendezett}
+    lists should be equal  ${lista}   ${rendezett}
+
+Reset on the venue page
+    [Documentation]  Megnyomja a visszaállít gombot és várakozik.
+    Click the reset button
+    sleep  2s

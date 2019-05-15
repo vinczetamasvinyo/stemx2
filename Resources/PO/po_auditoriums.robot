@@ -92,16 +92,6 @@ Click the show deleted checkbox
     [Documentation]  Belekattint a törölt nézőterek mutatása checkbox-ba.
     click element  ${PO_AUDITORIUMS_SHOW_DELETED_CHECKBOX2}
 
-Give the search value
-    [Documentation]  Megadja a keresési mezőbe az értéket.
-    [Arguments]  ${text}
-    input text  ${PO_AUDITORIUMS_SEARCH_INPUT_ID}  ${text}
-
-Get value of the search input
-    [Documentation]  Visszaadja a serach mezőben lévő értéket
-    ${szoveg} =  get value  ${PO_AUDITORIUMS_SEARCH_INPUT_ID}
-    [Return]  ${szoveg}
-
 Click the search button
     click element  ${PO_AUDITORIUMS_SEARCH_BUTTON_ID}
 
@@ -138,3 +128,31 @@ Check the error message appear on the search fields ont the auditorium page
 Waiting the details of auditorium loaded
     [Documentation]  Megvárja amíg a nézőtér adatai oldal betöltődik
     wait until element is visible  //cancel-button
+
+Get the venue name from the audits details page
+    [Documentation]  A nézőtér részletei oldalról visszaadja a Venue nevét.
+    ${teljes_adat} =  Get common value from the page  3
+    ${venue_name} =  cut string   ${teljes_adat}  \n  0
+    [Return]  ${venue_name}
+
+Get the venue address from the audits details page
+    [Documentation]  A nézőtér részletei oldalról visszaadja a Venue címét.
+    ${teljes_adat} =  Get common value from the page  3
+    ${venue_name} =  cut string   ${teljes_adat}  \n  1
+    [Return]  ${venue_name}
+
+
+Get the audits name from the audits details page
+    [Documentation]  A nézőtér részletei oldalról visszaadja az audit nevét
+    ${name} =  Get common value from the page  0
+    [Return]  ${name}
+
+Get the audits address from the audits details page
+    [Documentation]  A nézőtér részletei oldalról visszaadja az audit címét.
+    ${auditaddress} =  Get common value from the page  1
+    [Return]  ${auditaddress}
+
+Get the audits capacity from the audits details page
+    [Documentation]  A nézőtér részletei oldalról visszaadja a nézőtér capacitását.
+    ${capacity} =  Get common value from the page  2
+    [Return]  ${capacity}

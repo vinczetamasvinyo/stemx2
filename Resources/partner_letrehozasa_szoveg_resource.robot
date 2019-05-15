@@ -3,6 +3,9 @@ Library  SeleniumLibrary
 Resource  partner_invite_common_resource.robot
 Resource  Common.robot
 Resource  variables/new_partner_variables.robot
+Resource  Common_resource.robot
+Resource  Common_resource.robot
+Resource  PO/po_mymenu.robot
 
 
 *** Variables ***

@@ -85,3 +85,15 @@ Change the language to hungarian via mymenu
     po_mymenu.Wait the language submenu appear
     po_mymenu.click the hungarian language
     po_mymenu.Waiting the page loaded
+
+Set the language
+    [Arguments]  ${lan}
+    run keyword if  "${lan}"=="Hun"  Change the language to hungarian via mymenu
+    ...  ELSE IF  "${lan}"=="En"  Change the language to English via mymenu
+    #po_mymenu.Waiting the page loaded
+
+Check and set language2
+    [Arguments]  ${defaultlan}  ${lan}
+    log  ${defaultlan}
+    log  ${lan}
+    run keyword if  "${lan}" != "${defaultlan}"  Set the language  ${lan}

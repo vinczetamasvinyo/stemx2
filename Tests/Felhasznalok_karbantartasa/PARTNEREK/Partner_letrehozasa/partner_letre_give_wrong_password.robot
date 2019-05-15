@@ -2,12 +2,13 @@
 Documentation  A test suite a partner létrehozása során azokat a teszteseteket
           ...  tartalmazza amikor a meghívott partnernek jelszót kell megadnia.
 
-Resource  ../../../Resources/partner_letre_give_wrong_password_resource.robot
+Resource  ../../../../Resources/partner_letre_give_wrong_password_resource.robot
 
-Suite Setup  Egyeb url  ${Partner_data}  ${Tempmail}  ${LOGIN}  ${bogeszo}
+Suite Setup  Egyeb url  ${Partner_data}  ${Tempmail}  ${LOGIN_DATA}  ${bogeszo}
 Suite Teardown  common.End web test
 
 *** Variables ***
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${Lan}
 ${Lan} =  Hun
 ${PARTNER_INVITE_GIVE_GOOD_PASSWORD} =  Vinyo123456
 ${PARTNER_INVITE_WRONG_TOKEN_ERROR_TEXT} =  Érvénytelen token

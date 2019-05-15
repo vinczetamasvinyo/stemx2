@@ -2,7 +2,7 @@
 Resource  ../../../../Resources/eloadohelyek_resource.robot
 
 Suite Setup  Open browser and login and after go to the venues page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
-#Suite Teardown  Common.End web test
+Suite Teardown  Common.End web test
 
 *** Variables ***
 &{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}

@@ -1,14 +1,13 @@
 *** Settings ***
-#Resource  ../../Resources/partner_invite_common_resource.robot
-#Resource  ../../Resources/PO/po_alt.robot
-Resource  ../../Resources/partner_page_keres_resource.robot
-Resource  ../../Resources/PO/po_userprofile.robot
-Resource  ../../Resources/PO/po_page_navigator.robot
+Resource  ../../../../Resources/partner_page_keres_resource.robot
 
-Suite Setup  Login and go to partners page
+
+Suite Setup  Login and go to the partners page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  Common.End web test
 
 *** Variables ***
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN} =  ${EMPTY}
 ${PPK_VALAMI_NEV} =  Valami
 ${PPK_VALAMI_EMAIL} =  EMAILCIM
 ${PPK_WATING_TIME1} =  3

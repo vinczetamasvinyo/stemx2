@@ -1,11 +1,12 @@
 *** Settings ***
-Resource  ../../../Resources/partnerek_page_szoveg_resource.robot
+Resource  ../../../../Resources/partnerek_page_szoveg_resource.robot
 
-Suite Setup  Login and go to the partners page and change lan  ${OLDAL_URL}  ${bogeszo}  ${box_office1_email_ok}  ${box_office1_password_ok}
+Suite Setup  Login and go to the partners page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  common.End web test
 
 *** Variables ***
-${LAN} =  En
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN} =  Hun
 
 *** Test Cases ***
 Test the allapot valaszto first item-osszes text

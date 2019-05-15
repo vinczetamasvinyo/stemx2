@@ -2,13 +2,13 @@
 Documentation  A suite azokat a teszteseteket tartalmazza amelyek megnézik, hogy
           ...  a partner felvitele során melyik mező kötelező, vagy nem kötelező.
 
-Resource  ../../../Resources/partner_letre_kotelezo_resource.robot
-Suite Setup  Login go new partner page and change englis and push the mentes  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
+Resource  ../../../../Resources/partner_letre_kotelezo_resource.robot
+Suite Setup  Login and go the new partner page and push the mentes change hun  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  Common.End web test
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
-${Nyelv} =  En
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${Nyelv}
+${Nyelv} =  Hun
 &{Kotelezo}  Hun=A mező kitöltése kötelező.  En=This field is required.
 
 
@@ -23,7 +23,6 @@ Test the firstname of partner is mandantory
     #${van1}  ${van2} =  po_partners.Check the error message  ${firstname}
     #log  ${v1}
     #Check the div object contains the error message  ${firstname}
-    log  ${Kotelezo.${Nyelv}}
     Check the error message appear and the error text value  ${firstname}  ${Kotelezo.${Nyelv}}
 
 
@@ -282,5 +281,24 @@ Test the jobdesciption of contact info is mandantory
     [Tags]  Medium
     ${jobdescription} =  Get jobdescription div object of contact
     Check the div object contains the error message  ${jobdescription}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 *** Keywords ***
