@@ -6,7 +6,7 @@ Suite Teardown  Common.End web test
 
 *** Variables ***
 &{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
-${LAN}=  Hun
+${LAN}=  En
 
 &{DATA}  Existing=0
 ...      Venuname=Vinyó törlés
