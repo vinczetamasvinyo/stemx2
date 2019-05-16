@@ -12,7 +12,7 @@ ${PO_PARTNERS_ICON_ACTIVE} =  xpath=//*[@class="material-icons status-icon publi
 ${PO_PARTNERS_ICON_DRAFT} =  xpath=//*[@class="material-icons status-icon draft"]
 ${PO_RESTOR_ICON_ID} =  xpath=//*[@class="material-icons face-primary"]
 ${PO_DELETED_ROW_ID} =  xpath=//mat-row[contains(@class,'row-deleted')]
-${PO_ACTIVE_ROW_ID} =  xpath=//mat-row[@class="mat-row ng-tns-c10-15 ng-star-inserted"]
+${PO_ACTIVE_ROW_ID} =  xpath=//mat-row[not(contains(@class,'row-deleted'))]
 ${PO_NEW_BUTTON_ID} =  xpath=//new-button
 ${PO_NEW_BUTTON_TEXT_ID} =  xpath=//new-button//span
 ${PO_SAVE_BUTTON_ID} =  xpath=//save-button
