@@ -7,6 +7,7 @@ Library  ../../../ExternalResources/mylibrary.py
 
 *** Variables ***
 &{LOGIN}  email=${box_office1_email_ok}  password=${box_office1_password_ok}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 
 *** Test Cases ***
 test1

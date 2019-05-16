@@ -184,6 +184,9 @@ Login and go to partner edit page
     [Arguments]  ${old}  ${bong}  ${login_data}
     Open browser and login to stemx or stemxcity  ${oldal_url}  ${bogeszo}  ${login_data}
     Go to the partners page via menu
+    Choose item from the status of partner listbox  Aktív
+     po_alt.Click the search button
+    sleep  3s
     Chose elem and go the the edit page
 
 Login and go to partner edit page and change language

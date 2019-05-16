@@ -6,7 +6,8 @@ Test Template  Check the text on the edit partner page
 
 
 *** Variables ***
-&{LOGIN_DATA}  email=${box_office1_email_ok1}  password=${box_office1_password_ok1}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+#&{LOGIN_DATA}  email=${box_office1_email_ok1}  password=${box_office1_password_ok1}  partner=${VARIABLES_PARTNER}
 ${LAN} =  Hun
 ${TYPE1} =  szoveg
 ${TYPE2} =  list

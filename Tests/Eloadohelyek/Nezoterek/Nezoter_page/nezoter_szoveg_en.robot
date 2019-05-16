@@ -5,7 +5,7 @@ Suite Setup  Open browser and login and after go to the auditoriums page and cha
 Test Template  Check the text on the auditoriums page
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 ${LAN} =  En
 
 

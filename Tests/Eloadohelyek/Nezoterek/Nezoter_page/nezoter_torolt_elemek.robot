@@ -6,7 +6,8 @@ Suite Teardown  Common.End web test
 
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN}=  En
 
 *** Test Cases ***
 Test the reset icon appear in the deleted auditoriums row

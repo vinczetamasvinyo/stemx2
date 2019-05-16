@@ -6,8 +6,7 @@ Suite Teardown  Common.End web test
 
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
-
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 &{AUDITORIUMDATA1}  	Auditoriumname=Vinyó nézőtér teszt
 ...	                Auditoriumcapacity=20
 ...	                Auditoriumvenueaddress=${False}

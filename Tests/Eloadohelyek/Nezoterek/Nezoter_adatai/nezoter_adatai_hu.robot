@@ -6,8 +6,8 @@ Suite Teardown  Common.End web test
 
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
-
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN} =  Hun
 &{AUDITORIUMDATA1}  	Auditoriumname=Vinyó nézőtér teszt
 ...	                Auditoriumcapacity=20
 ...	                Auditoriumvenueaddress=${False}
@@ -36,7 +36,7 @@ Suite Teardown  Common.End web test
 @{AUDITORIUMS}  &{AUDITORIUMDATA1}
 &{VENUEAUDITORIUMS}  Venue=${VENUEDATA}
                 ...  Audits=${AUDITORIUMS}
-${LAN} =  Hun
+
 
 *** Test Cases ***
 Test the audits name on the audit details page

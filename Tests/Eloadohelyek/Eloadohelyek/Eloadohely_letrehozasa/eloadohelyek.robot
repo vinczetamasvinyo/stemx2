@@ -5,7 +5,8 @@ Suite Setup  Open browser and login and after go to the venues page  ${OLDAL_URL
 Suite Teardown  Common.End web test
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN}=  Hun
 
 &{DATA}  Existing=0
 ...      Venuname=Vinyó törlés

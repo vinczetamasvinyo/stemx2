@@ -7,7 +7,7 @@ Suite Setup  csinal  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 &{AUDITORIUMDATA1}  	Auditoriumname=Vinyó nézőtér
 ...	                Auditoriumcapacity=20
 ...	                Auditoriumvenueaddress=${False}

@@ -9,7 +9,7 @@ Test Template  Check the text on the venue page
 
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 ${Lan} =  Hun
 ${TEXT_ID} =  text
 ${LIST_ID} =  listboxtext

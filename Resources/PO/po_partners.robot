@@ -4,6 +4,7 @@ Library  Collections
 Library  ../../ExternalResources/mylibrary.py
 Resource  po_alt.robot
 Resource  ../Common.robot
+Resource  ../Common_resource.robot
 
 *** Variables ***
 ${PO_PARTNERS_INIVETE_BUTTON_TEXT_ID} =  //app-button[@id="invite_partner"]//*[@class="ng-star-inserted"]
@@ -364,6 +365,11 @@ Get the uj letrehozasa button text
 Click the allapotvlaszto
     [Documentation]  Belekattint az állapotválasztó listbox-ba.
     click element  ${PO_PO_PARTNERS_ALLAPOT_VALASZTO_ID}
+
+Choose item from the status of partner listbox
+    [Documentation]  A partner status listboxból kiválasztja a megadott elemet.
+    [Arguments]  ${text}
+    Choose item from listbox  ${text}  ${PO_PO_PARTNERS_ALLAPOT_VALASZTO_ID}
 
 Choose the osszes elem from the allapotvalaszto
     [Documentation]  Az állapotválasztó listából kiválasztja az összes elemet.

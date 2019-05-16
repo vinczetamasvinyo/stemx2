@@ -7,8 +7,8 @@ Library    robot.libraries.String
         ...   Firstname=Vinyó
         ...   Lastname=Vincze
 
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
-
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN}=  Hun
 *** Test Cases ***
 Test1
     ${szoveg} =  robot.libraries.String.Generate Random String  6  letters

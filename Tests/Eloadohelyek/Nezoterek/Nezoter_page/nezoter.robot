@@ -6,8 +6,8 @@ Suite Setup  Open browser and login and after go to the auditoriums page  ${OLDA
 
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
-
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN}=  En
 
 *** Test Cases ***
 Test the search input visiable

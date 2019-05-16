@@ -3,7 +3,8 @@ Resource  ../../../Resources/felhasznalok_resource.robot
 
 
 *** Variables ***
-&{LOGIN_DATA}  email=${box_office1_email_ok}  password=${box_office1_password_ok}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN}=  Hun
 
 *** Test Cases ***
 Test1

@@ -6,9 +6,9 @@ Resource  ../../../../Resources/menu_resource.robot
 Suite Setup  Open browser and login and after go to the auditoriums page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 #Suite Teardown  Common.End web test
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 ${lidta_id} =  xpath=//mat-cell[1]
-
+${LAN}=  Hun
 
 *** Test Cases ***
 test1

@@ -9,7 +9,7 @@ Suite Setup  Open browser and login and after go to the auditoriums page  ${OLDA
 Suite Teardown  Common.End web test
 
 *** Variables ***
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 ${NEZOTER_VALID_GOOD_NORMAL_TEXT} =  valami
 ${NEZOTER_VALID_GOOD_NORMAL_TEXT_CAPITAL} =  VALAMI
 ${NEZOTER_VALID_GOOD_NORMAL_TEXT_SMALL_CAPITAL} =  Valami
