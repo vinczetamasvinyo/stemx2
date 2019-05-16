@@ -1,13 +1,12 @@
 *** Settings ***
-Resource  ../../../Resources/partner_adat_megtekintese_resource.robot
+Resource  ../../../../Resources/partner_adat_megtekintese_resource.robot
 
-Suite Setup   Login go partners page and choose one partner details  ${OLDAL_URL}  ${bogeszo}  ${LOGIN}
+Suite Setup   Login go partners page and choose one partner details  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 Suite Teardown  common.End web test
 
 *** Variables ***
 ${LAN}=  Hun
-&{LOGIN}  email=${box_office1_email_ok}  password=${box_office1_password_ok }
-
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 
 *** Test Cases ***
 Test the title of partner details
@@ -64,7 +63,7 @@ Test the billing name text on the partner details page
     Check the billing name on the partner details  ${BILLING_NAME_TEXT.${LAN}}
 
 *** Keywords ***
-Login go partners page and choose one partner details
+Login go partners page and choose one partner details2
     [Arguments]  ${old}  ${bong}  ${login}
     Login and go to partner details page  ${old}  ${bong}  ${login.email}  ${login.password}
     Choose and open one partners details

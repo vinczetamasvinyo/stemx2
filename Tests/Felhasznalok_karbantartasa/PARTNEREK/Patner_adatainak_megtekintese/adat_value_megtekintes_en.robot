@@ -2,8 +2,8 @@
 Resource  ../../../../Resources/partner_adat_megtekintese_resource.robot
 
 #Suite Setup  Login and create partners data and change english  ${box_office1_email_ok}  ${box_office1_password_ok}
-Suite Setup   Login and create partners data  ${LOGIN_DATA}
-#Suite Setup  Login and create partners data  ${box_office1_email_ok}  ${box_office1_password_ok}
+Suite Setup   Login and create partners data2  ${LOGIN_DATA}  ${Partner_data2}
+Suite Teardown  common.End web test
 Test Template  Ellenorzes
 
 *** Variables ***

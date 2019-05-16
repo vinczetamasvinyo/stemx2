@@ -687,3 +687,49 @@
 [0515/215639.043:ERROR:exception_snapshot_win.cc(98)] thread ID 1028072 not found in process
 [0515/215806.849:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
 [0515/215806.849:ERROR:exception_snapshot_win.cc(98)] thread ID 1027944 not found in process
+[0516/095125.042:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/095125.046:ERROR:exception_snapshot_win.cc(98)] thread ID 1056952 not found in process
+[0516/095125.045:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/095125.047:ERROR:exception_snapshot_win.cc(98)] thread ID 1058184 not found in process
+[0516/101330.585:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/101330.593:ERROR:exception_snapshot_win.cc(98)] thread ID 1065256 not found in process
+[0516/101602.605:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/101602.606:ERROR:exception_snapshot_win.cc(98)] thread ID 1065160 not found in process
+[0516/102240.099:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/102240.103:ERROR:exception_snapshot_win.cc(98)] thread ID 1067196 not found in process
+[0516/102429.195:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/102429.196:ERROR:exception_snapshot_win.cc(98)] thread ID 1066432 not found in process
+[0516/103109.362:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/103109.363:ERROR:exception_snapshot_win.cc(98)] thread ID 1069724 not found in process
+[0516/103109.364:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/103109.365:ERROR:exception_snapshot_win.cc(98)] thread ID 1069712 not found in process
+[0516/103431.978:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/103431.979:ERROR:exception_snapshot_win.cc(98)] thread ID 1067500 not found in process
+[0516/103431.981:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/103431.982:ERROR:exception_snapshot_win.cc(98)] thread ID 1069028 not found in process
+[0516/104854.347:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/104854.349:ERROR:exception_snapshot_win.cc(98)] thread ID 1071760 not found in process
+[0516/104854.350:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/104854.351:ERROR:exception_snapshot_win.cc(98)] thread ID 1071748 not found in process
+[0516/105155.167:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.169:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.169:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.169:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.169:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.169:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.169:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.169:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.169:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/105155.170:ERROR:exception_snapshot_win.cc(98)] thread ID 1072724 not found in process
+[0516/105155.191:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.192:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.192:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.192:ERROR:process_reader_win.cc(151)] SuspendThread: A hozzáférés megtagadva. (0x5)
+[0516/105155.192:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/105155.193:ERROR:exception_snapshot_win.cc(98)] thread ID 1072740 not found in process
+[0516/105858.303:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/105858.305:ERROR:exception_snapshot_win.cc(98)] thread ID 1070424 not found in process
+[0516/110125.214:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/110125.217:ERROR:exception_snapshot_win.cc(98)] thread ID 1038104 not found in process
+[0516/110125.221:ERROR:process_reader_win.cc(123)] NtOpenThread: {Hozzáférés megtagadva} A folyamat hozzáférést kért egy objektumhoz, de ehhez nem volt engedélye. (0xc0000022)
+[0516/110125.225:ERROR:exception_snapshot_win.cc(98)] thread ID 1072692 not found in process

@@ -7,10 +7,12 @@ Resource  ../Common_resource.robot
 
 *** Variables ***
 ${PO_USERPROFILE_PHONE_ID} =  xpath=//input[@formcontrolname="phone"]
-${PO_USERPROFILE_BIRTHDAY_ID} =  xpath=//input[@formcontrolname="birthday"]
+#${PO_USERPROFILE_BIRTHDAY_ID} =  xpath=//input[@formcontrolname="birthday"]
+${PO_USERPROFILE_BIRTHDAY_ID} =  xpath=//input[@formcontrolname="birthDate"]
 ${PO_USERPROFILE_BIRTPLACE_ID} =  xpath=//input[@formcontrolname="birthPlace"]
 ${PO_USERPROFILE_MOTHERNAME_ID} =  xpath=//input[@formcontrolname="motherName"]
-${PO_USERPROFILE_BIRTNAME_ID} =  xpath=//input[@formcontrolname="birthName"]
+#${PO_USERPROFILE_BIRTNAME_ID} =  xpath=//input[@formcontrolname="birthName"]
+${PO_USERPROFILE_BIRTNAME_ID} =  //input[@formcontrolname="maidenName"]
 ${PO_USERPROFILE_RADIO_MAN_ID} =  id=mat-radio-3
 ${PO_USERPROFILE_RADIO_WOMAN_ID} =  mat-radio-2
 ${PO_USERPROFILE_SAVE_BUTTON_ID} =  xpath=//button[@class="button success"]
@@ -290,7 +292,7 @@ Give the availability phone
     [Documentation]  A profil oldalon megadja a céghez tartoz elérhetőségi telefonszámot
     [Arguments]  ${szoveg}
     @{elem} =  SeleniumLibrary.Get WebElements  xpath=//input[@formcontrolname="phone"]
-    ${chose} =  Get From List  ${elem}  1
+    ${chose} =  Get From List  ${elem}  0
     input text  ${chose}  ${szoveg}
 
 Give the contact phone

@@ -1,46 +1,37 @@
 *** Settings ***
 # robot -d results -t test3 Tests/partnerek/partner_invite_folyamat.robot
 
-Resource  ../../Resources/partner_invite_resource.robot
-Resource  ../../Resources/login_resource.robot
-Resource  ../../Resources/Common.robot
-Resource  ../../Resources/PO/po_menu.robot
-Library  ../../ExternalResources/mylibrary.py
-Resource  ../../Resources/variables.robot
-Variables  ../../Resources/variable.py
-Library  SeleniumLibrary
-Library  Collections
-Resource  ../../Resources/PO/po_userprofile.robot
-Resource  ../../Resources/PO/po_tempmail.robot
-Resource  ../../Resources/PO/po_mymenu.robot
+Resource  ../../../../Resources/partner_invite_resource.robot
 
 *** Variables ***
 ${PARTNER_INVITE_FOLYAMAT_TEMP_URL} =  https://temp-mail.org/
-${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Meghívás elfogadása
+#${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Meghívás elfogadása
+${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Regisztráció
 ${PARTNER_INVITE_FOLYAMATA_MAIL_TIMEOUT} =  120
-${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Meghívás elfogadása
+#${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Meghívás elfogadása
+${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Regisztráció
 ${PARTNER_INVITE_FOLYAMATA_JO_PASSWORD} =  Vinyo123456
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN}=  Hun
 
 *** Test Cases ***
 test3
     [Tags]  most3
     ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}
     go to  ${OLDAL_URL}
-    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
-    Check the login succes or not
-    #sleep  1s
+    Login to stemx or stemxcity  ${logindata}
     Go to the partners page via menu
-    #sleep  1s
     Click the partner invite button
     Waite the partner invite page loaded
     po_partners.Give the email of partner  ${email}
-    po_partners.Give the name of company  cegnevvalami
+    ${ido} =  get time in string
+    ${nev} =  set variable  Meghivaspartner${ido}
+    po_partners.Give the name of company   ${nev}
     po_partners.give the lastname  last
     po_partners.give the firstname  valami
     po_partners.Push the Mentes button on the parner invite page
     Wait the succes message and click
-    Click the Mymenu
-    Click the logout submenu
+    Full logout
     go to  ${PARTNER_INVITE_FOLYAMAT_TEMP_URL}
     # wait until element is visible  Új bejelentés érkezett  120
     po_tempmail.Waiting and click the mail in themp page  ${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID}  ${PARTNER_INVITE_FOLYAMATA_MAIL_TIMEOUT}  ${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID}
@@ -48,14 +39,13 @@ test3
     Scroll and click the link in the email  link=Regisztáció befejezése  100
     close window
     select window  MAIN
-    Wait the token page is loaded
-    PO_login.Give the password  ${PARTNER_INVITE_FOLYAMATA_JO_PASSWORD}
-    PO_login.Give the same password  ${PARTNER_INVITE_FOLYAMATA_JO_PASSWORD}
-    po_login.Push the regisztracio megerositese button
-    Wait the succes message and click
-    po_login.Waiting the login pager loaded
-    Give regeistration data and click the login button  ${email}  ${PARTNER_INVITE_FOLYAMATA_JO_PASSWORD}
-    Check the login succes or not
+    Finish the registration the stemx or stemc page   ${password_ok2}
+    ${logindatap} =  create dictionary
+    set to dictionary  ${logindatap}  email  ${email}
+    set to dictionary  ${logindatap}  password  ${password_ok2}
+    set to dictionary  ${logindatap}  partner   ${nev}
+    set to dictionary  ${logindatap}  language  ${LAN}
+    Login to stemx or stemxcity  ${logindatap}
     Click the Mymenu
     po_mymenu.click the myprofil
     give the phone number  +36209602628
@@ -90,14 +80,12 @@ test3
     Give the billing housenumber  11/D
     Give the billing door  41
     Give the billing floor  10
-    Give the availability phone  +36209602628
+    #Give the availability phone  +36209602628
     push the second save button
     Wait the succes message and click
-    Click the Mymenu
-    Click the logout submenu
-    Give regeistration data and click the login button  ${box_office1_email_ok}  ${box_office1_password_ok }
-    Check the login succes or not
-    #sleep  1s
+    Full logout
+    go to  ${OLDAL_URL}
+    Login to stemx or stemxcity  ${logindata}
     Go to the partners page via menu
     Give the email for the search input  ${email}
     po_partners.Click the search button
@@ -114,19 +102,6 @@ test3
     sleep  2s
     Check the active icon is appear
     close browser
-
-#Test4
-    #login_resource.Open Vk login page  ${OLDAL_URL}  ${bogeszo}
-    #Give regeistration data and click the login button  numal@red-mail.info  Vinyo123456
-    #Check the login succes or not
-    #click element  //*[@class="user-profile"]
-    #wait until element is visible  id=menu-account
-    #click element  id=menu-account
-    #sleep  3s
-    #Give the billing country
-    # give the floor  9.
-    #Give the country
-    #sleep  4s
 
 test6
     [Tags]  valami

@@ -2,50 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9fb6e335-eff5-4eef-95f8-acf80d070d53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eload_elem.robot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eload_keres.robot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eloadohely_szoveg_en.robot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eloadohely_szoveg_hu.robot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_adatai/nezoter_adatai_en.robot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_adatai/nezoter_adatai_hu.robot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_invite/partner_invite.robot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Common_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Common_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/PO/po_alt.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/PO/po_alt.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/PO/po_auditoriums.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/PO/po_auditoriums.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/PO/po_mymenu.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/PO/po_mymenu.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/PO/po_venues.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/PO/po_venues.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/auditoriums_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/auditoriums_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/eloadohelyek_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/eloadohelyek_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/login_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/login_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/paga_element_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/paga_element_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/partner_letre_folyamat_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/partner_letre_folyamat_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/partner_letre_kotelezo_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/partner_letre_kotelezo_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/partner_letrehozasa_szoveg_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/partner_letrehozasa_szoveg_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/partner_page_element_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/partner_page_element_resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/partner_page_keres_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/partner_page_keres_resource.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/PO/po_userprofile.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/PO/po_userprofile.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/partner_adat_megtekintese_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/partner_adat_megtekintese_resource.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/partner_invite_resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/partner_invite_resource.robot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Resources/variables/partner_megtekintese_variable.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/variables/partner_megtekintese_variable.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_letrehozasa/eloadohelyek.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_letrehozasa/eloadohelyek.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_adatai/nezoter_adatai.robot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_page/nezoter_keres.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_page/nezoter_keres.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letre_give_wrong_password.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_give_wrong_password.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letre_kotelezo.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_kotelezo.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letre_kotelezo_en.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_kotelezo_en.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letre_mezo_valid.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_mezo_valid.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letre_mezo_valid_en.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_mezo_valid_en.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letre_mezo_valid_max_hossz.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_mezo_valid_max_hossz.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letre_mezo_valid_min_hossz.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_mezo_valid_min_hossz.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letrehozasa_elem.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letrehozasa_elem.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letrehozasa_szoveg.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letrehozasa_szoveg.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_letrehozasa/partner_letrehozasa_szoveg_en.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letrehozasa_szoveg_en.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_page/partnerek_page_szoveg.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_page/partnerek_page_szoveg.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Partner_page/partnerek_page_szoveg_en.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_page/partnerek_page_szoveg_en.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven_en.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven_en.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Patner_adatainak_megtekintese/adat_value_megtekintes_en.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_value_megtekintes_en.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Patner_adatainak_megtekintese/megtekintes.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/megtekintes.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/Patner_adatainak_megtekintese/partner_adat_megtekintese_szoveg.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/partner_adat_megtekintese_szoveg.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/partner_page_element.robot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/partner_page_keres.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_page/partner_page_keres.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_value_megtekintes_en.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_value_megtekintes_en.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/megtekintes.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/megtekintes.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/partner_adat_megtekintese_szoveg.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/partner_adat_megtekintese_szoveg.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/PARTNEREK/partner_invite_folyamat.robot" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_invite/partner_invite_folyamat.robot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -84,8 +50,8 @@
           <entry key="html" value="3" />
           <entry key="log" value="3" />
           <entry key="png" value="29" />
-          <entry key="py" value="193" />
-          <entry key="robot" value="1108" />
+          <entry key="py" value="196" />
+          <entry key="robot" value="1139" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
@@ -95,15 +61,15 @@
           <entry key="Image" value="29" />
           <entry key="Log" value="3" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="193" />
-          <entry key="Robot Feature" value="1108" />
+          <entry key="Python" value="196" />
+          <entry key="Robot Feature" value="1139" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="31" />
           <entry key="py" value="5181" />
-          <entry key="robot" value="172148" />
+          <entry key="robot" value="172579" />
           <entry key="txt" value="28" />
         </counts>
       </usages-collector>
@@ -111,7 +77,7 @@
         <counts>
           <entry key="PLAIN_TEXT" value="28" />
           <entry key="Python" value="5212" />
-          <entry key="Robot Feature" value="172148" />
+          <entry key="Robot Feature" value="172579" />
         </counts>
       </usages-collector>
     </session>
@@ -119,82 +85,35 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_page/partner_page_element.robot">
+        <entry file="file://$PROJECT_DIR$/Tests/PARTNEREK/partner_invite_give_wrong_password.robot">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="18" />
+            <state relative-caret-position="2112">
+              <caret line="141" column="21" selection-start-line="141" selection-start-column="21" selection-end-line="141" selection-end-column="21" />
               <folding>
-                <element signature="e#0#221#0" expanded="true" />
+                <element signature="e#0#300#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_page/partner_page_keres.robot">
+        <entry file="file://$PROJECT_DIR$/Tests/Programok/programok_megtekintese.robot">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-690">
-              <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven.robot">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven_en.robot">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="70" selection-start-line="3" selection-start-column="70" selection-end-line="3" selection-end-column="109" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_value_megtekintes_en.robot">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" selection-end-column="122" />
+            <state>
               <folding>
-                <element signature="e#0#395#0" expanded="true" />
+                <element signature="e#0#355#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/megtekintes.robot">
+        <entry file="file://$PROJECT_DIR$/Tests/fel.robot">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+            <state>
               <folding>
-                <element signature="e#0#338#0" expanded="true" />
+                <element signature="e#0#122#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/partner_adat_megtekintese_resource.robot">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="41" lean-forward="true" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/variables/partner_megtekintese_variable.robot">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -210,7 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>audit</find>
       <find>rando</find>
       <find>szemek</find>
       <find>CANCEL</find>
@@ -240,6 +158,7 @@
       <find>Test the search of captial subtring of auditoriums name</find>
       <find>hun</find>
       <find>change</find>
+      <find>login</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -248,12 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ExternalResources/mylibrary.py" />
-        <option value="$PROJECT_DIR$/Resources/auditoriums_resource.robot" />
-        <option value="$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_adatai/nezoter_adatai.robot" />
-        <option value="$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_adatai/nezoter_adatai_hu.robot" />
-        <option value="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_letrehozasa/eloadohelyek.robot" />
-        <option value="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eload.robot" />
         <option value="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eloadohely_szoveg_hu.robot" />
         <option value="$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eloadohely_szoveg_en.robot" />
         <option value="$PROJECT_DIR$/Resources/paga_element_resource.robot" />
@@ -296,9 +209,15 @@
         <option value="$PROJECT_DIR$/Resources/partner_page_keres_resource.robot" />
         <option value="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven.robot" />
         <option value="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven_en.robot" />
-        <option value="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_value_megtekintes_en.robot" />
         <option value="$PROJECT_DIR$/Resources/variables/partner_megtekintese_variable.robot" />
         <option value="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/megtekintes.robot" />
+        <option value="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_value_megtekintes_en.robot" />
+        <option value="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/partner_adat_megtekintese_szoveg.robot" />
+        <option value="$PROJECT_DIR$/Resources/partner_adat_megtekintese_resource.robot" />
+        <option value="$PROJECT_DIR$/Resources/partner_invite_resource.robot" />
+        <option value="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_invite/partner_invite.robot" />
+        <option value="$PROJECT_DIR$/Resources/PO/po_userprofile.robot" />
+        <option value="$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_invite/partner_invite_folyamat.robot" />
       </list>
     </option>
   </component>
@@ -334,52 +253,12 @@
             <path>
               <item name="varoskartya" type="b2602c69:ProjectViewProjectNode" />
               <item name="varoskartya" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="varoskartya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="varoskartya" type="462c0819:PsiDirectoryNode" />
               <item name="Results" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="varoskartya" type="b2602c69:ProjectViewProjectNode" />
               <item name="varoskartya" type="462c0819:PsiDirectoryNode" />
               <item name="Tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="varoskartya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="varoskartya" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Felhasznalok_karbantartasa" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="varoskartya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="varoskartya" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Felhasznalok_karbantartasa" type="462c0819:PsiDirectoryNode" />
-              <item name="PARTNEREK" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="varoskartya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="varoskartya" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Felhasznalok_karbantartasa" type="462c0819:PsiDirectoryNode" />
-              <item name="PARTNEREK" type="462c0819:PsiDirectoryNode" />
-              <item name="Partner_page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="varoskartya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="varoskartya" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
-              <item name="Felhasznalok_karbantartasa" type="462c0819:PsiDirectoryNode" />
-              <item name="PARTNEREK" type="462c0819:PsiDirectoryNode" />
-              <item name="Patner_adatainak_megtekintese" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="varoskartya" type="b2602c69:ProjectViewProjectNode" />
-              <item name="varoskartya" type="462c0819:PsiDirectoryNode" />
-              <item name="Tests" type="462c0819:PsiDirectoryNode" />
-              <item name="PARTNEREK" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -394,18 +273,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\development\robot-scripts\varoskartya\Tests\Felhasznalok_karbantartasa\PARTNEREK\Partner_invite" />
       <recent name="C:\development\robot-scripts\varoskartya\Tests\Felhasznalok_karbantartasa\PARTNEREK" />
       <recent name="C:\development\robot-scripts\varoskartya\Tests\Felhasznalok_karbantartasa\PARTNEREK\Partner_page" />
       <recent name="C:\development\robot-scripts\varoskartya\Tests\Felhasznalok_karbantartasa\PARTNEREK\Partner_letrehozasa" />
       <recent name="C:\development\robot-scripts\varoskartya\Tests\Eloadohelyek\Eloadohelyek\Eloadohely_letrehozasa" />
-      <recent name="C:\development\robot-scripts\varoskartya\Tests\PARTNEREK\Partner_page" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\development\robot-scripts\varoskartya\Tests\Felhasznalok_karbantartasa\PARTNEREK\Partner_invite" />
       <recent name="C:\development\robot-scripts\varoskartya\Tests\Eloadohelyek\Eloadohelyek\Eloadohely_lista" />
       <recent name="C:\development\robot-scripts\varoskartya\Tests\Eloadohelyek\Nezoterek\Nezoter_adatai" />
       <recent name="C:\development\robot-scripts\varoskartya\DATA" />
       <recent name="C:\development\robot-scripts\varoskartya\Tests\Eloadohelyek\Nezoterek\Nezoter_page" />
-      <recent name="C:\development\robot-scripts\varoskartya\Tests\Felhasznalok_karbantartasa\Felhasznalok\Felhasznalok_meghivasa" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -544,13 +423,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18756586" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.37544483" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.1724512" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.34042552" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3985765" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -580,117 +458,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Resources/PO/po_partners.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-          <folding>
-            <element signature="e#0#157#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_page/nezoter_page.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-129">
-          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eloadohely_szoveg_hu.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eloadohely_szoveg_en.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="49" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_page/nezoter.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="77" column="22" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/PO/po_auditoriums.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eload_elem.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/PO/po_alt.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/auditoriums_resource.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="94" selection-start-line="94" selection-end-line="97" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/PO/po_venues.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="174" column="16" selection-start-line="174" selection-start-column="16" selection-end-line="174" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/eloadohelyek_resource.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_lista/eload_keres.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="75" column="85" lean-forward="true" selection-start-line="75" selection-start-column="85" selection-end-line="75" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_page/nezoter_keres.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2514">
-          <caret line="63" column="55" selection-start-line="63" selection-end-line="63" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_folyamat.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="105" lean-forward="true" selection-start-line="10" selection-end-line="10" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/partner_letre_folyamat_resource.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Nezoterek/Nezoter_page/nezoter_keres_cim.robot">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1382">
@@ -864,15 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/partner_adat_megtekintese_szoveg.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#227#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_szerkesztese/szerk_szoveg.robot">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -893,30 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/login_resource.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/Common_resource.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-          <folding>
-            <element signature="e#0#242#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven_en.robot">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -924,39 +658,191 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/variables/partner_page_variable.robot">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/variables/partner_megtekintese_variable.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Resources/variables/partner_adat_megtekintese_variable.robot">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/partner_adat_megtekintese_szoveg.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_value_megtekintes_en.robot">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" selection-end-column="122" />
+        <state relative-caret-position="88">
+          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/adat_megtekint_data_driven.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="69" selection-start-line="3" selection-start-column="69" selection-end-line="3" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/login_resource.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="38" column="4" lean-forward="true" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/megtekintes.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/partner_invite_resource.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
-            <element signature="e#0#395#0" expanded="true" />
+            <element signature="e#0#514#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/partner_adat_megtekintese_resource.robot">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="41" lean-forward="true" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resources/variables/partner_megtekintese_variable.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Patner_adatainak_megtekintese/megtekintes.robot">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+        <state relative-caret-position="290">
+          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
           <folding>
-            <element signature="e#0#338#0" expanded="true" />
+            <element signature="e#0#447#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/PARTNEREK/partner_invite_password_szoveg.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#188#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/PO/po_clogin_page.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_letrehozasa/partner_letre_folyamat.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="42" column="4" lean-forward="true" selection-start-line="42" selection-start-column="4" selection-end-line="46" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/variable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_invite/partner_invite.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1804">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#290#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/Common_resource.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="50" column="46" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/PARTNEREK/partner_invite.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Eloadohelyek/Eloadohelyek/Eloadohely_letrehozasa/eloadohelyek.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1466">
+          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#222#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/PO/po_userprofile.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="286" column="90" lean-forward="true" selection-start-line="286" selection-start-column="90" selection-end-line="286" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Felhasznalok_karbantartasa/PARTNEREK/Partner_invite/partner_invite_folyamat.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-646">
+          <caret line="87" column="45" selection-start-line="87" selection-start-column="45" selection-end-line="87" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Resources/partner_invite_common_resource.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/PARTNEREK/partner_invite_give_wrong_password.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2112">
+          <caret line="141" column="21" selection-start-line="141" selection-start-column="21" selection-end-line="141" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#300#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/Programok/programok_megtekintese.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#355#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/fel.robot">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#122#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -111,11 +111,17 @@ Check common icon text
 
 Login go partners page and choose one partner details
     [Arguments]  ${old}  ${bong}  ${login}
-    #Login and go to partner details page  ${old}  ${bong}  ${login.email}  ${login.password}
     Open browser and login to stemx or stemxcity  ${old}  ${bong}  ${login}
     Go to the partners page via menu
     Choose and open one partners details
     Wait the partner details page loaded
+
+Login go partners page and click invite button2
+    [Arguments]  ${old}  ${bong}  ${login}
+    Open browser and login to stemx or stemxcity  ${old}  ${bong}  ${login}
+    Go to the partners page via menu
+    Click the partner invite button
+    Waite the partner invite page loaded
 
 Login go partners page choose one partner change english
     [Arguments]  ${old}  ${bong}  ${login}
@@ -186,6 +192,22 @@ Create billingaddress
     set suite variable  ${baddress}
     log  ${baddress}
     #log to console  ${baddress}
+
+
+Login and create partners data2
+    [Arguments]  ${login_data}  ${partner_adata}
+    Create cim  ${partner_adata}
+    create billingaddress  ${partner_adata}
+    ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}
+    ${partner_adata.Email} =  set variable  ${email}
+    go to  ${OLDAL_URL}
+	Login and go the new partner page  ${login_data}
+	Create new partner  ${partner_adata}
+	give the email for the search input  ${email}
+    po_partners.Click the search button
+    sleep  4s
+    Choose and open one partners details
+    Wait the partner details page loaded
 
 
 

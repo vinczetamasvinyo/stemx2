@@ -5,6 +5,17 @@ Resource  PO/po_common.robot
 Library  ../ExternalResources/mylibrary.py
 Library  Collections
 Resource  Common_resource.robot
+Resource  login_resource.robot
+Resource  Common.robot
+Resource  PO/po_menu.robot
+Library  ../ExternalResources/mylibrary.py
+Resource  variables.robot
+Variables  variable.py
+Library  SeleniumLibrary
+Library  Collections
+Library  robot.libraries.String  WITH NAME  SR
+Resource  partner_adat_megtekintese_resource.robot
+
 
 *** Variables ***
 
