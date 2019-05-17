@@ -13,6 +13,11 @@ ${LAN}=  Hun
 
 
 *** Test Cases ***
+Visszaad
+    [Tags]  most2
+    ${darabszam} =  Get the items max count
+    log  ${darabszam}
+
 Test the search button is visiable on the venues page
     [Documentation]  Megnézzük, hogy a keresés gomb megjelenik-e az oldalon.
     Check the search button visiable on the page

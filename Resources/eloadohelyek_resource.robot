@@ -1,6 +1,7 @@
 *** Settings ***
 Resource  Common_resource.robot
 Resource  PO/po_venues.robot
+Resource  PO/po_page_navigator.robot
 Resource  paga_element_resource.robot
 Library    robot.libraries.String
 

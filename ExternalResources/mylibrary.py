@@ -202,6 +202,10 @@ def almenu_id_szoveg(szoveg):
     ujszoveg = "cdk-overlay-"+str(szam)
     return ujszoveg
 
+def get_string_positon(szoveg,search):
+    hely = szoveg.find(search)
+    return hely
+
 """"
 def create_address_string(lan,data):
     if lan == "Hun":
