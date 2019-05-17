@@ -1,9 +1,0 @@
-Resources/variables.robot
-Resources/variable.py
-Results/log.html
-Results/output.xml
-Results/report.html
-Results/
-.idea/
-debug.log
-.gitignore
