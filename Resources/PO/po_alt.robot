@@ -28,6 +28,7 @@ ${PO_ALT_TABLE_HEADER_TEXT_ID} =  xpath=//mat-header-cell
 ${PO_ALT_PAGE_SCHROOL_LISTBOX_ID} =  //*[@class="mat-form-field-infix"]/mat-select
 ${PO_ALT_PAGE_SCHROOL_CLASS_ID} =  aria-owns
 ${PO_ALT_PAGE_SEARCH_INPUT_ID} =  xpath=//input[@formcontrolname="searchText"]
+${PO_ALT_LOADING_ID} =  xpath=//*[contains(@class,'loading')]
 
 *** Keywords ***
 Get the all eyes from the page
@@ -167,3 +168,8 @@ Get value of the search input
     [Documentation]  Visszaadja a serach mezőben lévő értéket
     ${szoveg} =  get value  ${PO_ALT_PAGE_SEARCH_INPUT_ID}
     [Return]  ${szoveg}
+
+Waiting the page loaded finish
+    [Documentation]  Ha elekezd homokórázni az oldal, akkor megvárja amíg ez eltűnik.
+    ${db} =  Get Element Count  ${PO_ALT_LOADING_ID}
+    run keyword if  ${db} > 0  wait until element is not visible  ${PO_ALT_LOADING_ID}

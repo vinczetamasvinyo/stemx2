@@ -35,6 +35,7 @@ ${PO_VENUES_ADDRESS_IN_TABLE_ID} =  xpath=//mat-cell[2]
 Wait until the venues page loaded
     [Documentation]  Megvárja amíg betöltődik a venues oldal.
     wait until element is visible  ${PO_VENUES_SEARCH_INPUT_ID}
+    Waiting the page loaded finish
 
 Give the venues name
     [Documentation]  Megadja a venue a nevét a létrehozása során

@@ -17,11 +17,16 @@ ${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID} =  id=cdk-accordion-child-0
 #${PO_MENU_FELHASZNALOK_KARB_SUBMENU_ID} =  cdk-accordion-child-2
 ${PO_MENU_FELHASZNALOK_KARB_PARTNER_ID} =  id=partners_submenu
 ${PO_MENU_FELHASZNALOK_KARB_USER_MENU_ID} =  id=users_submenu
-${PO_MENU_VENUES_ID} =  id=mat-expansion-panel-header-4
+#${PO_MENU_VENUES_ID} =  id=mat-expansion-panel-header-4
+${PO_MENU_VENUES_ID} =  id=venues_submenu
 ${PO_MENU_VENUES_SUMENU_ID} =  id=cdk-accordion-child-4
-${PO_MENU_AUDITORIUMS_SUMENU_ID} =  xpath=//a[contains(text(),'Nézőterek')or contains(text(),'Auditoriums')]
+#${PO_MENU_AUDITORIUMS_SUMENU_ID} =  xpath=//a[contains(text(),'Nézőterek')or contains(text(),'Auditoriums')]
+${PO_MENU_AUDITORIUMS_SUMENU_ID} =  id=auditoriums_submenu
 #${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//a[contains(text(),'Előadóhelyek') or contains(text(),'Venues')]
 ${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//*[@ng-reflect-router-link="/admin/event/venues"]
+${PO_MENU_EVENTS_ID} =  //*[@id="event_menu"]
+${PO_MENU_EVENTS_ID2} =  ${PO_MENU_EVENTS_ID}//mat-expansion-panel-header
+
 
 *** Keywords ***
 Click the jegypenzter menu and wait for the submenu
@@ -91,6 +96,16 @@ Go to the users page via menu
 Click the Venues menu
     [Documentation]  A jobb oldalon a Venues menüre kattint.
     click element  ${PO_MENU_VENUES_ID}
+
+Click the events menu
+    [Documentation]  A jobb oldalon az esemeények menüre kattint
+    click element  ${PO_MENU_EVENTS_ID}
+
+Wait until the events submenu visible
+    [Documentation]  Megvárja amíg az eseményekhez tartozó submenu megjelenik.
+    ${submenu_id} =  get element attribute  ${PO_MENU_EVENTS_ID2}  aria-controls
+    log  ${submenu_id}
+    wait until element is visible  xpath=//*[@id="${submenu_id}"]
 
 Wait until the venues submenu visible
     [Documentation]  Megvárja amíg a venues submenu megjelenik.

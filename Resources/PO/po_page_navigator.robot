@@ -8,6 +8,9 @@ ${PO_PAGE_NAVIGATE_LISTBOX_PANEL} =  xpath=//*[contains(@class,'mat-select-panel
 ${PO_PAGE_NAVIGATE_LISTBOX_CLASS} =  aria-owns
 ${PO_PAGE_NAVIGATE_ITEM_COUNT_ID} =  xpath=//*[@class="mat-paginator-range-label"]
 
+
+
+
 *** Keywords ***
 Elem kivalasztasa
     [Arguments]  ${item}
@@ -20,7 +23,7 @@ Elem kivalasztasa
 scroll page
     [Arguments]  ${item}
     Elem kivalasztasa  ${item}
-    sleep  4s
+    Waiting the page loaded finish
 
 Get the items max count
     [Documentation]  Az adott oldalról visszaadja a max elemszámot.
@@ -29,3 +32,19 @@ Get the items max count
     ${hely2} =  evaluate  ${hely}+1
     ${darabszam} =  robot.libraries.String.Get Substring  ${elemek}  ${hely2}
     [Return]  ${darabszam}
+
+Get the items firs count
+    ${elemek} =  get text  ${PO_PAGE_NAVIGATE_ITEM_COUNT_ID}
+    ${hely} =  get string positon  ${elemek}  -
+    ${hely2} =  evaluate  ${hely}-1
+    ${dbszam} =  robot.libraries.String.Get Substring  ${elemek}  0  ${hely2}
+    [Return]  ${dbszam}
+
+Get the items last count
+    ${elemek} =  get text  ${PO_PAGE_NAVIGATE_ITEM_COUNT_ID}
+    ${hely} =  get string positon  ${elemek}  -
+    ${hely2} =  evaluate  ${hely}+2
+    ${hely3} =  get string positon  ${elemek}  /
+    ${hely4} =  evaluate  ${hely3}-1
+    ${dbszam} =  robot.libraries.String.Get Substring  ${elemek}  ${hely2}  ${hely4}
+    [Return]  ${dbszam}
