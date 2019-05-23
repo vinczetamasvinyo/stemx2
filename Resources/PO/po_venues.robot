@@ -32,6 +32,10 @@ ${PO_VENUES_NAME_IN_TABLE_ID} =  xpath=//mat-cell[1]
 ${PO_VENUES_ADDRESS_IN_TABLE_ID} =  xpath=//mat-cell[2]
 
 *** Keywords ***
+Reload the venues page
+    reload the page
+    Wait until the venues page loaded
+
 Wait until the venues page loaded
     [Documentation]  Megvárja amíg betöltődik a venues oldal.
     wait until element is visible  ${PO_VENUES_SEARCH_INPUT_ID}

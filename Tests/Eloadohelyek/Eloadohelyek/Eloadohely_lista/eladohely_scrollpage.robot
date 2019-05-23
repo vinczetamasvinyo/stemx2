@@ -15,7 +15,7 @@ Test0
     ${v2} =  Get the items last count
 
 test 1
-    [Tags]  most2
+    [Tags]  most4
     Click the navigation last
     sleep  3s
 
@@ -36,9 +36,8 @@ Test the scrool page of the 25
     \  Waiting the page loaded finish
     \  sleep  1s
 
-
-
 Test the scrool page of the 50
+    [Tags]  most3
     Set the row number add check the row visiable  50
 
 Test the scrool page of the 100
@@ -46,19 +45,5 @@ Test the scrool page of the 100
 
 Test the scrool page of the 10
     Set the row number add check the row visiable  10
-
-*** Keywords ***
-Click the navigation first
-    click element  xpath=//*[contains(@class,'mat-paginator-navigation-first')]
-
-Click the navigation last
-    click element  xpath=//*[contains(@class,'mat-paginator-navigation-last')]
-
-Click the navigation previous
-    click element  xpath=//*[contains(@class,'mat-paginator-navigation-previous')]
-
-Click the navigation next
-    click element  xpath=//*[contains(@class,'mat-paginator-navigation-next')]
-
 
 
