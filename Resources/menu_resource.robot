@@ -2,6 +2,8 @@
 Resource  PO/po_menu.robot
 Resource  PO/po_auditoriums.robot
 Resource  PO/po_venues.robot
+Resource  PO/po_programok.robot
+Resource  programok_resource.robot
 
 *** Keywords ***
 Go to the auditoriums page
@@ -21,3 +23,10 @@ Go to the venues page
     #Wait until the venues submenu visible
     click the venues submenu
     po_venues.Wait until the venues page loaded
+
+Go to the programs page
+    [Documentation]  Elmegy a programok oldalráa
+    Click the events menu
+    Wait until the events submenu visible
+    Click the programs submenu
+    programok_resource.Waiting the programs page loaded

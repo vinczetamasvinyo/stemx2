@@ -109,7 +109,8 @@ Click the new auditorium on the wizard
 wait the auditorium wizard appear
     [Documentation]  Megvárja amíg az auditorium wizard megjelenik
                 ...  az új auditorium gomb megnyomása után
-    wait until element is visible  ${PO_VENUES_NEW_AUDITORIUM_WIZARD_ID}
+    wait until element is visible  ${PO_VENUES_NEW_AUDITORIUM_WIZARD_ID}  20
+    sleep  1s
 
 Give the auditorium name
     [Documentation]  Megadja az auditorium nevét a wizardban.
