@@ -1,6 +1,6 @@
 *** Settings ***
 Resource  ../../../../Resources/eloadohelyek_resource.robot
-
+#proba
 Suite Setup  Open browser and login and after go to the venues page  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 #Suite Teardown  Common.End web test
 
