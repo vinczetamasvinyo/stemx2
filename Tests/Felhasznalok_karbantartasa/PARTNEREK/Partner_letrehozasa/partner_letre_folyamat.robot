@@ -25,12 +25,6 @@ Test create new partner with full data
 	Create new partner  ${Partner_data}
     Check the partner status  ${email}  Active
     Full logout
-    #Logout
-    #Logout on the csharp page
-    #go to  https://dev.api.stx.interticket.com/Account/logout
-    #Wait the Yes button apper after the logout in clogin page
-    #Push the Yes after the logout
-    #Wait the logout finish on the cloggin page
     Go tempmail and wait the reg email az open  ${Tempmail}
     #TODO: megnézni, hogy a partial link miért nem működik.
     close window
