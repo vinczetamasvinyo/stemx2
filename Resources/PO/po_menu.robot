@@ -26,9 +26,14 @@ ${PO_MENU_AUDITORIUMS_SUMENU_ID} =  id=auditoriums_submenu
 ${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//*[@ng-reflect-router-link="/admin/event/venues"]
 ${PO_MENU_EVENTS_ID} =  //*[@id="event_menu"]
 ${PO_MENU_EVENTS_ID2} =  ${PO_MENU_EVENTS_ID}//mat-expansion-panel-header
+${PO_MENU_PROGRAMOK_SUBMENU_ID} =  xpath=//*[@id='programs_submenu']
 
 
 *** Keywords ***
+Click the programs submenu
+    [Documentation]  A programok almenüre kattint.
+    click element  ${PO_MENU_PROGRAMOK_SUBMENU_ID}
+
 Click the jegypenzter menu and wait for the submenu
     click element  ${PO_MENU_JEGYPENZTER_ID}
     wait until element is visible  ${PO_MENU_JEGYPENZTER_SUBMENU_ID}

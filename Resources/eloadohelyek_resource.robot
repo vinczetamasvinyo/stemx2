@@ -49,13 +49,26 @@ Create new venue and audits start the venues page
     po_alt.Click the save button
     Common.Wait the succes message and click
 
+Check the auditorim apper after push the add button
+    [Documentation]  Megnézi, hogy az nézőtér hozzáadása gomb megnyomása után
+                ...  az auditorium rendben megjelenik-e.
+    [Arguments]  ${db}  ${data}
+    ${jelenlegi_db} =  Get the auditoriums number
+    log   ${jelenlegi_db}
+    should be equal  ${db}    ${jelenlegi_db}
+    wait until page contains  ${data}[Auditoriumname]
+
 Click the new auditorium button and give datas
     [Arguments]  ${datas}
+    ${i} =  set variable  0
     :FOR  ${data}  IN  @{datas}
+    \  ${i} =  Evaluate  ${i} + 1
     \  Click the new auditorium on the wizard
     \  wait the auditorium wizard appear
     \  Give the auditorium datas  ${data}
     \  Click the add auditorium button
+    \  Check the auditorim apper after push the add button  ${i}  ${data}
+
 
 Click the not use venue address of auditorium and wait
 

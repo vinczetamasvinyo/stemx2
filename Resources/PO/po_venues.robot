@@ -30,8 +30,19 @@ ${PO_VENUES_ADD_AUDITORIUM_BUTTON_ID} =  xpath=//*[@class="row new-auditorium-co
 ${PO_VENUES_AUDITORIUM_COUNTRY_ID} =  //*[@class="row new-auditorium-container"]//*[@formcontrolname="country"]
 ${PO_VENUES_NAME_IN_TABLE_ID} =  xpath=//mat-cell[1]
 ${PO_VENUES_ADDRESS_IN_TABLE_ID} =  xpath=//mat-cell[2]
+${PO_VENUES_AUDITORIUM_CONTAINER_ID} =  //shared-auditorium-expansion-panel
 
 *** Keywords ***
+Check the auditorium container visiable
+    [Documentation]  Megnézi, hogy a hozzáadás során a nézőtér
+                ...  rendben megjelenik-e.
+    element should be visible  ${PO_VENUES_AUDITORIUM_CONTAINER_ID}
+
+Get the auditoriums number
+    [Documentation]  A létrehozás során visszaadja a nézőterek számát
+    ${db} =  get element count  ${PO_VENUES_AUDITORIUM_CONTAINER_ID}
+    [Return]  ${db}
+
 Reload the venues page
     reload the page
     Wait until the venues page loaded
@@ -98,7 +109,8 @@ Click the new auditorium on the wizard
 wait the auditorium wizard appear
     [Documentation]  Megvárja amíg az auditorium wizard megjelenik
                 ...  az új auditorium gomb megnyomása után
-    wait until element is visible  ${PO_VENUES_NEW_AUDITORIUM_WIZARD_ID}
+    wait until element is visible  ${PO_VENUES_NEW_AUDITORIUM_WIZARD_ID}  20
+    sleep  1s
 
 Give the auditorium name
     [Documentation]  Megadja az auditorium nevét a wizardban.

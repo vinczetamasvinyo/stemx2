@@ -105,6 +105,12 @@ Open browser and login and after go to the venues page
     Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
     Go to the venues page
 
+Open browser and login and after go to the programs page
+    [Documentation]  Nyit egy új böngészőt. Belép, majd elmegy a Venus oldalra.
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
+    go to the programs page
+
 
 Open browser and login and after go to the venues page and get listbox
     [Documentation]  Megnyitja a böngészőt elmegy a venu oldalra és lekéri a lapozó fájlban
