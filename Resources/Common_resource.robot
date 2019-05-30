@@ -593,3 +593,10 @@ Get random string of other string
     ${szoveg} =  String.Get Substring  ${kstring}  ${start}  ${max}
     log  ${szoveg}
     [Return]  ${szoveg}
+
+Check element is enable
+    [Documentation]  Megnézi, hogy az elem aktív-e.
+    [Arguments]  ${path}
+    ${status} =  get element attribute  ${path}  ng-reflect-is-disabled
+    log  ${status}
+    should be equal as strings  ${status}  true

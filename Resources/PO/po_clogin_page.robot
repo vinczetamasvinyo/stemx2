@@ -65,8 +65,8 @@ Start logout on the csharp login page
 Logout on the csharp page
     [Documentation]  Elvégzi a logout a csharp oldalon
     Start logout on the csharp login page
-    Wait the Yes button apper after the logout in clogin page
-    Push the Yes after the logout
+    #Wait the Yes button apper after the logout in clogin page
+    #Push the Yes after the logout
     Wait the logout finish on the cloggin page
 
 Give tha password and push the reset button on the csharp login page

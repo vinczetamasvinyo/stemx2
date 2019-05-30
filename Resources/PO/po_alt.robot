@@ -11,8 +11,10 @@ ${PO_PARTNERS_ICON_WAITING_FOR_CONFIRMATION} =  xpath=//*[@class="material-icons
 ${PO_PARTNERS_ICON_ACTIVE} =  xpath=//*[@class="material-icons status-icon public"]
 ${PO_PARTNERS_ICON_DRAFT} =  xpath=//*[@class="material-icons status-icon draft"]
 ${PO_RESTOR_ICON_ID} =  xpath=//*[@class="material-icons face-primary"]
+
 ${PO_DELETED_ROW_ID} =  xpath=//mat-row[contains(@class,'row-deleted')]
 ${PO_ACTIVE_ROW_ID} =  xpath=//mat-row[not(contains(@class,'row-deleted'))]
+${PO_NEXT_BUTTON_ID} =  xpath=//next-button
 ${PO_NEW_BUTTON_ID} =  xpath=//new-button
 ${PO_NEW_BUTTON_TEXT_ID} =  xpath=//new-button//span
 ${PO_SAVE_BUTTON_ID} =  xpath=//save-button
@@ -29,6 +31,7 @@ ${PO_ALT_PAGE_SCHROOL_LISTBOX_ID} =  //*[@class="mat-form-field-infix"]/mat-sele
 ${PO_ALT_PAGE_SCHROOL_CLASS_ID} =  aria-owns
 ${PO_ALT_PAGE_SEARCH_INPUT_ID} =  xpath=//input[@formcontrolname="searchText"]
 ${PO_ALT_LOADING_ID} =  xpath=//*[contains(@class,'loading')]
+${PO_ALT_SELECT_BUTTON_ID} =  xpath=//app-button[@ng-reflect-label="admin_label_select"]
 
 *** Keywords ***
 Get the all eyes from the page
@@ -173,3 +176,20 @@ Waiting the page loaded finish
     [Documentation]  Ha elekezd homokórázni az oldal, akkor megvárja amíg ez eltűnik.
     ${db} =  Get Element Count  ${PO_ALT_LOADING_ID}
     run keyword if  ${db} > 0  wait until element is not visible  ${PO_ALT_LOADING_ID}
+
+Click the next button
+    [Documentation]  Megnyomja a tovább gombot.
+    click element  ${PO_NEXT_BUTTON_ID}
+
+Check the next button is not active
+    [Documentation]  Megnézi, hogy a tovább gomb inaktív-e.
+    element should be disabled  ${PO_NEXT_BUTTON_ID}
+
+Wait until the next button active
+    [Documentation]  Megvárja amíg a tovább gombt aktív lesz.
+    wait until element is enabled  ${PO_NEXT_BUTTON_ID}
+
+Click the select button
+    [Documentation]  Megnyomja a kiválaszt gombot az előadóhelyet választása oldalon
+                ...  mikor a program létrehozása megy.
+    click element  ${PO_ALT_SELECT_BUTTON_ID}
