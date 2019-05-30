@@ -35,7 +35,7 @@ ${EMAIL_TOO_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwww@wwwwwwwwwwwwwwwwww
 &{DCompanyname}  Required=Y  Value=${Max_LONG}
 &{Companylongname}  Required=Y   Value=${Max_LONG}
 &{Companyregnumber}  Required=Y   Value=${Max_LONG}
-&{Companycountry}  Required=Y  Value=Magyarország
+&{Companycountry}  Required=Y  Value=Dánia
 &{Companyzipcode}  Required=Y  Value=${Max_ZIPCODE_TOO_LONG}
 &{Companycity}  Required=Y  Value=${Max_LONG}
 
@@ -45,7 +45,7 @@ ${EMAIL_TOO_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwww@wwwwwwwwwwwwwwwwww
             ...  Companyname=${LONG}
             ...  Companylongname=${LONG}
             ...  Companyregnumber=${LONG}
-            ...  Companycountry=Magyarország
+            ...  Companycountry=Dánia
             ...  Companyzipcode=${Max_ZIPCODE_LONG}
             ...  Companycity=${LONG}
             ...  Companycounty=${Max_COUNTY_LONG}

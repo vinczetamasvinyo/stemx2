@@ -28,7 +28,7 @@ ${EMAIL_TOO_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwww@wwwwwwwwwwwwwwwwww
 &{DCompanyname}  Required=Y  Value=${Max_LONG}
 &{Companylongname}  Required=Y   Value=${Max_LONG}
 &{Companyregnumber}  Required=Y   Value=${Max_LONG}
-&{Companycountry}  Required=Y  Value=Magyarország
+&{Companycountry}  Required=Y  Value=Denmark
 &{Companyzipcode}  Required=Y  Value=${Max_ZIPCODE_TOO_LONG}
 &{Companycity}  Required=Y  Value=${Max_LONG}
 
@@ -38,7 +38,7 @@ ${EMAIL_TOO_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwww@wwwwwwwwwwwwwwwwww
             ...  Companyname=${Max_LONG}
             ...  Companylongname=${Max_LONG}
             ...  Companyregnumber=${Max_LONG}
-            ...  Companycountry=Hungary
+            ...  Companycountry=Denmark
             ...  Companyzipcode=${Max_ZIPCODE_TOO_LONG}
             ...  Companycity=${Max_LONG}
             ...  Companycounty=${Max_COUNTY_TOO_LONG}
@@ -52,7 +52,7 @@ ${EMAIL_TOO_LONG} =  ddddddddddddddddddddwwwwwwwwwwwwwwwwwwww@wwwwwwwwwwwwwwwwww
             ...  Banknumber=${Max_LONG}
             ...  Iban=${Max_LONG}
             ...  Swift=${Max_LONG}
-            ...  Billingcountry=Hungary
+            ...  Billingcountry=Denmark
             ...  Billingzipcode=${Max_ZIPCODE_TOO_LONG}
             ...  Billingcity=${Max_LONG}
             ...  Billingcounty=${Max_COUNTY_TOO_LONG}

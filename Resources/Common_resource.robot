@@ -187,22 +187,22 @@ Login and go to the partners page and change lan
     Change the language to English via mymenu
 
 Login and go to partner edit page
-    [Arguments]  ${old}  ${bong}  ${login_data}
+    [Arguments]  ${old}  ${bong}  ${login_data}  ${text}
     Open browser and login to stemx or stemxcity  ${oldal_url}  ${bogeszo}  ${login_data}
     Go to the partners page via menu
-    Choose item from the status of partner listbox  Aktív
+    Choose item from the status of partner listbox  ${text}
     sleep  3s
     Chose elem and go the the edit page
 
 Login and go to partner edit page and change language
-    [Arguments]  ${old}  ${bong}  ${login_data}
-    Login and go to partner edit page  ${old}  ${bong}  ${login_data}
+    [Arguments]  ${old}  ${bong}  ${login_data}  ${text}
+    Login and go to partner edit page  ${old}  ${bong}  ${login_data}  ${text}
     #login_resource.Open Vk login page  ${old}  ${bong}
     #Give regeistration data and click the login button  ${em}  ${pas}
     #Check the login succes or not
     #Go to the partners page via menu
     #Chose elem and go the the edit page
-    Change the language to English via mymenu
+    #Change the language to English via mymenu
 
 
 Login and go to the new partner page and give all data

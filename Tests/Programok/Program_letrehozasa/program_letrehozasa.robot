@@ -20,7 +20,7 @@ Test1
     log  valami
     po_alt.Click the new button
     Waiting the create new page loaded
-    Give the program name  Vinyó programja
+    Give the program name  Vinyó programja tesztelés
     Give the program short description  Vinyó programának rövid elírása
     input text  //*[@role="textbox"]  részletes leírás
     Give the vat class  B - 25%
