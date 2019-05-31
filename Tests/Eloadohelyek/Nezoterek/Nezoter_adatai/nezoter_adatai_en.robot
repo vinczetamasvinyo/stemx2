@@ -10,7 +10,7 @@ Suite Teardown  Common.End web test
 &{AUDITORIUMDATA1}  	Auditoriumname=Vinyó nézőtér teszt
 ...	                Auditoriumcapacity=20
 ...	                Auditoriumvenueaddress=${False}
-...	                Auditoriumcountry=Hungary
+...	                Auditoriumcountry=Denmark
 ...	                Auditoriumzipcode=1144
 ...	                Auditoriumcity=Budapest
 ...	                Auditoriumcounty=Pest
@@ -22,7 +22,7 @@ Suite Teardown  Common.End web test
 
 &{VENUEDATA}  Venuename=VINYÓ teszt
 ...	          Venuedescription=Vinyó létrehozzsa
-...	          Venuecountry=Hungary
+...	          Venuecountry=Denmark
 ...	          Venuezipcode=3600
 ...	          Venuecity=Ózd
 ...	          Venuecounty=Pest

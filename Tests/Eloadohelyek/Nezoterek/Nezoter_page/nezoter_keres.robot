@@ -125,7 +125,7 @@ Test the search of subtring of venue name
     po_alt.Click the search button
     sleep  3s
     ${eredmeny} =  Get the venue name on the auditoriums page
-    check result when search of substring of venue name  ${eredmeny}  ${kivalasztott}
+    auditoriums_resource.check result when search of substring of venue name  ${eredmeny}  ${kivalasztott}
 
 Test the CAPITAL search of subtring of venue name
     [Documentation]  A teszt során egy venue nérészletére keresünk.
@@ -139,7 +139,7 @@ Test the CAPITAL search of subtring of venue name
     po_alt.Click the search button
     sleep  3s
     ${eredmeny} =  Get the venue name on the auditoriums page
-    check result when search of substring of venue name  ${eredmeny}  ${kivalasztott}
+    auditoriums_resource.check result when search of substring of venue name  ${eredmeny}  ${kivalasztott}
 
 Test the reset button and table
     [Documentation]  A teszt soránt azt nézzük meg, hogy a reset button

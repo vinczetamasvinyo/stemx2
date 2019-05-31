@@ -3,15 +3,16 @@ Resource  ../../../../Resources/auditoriums_resource.robot
 Library    robot.libraries.String
 
 Suite Setup  csinal  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
-#Suite Teardown  Common.End web test
+Suite Teardown  Common.End web test
 
 
 *** Variables ***
 &{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN} =  En
 &{AUDITORIUMDATA1}  	Auditoriumname=Vinyó nézőtér
 ...	                Auditoriumcapacity=20
 ...	                Auditoriumvenueaddress=${False}
-...	                Auditoriumcountry=Hungary
+...	                Auditoriumcountry=Denmark
 ...	                Auditoriumzipcode=${Empty}
 ...	                Auditoriumcity=Ózd
 ...	                Auditoriumcounty=Borsod
@@ -23,7 +24,7 @@ Suite Setup  csinal  ${OLDAL_URL}  ${bogeszo}  ${LOGIN_DATA}
 
 &{VENUEDATA}  Venuename=VINYÓ TÖRLÉS1
 ...	          Venuedescription=Valami szerkesztett előadás
-...	          Venuecountry=Hungary
+...	          Venuecountry=Denmark
 ...	          Venuezipcode=1144
 ...	          Venuecity=Ózd
 ...	          Venuecounty=Pest

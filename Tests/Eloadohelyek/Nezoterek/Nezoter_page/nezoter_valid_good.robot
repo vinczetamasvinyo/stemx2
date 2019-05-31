@@ -64,7 +64,7 @@ Test the validation on the search input field give long good text
     Click the header row3 on the auditorium page
     Check error not apper the search fields on the auditorium page
 
-Test the validation on the search input field give long good text
+Test the validation on the search input field give short good text
     [Documentation]  Azt nézzük meg, hogy 1 hosszú szöveget írunk be
                 ...  és nem jelenik meg hibaüzenet
     Reset on the auditorium page
