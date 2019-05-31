@@ -11,7 +11,7 @@ Library    robot.libraries.String
 Full logout
     [Documentation]  Elvégzi a logout-t az alkalmazásban, illetve csharp részen is.
     Logout
-    run keyword if  "${DE}" == "stemx"  Logout on the csharp page
+    #run keyword if  "${DE}" == "stemx"  Logout on the csharp page
 
 Get listbox item xpath
     [Documentation]  A kiválaszott paraméterben megadott elem xpath értéket visszaadja.

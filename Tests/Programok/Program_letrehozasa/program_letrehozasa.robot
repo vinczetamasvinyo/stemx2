@@ -25,9 +25,9 @@ Test1
     input text  //*[@role="textbox"]  részletes leírás
     Give the vat class  B - 25%
     Click the ives
-    Give the ives jegy sablon   Sheet ticket template
-    give the darabos jegy sablon  Piece ticket template
-    give the electronic jegy sablon  Electronic ticket template
+    Give the ives jegy sablon  test2
+    give the darabos jegy sablon  test3
+    give the electronic jegy sablon  test1
     sleep  3s
     click element  //next-button
     sleep  3s

@@ -31,9 +31,15 @@ Click the myprofil
 Click the logout submenu
     [Documentation]  A mymenu menün belül a kijelentkezésre kattint.
     click element  ${PO_MYMENU_SUBMENU_LOGOUT_ID}
+    run keyword if  "${DE}" == "stemx"  Wait and click the logout
     #po_login.Waiting the login pager loaded
     run keyword if  "${DE}" == "stemc"  Waiting page load an apper the element
     ...  ELSE IF  "${DE}" == "stemx"  Wait the stemx login page loaded
+
+Wait and click the logout
+    wait until element is visible  //*[@class="btn btn-primary"]
+    click element  //*[@class="btn btn-primary"]
+    sleep  2s
 
 Click the language
     click element  id=menu_language

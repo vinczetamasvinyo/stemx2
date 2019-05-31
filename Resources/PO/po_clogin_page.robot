@@ -73,6 +73,7 @@ Give tha password and push the reset button on the csharp login page
     [Documentation]  A charp oldalon megadja a jelszavakat egymsá után,
                 ...  majd megnyomja a reset gombot.
     [Arguments]  ${password}
+    sleep  2s
     Give the password on the clogin page  ${password}
     Give the password again on the clogin page  ${password}
     Push the reset password button on the clogin page

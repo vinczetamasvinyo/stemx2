@@ -6,10 +6,12 @@ Resource  ../../../../Resources/partner_invite_resource.robot
 *** Variables ***
 ${PARTNER_INVITE_FOLYAMAT_TEMP_URL} =  https://temp-mail.org/
 #${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Meghívás elfogadása
-${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Regisztráció
+#${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Regisztráció
+${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID} =  Registrering
 ${PARTNER_INVITE_FOLYAMATA_MAIL_TIMEOUT} =  120
 #${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Meghívás elfogadása
-${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Regisztráció
+#${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Regisztráció
+${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID} =  link=Registrering
 ${PARTNER_INVITE_FOLYAMATA_JO_PASSWORD} =  Vinyo123456
 &{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 ${LAN}=  Hun
@@ -36,9 +38,12 @@ test3
     # wait until element is visible  Új bejelentés érkezett  120
     po_tempmail.Waiting and click the mail in themp page  ${PARTNER_INVITE_FOLYAMATA_SUBJECT_ID}  ${PARTNER_INVITE_FOLYAMATA_MAIL_TIMEOUT}  ${PARTNER_INVITE_FOLYAMATA_SUBJECT_LINK_ID}
     #TODO: megnézni, hogy a partial link miért nem működik.
-    Scroll and click the link in the email  link=Regisztáció befejezése  100
+    Scroll and click the link in the email  link=Registrering  100
     close window
     select window  MAIN
+    sleep  2s
+    #input text  id=Password  Vinyo123456_
+    #Give the password on the clogin page  ${password_ok2}
     Finish the registration the stemx or stemc page   ${password_ok2}
     ${logindatap} =  create dictionary
     set to dictionary  ${logindatap}  email  ${email}
@@ -58,7 +63,8 @@ test3
     Wait the succes message and click
     Give the copany long name  Vinyó cégéne hosszú név
     Give the registration number  12121212121212
-    Give the country
+    #Give the country
+    Give the country2  Dánia
     Give the zipcode  1139
     Give the city  Budapest
     Give the county  Pest
@@ -72,7 +78,8 @@ test3
     Give the billing banknumber  117112211-11223311
     Give the billing iban number  72811882211
     Give the billing swift number  2728112277
-    Give the billing country
+    Give the billing country2  Dánia
+    #Give the billing country
     Give the billing zipcode  1144
     Give the billing city  Budapest
     Give the billing county  Pest

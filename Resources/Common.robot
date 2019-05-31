@@ -8,7 +8,7 @@ Library  Collections
 #${BROWSER}  chrome
 #${OLDAL} =  https://www.jegy.hu/
 ${COMMON_SUCCES_MESSAGE_ID} =  xpath=//*[contains(@class,'toast-success')]
-${COMMON_WAITING_TIME_IN_SUCCES_MESSAGE} =  10
+${COMMON_WAITING_TIME_IN_SUCCES_MESSAGE} =  20
 
 *** Keywords ***
 Begin web test
