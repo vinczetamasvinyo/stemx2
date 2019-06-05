@@ -22,6 +22,9 @@ ${PO_PROGRAMOK_CREATE_TICKET_BUTTON_ID} =  //*[@ng-reflect-label="create_ticket"
 ${PO_PROGRAMOK_START_DATE_ID} =  //*[@formcontrolname="startDateTime"]
 ${PO_PROGRAMOK_CREATE_DATATIME_ID} =  //*[@ng-reflect-label="create_date_time"]
 ${PO_PROGRAMOK_TICKET_ASSIGNMENT_ROW_ID} =  //mat-expansion-panel-header
+${PO_PROGRAMOK_LONG_DESCRIPTION_ID} =  //*[@role="textbox"]
+${PO_PROGRAMOK_TAX_LISTBOX_ID} =  //*[@formcontrolname="taxId"]
+${PO_PROGRAMOK_TICKET_DEFAULT_TYPE_ID} =  //*[@formcontrolname="defaultBoxOfficeTicketFormatType"]
 
 *** Keywords ***
 wait the search input visiable in the programs page
@@ -45,23 +48,63 @@ Give the program short description
 Give the vat class
     [Documentation]  Megadja az áfaosztályt
     [Arguments]  ${elem}
-    Choose item from listbox  ${elem}  //*[@formcontrolname="taxId"]
+    Choose item from listbox  ${elem}  ${PO_PROGRAMOK_TAX_LISTBOX_ID}
+
+Give the vat class by by index or name
+    [Documentation]  A programok oldalon megadja az áfa értéket az index
+                ...  vagy ném alapján.
+    [Arguments]  ${data}
+    Choose item from listbox by index or name  ${data}  ${PO_PROGRAMOK_TAX_LISTBOX_ID}
 
 Give the ives jegy sablon
     [Documentation]  Megadja az íves jegy sablon típusát
     [Arguments]  ${elem}
     Choose item from listbox  ${elem}  ${PO_PROGRAMOK_LISTBOX_IVES_ID}
 
+Give the ives ticket template by index
+    [Documentation]  Megadja az íves jegy formátumát index alapján.
+    [Arguments]  ${index}
+    Choose item from listbox by index  ${PO_PROGRAMOK_LISTBOX_IVES_ID}  ${index}
+
+Give the ives ticket template by index or name
+    [Documentation]  Megadja az íves ticket formátum típus index vagy név alapján
+    [Arguments]  ${data}
+    Choose item from listbox by index or name  ${data}  ${PO_PROGRAMOK_LISTBOX_IVES_ID}
+
 Give the darabos jegy sablon
-    [Documentation]  Megadja az darabos jegy sablon típusát
+    [Documentation]  Megadja a darabos jegy sablon típusát
     [Arguments]  ${elem}
     Choose item from listbox  ${elem}  ${PO_PROGRAMOK_LISTBOX_DB_ID}
+
+Give the db tickets template by index
+    [Documentation]  Megadja a darabos jegy sablon típusát index alapján.
+    [Arguments]  ${index}
+    Choose item from listbox by index  ${PO_PROGRAMOK_LISTBOX_DB_ID}  ${index}
+
+Give the db tickets template by index or name
+    [Documentation]  Megadja a darabos jegy sablon típusát index vagy név alapján.
+    [Arguments]  ${data}
+    Choose item from listbox by index or name  ${data}  ${PO_PROGRAMOK_LISTBOX_DB_ID}
 
 Give the electronic jegy sablon
     [Documentation]  Megadja az electroni jegy sablon típusát
     [Arguments]  ${elem}
     Choose item from listbox  ${elem}  ${PO_PROGRAMOK_LISTBOX_ELECTRONIC_ID}
 
+Give the electronic ticket template be index
+    [Documentation]  Megadja az elektronikus sablon típusát
+    [Arguments]  ${index}
+    Choose item from listbox by index  ${PO_PROGRAMOK_LISTBOX_ELECTRONIC_ID}  ${index}
+
+Give the electronic ticket template be name or index
+    [Documentation]  Megadja az elektronikus sablon típusát name vagy index alapján.
+    [Arguments]  ${data}
+    Choose item from listbox by index or name  ${data}  ${PO_PROGRAMOK_LISTBOX_ELECTRONIC_ID}
+
+Give the ticket default type be name or index
+    [Documentation]  A programok oldalon
+    [Arguments]  ${data}
+    Click raido button by name or index  ${data}  ${PO_PROGRAMOK_TICKET_DEFAULT_TYPE_ID}
 
 Click the ives
     click element  xpath=//*[@class="mat-radio-label"]
@@ -94,6 +137,12 @@ Give the ticket type name on the program create
 Waiting the tickets step page loaded
     [Documentation]  Megvárja amíg a jegyek oldal betöltődik a program léterhozása során
     wait until element is visible  ${PO_PROGRAMOK_TICKET_TYPE_NAME}
+
+Waiting the date step page loaded
+    [Documentation]  Megvárja amíg az időpont oldal betöltődik
+                ...  a program létrehozása során
+    wait until element is visible  ${PO_PROGRAMOK_START_DATE_ID}  20
+    sleep  1s
 
 Give the ticket price on the program create
     [Documentation]  Megadja a jegyhezu tartozó árat.
@@ -133,3 +182,7 @@ Waiting the ticket assignment page loaded
     [Documentation]  Megvárja amíg a ticket hozzárendelő oldal betöltődik.
     wait until element is visible  ${PO_PROGRAMOK_TICKET_ASSIGNMENT_ROW_ID}
 
+Give the long description
+    [Documentation]  Megadja a részletes leírást a programok oldalon.
+    [Arguments]  ${text}
+    input text  ${PO_PROGRAMOK_LONG_DESCRIPTION_ID}  ${text}

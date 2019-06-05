@@ -7,6 +7,7 @@ ${BEFORE_ICON_TEXT_ID} =  xpath=//*[@class="box-title"]/*[@class="material-icons
 ${FULL_ICON_TEXT_ID} =  xpath=//*[@class="box-title"]
 ${PO_COMMON_INPUT_ERROR_ID} =  xpath=//app-show-errors/ul/li
 ${PO_COMMON_SAVE_BUTTON} =  xpath=//*[@class="button success"]
+${PO_COMMON_RADIO_LABEL_ID} =  //*[@class="mat-radio-label-content"]
 
 *** Keywords ***
 Check the input error not visible on the page

@@ -358,6 +358,24 @@ Choose item from listbox
     ${el} =  Common_resource.Get listbox item xpath  ${kivlasztott}  ${xpath}  aria-owns
     click element   ${el}
 
+Choose item from listbox by index
+    [Documentation]  Egy listboxból kiválaszt egy adott elemet az index alapján.
+    [Arguments]  ${xpath}  ${index}
+    scroll to element  ${xpath}  100
+    click element  ${xpath}
+    wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
+    @{lista} =  SeleniumLibrary.Get WebElements  //mat-option
+    ${index2} =  evaluate  ${index}-1
+    ${egye_elem} =  get from list  ${lista}  ${index2}
+    click element  ${egye_elem}
+
+Choose item from listbox by index or name
+    [Documentation]  Egy listátból kiválaszt elemet vagy az index, vagy a név alapján.
+    ...  A data változó az egy szótár. type-ban két érték lehet. Vagy index, vagy name
+    [Arguments]  ${data}  ${xpath}
+    run keyword if  "${data}[type]" == "index"  Choose item from listbox by index  ${xpath}  ${data}[text]
+    ...  ELSE IF  "${data}[type]" == "name"  Choose item from listbox  ${data}[text]  ${xpath}
+
 Go to listbox and get all items xpath
     [Documentation]  Visszaadja a listbox elemek nevét
     ...  például: {nevek} =  Go to listbox and get all items name  {elem_helye}  aria-owns
@@ -595,8 +613,70 @@ Get random string of other string
     [Return]  ${szoveg}
 
 Check element is enable
-    [Documentation]  Megnézi, hogy az elem aktív-e.
+    [Documentation]  Megnézi, hogy az xpath-ban megadott
     [Arguments]  ${path}
     ${status} =  get element attribute  ${path}  ng-reflect-is-disabled
     log  ${status}
     should be equal as strings  ${status}  true
+
+Click checkboxs by name
+    [Documentation]  A megadott rádióbutton-ra kattint.
+    [Arguments]  ${lists}  ${xpath}=${EMPTY}
+    ${szotar} =  Get checkbox list  ${xpath}//*[@class="mat-checkbox-label"]
+    #log  ${szotar}[${text}]
+    @{lista} =  SeleniumLibrary.Get WebElements  ${xpath}//*[@class="mat-checkbox-label"]
+    :FOR  ${elem}  IN  @{lists}
+    \  ${egye_elem} =  get from list  ${lista}  ${szotar}[${elem}]
+    \  click element  ${egye_elem}
+
+
+
+Click checkbox
+    [Documentation]  A megadott rádióbutton-ra kattint.
+    [Arguments]  ${text}  ${xpath}=${EMPTY}
+    ${szotar} =  Get checkbox list  ${xpath}//*[@class="mat-checkbox-label"]
+    log  ${szotar}[${text}]
+    @{lista} =  SeleniumLibrary.Get WebElements  ${xpath}//*[@class="mat-checkbox-label"]
+    ${egye_elem} =  get from list  ${lista}  ${szotar}[${text}]
+    click element  ${egye_elem}
+
+Get checkbox list
+    [Documentation]  Visszaadja a listbox-ban lévő elemek index-ét,
+                ...  illetve nevét egy szótárban.
+                ...  A szótár kulcsa a sorszám a möggött lévő elem pedig az érték.
+    [Arguments]  ${xpath}
+    @{lista} =  SeleniumLibrary.Get WebElements  ${xpath}
+    ${szotar} =  create dictionary
+    ${i} =  set variable  -1
+    :FOR  ${valt}  IN  @{lista}
+    \  ${i} =  Evaluate  ${i} + 1
+    \  ${szoveg_eredeti} =  get text  ${valt}
+    \  ${a} =  convert to string  ${i}
+    \  set to dictionary  ${szotar}  ${szoveg_eredeti}  ${a}
+    log  ${szotar}
+    [Return]  ${szotar}
+
+Click radio button by name
+    [Documentation]  Radio gombot lehet vele bekattintani név alapján.
+    ...  ha a radiogroup_id_xpath megadjuk akkor oda az adott group xpath szükséges
+    ...  pl://*[@formcontrolname="defaultBoxOfficeTicketFormatType"]
+    ...  ha ezt nem adjuk meg, akkor az oldalon fogja az első radio button bekattintani.
+    [Arguments]  ${text}  ${radiogroup_id_xpath}=${EMPTY}
+    ${szotar} =  Get checkbox list  ${radiogroup_id_xpath}${PO_COMMON_RADIO_LABEL_ID}
+    log  ${szotar}[${text}]
+    @{lista} =  SeleniumLibrary.Get WebElements  ${PO_COMMON_RADIO_LABEL_ID}
+    ${egye_elem} =  get from list  ${lista}  ${szotar}[${text}]
+    click element  ${egye_elem}
+
+Click radio button by index
+    [Arguments]  ${index}  ${radiogroup_id_xpath}=${EMPTY}
+    @{lista} =  SeleniumLibrary.Get WebElements  ${radiogroup_id_xpath}${PO_COMMON_RADIO_LABEL_ID}
+    ${index2} =  evaluate  ${index}-1
+    ${egye_elem} =  get from list  ${lista}  ${index2}
+    click element  ${egye_elem}
+
+Click raido button by name or index
+    [Arguments]  ${data}  ${xpath}=${EMPTY}
+    log  ${xpath}
+    run keyword if  "${data}[type]" == "index"  Click radio button by index  ${data}[text]  ${xpath}
+    ...  ELSE IF  "${data}[type]" == "name"  Click radio button by name  ${data}[text]  ${xpath}

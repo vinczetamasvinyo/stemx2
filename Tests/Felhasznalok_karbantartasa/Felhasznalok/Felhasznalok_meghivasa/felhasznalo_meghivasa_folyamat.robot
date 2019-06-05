@@ -9,6 +9,13 @@ Library    robot.libraries.String
 
 &{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
 ${LAN}=  Hun
+${LAN_REG} =  DE
+&{Tempmail2}  url=${PO_TEMPMAIL_URL}
+        ...  subject=Registrering
+        ...  timeout=${PO_TEMPMAIL_WAITING}
+        ...  subjectlink=link=Registrering
+        ...  bodylink=link=Registrering
+
 *** Test Cases ***
 Test1
     ${szoveg} =  robot.libraries.String.Generate Random String  6  letters
@@ -22,6 +29,8 @@ Test1
     Go to the users page via menu
     Click the invite button on the users page
     Wait the user invite page loaded
+    sleep  2s
+    Click checkbox  PartnerOwner
     input text  //*[@formcontrolname="firstName"]  ${USER_DATA.Firstname}
     input text  //*[@formcontrolname="lastName"]  ${USER_DATA.Lastname}
     input text  //*[@formcontrolname="email"]  ${USER_DATA.Email}
@@ -33,7 +42,7 @@ Test1
     sleep  3s
     Check the active icon is appear
     Full logout
-    Go tempmail and wait the reg email az open  ${Tempmail}
+    Go tempmail and wait the reg email az open  ${Tempmail2}
     close window
     select window  MAIN
     Finish the registration the stemx or stemc page   ${password_ok2}
@@ -41,6 +50,7 @@ Test1
     set to dictionary  ${logindatap}  email  ${email}
     set to dictionary  ${logindatap}  password  Vinyo123456_
     set to dictionary  ${logindatap}  partner  Interticket
+    set to dictionary  ${logindatap}  language  ${LAN}
     Login to stemx or stemxcity  ${logindatap}
     go to  ${Tempmail.url}
     sleep  3s

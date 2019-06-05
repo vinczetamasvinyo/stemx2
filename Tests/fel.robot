@@ -17,7 +17,9 @@ Resource  ../Resources/Common_resource.robot
     ...  Role=system admin
     #...  Picture=C:/Vinyo/hibakepek/2019.02.27/teszt_kep.jpg
 
-&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+#&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}
+&{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
+${LAN}=  Hun
 
 *** Test Cases ***
 test1
