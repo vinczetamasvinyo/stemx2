@@ -641,7 +641,7 @@ Click checkbox
     click element  ${egye_elem}
 
 Get checkbox list
-    [Documentation]  Visszaadja a listbox-ban lévő elemek index-ét,
+    [Documentation]  Visszaadja a checkbox-ban lévő elemek index-ét,
                 ...  illetve nevét egy szótárban.
                 ...  A szótár kulcsa a sorszám a möggött lévő elem pedig az érték.
     [Arguments]  ${xpath}

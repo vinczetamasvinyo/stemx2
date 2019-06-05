@@ -15,6 +15,7 @@ ${LAN}=  Hun
      ...  subcategory=${subcategorylist}
 &{ADATOK}  type=name
       ...  text=B - 25%
+
 &{ADATOK2}  type=index
       ...  text=1
 &{ADATOK3}  type=index
@@ -30,8 +31,9 @@ Test1
     po_alt.Click the new button
     Waiting the create new page loaded
     Give the program name  ${name}
-    Give the program short description  Vinyó programának rövid elírása
+    Give the program short description  ${PROGRAM_DATA}[program_description]
     Give the long description  részletes leírás
+    sleep  3s
     Give the vat class by by index or name  ${ADATOK}
     Give the ticket default type be name or index  ${ADATOK2}
     Give the ives ticket template by index or name  ${ADATOK3}
