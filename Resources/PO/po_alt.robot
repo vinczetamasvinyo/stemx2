@@ -1,6 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  Collections
+Resource  ../Common_resource.robot
 
 *** Variables ***
 ${PO_ALT_EYE_ICON} =  xpath=//*[@class="material-icons action-primary"]
@@ -31,7 +32,7 @@ ${PO_ALT_PAGE_SCHROOL_LISTBOX_ID} =  //*[@class="mat-form-field-infix"]/mat-sele
 ${PO_ALT_PAGE_SCHROOL_CLASS_ID} =  aria-owns
 ${PO_ALT_PAGE_SEARCH_INPUT_ID} =  xpath=//input[@formcontrolname="searchText"]
 ${PO_ALT_LOADING_ID} =  xpath=//*[contains(@class,'loading')]
-${PO_ALT_SELECT_BUTTON_ID} =  xpath=//app-button[@ng-reflect-label="admin_label_select"]
+${PO_ALT_SELECT_BUTTON_ID} =  //*[contains(@class,'program-place-list-item')]//app-button
 
 *** Keywords ***
 Get the all eyes from the page
@@ -185,11 +186,17 @@ Check the next button is not active
     [Documentation]  Megnézi, hogy a tovább gomb inaktív-e.
     element should be disabled  ${PO_NEXT_BUTTON_ID}
 
-Wait until the next button active
+Wait until the next button active2
     [Documentation]  Megvárja amíg a tovább gombt aktív lesz.
     wait until element is enabled  ${PO_NEXT_BUTTON_ID}
+
+Wait until the next button active
+    [Documentation]  Megvárja amíg a tovább gomb active lesz.
+    Wait until element is active own  ${PO_NEXT_BUTTON_ID}
+
 
 Click the select button
     [Documentation]  Megnyomja a kiválaszt gombot az előadóhelyet választása oldalon
                 ...  mikor a program létrehozása megy.
     click element  ${PO_ALT_SELECT_BUTTON_ID}
+

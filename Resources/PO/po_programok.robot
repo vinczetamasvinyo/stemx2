@@ -18,15 +18,24 @@ ${PO_PROGRAMOK_TICKET_TYPE_NAME} =  //*[@formcontrolname="name"]
 ${PO_PROGRAMOK_TICKET_TYPE_PRICE_ID} =  //*[@formcontrolname="price"]
 ${PO_PROGRAMOK_TICKET_CAPACITY_ID} =  //*[@formcontrolname="maxCapacity"]
 ${PO_PROGRAMOK_TICKET_GROUP_ID} =  //*[@formcontrolname="group"]
-${PO_PROGRAMOK_CREATE_TICKET_BUTTON_ID} =  //*[@ng-reflect-label="create_ticket"]
+${PO_PROGRAMOK_CREATE_TICKET_BUTTON_ID} =  //*[contains(@class,'create-new-ticket-column')]//app-button
 ${PO_PROGRAMOK_START_DATE_ID} =  //*[@formcontrolname="startDateTime"]
-${PO_PROGRAMOK_CREATE_DATATIME_ID} =  //*[@ng-reflect-label="create_date_time"]
+${PO_PROGRAMOK_CREATE_DATATIME_ID} =  //*[contains(@class,'new-date-time-column')]//app-button
 ${PO_PROGRAMOK_TICKET_ASSIGNMENT_ROW_ID} =  //mat-expansion-panel-header
 ${PO_PROGRAMOK_LONG_DESCRIPTION_ID} =  //*[@role="textbox"]
 ${PO_PROGRAMOK_TAX_LISTBOX_ID} =  //*[@formcontrolname="taxId"]
 ${PO_PROGRAMOK_TICKET_DEFAULT_TYPE_ID} =  //*[@formcontrolname="defaultBoxOfficeTicketFormatType"]
+${PO_PROGRAMOK_FREE_EVENT_TICKET_ID} =  //*[@formcontrolname="isFree"]
+${PO_PROGRAMOK_PICTURE_ID} =  id=imageUpload
+${PO_PROGRAMOK_PICTURE_CONTAINER_ID} =  //*[contains(@class,'it-thumbnail')]
+${PO_PROGRAMOK_EVENTS_HEADER_IN_THE_TICKETS_ASSIGN_ID} =  //app-programs-ticket-assign//mat-expansion-panel-header
+${PO_PROGRAMOK_EVENTS_SUBPANEL_ID} =  //*[@class="ticket-list-container"]
 
 *** Keywords ***
+wait the ticket group input filed visiable in the programs page
+    [Documentation]  Megvárja amíg megjelenik a ticket csoport mező
+    wait until element is visible  ${PO_PROGRAMOK_TICKET_GROUP_ID}
+
 wait the search input visiable in the programs page
     [Documentation]  Megvárja amíg a programok oldalon megjelenik a kereső
     wait until element is visible  ${PO_PROGRAMOK_SEARCH_INPUT_ID}
@@ -122,11 +131,12 @@ Give the venues name in the program create step page
     [Arguments]  ${text}
     input text  ${PO_PROGRAMOK_INPUT}  ${text}
 
-Click the select button ont place step page
+Click the select button on place step page
     Click the select button
 
 Wait the venues data loaded on the place page
     [Documentation]  Megvárja amígy a venue adatai beöltődnek.
+    Waiting the page loaded finish
     wait until element is visible  ${PO_PROGRAMOK_VENUES_DATA_ID}
 
 Give the ticket type name on the program create
@@ -134,15 +144,39 @@ Give the ticket type name on the program create
     [Arguments]  ${text}
     input text  ${PO_PROGRAMOK_TICKET_TYPE_NAME}  ${text}
 
-Waiting the tickets step page loaded
-    [Documentation]  Megvárja amíg a jegyek oldal betöltődik a program léterhozása során
-    wait until element is visible  ${PO_PROGRAMOK_TICKET_TYPE_NAME}
-
 Waiting the date step page loaded
     [Documentation]  Megvárja amíg az időpont oldal betöltődik
                 ...  a program létrehozása során
     wait until element is visible  ${PO_PROGRAMOK_START_DATE_ID}  20
     sleep  1s
+
+Click the free event ticket on the date step page
+    [Documentation]  belekattint az ingyenes eseménybe
+    Click checkbox by index  1  ${PO_PROGRAMOK_FREE_EVENT_TICKET_ID}
+
+Waiting the create datetime button is visiable
+    [Documentation]  Megvárja amíg az időpont hozzáadása gombt active lesz
+    Wait until element is active own  ${PO_PROGRAMOK_CREATE_DATATIME_ID}
+
+Click the create datetime
+    [Documentation]  Rákattint az időpont létrehoására
+    click element  ${PO_PROGRAMOK_CREATE_DATATIME_ID}
+
+Waiting the create datetime button is visiable and click
+    [Documentation]  Megvárja amígy az időpont létrehozása gomb aktív lesz
+                ...  majd rákattint.
+    Waiting the create datetime button is visiable
+    Click the create datetime
+
+Waiting the category step page loaded
+    [Documentation]  Megvárja amíg a kategória oldal betöltődik
+                ...  a program létrehozása során
+    wait until element is visible  //*[@class="mat-radio-container"]    20
+    sleep  1s
+
+Waiting the subcategory visiable
+    [Documentation]  Megvárja amígy a subcategory megjelenik.
+    wait until element is visible  //mat-checkbox  20
 
 Give the ticket price on the program create
     [Documentation]  Megadja a jegyhezu tartozó árat.
@@ -174,9 +208,7 @@ Give the program time
     ${xpath} =  set variable  //*[@class="program-length-list-container"]//*[contains(text(),'${text}')]
     click element  ${xpath}
 
-Click the create datetime
-    [Documentation]  Rákattint az időpont létrehoására
-    click element  ${PO_PROGRAMOK_CREATE_DATATIME_ID}
+
 
 Waiting the ticket assignment page loaded
     [Documentation]  Megvárja amíg a ticket hozzárendelő oldal betöltődik.
@@ -186,3 +218,29 @@ Give the long description
     [Documentation]  Megadja a részletes leírást a programok oldalon.
     [Arguments]  ${text}
     input text  ${PO_PROGRAMOK_LONG_DESCRIPTION_ID}  ${text}
+
+Give the main category by name or index
+    [Documentation]  Kiválasztja a főkategóriát
+    [Arguments]  ${data}
+    Click raido button by name or index   ${data}
+
+upload picture for the program
+    [Documentation]  A programok oldalon feltölt egy képet.
+    [Arguments]  ${picture}
+    Common_resource.upload picture  ${PO_PROGRAMOK_PICTURE_ID}  ${picture}
+
+upload pictures for the program
+    [Documentation]  EGy listából feltölt képeket
+    [Arguments]  ${listpicture}
+    upload pictures  ${PO_PROGRAMOK_PICTURE_ID}  ${PO_PROGRAMOK_PICTURE_CONTAINER_ID}  ${listpicture}
+
+Get events from the tickets assigne steppage
+    [Documentation]  A jegy hozzárendelése alpageről vissza az eseményeket.
+    @{lista} =  SeleniumLibrary.Get WebElements  ${PO_PROGRAMOK_EVENTS_HEADER_IN_THE_TICKETS_ASSIGN_ID}
+    [Return]  ${lista}
+
+Wait until the events subpanel visiable
+    [Documentation]  Megvárja amíg a jegyek eseményhez rendelése oldalon egy eseményre való
+                ...  kattintás után az alpanel megjelenik.
+    [Arguments]  ${index}
+    wait until element is visible  ${PO_PROGRAMOK_EVENTS_HEADER_IN_THE_TICKETS_ASSIGN_ID}[${index}]${PO_PROGRAMOK_EVENTS_SUBPANEL_ID}

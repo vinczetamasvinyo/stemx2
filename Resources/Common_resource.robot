@@ -111,6 +111,11 @@ Open browser and login and after go to the programs page
     Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
     go to the programs page
 
+Open browser and login and go to the events page
+    [Documentation]  Nyit egy új böngészőt, majd elmegy az események oldalra.
+    [Arguments]  ${old}  ${bon}  ${login}
+    Open browser and login to stemx or stemxcity  ${old}  ${bon}  ${login}
+    Go to the events page
 
 Open browser and login and after go to the venues page and get listbox
     [Documentation]  Megnyitja a böngészőt elmegy a venu oldalra és lekéri a lapozó fájlban
@@ -364,7 +369,11 @@ Choose item from listbox by index
     scroll to element  ${xpath}  100
     click element  ${xpath}
     wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
+    sleep  1s
     @{lista} =  SeleniumLibrary.Get WebElements  //mat-option
+    log  ${lista}
+    ${darabszam} =  get length  ${lista}
+    log  ${darabszam}
     ${index2} =  evaluate  ${index}-1
     ${egye_elem} =  get from list  ${lista}  ${index2}
     click element  ${egye_elem}
@@ -613,14 +622,38 @@ Get random string of other string
     [Return]  ${szoveg}
 
 Check element is enable
-    [Documentation]  Megnézi, hogy az xpath-ban megadott
+    [Documentation]  Megnézi, hogy a path-ban megadott eleme aktive-e.
     [Arguments]  ${path}
     ${status} =  get element attribute  ${path}  ng-reflect-is-disabled
     log  ${status}
     should be equal as strings  ${status}  true
 
+Get element status
+    [Documentation]  Lekéri egy elem státusát, hogy active vag inaktive.
+                ...  false azt jelenti, hogy inactive.
+                ...  true azt jelent, hogy active
+    [Arguments]  ${path}
+    ${status} =  get element attribute  ${path}  ng-reflect-is-disabled
+    log  ${status}
+    [Return]  ${status}
+
+Wait until element is active own
+    [Documentation]  Megvárja amíg az elem aktív lesz.
+    ...  A timeout változó default 5-re van állítva. Ha ezen változtatunk, akkor más lesz a várakozási érték.
+    ...  A timeout változót másodpercben kell megadni.
+    [Arguments]  ${path}  ${timeout}=5
+    :FOR  ${valt}  IN RANGE  ${timeout}
+    \  ${status} =  Get element status  ${path}
+    \  log  ${status}
+    \  exit for loop if  "${status}"=="true"
+
+Wait until the next button is active and click
+    Wait until the next button active
+    po_alt.Click the next button
+
+
 Click checkboxs by name
-    [Documentation]  A megadott rádióbutton-ra kattint.
+    [Documentation]  A megadott checkbox-ra kattint.
     [Arguments]  ${lists}  ${xpath}=${EMPTY}
     ${szotar} =  Get checkbox list  ${xpath}//*[@class="mat-checkbox-label"]
     #log  ${szotar}[${text}]
@@ -629,10 +662,42 @@ Click checkboxs by name
     \  ${egye_elem} =  get from list  ${lista}  ${szotar}[${elem}]
     \  click element  ${egye_elem}
 
+Click checboxs by index
+    [Documentation]  A megadott checbox-okat bekapcsolja. Paraméterként egy listát vár. Ez a list paraméter.
+    ...  pl 1, 3, 5
+    [Arguments]  ${lists}  ${xpath}=${EMPTY}
+    @{lista} =  SeleniumLibrary.Get WebElements  ${xpath}//*[@class="mat-checkbox-label"]
+    :FOR  ${elem}  IN  @{lists}
+    \  ${elemindex} =  evaluate  ${elem}-1
+    \  ${egye_elem} =  get from list  ${lista}  ${elemindex}
+    \  click element  ${egye_elem}
 
+Click checkboxs from list by index or name
+    [Arguments]  ${data}  ${xpath}=${EMPTY}
+    log  ${xpath}
+    log  ${data}
+    run keyword if  "${data}[type]" == "index"  Click checboxs by index  ${data}[list]  ${xpath}
+    ...  ELSE IF  "${data}[type]" == "name"  Click checkboxs by name  ${data}[list]  ${xpath}
 
-Click checkbox
-    [Documentation]  A megadott rádióbutton-ra kattint.
+Click checkbox by index
+    [Documentation]  A megadott indexű checkbox-ot bekattintja.
+    ...  xpath alapesetben üres, és ekkor az összes checkbox-ot nézni. Ha az xpath megadjuk,
+    ...  akkor ezzel lehet szűkíteni a checkbox-ban való keresést.
+    [Arguments]  ${index}  ${xpath}=${EMPTY}
+    log  ${xpath}
+    @{lista} =  SeleniumLibrary.Get WebElements  ${xpath}//*[@class="mat-checkbox-label"]
+    ${index2} =  evaluate  ${index}-1
+    ${egye_elem} =  get from list  ${lista}  ${index2}
+    click element  ${egye_elem}
+
+Click checkbox by index or name
+    [Arguments]  ${data}  ${xpath}=${EMPTY}
+    log  ${xpath}
+    run keyword if  "${data}[type]" == "index"  Click checkbox by index  ${data}[text]  ${xpath}
+    ...  ELSE IF  "${data}[type]" == "name"  Click checkbox by name  ${data}[text]  ${xpath}
+
+Click checkbox by name
+    [Documentation]  A megadott nevű checkbox-ra kattint.
     [Arguments]  ${text}  ${xpath}=${EMPTY}
     ${szotar} =  Get checkbox list  ${xpath}//*[@class="mat-checkbox-label"]
     log  ${szotar}[${text}]
@@ -645,6 +710,7 @@ Get checkbox list
                 ...  illetve nevét egy szótárban.
                 ...  A szótár kulcsa a sorszám a möggött lévő elem pedig az érték.
     [Arguments]  ${xpath}
+    log  ${xpath}
     @{lista} =  SeleniumLibrary.Get WebElements  ${xpath}
     ${szotar} =  create dictionary
     ${i} =  set variable  -1
@@ -669,6 +735,9 @@ Click radio button by name
     click element  ${egye_elem}
 
 Click radio button by index
+    [Documentation]  Egy radio button csoportból kiválaszt addot sorszámút.
+    ...  Elsőnek azt kell megadni, hogy hanyadikat szeretnénk kiválasztni ez az index.
+    ...  másodiknak pedig megadhatjuk az radiogrouő id-nak.
     [Arguments]  ${index}  ${radiogroup_id_xpath}=${EMPTY}
     @{lista} =  SeleniumLibrary.Get WebElements  ${radiogroup_id_xpath}${PO_COMMON_RADIO_LABEL_ID}
     ${index2} =  evaluate  ${index}-1
@@ -680,3 +749,34 @@ Click raido button by name or index
     log  ${xpath}
     run keyword if  "${data}[type]" == "index"  Click radio button by index  ${data}[text]  ${xpath}
     ...  ELSE IF  "${data}[type]" == "name"  Click radio button by name  ${data}[text]  ${xpath}
+
+upload picture
+    [Documentation]  Feltölt egy képet. Két paraméteret kap.
+    ...  path => az az objectum ahova a képet kell feltölteni.
+    ...  picture => pedig maga a kép elérési útja.
+    [Arguments]  ${path}  ${picture}
+    input text  ${path}  ${picture}
+
+upload pictures
+    [Documentation]  több képet tölt fel.
+    ...  Paraméterek:
+    ...             - picture_path_id: az oldalon annak az objectumnak az id-ja ahova a képfeltöltés történik.
+    ...             - picture_container_id_afet_upload: A képfeltöltés után az oldavárakozik, hogy a feltöltés sikerült-e.
+    ...                  ide annak az elemnek az id-ja kell amit számol, hogy a feltöltés sikerült-e.
+    ...             - listpicture: lista objectum amiben a képek elérési útja van.
+    [Arguments]  ${picture_path_id}  ${picture_container_id_afet_upload}  ${listpicture}
+    ${i} =  set variable  0
+    :FOR  ${picture}  IN  @{listpicture}
+    \  ${i} =  Evaluate  ${i} + 1
+    \  upload picture  ${picture_path_id}  ${picture}
+    \  sleep  1s
+    \  Wait until page contains count elements  ${picture_container_id_afet_upload}  ${i}
+
+Wait until page contains count elements
+    [Documentation]  Vár addig míg az oldal tartalmazza a megadott elemszámot
+    ...  az adott elemből
+    [Arguments]  ${path}  ${db}  ${timeout}=5
+    ${i} =  set variable  0
+    :FOR  ${i}  IN RANGE  ${timeout}
+    \  ${darabszam} =  Get Element Count  ${path}
+    \  exit for loop if  ${darabszam}==${db}

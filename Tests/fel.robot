@@ -1,10 +1,45 @@
 *** Settings ***
 Library  SeleniumLibrary
+Library  robot.libraries.DateTime
 Suite Teardown  Common.End web test
 Resource  ../Resources/Common_resource.robot
 #robot -d results -i most Tests/fel.robot
 
 *** Variables ***
+${MY_DATA_TABLE_VALUES_TEMP}  {"foo": "this is foo",
+                          ...  "bar": "this is bar",
+                          ...  "valami": {"a": "eredmeny"}}
+
+${PROGRAM_DATA2} =  {"program_name": "Csillagok zuhanása",
+               ...  "program_description": "részletes leírás",
+               ...  "program_long_description": "részletes leírás",
+               ...  "program_tax": {"type":"name", "text":"B - 25%"},
+               ...  "default_ticket_type": {"type":"index", "text":"1"},
+               ...  "ives_ticket_template": {"type":"index", "text":"1"},
+               ...  "db_ticket_template": {"type":"index", "text":"1"},
+               ...  "electronic_ticket_template": {"type":"index", "text":"1"},
+               ...  "venuename": "Előadóhely neve",
+               ...  "maincategory": {"type":"index", "text":"1"},
+               ...  "subcategory": {"type":"name", "list":["Alkategória 1", "Alkategória 2"]},
+               ...  "auditorium": {"type": "name", "text": "Teszt stadion 333333 (100 000 fő)"},
+               ...  "tickets":[{"ticketname": "jegy1", "ticketprice":"1000","ticketmaxcapacity":"1000","ticketgroup":"ticketcsoport"},
+                          ...  {"ticketname": "jegy2", "ticketprice":"1002","ticketmaxcapacity":"1002","ticketgroup":"ticketcsoport2"}],
+               ...   "events":[{"startdate":"2019-06-11 16:00:00","lenght":"30","free":"false","maxcapacity":"30",
+                                    ...  "program_tax":{"type":"index", "text":"1"},
+                                    ...  "default_ticket_type":{"type":"index", "text":"1"},
+                                    ...  "ives_ticket_template":{"type":"index", "text":"1"},
+                                    ...  "db_ticket_template":{"type":"index", "text":"1"},
+                                    ...  "electronic_ticket_template":{"type":"index", "text":"1"}},
+                         ...  {"startdate":"2019-06-11 16:00:00","lenght":"30","free":"false","maxcapacity":"30",
+                                    ...  "program_tax":{"type":"index", "text":"1"},
+                                    ...  "default_ticket_type":{"type":"index", "text":"1"},
+                                    ...  "ives_ticket_template":{"type":"index", "text":"1"},
+                                    ...  "db_ticket_template":{"type":"index", "text":"1"},
+                                    ...  "electronic_ticket_template":{"type":"index", "text":"1"}}],
+              ...  "ticketassigns":[{"id":"1", "tickets":["jegy1","jegy2"]},
+                               ...  {"id":"2", "tickets":["jegy2"]}]
+                ...  }
+
 &{USER}  Firstname=Vincze
     ...  Lastname=Tamás
     ...  Email=${EMPTY}
@@ -22,6 +57,16 @@ Resource  ../Resources/Common_resource.robot
 ${LAN}=  Hun
 
 *** Test Cases ***
+test0
+    ${MY_DATA_TABLE_VALUES} =   evaluate  json.loads('''${PROGRAM_DATA2}''')    json
+    log  ${MY_DATA_TABLE_VALUES}[program_description]
+    log  ${PROGRAM_DATA2}
+
+
+    ${alap} =  set variable  2019-06-11 16:00:00
+    ${data} =  Convert Date  ${alap}  result_format=%d.%b.%Y %H:%M
+
+
 test1
     [Tags]  most
     ${email} =  po_tempmail.Get the email address from the tempmail  ${bogeszo}

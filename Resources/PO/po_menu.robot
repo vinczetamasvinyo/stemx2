@@ -27,7 +27,7 @@ ${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//*[@ng-reflect-router-link="/admin/event/
 ${PO_MENU_EVENTS_ID} =  //*[@id="event_menu"]
 ${PO_MENU_EVENTS_ID2} =  ${PO_MENU_EVENTS_ID}//mat-expansion-panel-header
 ${PO_MENU_PROGRAMOK_SUBMENU_ID} =  xpath=//*[@id='programs_submenu']
-
+${PO_MENU_EVENTS_SUMNEU_ID} =  //*[@id="events_submenu"]
 
 *** Keywords ***
 Click the programs submenu
@@ -125,3 +125,8 @@ Click the venues submenu
     [Documentation]  Az előadóhelyek almenüre kattint
     wait until element is visible  ${PO_MENU_VENUESS_SUMENU_ID}
     click element  ${PO_MENU_VENUESS_SUMENU_ID}
+
+Click the events submenu
+    [Documentation]  Belekattint az események almenübe.
+    wait until element is visible  ${PO_MENU_EVENTS_SUMNEU_ID}
+    click element  ${PO_MENU_EVENTS_SUMNEU_ID}

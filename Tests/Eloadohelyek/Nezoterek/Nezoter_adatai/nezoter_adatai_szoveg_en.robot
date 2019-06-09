@@ -10,7 +10,7 @@ Test Template  Check the text on the auditorium details page
 
 *** Variables ***
 &{LOGIN_DATA}  email=${LOGIN_EMAIL.${DE}}  password=${LOGIN_PASSWORD.${DE}}  partner=${VARIABLES_PARTNER}  language=${LAN}
-${LAN} =  En
+${LAN} =  Hun
 
 *** Test Cases ***
 Audit tittle            text    ${AUDITDETAILS_TITTLE.${LAN}}                     0       ${PO_AUDITORIUMS_AUDIT_DETAILS_TITTLE}
