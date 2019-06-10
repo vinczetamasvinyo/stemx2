@@ -29,7 +29,13 @@ ${PO_PROGRAMOK_FREE_EVENT_TICKET_ID} =  //*[@formcontrolname="isFree"]
 ${PO_PROGRAMOK_PICTURE_ID} =  id=imageUpload
 ${PO_PROGRAMOK_PICTURE_CONTAINER_ID} =  //*[contains(@class,'it-thumbnail')]
 ${PO_PROGRAMOK_EVENTS_HEADER_IN_THE_TICKETS_ASSIGN_ID} =  //app-programs-ticket-assign//mat-expansion-panel-header
+${PO_PROGRAMOK_EVENTS_BLOCK_ID} =  //app-programs-ticket-assign//mat-expansion-panel
 ${PO_PROGRAMOK_EVENTS_SUBPANEL_ID} =  //*[@class="ticket-list-container"]
+${PO_PROGRAMOK_ALL_TICKETS_CHECKBOX_ID} =  //*[contains(@class,'tickets-header')]//mat-checkbox
+${PO_PROGRAMOK_EVENTS_ID_AFTER_GIVE} =  //app-programs-date-time-item
+${PO_PROGRAMOK_TICKETS_ID_AFTER_GIVE} =  //app-programs-ticket
+${PO_PROGRAMOK_TICKETS_NAME_ID} =  //*[@class="ticket-name"]
+
 
 *** Keywords ***
 wait the ticket group input filed visiable in the programs page
@@ -147,7 +153,7 @@ Give the ticket type name on the program create
 Waiting the date step page loaded
     [Documentation]  Megvárja amíg az időpont oldal betöltődik
                 ...  a program létrehozása során
-    wait until element is visible  ${PO_PROGRAMOK_START_DATE_ID}  20
+    wait until element is visible  ${PO_PROGRAMOK_START_DATE_ID}  20  Az esemény letrehozása oldal nem töltődött be
     sleep  1s
 
 Click the free event ticket on the date step page
@@ -243,4 +249,62 @@ Wait until the events subpanel visiable
     [Documentation]  Megvárja amíg a jegyek eseményhez rendelése oldalon egy eseményre való
                 ...  kattintás után az alpanel megjelenik.
     [Arguments]  ${index}
-    wait until element is visible  ${PO_PROGRAMOK_EVENTS_HEADER_IN_THE_TICKETS_ASSIGN_ID}[${index}]${PO_PROGRAMOK_EVENTS_SUBPANEL_ID}
+    ${elso_resz} =  catenate  SEPARATOR=${EMPTY}  ${PO_PROGRAMOK_EVENTS_BLOCK_ID}  [
+    ${masodik_resz} =  catenate  SEPARATOR=${EMPTY}  ]  ${PO_PROGRAMOK_EVENTS_SUBPANEL_ID}
+    wait until element is visible  ${elso_resz}${index}${masodik_resz}
+
+Wait until the events subpanel not visiable
+    [Documentation]  Megvárja amíg a jegyek eseményhez rendelése oldalon egy eseményre való
+                ...  kattintás után az alpanel már nem jelenik.
+    [Arguments]  ${index}
+    ${elso_resz} =  catenate  SEPARATOR=${EMPTY}  ${PO_PROGRAMOK_EVENTS_BLOCK_ID}  [
+    ${masodik_resz} =  catenate  SEPARATOR=${EMPTY}  ]  ${PO_PROGRAMOK_EVENTS_SUBPANEL_ID}
+    wait until element is not visible  ${elso_resz}${index}${masodik_resz}
+
+
+Click the all ticket
+    [Documentation]  Bekapcsolja az összes ticketet a jegyhozzárendelésnél.
+    [Arguments]  ${index}
+    ${elso_resz} =  catenate  SEPARATOR=${EMPTY}  ${PO_PROGRAMOK_EVENTS_BLOCK_ID}  [
+    ${masodik_resz} =  catenate  SEPARATOR=${EMPTY}  ]  ${PO_PROGRAMOK_ALL_TICKETS_CHECKBOX_ID}
+    click element  ${elso_resz}${index}${masodik_resz}
+
+Wait until page contains count events
+    [Documentation]  Megvárja amíg az esemény hozzáadása után az megjelenik az oldalon
+    [Arguments]  ${db}
+    Wait until page contains count elements  ${PO_PROGRAMOK_EVENTS_ID_AFTER_GIVE}  ${db}
+
+Wait until page contains count tickets
+    [Documentation]  Megvárja amíg a jegy hozzáadása után az megjelenik az oldalon
+    [Arguments]  ${db}
+    Wait until page contains count elements  ${PO_PROGRAMOK_TICKETS_ID_AFTER_GIVE}  ${db}
+
+Get checkbox ticket list
+    [Documentation]  visszaadja a ticket listát a program létrehozása oldalról
+    [Arguments]  ${index}
+    ${elso_resz} =  catenate  SEPARATOR=${EMPTY}  ${PO_PROGRAMOK_EVENTS_BLOCK_ID}  [
+    ${masodik_resz} =  catenate  SEPARATOR=${EMPTY}  ]  ${PO_PROGRAMOK_TICKETS_NAME_ID}
+    ${xpath} =  set variable  ${elso_resz}${index}${masodik_resz}
+    #${xpath} =  set variable  //app-programs-ticket-assign//mat-expansion-panel[${index}]//*[@class="ticket-name"]
+    @{lista} =  SeleniumLibrary.Get WebElements  ${xpath}
+    ${szotar} =  create dictionary
+    ${i} =  set variable  -1
+    :FOR  ${valt}  IN  @{lista}
+    \  ${i} =  Evaluate  ${i} + 1
+    \  ${szoveg_eredeti} =  get text  ${valt}
+    \  ${a} =  convert to string  ${i}
+    \  set to dictionary  ${szotar}  ${szoveg_eredeti}  ${a}
+    log  ${szotar}
+    [Return]  ${szotar}
+
+Click the ticket checkbox
+    [Documentation]  Bekapcsolja a jegyeket
+    [Arguments]  ${index}  ${szotar}  ${text}
+    ${xpath} =  set variable  //mat-expansion-panel[${index}]//*[contains(@class,'ticket-container')]//mat-checkbox
+    @{lista} =  SeleniumLibrary.Get WebElements  ${xpath}
+    log  ${lista}
+    ${db} =  get length  ${lista}
+    log  ${db}
+    log  ${szotar}[${text}]
+    ${egye_elem} =  get from list  ${lista}  ${szotar}[${text}]
+    click element  ${egye_elem}

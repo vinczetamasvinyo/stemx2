@@ -206,6 +206,10 @@ def get_string_positon(szoveg,search):
     hely = szoveg.find(search)
     return hely
 
+def update_in_dictionary(dictionary, key, newValue):
+    dictionary[key] = newValue
+    return dictionary
+
 """"
 def create_address_string(lan,data):
     if lan == "Hun":

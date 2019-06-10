@@ -369,7 +369,7 @@ Choose item from listbox by index
     scroll to element  ${xpath}  100
     click element  ${xpath}
     wait until element is visible  xpath=//div[@class="cdk-overlay-pane"]
-    sleep  1s
+    sleep  200milliseconds
     @{lista} =  SeleniumLibrary.Get WebElements  //mat-option
     log  ${lista}
     ${darabszam} =  get length  ${lista}

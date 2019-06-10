@@ -10,7 +10,7 @@ ${MY_DATA_TABLE_VALUES_TEMP}  {"foo": "this is foo",
                           ...  "bar": "this is bar",
                           ...  "valami": {"a": "eredmeny"}}
 
-${PROGRAM_DATA2} =  {"program_name": "Csillagok zuhanása",
+${PROGRAM_DATA2} =  {"program_name":"",
                ...  "program_description": "részletes leírás",
                ...  "program_long_description": "részletes leírás",
                ...  "program_tax": {"type":"name", "text":"B - 25%"},
@@ -18,12 +18,14 @@ ${PROGRAM_DATA2} =  {"program_name": "Csillagok zuhanása",
                ...  "ives_ticket_template": {"type":"index", "text":"1"},
                ...  "db_ticket_template": {"type":"index", "text":"1"},
                ...  "electronic_ticket_template": {"type":"index", "text":"1"},
+               ...  "picture": {"upload":"true", "pictures":["C:/tesztkepek_programokhoz/kep1.jpg","C:/tesztkepek_programokhoz/kep2.jpg"]},
                ...  "venuename": "Előadóhely neve",
                ...  "maincategory": {"type":"index", "text":"1"},
                ...  "subcategory": {"type":"name", "list":["Alkategória 1", "Alkategória 2"]},
                ...  "auditorium": {"type": "name", "text": "Teszt stadion 333333 (100 000 fő)"},
                ...  "tickets":[{"ticketname": "jegy1", "ticketprice":"1000","ticketmaxcapacity":"1000","ticketgroup":"ticketcsoport"},
-                          ...  {"ticketname": "jegy2", "ticketprice":"1002","ticketmaxcapacity":"1002","ticketgroup":"ticketcsoport2"}],
+                          ...  {"ticketname": "jegy2", "ticketprice":"1002","ticketmaxcapacity":"1002","ticketgroup":"ticketcsoport2"},
+                          ...  {"ticketname": "jegy3", "ticketprice":"1003","ticketmaxcapacity":"1003","ticketgroup":"ticketcsoport3"}],
                ...   "events":[{"startdate":"2019-06-11 16:00:00","lenght":"30","free":"false","maxcapacity":"30",
                                     ...  "program_tax":{"type":"index", "text":"1"},
                                     ...  "default_ticket_type":{"type":"index", "text":"1"},
@@ -36,8 +38,8 @@ ${PROGRAM_DATA2} =  {"program_name": "Csillagok zuhanása",
                                     ...  "ives_ticket_template":{"type":"index", "text":"1"},
                                     ...  "db_ticket_template":{"type":"index", "text":"1"},
                                     ...  "electronic_ticket_template":{"type":"index", "text":"1"}}],
-              ...  "ticketassigns":[{"id":"1", "tickets":["jegy1","jegy2"]},
-                               ...  {"id":"2", "tickets":["jegy2"]}]
+              ...  "ticketassigns":[{"id":"1", "all":"true", "tickets":["jegy1"]},
+                               ...  {"id":"2", "all":"false", "tickets":["jegy2"]}]
                 ...  }
 
 &{USER}  Firstname=Vincze
@@ -58,9 +60,18 @@ ${LAN}=  Hun
 
 *** Test Cases ***
 test0
+    log  ${USER}
+    ${USER.FIRSTNAME} =  set variable  uj nev
+    log  ${USER.FIRSTNAME}
     ${MY_DATA_TABLE_VALUES} =   evaluate  json.loads('''${PROGRAM_DATA2}''')    json
-    log  ${MY_DATA_TABLE_VALUES}[program_description]
-    log  ${PROGRAM_DATA2}
+    log  ${MY_DATA_TABLE_VALUES}
+    ${MY_DATA_TABLE_VALUES.'program_name'} =  set variable  valami
+    ${adat} =  set variable  ${MY_DATA_TABLE_VALUES}
+    log  ${adat}
+    ${MY_DATA_TABLE_VALUES} =  update in dictionary  ${MY_DATA_TABLE_VALUES}  program_name  valami
+    log  ${MY_DATA_TABLE_VALUES}
+    ${adat.'program_name'} =  set variable  valami
+    log  ${MY_DATA_TABLE_VALUES}
 
 
     ${alap} =  set variable  2019-06-11 16:00:00

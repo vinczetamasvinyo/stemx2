@@ -1,11 +1,11 @@
-lista = [1,2,3,4,5]
-lista2 = [2,1,3,4,5]
-print(lista)
-print(lista2)
-lista2.sort()
-rendezett = lista2
-print(rendezett)
-if lista == rendezett:
-    print("két lista egyezik")
-else:
-    print("Nem egyezik a két lista")
+import time
+import datetime
+import locale
+from datetime import timedelta
+locale.setlocale(locale.LC_ALL, "en")
+print(time.strftime("%a, %d %b %Y %H:%M:%S"))
+
+d = datetime.datetime(2009, 10, 5, 18, 00)
+print(d.strftime("%a, %d %b %Y %H:%M:%S"))
+print(d + timedelta(seconds=30))
+print (d.strftime("%a, %d %b %Y %I:%M:%S %p"))
