@@ -74,6 +74,7 @@ Assign the tickets for the events
     \  Open the events panel in the tickets assigne  ${ticket}[id]
     \  Click the all ticket or others ticket  ${ticket}
     \  Close the events panel in the tickets assigne  ${ticket}[id]
+    \  sleep  1s
 
 Open the events panel in the tickets assigne
     [Documentation]  Kinyitja az események panelját.

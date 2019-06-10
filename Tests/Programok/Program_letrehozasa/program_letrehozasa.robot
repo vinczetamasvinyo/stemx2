@@ -153,7 +153,17 @@ Test1
     ${PROGRAM_DATA4} =  update in dictionary  ${PROGRAM_DATA4}  program_name  ${name}
     Create program  ${PROGRAM_DATA4}
 
+Test2
+    repeat keyword  10 times  Program ismetlese
+
 *** Keywords ***
+Program ismetlese
+    ${PROGRAM_DATA4} =   evaluate  json.loads('''${PROGRAM_DATA2}''')    json
+    ${ido} =  get time in string
+    ${name} =  set variable  Igazság bajnoka${ido}
+    ${PROGRAM_DATA4} =  update in dictionary  ${PROGRAM_DATA4}  program_name  ${name}
+    Create program  ${PROGRAM_DATA4}
+
 
 
 
