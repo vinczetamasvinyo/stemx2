@@ -5,7 +5,7 @@
             ...  Companyname=Valami cég
             ...  Companylongname=Valami cégnév hosszú név
             ...  Companyregnumber=12123121212
-            ...  Companycountry=Hungary
+            ...  Companycountry=Denmark
             ...  Companyzipcode=1139
             ...  Companycity=Budapest
             ...  Companycounty=Pest
@@ -19,7 +19,7 @@
             ...  Banknumber=11773111-11222222
             ...  Iban=Iban szám
             ...  Swift=Swift szám
-            ...  Billingcountry=Hungary
+            ...  Billingcountry=Denmark
             ...  Billingzipcode=1139
             ...  Billingcity=Budapest
             ...  Billingcounty=Pest
@@ -39,7 +39,7 @@
             ...  Companyname=Valami cég
             ...  Companylongname=Valami cégnév hosszú név
             ...  Companyregnumber=12123121212
-            ...  Companycountry=Magyarország
+            ...  Companycountry=Dánia
             ...  Companyzipcode=1139
             ...  Companycity=Budapest
             ...  Companycounty=Pest
@@ -53,7 +53,7 @@
             ...  Banknumber=11773111-11222222
             ...  Iban=Iban szám
             ...  Swift=Swift szám
-            ...  Billingcountry=Magyarország
+            ...  Billingcountry=Dánia
             ...  Billingzipcode=1139
             ...  Billingcity=Budapest
             ...  Billingcounty=Pest

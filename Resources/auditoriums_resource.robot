@@ -19,14 +19,14 @@ Library  Collections
 &{AUDITORIUMS_TABLE_HEADER_CAPACITY_TEXT}  Hun=Nézőtér férőhelye  En=Auditorium capacity
 &{AUDITORIUMS_TABLE_HEADER_Feature_TEXT}  Hun=Lehetőségek  En=Features
 &{AUDITORIUMS_ERROR_TEXT_TOO_LONG}  Hun=Kérem legfeljebb 127 karaktert adjon meg  En=Please enter no more than 127 characters
-&{AUDITDETAILS_TITTLE}  Hu=Nézőtér megtekintése  En=Auditorium view
-&{AUDITDETAILS_AUDIT_NAME_TITTLE}  Hu=Nézőtér neve  En=Auditorium name
-&{AUDITDETAILS_AUDIT_ADDRESS_TITTLE}  Hu=Nézőtér címe  En=Auditorium address
-&{AUDITDETAILS_AUDIT_CAPACITY_TITTLE}  Hu=Max. kapacitás  En=Max Capacity
-&{AUDITDETAILS_VENUE_INFORMATION_TITTLE}  Hu=Előadóhely információ  En=Venue Information
-&{AUDITDETAILS_BACK_BUTTON}  Hu=Vissza a listához  En=Back to list
-&{AUDITDETAILS_DELETE_BUTTON}  Hu=Törlés  En=Delete
-&{AUDITDETAILS_EDIT_BUTTON}  Hu=Szerkesztés  En=Edit
+&{AUDITDETAILS_TITTLE}  Hun=Nézőtér megtekintése  En=Auditorium view
+&{AUDITDETAILS_AUDIT_NAME_TITTLE}  Hun=Nézőtér neve  En=Auditorium name
+&{AUDITDETAILS_AUDIT_ADDRESS_TITTLE}  Hun=Nézőtér címe  En=Auditorium address
+&{AUDITDETAILS_AUDIT_CAPACITY_TITTLE}  Hun=Max. kapacitás  En=Max Capacity
+&{AUDITDETAILS_VENUE_INFORMATION_TITTLE}  Hun=Előadóhely információ  En=Venue Information
+&{AUDITDETAILS_BACK_BUTTON}  Hun=Vissza a listához  En=Back to list
+&{AUDITDETAILS_DELETE_BUTTON}  Hun=Törlés  En=Delete
+&{AUDITDETAILS_EDIT_BUTTON}  Hun=Szerkesztés  En=Edit
 
 
 *** Keywords ***

@@ -23,7 +23,8 @@ ${PO_MENU_VENUES_SUMENU_ID} =  id=cdk-accordion-child-4
 #${PO_MENU_AUDITORIUMS_SUMENU_ID} =  xpath=//a[contains(text(),'Nézőterek')or contains(text(),'Auditoriums')]
 ${PO_MENU_AUDITORIUMS_SUMENU_ID} =  id=auditoriums_submenu
 #${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//a[contains(text(),'Előadóhelyek') or contains(text(),'Venues')]
-${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//*[@ng-reflect-router-link="/admin/event/venues"]
+#${PO_MENU_VENUESS_SUMENU_ID} =  xpath=//*[@ng-reflect-router-link="/admin/event/venues"]
+${PO_MENU_VENUESS_SUMENU_ID} =  id=venues_submenu
 ${PO_MENU_EVENTS_ID} =  //*[@id="event_menu"]
 ${PO_MENU_EVENTS_ID2} =  ${PO_MENU_EVENTS_ID}//mat-expansion-panel-header
 ${PO_MENU_PROGRAMOK_SUBMENU_ID} =  xpath=//*[@id='programs_submenu']
